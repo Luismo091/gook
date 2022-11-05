@@ -88,8 +88,36 @@
         </div> <!-- .row -->
 
  <div class="card mb-4 shadow">
-        <link rel="stylesheet" href="main.css">
-        <embed src="Ingenieria de Software 2 Entregable 1.pdf" #toolbar="0" width="100%" height="89%" />
+        <link rel="stylesheet" href="css/seebook.css">
+
+
+
+
+
+
+
+
+        <?php
+include 'conexion.php';
+$query ="SELECT * FROM Libro WHERE idLib='1'";
+$resul = $conexion->query($query);
+$contlibro;
+if ($row = $resul->fetch_array()) {
+ $contenido = $row['docLib'];
+ $contlibro=base64_encode($contenido);
+}
+echo '<embed src="data:application/pdf;base64,'.$contlibro.' #toolbar=0" width="100%" height="89%" />';//Parametros del libro
+?>
+
+
+
+
+
+
+
+
+
+        
       </div>
       </div> <!-- .container-fluid -->
       <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
