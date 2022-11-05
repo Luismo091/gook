@@ -87,8 +87,10 @@
 
         </div> <!-- .row -->
 
- <div class="card mb-4 shadow">
+
         <link rel="stylesheet" href="css/seebook.css">
+ <div class="card mb-4 shadow" style="height: 800px;">
+      
 
 
 
@@ -106,7 +108,7 @@ if ($row = $resul->fetch_array()) {
  $contenido = $row['docLib'];
  $contlibro=base64_encode($contenido);
 }
-echo '<embed src="data:application/pdf;base64,'.$contlibro.' #toolbar=0" width="100%" height="89%" />';//Parametros del libro
+echo '<embed src="data:application/pdf;base64,'.$contlibro.' #toolbar=0" width="100%" height="100%" />';//Parametros del libro
 ?>
 
 
