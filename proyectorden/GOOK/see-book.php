@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if (empty($_SESSION['id'])) {
+    header("location:page-404.html");
+}
+?>
 <!doctype html>
 <html lang="en">
 
