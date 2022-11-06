@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -368,20 +371,7 @@
 
 
 
-                  <?php
-include 'conexion.php';
-$query ="SELECT * FROM Usuario WHERE idUsu='1'";
-$resul = $conexion->query($query);
-$contlibro;
-if ($row = $resul->fetch_array()) {
- $contenido = $row['foto'];
- $contlibro=base64_encode($contenido);
-echo $contlibro;
- echo '<img src="data:image/png;base64,'.$contlibro.' width="100%" height="100%" />';//Parametros del libro
-}
-
-
-?>
+                  <img src="data:image/png;base64,<?=base64_encode($_SESSION["foto"]) ?>">
 
 
 
