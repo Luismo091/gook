@@ -65,7 +65,7 @@ session_start();
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="perfil.">Perfil</a>
+            <a class="dropdown-item" href="perfil.php">Perfil</a>
             <a class="dropdown-item" href="#">Ajustes de tu cuenta</a>
           </div>
         </li>
