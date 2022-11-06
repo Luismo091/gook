@@ -94,9 +94,10 @@ session_start();
         </div>
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item dropdown">
-            <a href="" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <a href="main.php" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
               <i class="fe fe-home fe-16"></i>
-              <span class="ml-3 item-text">Inicio</span><span class="sr-only">(current)</span>
+              
+              <span dir="main.php" class="ml-3 item-text"><a href="main.">Inicio</a></span><span class="sr-only">(current)</span>
             </a>
           </li>
         </ul>
