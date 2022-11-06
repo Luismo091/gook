@@ -15,7 +15,6 @@ eda, foto, Seguridad_idSeg, Favorito_idFav,
  FROM Seguridad INNER JOIN Usuario ON Seguridad.idSeg=Usuario.Seguridad_idSeg
 WHERE Seguridad.email='$email' AND  Seguridad.clave='$clave'";
 $resul = $conexion->query($query);
-$contlibro;
 if ($row = $resul->fetch_array()) {
  $vemail = $row['email'];
  $vclave=$row['clave'];
@@ -33,7 +32,7 @@ if ($rol == 1) { //ADMIN
 }
 }
 
-
+else{}
         
 ?>
         <?php
