@@ -108,6 +108,23 @@
             <br>
             <a href="auth-register3.html" class="btn btn-lg btn-primary btn-block" type="submit" >Registrate</a>
 
+
+            <?php
+include 'conexion.php';
+$query ="SELECT * FROM Seguridad WHERE email=1";
+$resul = $conexion->query($query);
+$contlibro;
+if ($row = $resul->fetch_array()) {
+ $vemail = $row['email'];
+ $vclave = $row['clave'];
+echo "<a >$vemail  $vclave</a>";
+}
+
+?>
+
+
+
+        
           </div> <!-- .card -->
         </div> <!-- ./col -->
       </div> <!-- .row -->
