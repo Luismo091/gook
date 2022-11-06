@@ -412,10 +412,10 @@
         </div>
       </div>
        <!-- / ACA EMPIEZA GOOK -->
-       <article>
-	<header style="background-image: url('https://images.unsplash.com/photo-1520808663317-647b476a81b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80');">
+  <article>
+	<header style="background-image: url('https://images.unsplash.com/photo-1436891620584-47fd0e565afb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');">
 		<div class="upper-header">
-			<div class="mini-title">article</div>
+			<div class="mini-title">NUEVOS AÑADIDOS</div>
 			<div class="date-since">
 				<p><span class="date-value" id="sinceData"></span></p>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
@@ -446,27 +446,12 @@
 					</defs>
 					<path class="d" d="M19.22,9.66L10.77,1.21c-.74-.74-1.86-1.21-2.97-1.21H1.67C.75,0,0,.75,0,1.67V7.8c0,1.11,.46,2.23,1.3,2.97l8.45,8.46c1,1,2.62,1,3.62,0l5.94-5.95c.93-.93,.93-2.6-.09-3.62ZM6.96,6.35c-.59,.59-1.56,.59-2.15,0-.59-.59-.59-1.56,0-2.15,.59-.59,1.56-.59,2.15,0,.59,.59,.59,1.56,0,2.15Z" />
 				</svg>
-				<span>Nature</span><span>Animal</span>
+				<span>Literatura</span><span>Juvenil</span>
 			</div>
-			<h1 class="title">Birds, Birds, Birds!</h1>
-			<p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ut quam sit amet vehicula.</p>
+			<h1 class="title">Libros,Libros Los mas nuevos</h1>
+			<p class="subtitle"></p>
 		</div>
 	</header>
-	<section class="summary">
-		<div class="summary-item">
-			<h5 class="item-title">Reading Time</h5>
-			<p class="item-text"><span class="item-data">6</span> Mins</p>
-		</div>
-		<div class="summary-item">
-			<h5 class="item-title">View</h5>
-			<p class="item-text"><span class="item-data">1288</span> Views</p>
-		</div>
-		<div class="summary-item">
-			<h5 class="item-title">Publish Date</h5>
-			<p class="item-text"><span class="item-data" id="dateData"></span></p>
-		</div>
-	</section>
-
 </article>
 
       <div class="card-body"></div>
