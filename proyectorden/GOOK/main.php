@@ -29,6 +29,7 @@ session_start();
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
   <link rel="stylesheet" href="css/stylelaunch.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>
 
 </head>
 
@@ -413,6 +414,7 @@ session_start();
             <div class="row">
               <div class="col-md-6 mb-4">
                 <div class="card-body">
+
                   <article>
                     <header style="background-image: url('https://images.unsplash.com/photo-1436891620584-47fd0e565afb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');">
                       <div class="upper-header">
@@ -462,12 +464,77 @@ session_start();
                   <strong class="card-title">Ultimos Leidos</strong>
                 </div>
                 <div class="card-body">
-
+                  <div class="options">
+                    <div class="option active" style="--optionBackground:url(https://66.media.tumblr.com/6fb397d822f4f9f4596dff2085b18f2e/tumblr_nzsvb4p6xS1qho82wo1_1280.jpg);">
+                      <div class="shadow"></div>
+                      <div class="label">
+                        <div class="icon">
+                          <i class="fas fa-walking"></i>
+                        </div>
+                        <div class="info">
+                          <div class="main">Blonkisoaz</div>
+                          <div class="sub">Omuke trughte a otufta</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/8b69cdde47aa952e4176b4200052abf4/tumblr_o51p7mFFF21qho82wo1_1280.jpg);">
+                      <div class="shadow"></div>
+                      <div class="label">
+                        <div class="icon">
+                          <i class="fas fa-snowflake"></i>
+                        </div>
+                        <div class="info">
+                          <div class="main">Oretemauw</div>
+                          <div class="sub">Omuke trughte a otufta</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/5af3f8303456e376ceda1517553ba786/tumblr_o4986gakjh1qho82wo1_1280.jpg);">
+                      <div class="shadow"></div>
+                      <div class="label">
+                        <div class="icon">
+                          <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="info">
+                          <div class="main">Iteresuselle</div>
+                          <div class="sub">Omuke trughte a otufta</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/5516a22e0cdacaa85311ec3f8fd1e9ef/tumblr_o45jwvdsL11qho82wo1_1280.jpg);">
+                      <div class="shadow"></div>
+                      <div class="label">
+                        <div class="icon">
+                          <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="info">
+                          <div class="main">Idiefe</div>
+                          <div class="sub">Omuke trughte a otufta</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="option" style="--optionBackground:url(https://66.media.tumblr.com/f19901f50b79604839ca761cd6d74748/tumblr_o65rohhkQL1qho82wo1_1280.jpg);">
+                      <div class="shadow"></div>
+                      <div class="label">
+                        <div class="icon">
+                          <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="info">
+                          <div class="main">Inatethi</div>
+                          <div class="sub">Omuke trughte a otufta</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
               </div>
               <!-- / ACA EMPIEZA GOOK -->
-
+              <div class="col-md-6 mb-4">
+                <div class="card-header">
+                  <strong class="card-title">Categorias</strong>
+                </div>
+              </div>
               <div class="col-12 col-lg-9">
                 <div class="row">
                   <?php
@@ -476,168 +543,85 @@ session_start();
                   while ($datos = $sql->fetch_object()) {
                   ?>
                     <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col-md-8">
-                              <h6 class="font-extrabold mb-0"><?= $datos->nomCat ?></h6>
-                              
-                            </div>
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-8">
+                            <h6 class="font-extrabold mb-0"><?= $datos->nomCat ?></h6>
                           </div>
-                          <hr class="my-4">
                         </div>
+                        <hr class="my-4">
                       </div>
+                    </div>
                   <?php }
                   ?>
                 </div>
               </div>
-
-              </div>
-              <div class="col">
-                <h2 class="h5 page-title">Ultimos Agregados </h2>
-              </div>
-              <div class="card shadow">
-                <div class="flip-card-container" style="--hue: 220">
-                  <div class="flip-card">
-                    <div class="card-front">
-                      <figure>
-                        <div class="img-bg"></div>
-                        <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
-                        <figcaption>Brohm Lake</figcaption>
-                      </figure>
-
-                      <ul>
-                        <li>Detail 1</li>
-                        <li>Detail 2</li>
-                        <li>Detail 3</li>
-                        <li>Detail 4</li>
-                        <li>Detail 5</li>
-                      </ul>
-                    </div>
-
-                    <div class="card-back">
-                      <figure>
-                        <div class="img-bg"></div>
-                        <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Brohm Lake">
-                      </figure>
-
-                      <button>Book</button>
-
-                      <div class="design-container">
-                        <span class="design design--1"></span>
-                        <span class="design design--2"></span>
-                        <span class="design design--3"></span>
-                        <span class="design design--4"></span>
-                        <span class="design design--5"></span>
-                        <span class="design design--6"></span>
-                        <span class="design design--7"></span>
-                        <span class="design design--8"></span>
-                      </div>
-                    </div>
-
-                  </div>
+              <div class="col-md-6 mb-4">
+                <div class="card-header">
+                  <strong class="card-title">Ultimos Leidos</strong>
                 </div>
-              </div>
-              <div class="flip-card-container" style="--hue: 170">
-                <div class="flip-card">
+                <div class="card-body">
 
-                  <div class="card-front">
-                    <figure>
-                      <div class="img-bg"></div>
-                      <img src="https://images.unsplash.com/photo-1545436864-cd9bdd1ddebc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Image 2">
-                      <figcaption>Légende</figcaption>
-                    </figure>
-
-                    <ul>
-                      <li>Detail 1</li>
-                      <li>Detail 2</li>
-                      <li>Detail 3</li>
-                      <li>Detail 4</li>
-                      <li>Detail 5</li>
-                    </ul>
-                  </div>
-
-                  <div class="card-back">
-                    <figure>
-                      <div class="img-bg"></div>
-                      <img src="https://images.unsplash.com/photo-1545436864-cd9bdd1ddebc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="image-2">
-                    </figure>
-
-                    <button>Book</button>
-
-                    <div class="design-container">
-                      <span class="design design--1"></span>
-                      <span class="design design--2"></span>
-                      <span class="design design--3"></span>
-                      <span class="design design--4"></span>
-                      <span class="design design--5"></span>
-                      <span class="design design--6"></span>
-                      <span class="design design--7"></span>
-                      <span class="design design--8"></span>
-                    </div>
-                  </div>
 
                 </div>
               </div>
-
-            </div>
-            <div class="card-body"></div>
-            <!-- / .ACA SE MUESTRA LOS ACCE DIRECTOS -->
-            <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body px-5">
-                    <div class="row align-items-center">
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-success justify-content-center">
-                          <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                        </div>
-                        <p>Control area</p>
-                      </div>
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-primary justify-content-center">
-                          <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                        </div>
-                        <p>Activity</p>
-                      </div>
+              <!-- / .ACA SE MUESTRA LOS ACCE DIRECTOS -->
+              <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
-                    <div class="row align-items-center">
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-primary justify-content-center">
-                          <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+                    <div class="modal-body px-5">
+                      <div class="row align-items-center">
+                        <div class="col-6 text-center">
+                          <div class="squircle bg-success justify-content-center">
+                            <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+                          </div>
+                          <p>Control area</p>
                         </div>
-                        <p>Droplet</p>
+                        <div class="col-6 text-center">
+                          <div class="squircle bg-primary justify-content-center">
+                            <i class="fe fe-activity fe-32 align-self-center text-white"></i>
+                          </div>
+                          <p>Activity</p>
+                        </div>
                       </div>
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-primary justify-content-center">
-                          <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+                      <div class="row align-items-center">
+                        <div class="col-6 text-center">
+                          <div class="squircle bg-primary justify-content-center">
+                            <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+                          </div>
+                          <p>Droplet</p>
                         </div>
-                        <p>Upload</p>
+                        <div class="col-6 text-center">
+                          <div class="squircle bg-primary justify-content-center">
+                            <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+                          </div>
+                          <p>Upload</p>
+                        </div>
                       </div>
-                    </div>
-                    <div class="row align-items-center">
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-primary justify-content-center">
-                          <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                      <div class="row align-items-center">
+                        <div class="col-6 text-center">
+                          <div class="squircle bg-primary justify-content-center">
+                            <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                          </div>
+                          <p>Users</p>
                         </div>
-                        <p>Users</p>
-                      </div>
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-primary justify-content-center">
-                          <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+                        <div class="col-6 text-center">
+                          <div class="squircle bg-primary justify-content-center">
+                            <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+                          </div>
+                          <p>Settings</p>
                         </div>
-                        <p>Settings</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
     </main> <!-- main -->
   </div> <!-- .wrapper -->
   <script src="js/jquery.min.js"></script>
@@ -856,6 +840,7 @@ session_start();
   </script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js'></script>
   <script src="js/scriptlaunc.js"></script>
+  <script src="js/scriptff.js"></script>
 </body>
 
 </html>
