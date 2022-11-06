@@ -161,7 +161,6 @@ session_start();
             <div class="row">
               <div class="col-md-6 mb-4">
                 <div class="card-body">
-
                   <article>
                     <header style="background-image: url('https://images.unsplash.com/photo-1436891620584-47fd0e565afb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');">
                       <div class="upper-header">
@@ -213,37 +212,30 @@ session_start();
                 <div class="card-body">
 
                   <div class="options">
-                  <?php
-                  include "conexion.php";
-                  $sql = $conexion->query("SELECT idReciente, fecha, Libro_idLib, Recientecol,idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat,idUsu from Reciente
+                    <?php
+                    include "conexion.php";
+                    $sql = $conexion->query("SELECT idReciente, fecha, Libro_idLib, Recientecol,idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat,idUsu from Reciente
                   INNER JOIN Libro
                   ON Reciente.Libro_idLib=Libro.idLib
                   INNER JOIN Usuario
                   ON Reciente.Recientecol=Usuario.idUsu
                   limit 6");
-                  while ($datos = $sql->fetch_object()) {
-                  ?>
-                    <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen)?>);">
-                      <div class="shadow"></div>
-                      <div class="label">
-                        
-                        <div class="info">
-                          <div class="main"><?= $datos->titLib ?></div>
-                          <div class="sub"><?= $datos->fecha?></div>
+                    while ($datos = $sql->fetch_object()) {
+                    ?>
+                      <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
+                        <div class="shadow"></div>
+                        <div class="label">
+
+                          <div class="info">
+                            <div class="main"><?= $datos->titLib ?></div>
+                            <div class="sub"><?= $datos->fecha ?></div>
+                          </div>
                         </div>
                       </div>
-                    </div>
                     <?php }
                     ?>
-
-                  
                   </div>
-
-
-
-
                 </div>
-
               </div>
             </div>
             <!-- / ACA EMPIEZA GOOK -->
@@ -273,72 +265,140 @@ session_start();
                 ?>
               </div>
             </div>
-            <div class="col-md-6 mb-4">
-              <div class="card-header">
-                <strong class="card-title">Populares</strong>
-              </div>
-              <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="card-body">
+                  <article>
+                    <header style="background-image: url('https://images.pexels.com/photos/4807060/pexels-photo-4807060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                      <div class="upper-header">
+                        <div class="mini-title">HISTORIAS INSPIRADAS EN COLOMBIA</div>
+                        <div class="date-since">
+                          <p><span class="date-value" id="sinceData"></span></p>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                            <defs>
+                              <style>
+                                .d {
+                                  width: 20px;
+                                  fill: #fff;
+                                  opacity: .7;
+                                }
+                              </style>
+                            </defs>
+                            <path class="d" d="M15,0C6.75,0,0,6.75,0,15s6.75,15,15,15,15-6.75,15-15S23.25,0,15,0Zm7.35,16.65h-7.35c-.83,0-1.5-.67-1.5-1.5V7.8c0-.9,.6-1.5,1.5-1.5s1.5,.6,1.5,1.5v5.85h5.85c.9,0,1.5,.6,1.5,1.5s-.6,1.5-1.5,1.5Z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="lower-header">
+                        <div class="tags-container">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <defs>
+                              <style>
+                                .d {
+                                  width: 20px;
+                                  fill: #fff;
+                                  opacity: .50;
+                                }
+                              </style>
+                            </defs>
+                            <path class="d" d="M19.22,9.66L10.77,1.21c-.74-.74-1.86-1.21-2.97-1.21H1.67C.75,0,0,.75,0,1.67V7.8c0,1.11,.46,2.23,1.3,2.97l8.45,8.46c1,1,2.62,1,3.62,0l5.94-5.95c.93-.93,.93-2.6-.09-3.62ZM6.96,6.35c-.59,.59-1.56,.59-2.15,0-.59-.59-.59-1.56,0-2.15,.59-.59,1.56-.59,2.15,0,.59,.59,.59,1.56,0,2.15Z" />
+                          </svg>
+                          <span>Literatura</span><span>Juvenil</span>
+                        </div>
+                        <h1 class="title">Lo mejor de colombia</h1>
+                        <p class="subtitle"></p>
+                      </div>
+                    </header>
+                  </article>
+                </div>
 
-
               </div>
-            </div>
-            <!-- / .ACA SE MUESTRA LOS ACCE DIRECTOS -->
-            <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+              <div class="col-md-6 mb-4">
+                <div class="card-header">
+                  <strong class="card-title">Top de los más populares</strong>
+                </div>
+                <div class="card-body">
+
+                  <div class="options">
+                    <?php
+                    include "conexion.php";
+                    $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
+                    while ($datos = $sql->fetch_object()) {
+                    ?>
+                      <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
+                        <div class="shadow"></div>
+                        <div class="label">
+
+                          <div class="info">
+                            <div class="main"><?= $datos->titLib ?></div>
+                            <div class="sub"><?= $datos->fecPub ?></div>
+                          </div>
+                        </div>
+                      </div>
+                    <?php }
+                    ?>
                   </div>
-                  <div class="modal-body px-5">
-                    <div class="row align-items-center">
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-success justify-content-center">
-                          <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                        </div>
-                        <p>Control area</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- / .ACA SE MUESTRA LOS ACCE DIRECTOS -->
+          <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body px-5">
+                  <div class="row align-items-center">
+                    <div class="col-6 text-center">
+                      <div class="squircle bg-success justify-content-center">
+                        <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
                       </div>
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-primary justify-content-center">
-                          <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                        </div>
-                        <p>Activity</p>
-                      </div>
+                      <p>Control area</p>
                     </div>
-                    <div class="row align-items-center">
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-primary justify-content-center">
-                          <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                        </div>
-                        <p>Droplet</p>
+                    <div class="col-6 text-center">
+                      <div class="squircle bg-primary justify-content-center">
+                        <i class="fe fe-activity fe-32 align-self-center text-white"></i>
                       </div>
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-primary justify-content-center">
-                          <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                        </div>
-                        <p>Upload</p>
-                      </div>
+                      <p>Activity</p>
                     </div>
-                    <div class="row align-items-center">
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-primary justify-content-center">
-                          <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                        </div>
-                        <p>Users</p>
+                  </div>
+                  <div class="row align-items-center">
+                    <div class="col-6 text-center">
+                      <div class="squircle bg-primary justify-content-center">
+                        <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
                       </div>
-                      <div class="col-6 text-center">
-                        <div class="squircle bg-primary justify-content-center">
-                          <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                        </div>
-                        <p>Settings</p>
+                      <p>Droplet</p>
+                    </div>
+                    <div class="col-6 text-center">
+                      <div class="squircle bg-primary justify-content-center">
+                        <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
                       </div>
+                      <p>Upload</p>
+                    </div>
+                  </div>
+                  <div class="row align-items-center">
+                    <div class="col-6 text-center">
+                      <div class="squircle bg-primary justify-content-center">
+                        <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                      </div>
+                      <p>Users</p>
+                    </div>
+                    <div class="col-6 text-center">
+                      <div class="squircle bg-primary justify-content-center">
+                        <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+                      </div>
+                      <p>Settings</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
     </main> <!-- main -->
   </div> <!-- .wrapper -->
   <script src="js/jquery.min.js"></script>
