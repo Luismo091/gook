@@ -81,7 +81,7 @@ session_start();
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
           <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-          <svg width="auto" height="100px" viewBox="0 0 1920 645.52203" version="1.1" id="svg5" xml:space="preserve" inkscape:export-filename="..\..\..\..\..\..\..\..\Good Book\IconoGookFullAzul.svg" inkscape:export-xdpi="96" inkscape:export-ydpi="96" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)" sodipodi:docname="LogoPoquitaChiquito.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <svg width="auto" height="100px" viewBox="0 0 1920 645.52203" version="1.1" id="svg5" xml:space="preserve" inkscape:export-filename="..\..\..\..\..\..\..\..\Good Book\IconoGookFullAzul.svg" inkscape:export-xdpi="96" inkscape:export-ydpi="96" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)" sodipodi:docname="LogoPoquitaChiquito.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
               <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="px" showgrid="true" inkscape:zoom="0.5" inkscape:cx="771.00001" inkscape:cy="520" inkscape:window-width="1920" inkscape:window-height="1017" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="g509" />
               <defs id="defs2" />
               <g inkscape:label="Capa 1" inkscape:groupmode="layer" id="layer1" transform="translate(-3188.0814,-229.68417)">
@@ -467,129 +467,131 @@ session_start();
                   <strong class="card-title">Ultimos Leidos</strong>
                 </div>
                 <div class="card-body">
+
+                  <div class="options">
                   <?php
                   include "conexion.php";
-                  $sql = $conexion->query("SELECT distinct fecha, Libro_idLib,idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat,Reciente_idReciente from Reciente
-                  INNER JOIN Libro
-                  ON Reciente.Libro_idLib=Libro.idLib
-                  INNER JOIN Usuario
-                  ON Reciente.idReciente=Usuario.Reciente_idReciente");
+                  $sql = $conexion->query("SELECT * from Libro limit 6");
                   while ($datos = $sql->fetch_object()) {
                   ?>
-                    <div class="options">
-
-                      <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen)?>);">
-                        <div class="shadow"></div>
-                        <div class="label">
-                          <div class="icon">
-                            <i class="fas fa-walking"></i>
-                          </div>
-                          <div class="info">
-                            <div class="main"><?= $datos->titLib ?></div>
-                            <div class="sub">O<?= $datos->fecha ?></div>
-                          </div>
+                    <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen)?>);">
+                      <div class="shadow"></div>
+                      <div class="label">
+                        <div class="icon">
+                          <i class="fas fa-walking"></i>
+                        </div>
+                        <div class="info">
+                          <div class="main"><?= $datos->titLib ?></div>
+                          <div class="sub"><?= $datos->titLib ?></div>
                         </div>
                       </div>
+                    </div>
                     <?php }
                     ?>
 
-                    </div>
+                  
+                  </div>
 
-                </div>
-              </div>
-              <!-- / ACA EMPIEZA GOOK -->
-              <div class="col-md-6 mb-4">
-                <div class="card-header">
-                  <strong class="card-title">Categorias</strong>
-                </div>
-              </div>
-              <div class="col-12 col-lg-9">
-                <div class="row">
-                  <?php
-                  include "conexion.php";
-                  $sql = $conexion->query("SELECT * from Categoria");
-                  while ($datos = $sql->fetch_object()) {
-                  ?>
-                    <div class="col-6 col-lg-3 col-md-6">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-md-8">
-                            <h6 class="font-extrabold mb-0"><?= $datos->nomCat ?></h6>
-                          </div>
-                        </div>
-                        <hr class="my-4">
-                      </div>
-                    </div>
-                  <?php }
-                  ?>
-                </div>
-              </div>
-              <div class="col-md-6 mb-4">
-                <div class="card-header">
-                  <strong class="card-title">Ultimos Leidos</strong>
-                </div>
-                <div class="card-body">
+
 
 
                 </div>
+
               </div>
-              <!-- / .ACA SE MUESTRA LOS ACCE DIRECTOS -->
-              <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+            </div>
+            <!-- / ACA EMPIEZA GOOK -->
+            <div class="col-md-6 mb-4">
+              <div class="card-header">
+                <strong class="card-title">Categorias</strong>
+              </div>
+            </div>
+            <div class="col-12 col-lg-9">
+              <div class="row">
+                <?php
+                include "conexion.php";
+                $sql = $conexion->query("SELECT * from Categoria");
+                while ($datos = $sql->fetch_object()) {
+                ?>
+                  <div class="col-6 col-lg-3 col-md-6">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <h6 class="font-extrabold mb-0"><?= $datos->nomCat ?></h6>
+                        </div>
+                      </div>
+                      <hr class="my-4">
                     </div>
-                    <div class="modal-body px-5">
-                      <div class="row align-items-center">
-                        <div class="col-6 text-center">
-                          <div class="squircle bg-success justify-content-center">
-                            <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                          </div>
-                          <p>Control area</p>
+                  </div>
+                <?php }
+                ?>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card-header">
+                <strong class="card-title">Ultimos Leidos</strong>
+              </div>
+              <div class="card-body">
+
+
+              </div>
+            </div>
+            <!-- / .ACA SE MUESTRA LOS ACCE DIRECTOS -->
+            <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body px-5">
+                    <div class="row align-items-center">
+                      <div class="col-6 text-center">
+                        <div class="squircle bg-success justify-content-center">
+                          <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
                         </div>
-                        <div class="col-6 text-center">
-                          <div class="squircle bg-primary justify-content-center">
-                            <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                          </div>
-                          <p>Activity</p>
-                        </div>
+                        <p>Control area</p>
                       </div>
-                      <div class="row align-items-center">
-                        <div class="col-6 text-center">
-                          <div class="squircle bg-primary justify-content-center">
-                            <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                          </div>
-                          <p>Droplet</p>
+                      <div class="col-6 text-center">
+                        <div class="squircle bg-primary justify-content-center">
+                          <i class="fe fe-activity fe-32 align-self-center text-white"></i>
                         </div>
-                        <div class="col-6 text-center">
-                          <div class="squircle bg-primary justify-content-center">
-                            <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                          </div>
-                          <p>Upload</p>
-                        </div>
+                        <p>Activity</p>
                       </div>
-                      <div class="row align-items-center">
-                        <div class="col-6 text-center">
-                          <div class="squircle bg-primary justify-content-center">
-                            <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                          </div>
-                          <p>Users</p>
+                    </div>
+                    <div class="row align-items-center">
+                      <div class="col-6 text-center">
+                        <div class="squircle bg-primary justify-content-center">
+                          <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
                         </div>
-                        <div class="col-6 text-center">
-                          <div class="squircle bg-primary justify-content-center">
-                            <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                          </div>
-                          <p>Settings</p>
+                        <p>Droplet</p>
+                      </div>
+                      <div class="col-6 text-center">
+                        <div class="squircle bg-primary justify-content-center">
+                          <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
                         </div>
+                        <p>Upload</p>
+                      </div>
+                    </div>
+                    <div class="row align-items-center">
+                      <div class="col-6 text-center">
+                        <div class="squircle bg-primary justify-content-center">
+                          <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                        </div>
+                        <p>Users</p>
+                      </div>
+                      <div class="col-6 text-center">
+                        <div class="squircle bg-primary justify-content-center">
+                          <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+                        </div>
+                        <p>Settings</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
     </main> <!-- main -->
   </div> <!-- .wrapper -->
   <script src="js/jquery.min.js"></script>
