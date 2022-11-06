@@ -468,30 +468,28 @@ session_start();
               </div>
               <!-- / ACA EMPIEZA GOOK -->
 
-              <div class="col-12 mb-4">
-
-                <div class="col">
-                  <h2 class="h5 page-title">Ultimos Agregados </h2>
-                </div>
-                <div class="card-body">
-                  <div class="col-md-4 mb-4">
-                    <div class="card shadow">
-                      <div class="card-body">
-                        <div class="row align-items-center">
-                          <div class="col">
-                            <span class="h2 mb-0">186</span>
-                            <p class="small text-muted mb-0">Customers</p>
-                            <span class="badge badge-pill badge-warning">+1.5%</span>
+              <div class="col-12 col-lg-9">
+                <div class="row">
+                  <?php
+                  include "conexion.php";
+                  $sql = $conexion->query("SELECT * from Categoria");
+                  while ($datos = $sql->fetch_object()) {
+                  ?>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-8">
+                              <h6 class="font-extrabold mb-0"><?= $datos->nomCat ?></h6>
+                              
+                            </div>
                           </div>
-                          <div class="col-auto">
-                            <span class="fe fe-32 fe-users text-muted mb-0"></span>
-                          </div>
+                          <hr class="my-4">
                         </div>
                       </div>
-                    </div>
-                  </div>
-
+                  <?php }
+                  ?>
                 </div>
+              </div>
 
               </div>
               <div class="col">
@@ -500,7 +498,6 @@ session_start();
               <div class="card shadow">
                 <div class="flip-card-container" style="--hue: 220">
                   <div class="flip-card">
-
                     <div class="card-front">
                       <figure>
                         <div class="img-bg"></div>
