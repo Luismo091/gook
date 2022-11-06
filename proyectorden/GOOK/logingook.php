@@ -27,7 +27,7 @@
         </div> <!-- ./col -->
         <div class="col-lg-6">
           <div class="w-50 mx-auto">
-            <form class="mx-auto text-center">
+            <form action="validarsesion.php"  class="mx-auto text-center" method="POST">
               <a class="navbar-brand mx-auto mt-2 text-center" href="./index.html">
                 <svg
    width="auto"
@@ -93,11 +93,11 @@
               <h1 class="h6 mb-3">Inicia Sesión</h1>
               <div class="form-group">
                 <label for="inputEmail" class="sr-only">Correo</label>
-                <input type="email" id="inputEmail" class="form-control form-control-lg" placeholder="Correo" required="" autofocus="">
+                <input type="email" name="inputEmail" class="form-control form-control-lg" placeholder="Correo" required="" autofocus="">
               </div>
               <div class="form-group">
                 <label for="inputPassword" class="sr-only">Contraseña</label>
-                <input type="password" id="inputPassword" class="form-control form-control-lg" placeholder="Contraseña" required="">
+                <input type="password" name="inputPassword" class="form-control form-control-lg" placeholder="Contraseña" required="">
               </div>
               <div class="checkbox mb-3">
                 <label>
@@ -106,21 +106,25 @@
               <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
             </form>
             <br>
-            <a href="auth-register3.html" class="btn btn-lg btn-primary btn-block" type="submit" >Registrate</a>
+            <a class="btn btn-lg btn-primary btn-block" type="submit">Registrate</a>
 
-
-            <?php
+<script>function square(number) {
+   <?php
 include 'conexion.php';
-$query ="SELECT * FROM Seguridad WHERE email=1";
+$email=$_GET["inputEmail"];
+$clave=$_GET["inputPassword"];
+$query ="SELECT * FROM Seguridad WHERE email=$email";
 $resul = $conexion->query($query);
 $contlibro;
-if ($row = $resul->fetch_array()) {
+if ($row = $resul->fetch_array()) { 
  $vemail = $row['email'];
  $vclave = $row['clave'];
 echo "<a >$vemail  $vclave</a>";
 }
 
 ?>
+}</script>
+           
 
 
 
