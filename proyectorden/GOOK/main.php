@@ -471,18 +471,21 @@ session_start();
                   <div class="options">
                   <?php
                   include "conexion.php";
-                  $sql = $conexion->query("SELECT * from Libro limit 6");
+                  $sql = $conexion->query("SELECT idReciente, fecha, Libro_idLib, Recientecol,idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat,idUsu from Reciente
+                  INNER JOIN Libro
+                  ON Reciente.Libro_idLib=Libro.idLib
+                  INNER JOIN Usuario
+                  ON Reciente.Recientecol=Usuario.idUsu
+                  limit 6");
                   while ($datos = $sql->fetch_object()) {
                   ?>
                     <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen)?>);">
                       <div class="shadow"></div>
                       <div class="label">
-                        <div class="icon">
-                          <i class="fas fa-walking"></i>
-                        </div>
+                        
                         <div class="info">
                           <div class="main"><?= $datos->titLib ?></div>
-                          <div class="sub"><?= $datos->titLib ?></div>
+                          <div class="sub"><?= $datos->fecha?></div>
                         </div>
                       </div>
                     </div>
@@ -528,7 +531,7 @@ session_start();
             </div>
             <div class="col-md-6 mb-4">
               <div class="card-header">
-                <strong class="card-title">Ultimos Leidos</strong>
+                <strong class="card-title">Populares</strong>
               </div>
               <div class="card-body">
 
