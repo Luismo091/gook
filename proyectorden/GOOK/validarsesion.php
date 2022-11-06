@@ -3,7 +3,7 @@ session_start();
 include('conexion.php');
 
 if (empty($_POST['inputEmail']) || empty($_POST['inputPassword'])) {
-    include('logingook.php');
+    include('index.php');
 } else {
 
     $email = $_POST['inputEmail'];
@@ -81,7 +81,7 @@ if (empty($_POST['inputEmail']) || empty($_POST['inputPassword'])) {
                 <h1 class="display-1 m-0 font-weight-bolder text-muted" style="font-size:80px;">500</h1>
                 <h1 class="mb-1 text-muted font-weight-bold">OOPS!</h1>
                 <h6 class="mb-3 text-muted">El usuario y/o clave incorrector o no existen.</h6>
-                <a href="logingook.php" class="btn btn-lg btn-primary px-5">Iniciar Sesion</a>
+                <a href="index.php" class="btn btn-lg btn-primary px-5">Iniciar Sesion</a>
             </div>
         </div>
     </div>
