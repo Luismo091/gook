@@ -106,7 +106,7 @@
               <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
             </form>
             <br>
-            <a href="registrousuario.html" class="btn btn-lg btn-primary btn-block" type="submit">Registrate</a>
+            <a href="registrousuario.php" class="btn btn-lg btn-primary btn-block" type="submit">Registrate</a>
 
 <script>function square(number) {
    <?php
