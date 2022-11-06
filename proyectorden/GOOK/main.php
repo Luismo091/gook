@@ -28,6 +28,7 @@
   <!-- App CSS -->
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
+  <link rel="stylesheet" href="css/stylelaunch.css">
 </head>
 
 <body class="vertical  dark  ">
@@ -766,6 +767,7 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
   </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js'></script><script  src="js/scriptlaunc.js"></script>
 </body>
 
 </html>
