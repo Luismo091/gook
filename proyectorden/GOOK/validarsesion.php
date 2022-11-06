@@ -30,7 +30,7 @@ if (empty($_POST['inputEmail']) || empty($_POST['inputPassword'])) {
         echo "hola";
 
         if ($typeusu['tipousurio'] == 1) { //Admin
-            header("location:see-book.php");
+            header("location:main.php");
         } else if ($typeusu['tipousurio'] == 2) {//Editor
             header("location:see-book.php");
         } else if ($typeusu['tipousurio'] == 3) {//Escritor
