@@ -89,7 +89,7 @@ session_start();
             </svg>
           </a>
         </div>
-       
+
         <p class="text-muted nav-heading mt-4 mb-1">
           <span>GOOK</span>
         </p>
@@ -118,17 +118,9 @@ session_start();
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
-
-          </ul>
-
-
-
-
-
-
-
-
+        </ul>
       </nav>
+
     </aside>
     <main role="main" class="main-content">
       <div class="container-fluid">
