@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -33,7 +36,7 @@
   <div class="wrapper">
     <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
-        <i class="fe fe-menu navbar-toggler-icon"></i>
+          <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
       <form class="form-inline mr-auto searchform text-muted">
         <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
@@ -58,11 +61,11 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="avatar avatar-sm mt-2">
-              <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['foto']) ?>">
+            <img src="data:image/png;base64,<?=base64_encode($_SESSION["foto"]) ?>">
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="perfil.">Perfil</a>
             <a class="dropdown-item" href="#">Ajustes de tu cuenta</a>
           </div>
         </li>
@@ -108,7 +111,8 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="./dashboard-saas.html"><span class="ml-1 item-text">Saas
-                    Dashboard</span></a>
+                    Dashboard</span>
+                  </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="./dashboard-system.html"><span class="ml-1 item-text">Systems</span></a>

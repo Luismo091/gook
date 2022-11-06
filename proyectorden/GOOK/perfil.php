@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -364,7 +367,15 @@
               <div class="row mt-5 align-items-center">
                 <div class="col-md-3 text-center mb-5">
                   <div class="avatar avatar-xl">
-                    <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+
+
+
+
+                  <img src="data:image/png;base64,<?=base64_encode($_SESSION["foto"]) ?>">
+
+
+
+                   
                   </div>
                 </div>
                 <div class="col">
