@@ -37,7 +37,7 @@ if ($rol == 1) { //ADMIN
         
 ?>
         <?php
-        include('error-404.html');
+        include('page-404.html');
         ?>
         <h1></h1>
 <?php
