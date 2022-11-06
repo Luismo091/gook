@@ -28,7 +28,7 @@
         <div class="col-lg-6">
           <div class="w-50 mx-auto">
             <form action="validarsesion.php"  class="mx-auto text-center" method="POST">
-              <a class="navbar-brand mx-auto mt-2 text-center" href="./index.html">
+              <a class="navbar-brand mx-auto mt-2 text-center">
                 <svg
    width="auto"
    height="200"
@@ -106,7 +106,7 @@
               <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
             </form>
             <br>
-            <a class="btn btn-lg btn-primary btn-block" type="submit">Registrate</a>
+            <a href="auth-register3.html" class="btn btn-lg btn-primary btn-block" type="submit">Registrate</a>
 
 <script>function square(number) {
    <?php
