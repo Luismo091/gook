@@ -57,7 +57,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="avatar avatar-sm mt-2">
-              <img src="" alt="..." class="avatar-img rounded-circle">
+            <img src="data:image/jpg;base64,<?php echo base64_encode($_SESSION['foto']) ?>">
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
