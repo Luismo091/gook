@@ -29,14 +29,14 @@ if (empty($_POST['inputEmail']) || empty($_POST['inputPassword'])) {
         echo $typeusu['tipousurio'];
         echo "hola";
 
-        if ($typeusu['tipousurio'] == 1) { //ADMIN
+        if ($typeusu['tipousurio'] == 1) { //Admin
             header("location:see-book.php");
-        } else if ($typeusu['tipousurio'] == 2) {
+        } else if ($typeusu['tipousurio'] == 2) {//Editor
             header("location:see-book.php");
-        } else if ($typeusu['tipousurio'] == 3) {
+        } else if ($typeusu['tipousurio'] == 3) {//Escritor
             header("location:see-book.php");
-        } else if ($typeusu['tipousurio'] == 4) {
-            header("location:see-book.php");
+        } else if ($typeusu['tipousurio'] == 4) {//Lector
+            header("location:main.php");
         } else {
 ?>
             <?php
