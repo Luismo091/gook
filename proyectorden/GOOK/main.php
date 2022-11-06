@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -57,7 +60,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="avatar avatar-sm mt-2">
-            <img src="data:image/jpg;base64,<?=base64_encode($_SESSION["foto"]) ?>">
+            <img src="data:image/png;base64,<?=base64_encode($_SESSION["foto"]) ?>">
+            <a><?=$_SESSION["id"] ?></a>
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -107,7 +111,8 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="./dashboard-saas.html"><span class="ml-1 item-text">Saas
-                    Dashboard</span></a>
+                    Dashboard</span>
+                  </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link pl-3" href="./dashboard-system.html"><span class="ml-1 item-text">Systems</span></a>

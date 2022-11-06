@@ -24,7 +24,7 @@ if (empty($_POST['inputEmail']) || empty($_POST['inputPassword'])) {
         $_SESSION['apellido1'] = $datos['ape1'];
         $_SESSION['apellido2'] = $datos['ape2'];
         $_SESSION['edad'] = $datos['eda'];
-        $_SESSION['foto'] = $datos['fot'];
+        $_SESSION['foto'] = $datos['foto'];
         $typeusu['tipousurio'] = $datos['Rol_idRol'];
         echo $typeusu['tipousurio'];
         echo "hola";
