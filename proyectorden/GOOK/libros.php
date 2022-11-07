@@ -61,7 +61,7 @@ include "conexion.php";
                     ?>
                 </select>
 
-                <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
+                <a  href="" >
                     <span class="fe fe-arrow-right fe-16"></span>
                 </a>
 
@@ -189,9 +189,14 @@ ON Libro.Categoria_idCat=Categoria.idCat");
                                 <div class="card shadow">
                                     <div class="card-body">
                                         <p>' . $titulo . '</p>'; ?>
+                                        
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
                                 <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . '</p>
+                                        <p>' . $editorial . ' <a class="nav-link" href="main.php">                            
+                                        <span class="ml-3 item-text">Ver</span>
+                                        <i class="fe fe-arrow-right"></i>
+                                    </a></p>
+                                        
                                     </div>
                                 </div>
                             </div>';
@@ -204,9 +209,13 @@ ON Libro.Categoria_idCat=Categoria.idCat");
                                 <div class="card shadow">
                                     <div class="card-body">
                                     <p>' . $titulo . '</p>'; ?>
+                                        
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
                                 <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . '</p>
+                                        <p>' . $editorial . ' <a class="nav-link" href="main.php">                            
+                                        <span class="ml-3 item-text">Ver</span>
+                                        <i class="fe fe-arrow-right"></i>
+                                    </a></p>
                                     </div>
                                 </div>
                             </div>';
