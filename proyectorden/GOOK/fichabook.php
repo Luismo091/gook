@@ -1,7 +1,22 @@
 <?php
 session_start();
 include "conexion.php";
+if (empty($_SESSION['id'])) {
+  header("location:page-404.html");
+}
 ?>
+
+<?php
+if (isset($_GET["variable"])) {
+  $consulta = ($_GET['variable']);
+  $variable = $consulta;
+  echo $consulta;
+} else {
+  echo 'No se han recibido datos';
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -34,6 +49,10 @@ include "conexion.php";
   <link rel="stylesheet" href="css/styleff.css">
   <link rel="stylesheet" href="css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/styleswiper.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylelett.css">
 
 </head>
 
@@ -138,7 +157,7 @@ include "conexion.php";
           <div class="col-12">
             <div class="row align-items-center mb-2">
               <div class="col">
-                <h2 class="h5 page-title">Bienvenido </h2>
+                <h2 class="h5 page-title">Información de </h2>
               </div>
               <div class="col-auto">
                 <form class="form-inline">
@@ -162,350 +181,455 @@ include "conexion.php";
         <div class="row justify-content-center">
           <div class="col-12 mb-4">
             <div class="row">
-
-            
-              
-  </div>
-  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="list-group list-group-flush my-n3">
-            <div class="list-group-item bg-transparent">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <span class="fe fe-box fe-24"></span>
-                </div>
-                <div class="col">
-                  <small><strong>Package has uploaded successfull</strong></small>
-                  <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                  <small class="badge badge-pill badge-light text-muted">1m ago</small>
-                </div>
-              </div>
-            </div>
-            <div class="list-group-item bg-transparent">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <span class="fe fe-download fe-24"></span>
-                </div>
-                <div class="col">
-                  <small><strong>Widgets are updated successfull</strong></small>
-                  <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
-                  <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                </div>
-              </div>
-            </div>
-            <div class="list-group-item bg-transparent">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <span class="fe fe-inbox fe-24"></span>
-                </div>
-                <div class="col">
-                  <small><strong>Notifications have been sent</strong></small>
-                  <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                  <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                </div>
-              </div> <!-- / .row -->
-            </div>
-            <div class="list-group-item bg-transparent">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <span class="fe fe-link fe-24"></span>
-                </div>
-                <div class="col">
-                  <small><strong>Link was attached to menu</strong></small>
-                  <div class="my-0 text-muted small">New layout has been attached to the menu</div>
-                  <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                </div>
-              </div>
-            </div> <!-- / .row -->
-          </div>
-
-
-          <!-- / .ACA SE MUESTRA LOS ACCE DIRECTOS -->
-          <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body px-5">
-                  <div class="row align-items-center">
-                    <div class="col-6 text-center">
-                      <div class="squircle bg-success justify-content-center">
-                        <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                      </div>
-                      <p>Control area</p>
-                    </div>
-                    <div class="col-6 text-center">
-                      <div class="squircle bg-primary justify-content-center">
-                        <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                      </div>
-                      <p>Activity</p>
+              <article>
+                <header style="background-image: url('https://images.unsplash.com/photo-1520808663317-647b476a81b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80');">
+                  <div class="upper-header">
+                    <div class="mini-title">article</div>
+                    <div class="date-since">
+                      <p><span class="date-value" id="sinceData"></span></p>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                        <defs>
+                          <style>
+                            .d {
+                              width: 20px;
+                              fill: #fff;
+                              opacity: .5;
+                            }
+                          </style>
+                        </defs>
+                        <path class="d" d="M15,0C6.75,0,0,6.75,0,15s6.75,15,15,15,15-6.75,15-15S23.25,0,15,0Zm7.35,16.65h-7.35c-.83,0-1.5-.67-1.5-1.5V7.8c0-.9,.6-1.5,1.5-1.5s1.5,.6,1.5,1.5v5.85h5.85c.9,0,1.5,.6,1.5,1.5s-.6,1.5-1.5,1.5Z" />
+                      </svg>
                     </div>
                   </div>
-                  <div class="row align-items-center">
-                    <div class="col-6 text-center">
-                      <div class="squircle bg-primary justify-content-center">
-                        <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                      </div>
-                      <p>Droplet</p>
+                  <div class="lower-header">
+                    <div class="tags-container">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <defs>
+                          <style>
+                            .d {
+                              width: 20px;
+                              fill: #fff;
+                              opacity: .75;
+                            }
+                          </style>
+                        </defs>
+                        <path class="d" d="M19.22,9.66L10.77,1.21c-.74-.74-1.86-1.21-2.97-1.21H1.67C.75,0,0,.75,0,1.67V7.8c0,1.11,.46,2.23,1.3,2.97l8.45,8.46c1,1,2.62,1,3.62,0l5.94-5.95c.93-.93,.93-2.6-.09-3.62ZM6.96,6.35c-.59,.59-1.56,.59-2.15,0-.59-.59-.59-1.56,0-2.15,.59-.59,1.56-.59,2.15,0,.59,.59,.59,1.56,0,2.15Z" />
+                      </svg>
+                      <span>Nature</span><span>Animal</span>
                     </div>
-                    <div class="col-6 text-center">
-                      <div class="squircle bg-primary justify-content-center">
-                        <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                      </div>
-                      <p>Upload</p>
-                    </div>
+                    <h1>
+                      Sometimes I'll start a line of code and I
+                    </h1>
+                    <div class="mini-title">article</div>
+                    <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ut quam sit amet vehicula.</p>
                   </div>
-                  <div class="row align-items-center">
-                    <div class="col-6 text-center">
-                      <div class="squircle bg-primary justify-content-center">
-                        <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                      </div>
-                      <p>Users</p>
-                    </div>
-                    <div class="col-6 text-center">
-                      <div class="squircle bg-primary justify-content-center">
-                        <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                      </div>
-                      <p>Settings</p>
-                    </div>
+                </header>
+                <section class="summary">
+                  <div class="summary-item">
+                    <h5 class="item-title">Fecha de publicación</h5>
+                    <p class="item-text"><span class="item-data">6</span> Mins</p>
                   </div>
-                </div>
-              </div>
+                  <div class="summary-item">
+                    <h5 class="item-title">View</h5>
+                    <p class="item-text"><span class="item-data">1288</span> Views</p>
+                  </div>
+                  <div class="summary-item">
+                    <h5 class="item-title">Publish Date</h5>
+                    <p class="item-text"><span class="item-data" id="dateData"></span></p>
+                  </div>
+                </section>
+                <section class="main-article">
+                  <h4>You Gotta Love Birds</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ut quam sit amet vehicula. Donec sit amet facilisis quam. Integer mollis, urna accumsan tempor hendrerit, risus neque tincidunt neque, in aliquam elit eros quis tortor. Sed id venenatis massa, ut malesuada sem. Nam lacinia sodales tellus nec efficitur. Vestibulum fringilla nisl ac iaculis ultricies. Sed commodo imperdiet metus vitae molestie. In laoreet rutrum pretium. Aenean a enim ac lacus tincidunt pellentesque ac a tellus.</p>
+                  <p>Donec imperdiet efficitur risus in venenatis. Aenean ornare iaculis orci a condimentum. Praesent tincidunt, purus ac placerat posuere, lacus risus suscipit lacus, et sollicitudin turpis metus in enim. Vestibulum at imperdiet magna, ac vehicula magna. Praesent placerat sapien bibendum, faucibus lectus at, euismod elit. Nunc velit est, faucibus et faucibus eu, tempus non nisi. Fusce hendrerit auctor lectus non auctor. Vestibulum luctus metus eget sapien volutpat congue. Fusce eget augue mauris. Ut egestas mi et feugiat sagittis. Cras ac convallis elit.</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ut quam sit amet vehicula. Donec sit amet facilisis quam. Integer mollis, urna accumsan tempor hendrerit, risus neque tincidunt neque, in aliquam elit eros quis tortor. Sed id venenatis massa, ut malesuada sem. Nam lacinia sodales tellus nec efficitur. Vestibulum fringilla nisl ac iaculis ultricies. Sed commodo imperdiet metus vitae molestie. In laoreet rutrum pretium. Aenean a enim ac lacus tincidunt pellentesque ac a tellus.</p>
+                  <p>Nam tincidunt vel risus et dictum. Quisque efficitur quam vel libero pellentesque interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis ligula ut aliquam aliquet. Vivamus vel elementum lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque vel erat leo. Donec rhoncus nec orci eget rutrum.</p>
+                  <div class="gallery">
+                    <div class="gallery-mask mask-off">
+                      <img class="mask-image" src="" alt="" width="200">
+                    </div>
+                    <div class="image-item image-1" alt="" width="200" style="background-image: url('https://images.unsplash.com/photo-1551668231-6a07c2b7d544?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1777&q=80');"></div>
+                    <div class="image-item image-2" alt="" width="200" style="background-image: url('https://images.unsplash.com/photo-1605092675701-0dafa674328e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80');"></div>
+                    <div class="image-item image-3" alt="" width="200" style="background-image: url('https://images.unsplash.com/photo-1604946591005-c481923435b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1780&q=80');"></div>
+                    <div class="image-item image-4" alt="" width="200" style="background-image: url('https://images.unsplash.com/photo-1603741583823-e588bae552b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80');"></div>
+                    <div class="image-item image-5" alt="" width="200" style="background-image: url('https://images.unsplash.com/photo-1618611157876-3517925c6285?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');"></div>
+                  </div>
+                  <h4>Flapping Around, Flying All Over</h4>
+                  <p>Donec imperdiet efficitur risus in venenatis. Aenean ornare iaculis orci a condimentum. Praesent tincidunt, purus ac placerat posuere, lacus risus suscipit lacus, et sollicitudin turpis metus in enim. Vestibulum at imperdiet magna, ac vehicula magna. Praesent placerat sapien bibendum, faucibus lectus at, euismod elit. Nunc velit est, faucibus et faucibus eu, tempus non nisi. Fusce hendrerit auctor lectus non auctor. Vestibulum luctus metus eget sapien volutpat congue. Fusce eget augue mauris. Ut egestas mi et feugiat sagittis. Cras ac convallis elit.</p>
+                  <p>In hac habitasse platea dictumst. Aenean sit amet libero lorem. Quisque in sagittis nisl, placerat auctor tellus. Suspendisse scelerisque eget tortor eu porta. Nulla sollicitudin justo et ipsum placerat efficitur vel vel dui. Vestibulum placerat lorem ac leo mollis, et finibus nisl finibus. Pellentesque tempus ut ante non ullamcorper. Vivamus neque tellus, varius quis mi eu, fermentum laoreet orci. Quisque nisi elit, fringilla in ligula ut, molestie ultricies massa. Curabitur nec suscipit metus.</p>
+                  <p>Donec eu eros augue. Fusce blandit sed lacus ut pretium. Vivamus lacus ligula, fringilla sit amet nibh non, bibendum auctor nisi. In quis mollis mauris. Aliquam eget arcu ut arcu rhoncus posuere nec sit amet mauris. Integer consequat felis vitae quam ultricies, eu ultrices mi finibus. Cras eget nunc at nisl venenatis lacinia. Duis non tempus purus. Donec ut tristique turpis. Nunc non lacinia lectus, in ullamcorper erat.</p>
+                  <blockquote class="pullquote">"Be like the bird who, pausing in her flight awhile on boughs too slight, feels them give way beneath her, and yet sings, knowing she hath wings." &mdash; Victor Hugo</blockquote>
+                  <p>Nam tincidunt vel risus et dictum. Quisque efficitur quam vel libero pellentesque interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis ligula ut aliquam aliquet. Vivamus vel elementum lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque vel erat leo. Donec rhoncus nec orci eget rutrum.</p>
+                  <p>In hac habitasse platea dictumst. Aenean sit amet libero lorem. Quisque in sagittis nisl, placerat auctor tellus. Suspendisse scelerisque eget tortor eu porta. Nulla sollicitudin justo et ipsum placerat efficitur vel vel dui. Vestibulum placerat lorem ac leo mollis, et finibus nisl finibus. Pellentesque tempus ut ante non ullamcorper. Vivamus neque tellus, varius quis mi eu, fermentum laoreet orci. Quisque nisi elit, fringilla in ligula ut, molestie ultricies massa. Curabitur nec suscipit metus.</p>
+                  <p>Donec imperdiet efficitur risus in venenatis. Aenean ornare iaculis orci a condimentum. Praesent tincidunt, purus ac placerat posuere, lacus risus suscipit lacus, et sollicitudin turpis metus in enim. Vestibulum at imperdiet magna, ac vehicula magna. Praesent placerat sapien bibendum, faucibus lectus at, euismod elit. Nunc velit est, faucibus et faucibus eu, tempus non nisi. Fusce hendrerit auctor lectus non auctor. Vestibulum luctus metus eget sapien volutpat congue. Fusce eget augue mauris. Ut egestas mi et feugiat sagittis. Cras ac convallis elit.</p>
+                  <p>Etiam ac pretium erat. Nullam mollis, enim sed pretium pellentesque, urna dolor faucibus nisi, interdum luctus neque eros blandit justo. Morbi non urna scelerisque, condimentum ex nec, bibendum sem. Pellentesque ullamcorper quis dui non condimentum. Ut aliquam neque metus, in suscipit lorem volutpat eget. Mauris ac dictum nulla, eu suscipit justo.
+                  <p>In hac habitasse platea dictumst. Aenean sit amet libero lorem. Quisque in sagittis nisl, placerat auctor tellus. Suspendisse scelerisque eget tortor eu porta. Nulla sollicitudin justo et ipsum placerat efficitur vel vel dui. Vestibulum placerat lorem ac leo mollis, et finibus nisl finibus. Pellentesque tempus ut ante non ullamcorper. Vivamus neque tellus, varius quis mi eu, fermentum laoreet orci. Quisque nisi elit, fringilla in ligula ut, molestie ultricies massa. Curabitur nec suscipit metus.</p>
+                  <h4>Building Nests, Eating Bugs</h4>
+                  <p>Mauris eu nunc a dolor aliquam molestie vitae non turpis. Curabitur mollis vehicula euismod. Mauris eleifend, ipsum nec tempor condimentum, massa arcu lobortis erat, eget iaculis turpis turpis id nisi. Fusce iaculis velit nibh, a molestie neque placerat interdum. Phasellus eget erat placerat, viverra quam vitae, viverra ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla dictum, enim vitae eleifend vehicula, augue arcu dapibus metus, non accumsan nulla urna id mauris. Nunc non mi turpis. Nullam bibendum magna in metus tincidunt, vel dapibus neque placerat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum felis libero, consequat vel congue et, ultricies ornare arcu. Mauris vitae felis vitae nulla ornare condimentum.</p>
+                  <p>Nunc nisi justo, lobortis venenatis consectetur vel, porttitor in felis. Praesent tincidunt, mi non tincidunt egestas, libero risus finibus ex, volutpat facilisis nulla libero ut arcu. Proin consequat ligula non libero viverra, ut semper sem rhoncus. Morbi at viverra nisl, in convallis lorem. Proin ut dapibus ex, eu hendrerit mi. Donec tempus arcu quis purus consequat, sed congue nulla consequat. Donec tempor posuere lacus eget placerat. Maecenas euismod congue ornare. Vestibulum tincidunt eros ut faucibus blandit.</p>
+                  <p>In hac habitasse platea dictumst. Aenean sit amet libero lorem. Quisque in sagittis nisl, placerat auctor tellus. Suspendisse scelerisque eget tortor eu porta. Nulla sollicitudin justo et ipsum placerat efficitur vel vel dui. Vestibulum placerat lorem ac leo mollis, et finibus nisl finibus. Pellentesque tempus ut ante non ullamcorper. Vivamus neque tellus, varius quis mi eu, fermentum laoreet orci. Quisque nisi elit, fringilla in ligula ut, molestie ultricies massa. Curabitur nec suscipit metus.</p>
+                  <p>Nam tincidunt vel risus et dictum. Quisque efficitur quam vel libero pellentesque interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis ligula ut aliquam aliquet. Vivamus vel elementum lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque vel erat leo. Donec rhoncus nec orci eget rutrum.</p>
+                  <h4>Singing Little Songs, Looking Fancy</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet ut quam sit amet vehicula. Donec sit amet facilisis quam. Integer mollis, urna accumsan tempor hendrerit, risus neque tincidunt neque, in aliquam elit eros quis tortor. Sed id venenatis massa, ut malesuada sem. Nam lacinia sodales tellus nec efficitur. Vestibulum fringilla nisl ac iaculis ultricies. Sed commodo imperdiet metus vitae molestie. In laoreet rutrum pretium. Aenean a enim ac lacus tincidunt pellentesque ac a tellus.</p>
+                  <blockquote class="pullquote">"I'd rather learn from one bird how to sing than teach ten thousand stars how not to dance" &mdash; e.e. cummings</blockquote>
+                  <p>In hac habitasse platea dictumst. Aenean sit amet libero lorem. Quisque in sagittis nisl, placerat auctor tellus. Suspendisse scelerisque eget tortor eu porta. Nulla sollicitudin justo et ipsum placerat efficitur vel vel dui. Vestibulum placerat lorem ac leo mollis, et finibus nisl finibus. Pellentesque tempus ut ante non ullamcorper. Vivamus neque tellus, varius quis mi eu, fermentum laoreet orci. Quisque nisi elit, fringilla in ligula ut, molestie ultricies massa. Curabitur nec suscipit metus.</p>
+                  <p>Etiam ac pretium erat. Nullam mollis, enim sed pretium pellentesque, urna dolor faucibus nisi, interdum luctus neque eros blandit justo. Morbi non urna scelerisque, condimentum ex nec, bibendum sem. Pellentesque ullamcorper quis dui non condimentum. Ut aliquam neque metus, in suscipit lorem volutpat eget. Mauris ac dictum nulla, eu suscipit justo.
+                  <p>Pellentesque suscipit metus et lorem pharetra vehicula. Maecenas luctus urna sed posuere feugiat. Proin pharetra eu nisl et vestibulum. Maecenas sollicitudin at velit non faucibus. Suspendisse faucibus at tellus rutrum tempus. Proin sollicitudin vehicula dolor sit amet efficitur. Nulla finibus massa a consectetur dapibus.</p>
+                  <p>Nam tincidunt vel risus et dictum. Quisque efficitur quam vel libero pellentesque interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis ligula ut aliquam aliquet. Vivamus vel elementum lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque vel erat leo. Donec rhoncus nec orci eget rutrum.</p>
+                  <p>Nunc nisi justo, lobortis venenatis consectetur vel, porttitor in felis. Praesent tincidunt, mi non tincidunt egestas, libero risus finibus ex, volutpat facilisis nulla libero ut arcu. Proin consequat ligula non libero viverra, ut semper sem rhoncus. Morbi at viverra nisl, in convallis lorem. Proin ut dapibus ex, eu hendrerit mi. Donec tempus arcu quis purus consequat, sed congue nulla consequat. Donec tempor posuere lacus eget placerat. Maecenas euismod congue ornare. Vestibulum tincidunt eros ut faucibus blandit.</p>
+                  <p>Donec vel tempor velit. Nulla facilisi. Praesent feugiat arcu risus, sollicitudin finibus purus sollicitudin et. Quisque a consequat nulla. Fusce eu sapien ac libero luctus posuere. Sed vulputate erat ante, sit amet varius lorem ultrices a. Nam id faucibus mi. Nunc pretium malesuada lorem, ut mollis elit aliquam ac. Morbi iaculis tellus ullamcorper, mollis tellus ut, egestas mi. Nunc convallis dolor eget sem egestas, et egestas est scelerisque.</p>
+                  <h4>Birds: They're Great!</h2>
+                    <p>Donec vel mi a ipsum ornare venenatis. Etiam imperdiet nunc leo. Morbi faucibus elit in orci viverra posuere. Nunc eget urna ac lectus sagittis mollis vel auctor diam. Vivamus sodales, nulla id lacinia congue, massa velit laoreet nunc, vitae interdum mauris leo sed quam. Integer tincidunt quis sem non consectetur. Nam elementum nibh eu fermentum imperdiet. Nullam nec quam at enim fringilla porta et non lectus. Aliquam tempus odio id enim cursus bibendum. Nullam a metus augue. Cras elit leo, convallis in commodo eget, tempus scelerisque mauris. Quisque ultricies dolor eget eleifend consectetur. Nulla eu lorem dignissim nulla interdum consequat. Donec non maximus tellus. Aliquam erat volutpat. Nulla porttitor odio in turpis convallis, ac rhoncus tellus pellentesque.</p>
+                    <p>In hac habitasse platea dictumst. Aenean sit amet libero lorem. Quisque in sagittis nisl, placerat auctor tellus. Suspendisse scelerisque eget tortor eu porta. Nulla sollicitudin justo et ipsum placerat efficitur vel vel dui. Vestibulum placerat lorem ac leo mollis, et finibus nisl finibus. Pellentesque tempus ut ante non ullamcorper. Vivamus neque tellus, varius quis mi eu, fermentum laoreet orci. Quisque nisi elit, fringilla in ligula ut, molestie ultricies massa. Curabitur nec suscipit metus.</p>
+                    <p>Nunc nisi justo, lobortis venenatis consectetur vel, porttitor in felis. Praesent tincidunt, mi non tincidunt egestas, libero risus finibus ex, volutpat facilisis nulla libero ut arcu. Proin consequat ligula non libero viverra, ut semper sem rhoncus. Morbi at viverra nisl, in convallis lorem. Proin ut dapibus ex, eu hendrerit mi. Donec tempus arcu quis purus consequat, sed congue nulla consequat. Donec tempor posuere lacus eget placerat. Maecenas euismod congue ornare. Vestibulum tincidunt eros ut faucibus blandit.</p>
+                    <p>Mauris eu nunc a dolor aliquam molestie vitae non turpis. Curabitur mollis vehicula euismod. Mauris eleifend, ipsum nec tempor condimentum, massa arcu lobortis erat, eget iaculis turpis turpis id nisi. Fusce iaculis velit nibh, a molestie neque placerat interdum. Phasellus eget erat placerat, viverra quam vitae, viverra ligula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla dictum, enim vitae eleifend vehicula, augue arcu dapibus metus, non accumsan nulla urna id mauris. Nunc non mi turpis. Nullam bibendum magna in metus tincidunt, vel dapibus neque placerat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum felis libero, consequat vel congue et, ultricies ornare arcu. Mauris vitae felis vitae nulla ornare condimentum.</p>
+                </section>
+              </article>
+
+
             </div>
-          </div>
-          </main> <!-- main -->
-        </div> <!-- .wrapper -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/moment.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/simplebar.min.js"></script>
-        <script src='js/daterangepicker.js'></script>
-        <script src='js/jquery.stickOnScroll.js'></script>
-        <script src="js/tinycolor-min.js"></script>
-        <script src="js/config.js"></script>
-        <script src="js/d3.min.js"></script>
-        <script src="js/topojson.min.js"></script>
-        <script src="js/datamaps.all.min.js"></script>
-        <script src="js/datamaps-zoomto.js"></script>
-        <script src="js/datamaps.custom.js"></script>
-        <script src="js/Chart.min.js"></script>
-        <script>
-          /* defind global options */
-          Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
-          Chart.defaults.global.defaultFontColor = colors.mutedColor;
-        </script>
-        <script src="js/gauge.min.js"></script>
-        <script src="js/jquery.sparkline.min.js"></script>
-        <script src="js/apexcharts.min.js"></script>
-        <script src="js/apexcharts.custom.js"></script>
-        <script src='js/jquery.mask.min.js'></script>
-        <script src='js/select2.min.js'></script>
-        <script src='js/jquery.steps.min.js'></script>
-        <script src='js/jquery.validate.min.js'></script>
-        <script src='js/jquery.timepicker.js'></script>
-        <script src='js/dropzone.min.js'></script>
-        <script src='js/uppy.min.js'></script>
-        <script src='js/quill.min.js'></script>
-        <script>
-          $('.select2').select2({
-            theme: 'bootstrap4',
-          });
-          $('.select2-multi').select2({
-            multiple: true,
-            theme: 'bootstrap4',
-          });
-          $('.drgpicker').daterangepicker({
-            singleDatePicker: true,
-            timePicker: false,
-            showDropdowns: true,
-            locale: {
-              format: 'MM/DD/YYYY'
+            <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="list-group list-group-flush my-n3">
+                      <div class="list-group-item bg-transparent">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <span class="fe fe-box fe-24"></span>
+                          </div>
+                          <div class="col">
+                            <small><strong>Package has uploaded successfull</strong></small>
+                            <div class="my-0 text-muted small">Package is zipped and uploaded</div>
+                            <small class="badge badge-pill badge-light text-muted">1m ago</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="list-group-item bg-transparent">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <span class="fe fe-download fe-24"></span>
+                          </div>
+                          <div class="col">
+                            <small><strong>Widgets are updated successfull</strong></small>
+                            <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
+                            <small class="badge badge-pill badge-light text-muted">2m ago</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="list-group-item bg-transparent">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <span class="fe fe-inbox fe-24"></span>
+                          </div>
+                          <div class="col">
+                            <small><strong>Notifications have been sent</strong></small>
+                            <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
+                            <small class="badge badge-pill badge-light text-muted">30m ago</small>
+                          </div>
+                        </div> <!-- / .row -->
+                      </div>
+                      <div class="list-group-item bg-transparent">
+                        <div class="row align-items-center">
+                          <div class="col-auto">
+                            <span class="fe fe-link fe-24"></span>
+                          </div>
+                          <div class="col">
+                            <small><strong>Link was attached to menu</strong></small>
+                            <div class="my-0 text-muted small">New layout has been attached to the menu</div>
+                            <small class="badge badge-pill badge-light text-muted">1h ago</small>
+                          </div>
+                        </div>
+                      </div> <!-- / .row -->
+                    </div>
+
+
+                    <!-- / .ACA SE MUESTRA LOS ACCE DIRECTOS -->
+                    <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body px-5">
+                            <div class="row align-items-center">
+                              <div class="col-6 text-center">
+                                <div class="squircle bg-success justify-content-center">
+                                  <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Control area</p>
+                              </div>
+                              <div class="col-6 text-center">
+                                <div class="squircle bg-primary justify-content-center">
+                                  <i class="fe fe-activity fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Activity</p>
+                              </div>
+                            </div>
+                            <div class="row align-items-center">
+                              <div class="col-6 text-center">
+                                <div class="squircle bg-primary justify-content-center">
+                                  <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Droplet</p>
+                              </div>
+                              <div class="col-6 text-center">
+                                <div class="squircle bg-primary justify-content-center">
+                                  <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Upload</p>
+                              </div>
+                            </div>
+                            <div class="row align-items-center">
+                              <div class="col-6 text-center">
+                                <div class="squircle bg-primary justify-content-center">
+                                  <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Users</p>
+                              </div>
+                              <div class="col-6 text-center">
+                                <div class="squircle bg-primary justify-content-center">
+                                  <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+                                </div>
+                                <p>Settings</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+    </main> <!-- main -->
+  </div> <!-- .wrapper -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/simplebar.min.js"></script>
+  <script src='js/daterangepicker.js'></script>
+  <script src='js/jquery.stickOnScroll.js'></script>
+  <script src="js/tinycolor-min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/d3.min.js"></script>
+  <script src="js/topojson.min.js"></script>
+  <script src="js/datamaps.all.min.js"></script>
+  <script src="js/datamaps-zoomto.js"></script>
+  <script src="js/datamaps.custom.js"></script>
+  <script src="js/Chart.min.js"></script>
+  <script>
+    /* defind global options */
+    Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+    Chart.defaults.global.defaultFontColor = colors.mutedColor;
+  </script>
+  <script src="js/gauge.min.js"></script>
+  <script src="js/jquery.sparkline.min.js"></script>
+  <script src="js/apexcharts.min.js"></script>
+  <script src="js/apexcharts.custom.js"></script>
+  <script src='js/jquery.mask.min.js'></script>
+  <script src='js/select2.min.js'></script>
+  <script src='js/jquery.steps.min.js'></script>
+  <script src='js/jquery.validate.min.js'></script>
+  <script src='js/jquery.timepicker.js'></script>
+  <script src='js/dropzone.min.js'></script>
+  <script src='js/uppy.min.js'></script>
+  <script src='js/quill.min.js'></script>
+  <script>
+    $('.select2').select2({
+      theme: 'bootstrap4',
+    });
+    $('.select2-multi').select2({
+      multiple: true,
+      theme: 'bootstrap4',
+    });
+    $('.drgpicker').daterangepicker({
+      singleDatePicker: true,
+      timePicker: false,
+      showDropdowns: true,
+      locale: {
+        format: 'MM/DD/YYYY'
+      }
+    });
+    $('.time-input').timepicker({
+      'scrollDefault': 'now',
+      'zindex': '9999' /* fix modal open */
+    });
+    /** date range picker */
+    if ($('.datetimes').length) {
+      $('.datetimes').daterangepicker({
+        timePicker: true,
+        startDate: moment().startOf('hour'),
+        endDate: moment().startOf('hour').add(32, 'hour'),
+        locale: {
+          format: 'M/DD hh:mm A'
+        }
+      });
+    }
+    var start = moment().subtract(29, 'days');
+    var end = moment();
+
+    function cb(start, end) {
+      $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+    $('#reportrange').daterangepicker({
+      startDate: start,
+      endDate: end,
+      ranges: {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      }
+    }, cb);
+    cb(start, end);
+    $('.input-placeholder').mask("00/00/0000", {
+      placeholder: "__/__/____"
+    });
+    $('.input-zip').mask('00000-000', {
+      placeholder: "____-___"
+    });
+    $('.input-money').mask("#.##0,00", {
+      reverse: true
+    });
+    $('.input-phoneus').mask('(000) 000-0000');
+    $('.input-mixed').mask('AAA 000-S0S');
+    $('.input-ip').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
+      translation: {
+        'Z': {
+          pattern: /[0-9]/,
+          optional: true
+        }
+      },
+      placeholder: "___.___.___.___"
+    });
+    // editor
+    var editor = document.getElementById('editor');
+    if (editor) {
+      var toolbarOptions = [
+        [{
+          'font': []
+        }],
+        [{
+          'header': [1, 2, 3, 4, 5, 6, false]
+        }],
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        [{
+            'header': 1
+          },
+          {
+            'header': 2
+          }
+        ],
+        [{
+            'list': 'ordered'
+          },
+          {
+            'list': 'bullet'
+          }
+        ],
+        [{
+            'script': 'sub'
+          },
+          {
+            'script': 'super'
+          }
+        ],
+        [{
+            'indent': '-1'
+          },
+          {
+            'indent': '+1'
+          }
+        ], // outdent/indent
+        [{
+          'direction': 'rtl'
+        }], // text direction
+        [{
+            'color': []
+          },
+          {
+            'background': []
+          }
+        ], // dropdown with defaults from theme
+        [{
+          'align': []
+        }],
+        ['clean'] // remove formatting button
+      ];
+      var quill = new Quill(editor, {
+        modules: {
+          toolbar: toolbarOptions
+        },
+        theme: 'snow'
+      });
+    }
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
             }
-          });
-          $('.time-input').timepicker({
-            'scrollDefault': 'now',
-            'zindex': '9999' /* fix modal open */
-          });
-          /** date range picker */
-          if ($('.datetimes').length) {
-            $('.datetimes').daterangepicker({
-              timePicker: true,
-              startDate: moment().startOf('hour'),
-              endDate: moment().startOf('hour').add(32, 'hour'),
-              locale: {
-                format: 'M/DD hh:mm A'
-              }
-            });
-          }
-          var start = moment().subtract(29, 'days');
-          var end = moment();
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+  <script>
+    var uptarg = document.getElementById('drag-drop-area');
+    if (uptarg) {
+      var uppy = Uppy.Core().use(Uppy.Dashboard, {
+        inline: true,
+        target: uptarg,
+        proudlyDisplayPoweredByUppy: false,
+        theme: 'dark',
+        width: 770,
+        height: 210,
+        plugins: ['Webcam']
+      }).use(Uppy.Tus, {
+        endpoint: 'https://master.tus.io/files/'
+      });
+      uppy.on('complete', (result) => {
+        console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      });
+    }
+  </script>
+  <script src="js/apps.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-          function cb(start, end) {
-            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-          }
-          $('#reportrange').daterangepicker({
-            startDate: start,
-            endDate: end,
-            ranges: {
-              'Today': [moment(), moment()],
-              'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-              'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-              'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-              'This Month': [moment().startOf('month'), moment().endOf('month')],
-              'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-            }
-          }, cb);
-          cb(start, end);
-          $('.input-placeholder').mask("00/00/0000", {
-            placeholder: "__/__/____"
-          });
-          $('.input-zip').mask('00000-000', {
-            placeholder: "____-___"
-          });
-          $('.input-money').mask("#.##0,00", {
-            reverse: true
-          });
-          $('.input-phoneus').mask('(000) 000-0000');
-          $('.input-mixed').mask('AAA 000-S0S');
-          $('.input-ip').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
-            translation: {
-              'Z': {
-                pattern: /[0-9]/,
-                optional: true
-              }
-            },
-            placeholder: "___.___.___.___"
-          });
-          // editor
-          var editor = document.getElementById('editor');
-          if (editor) {
-            var toolbarOptions = [
-              [{
-                'font': []
-              }],
-              [{
-                'header': [1, 2, 3, 4, 5, 6, false]
-              }],
-              ['bold', 'italic', 'underline', 'strike'],
-              ['blockquote', 'code-block'],
-              [{
-                  'header': 1
-                },
-                {
-                  'header': 2
-                }
-              ],
-              [{
-                  'list': 'ordered'
-                },
-                {
-                  'list': 'bullet'
-                }
-              ],
-              [{
-                  'script': 'sub'
-                },
-                {
-                  'script': 'super'
-                }
-              ],
-              [{
-                  'indent': '-1'
-                },
-                {
-                  'indent': '+1'
-                }
-              ], // outdent/indent
-              [{
-                'direction': 'rtl'
-              }], // text direction
-              [{
-                  'color': []
-                },
-                {
-                  'background': []
-                }
-              ], // dropdown with defaults from theme
-              [{
-                'align': []
-              }],
-              ['clean'] // remove formatting button
-            ];
-            var quill = new Quill(editor, {
-              modules: {
-                toolbar: toolbarOptions
-              },
-              theme: 'snow'
-            });
-          }
-          // Example starter JavaScript for disabling form submissions if there are invalid fields
-          (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-              // Fetch all the forms we want to apply custom Bootstrap validation styles to
-              var forms = document.getElementsByClassName('needs-validation');
-              // Loop over them and prevent submission
-              var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                  if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                  }
-                  form.classList.add('was-validated');
-                }, false);
-              });
-            }, false);
-          })();
-        </script>
-        <script>
-          var uptarg = document.getElementById('drag-drop-area');
-          if (uptarg) {
-            var uppy = Uppy.Core().use(Uppy.Dashboard, {
-              inline: true,
-              target: uptarg,
-              proudlyDisplayPoweredByUppy: false,
-              theme: 'dark',
-              width: 770,
-              height: 210,
-              plugins: ['Webcam']
-            }).use(Uppy.Tus, {
-              endpoint: 'https://master.tus.io/files/'
-            });
-            uppy.on('complete', (result) => {
-              console.log('Upload complete! We’ve uploaded these files:', result.successful)
-            });
-          }
-        </script>
-        <script src="js/apps.js"></script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-          gtag('js', new Date());
-          gtag('config', 'UA-56159088-1');
-        </script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js'></script>
-        <script src="js/scriptlaunc.js"></script>
-        <script src="js/scriptff.js"></script>
-        <script src="js/swiper-bundle.min.js"></script>
-        <script src="js/scriptswiper.js"></script>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-56159088-1');
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js'></script>
+  <script src="js/scriptlaunc.js"></script>
+  <script src="js/scriptff.js"></script>
+  <script src="js/swiper-bundle.min.js"></script>
+  <script src="js/scriptswiper.js"></script>
+  <script src="js/scriptlett.js"></script>
+  <script src='https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js'></script>
 </body>
 
 </html>

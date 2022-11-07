@@ -205,7 +205,7 @@ include "conexion.php";
 
                   <div class="options">
                     <?php
-                   
+
                     $sql = $conexion->query("SELECT idReciente, fecha, Libro_idLib, Recientecol,idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat,idUsu from Reciente
                   INNER JOIN Libro
                   ON Reciente.Libro_idLib=Libro.idLib
@@ -243,7 +243,7 @@ include "conexion.php";
                   <div class="slide-container">
                     <div class="card-wrapper swiper-wrapper">
                       <?php
-                      
+
                       $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
                       while ($datos = $sql->fetch_object()) {
                       ?>
@@ -273,7 +273,7 @@ include "conexion.php";
             <div class="col-12 col-lg-9">
               <div class="row">
                 <?php
-                
+
                 $sql = $conexion->query("SELECT * from Categoria");
                 while ($datos = $sql->fetch_object()) {
                 ?>
@@ -345,7 +345,7 @@ include "conexion.php";
 
                   <div class="options">
                     <?php
-                   
+
                     $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
                     while ($datos = $sql->fetch_object()) {
                     ?>
