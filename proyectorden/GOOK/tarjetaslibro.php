@@ -410,14 +410,15 @@ include "conexion.php";
                           
                             $sql = $conexion->query("SELECT * from Libro");
                             $contadorcol=0;
-                            while ($datos = $sql->fetch_object()) {
-                                
+                            $contenido="";
+                            while ($datos = $sql->fetch_array()) {
+                                $titulo = $datos['titLib'];
                                 if ($contadorcol <= 5) {
 
                                     echo '<div class="col-md-2">
                                 <div class="card shadow">
                                     <div class="card-body">
-                                        <p>Titulo</p>
+                                        <p>'.$titulo.'</p>
                                         <img src="assets/images/logo.svg"></img>
                                         <p>author</p>
                                         <p>(￣o￣) . z Z 5/5</p>
@@ -432,7 +433,7 @@ include "conexion.php";
                                     <div class="col-md-2">
                                 <div class="card shadow">
                                     <div class="card-body">
-                                        <p>Titulo</p>
+                                        <p>'.$titulo.'</p>
                                         <img src="assets/images/logo.svg"></img>
                                         <p>author</p>
                                         <p>(￣o￣) . z Z 5/5</p>
