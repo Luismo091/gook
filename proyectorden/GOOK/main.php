@@ -106,7 +106,7 @@ session_start();
           <li class="nav-item w-100">
             <a class="nav-link" href="main.php">
               <i class="fe fe-home fe-16"></i>
-              <span class="ml-3 item-text">MENU</span>
+              <span class="ml-3 item-text">Menu</span>
             </a>
           </li>
           <li class="nav-item w-100">
