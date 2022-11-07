@@ -61,7 +61,7 @@ include "conexion.php";
           ?>
         </select>
         
-          <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
+          <a class="nav-link text-muted my-2" href="filtropage.php" data-toggle="modal" data-target=".modal-shortcut">
             <span class="fe fe-arrow-right fe-16"></span>
           </a>
         
