@@ -232,7 +232,6 @@ include "conexion.php";
 
                   <div class="options">
                     <?php
-
                     $sql = $conexion->query("SELECT idReciente, fecha, Libro_idLib, Recientecol,idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat,idUsu from Reciente
                   INNER JOIN Libro
                   ON Reciente.Libro_idLib=Libro.idLib
