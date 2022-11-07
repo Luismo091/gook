@@ -1,7 +1,11 @@
 <?php
 session_start();
-include "conexion.php";
+include('conexion.php');
+echo '<script>alert ('.$_POST['Filtro'].');</script>';
 ?>
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -49,7 +53,8 @@ include "conexion.php";
             <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
                 <i class="fe fe-menu navbar-toggler-icon"></i>
             </button>
-            <form class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="POST">
+           
+            <form class="form-inline mr-auto searchform text-muted" action="libros.php" method="POST">
                 <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search" id="Filtro">
                 <select class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
                     <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
@@ -60,10 +65,12 @@ include "conexion.php";
                     }
                     ?>
                 </select>
-
-                <a  href="" >
+                
+<?php
+echo ' <input type="submit"
                     <span class="fe fe-arrow-right fe-16"></span>
-                </a>
+                >';?>
+                
 
             </form>
 
