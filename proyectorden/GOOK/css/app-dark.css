@@ -68,7 +68,8 @@ body {
   line-height: 1.5;
   color: #ced4da;
   text-align: left;
-  background-color: #212529; }
+  background-color: #212529;
+  }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
@@ -7688,7 +7689,7 @@ select {
 
 .avatar-sm img {
   width: 32px; }
-
+  
 .avatar-md img {
   width: 48px; }
 
