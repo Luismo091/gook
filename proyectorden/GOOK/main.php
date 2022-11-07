@@ -181,7 +181,7 @@ include "conexion.php";
               <div class="col-md-6 mb-4">
                 <div class="card-body">
                   <article>
-                    <header style="background-image: url('https://images.unsplash.com/photo-1436891620584-47fd0e565afb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');">
+                    <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1436891620584-47fd0e565afb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');">
                       <div class="upper-header">
                         <div class="mini-title">NUEVOS AÑADIDOS</div>
                         <div class="date-since">
@@ -243,7 +243,6 @@ include "conexion.php";
                       <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
                         <div class="shadow"></div>
                         <div class="label">
-
                           <div class="info">
                             <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub"><?= $datos->fecha ?></div>
@@ -321,7 +320,7 @@ include "conexion.php";
               <div class="col-md-6 mb-4">
                 <div class="card-body">
                   <article>
-                    <header style="background-image: url('https://images.pexels.com/photos/4807060/pexels-photo-4807060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                    <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/4807060/pexels-photo-4807060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
                       <div class="upper-header">
                         <div class="mini-title">HISTORIAS INSPIRADAS EN COLOMBIA</div>
                         <div class="date-since">
