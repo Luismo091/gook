@@ -260,13 +260,13 @@ if (isset($_GET["variable"])) {
                 <?php }
                 ?>
                 <div class="card shadow mb-4">
-                <div class="card-header">
-                <strong class="card-title"><span class="avatar avatar-sm mt-2">
+                  <div class="card-header">
+                    <strong class="card-title"><span class="avatar avatar-sm mt-2">
                         <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
                       </span><?php echo $_SESSION['nombre1']; ?> <?php echo $_SESSION['apellido1']; ?></strong>
-                      </div>
+                  </div>
                   <div class="card-body">
-          
+
                     <form class="needs-validation" novalidate="">
                       <div class="rating__stars">
                         <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">

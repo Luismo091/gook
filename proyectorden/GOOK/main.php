@@ -261,7 +261,7 @@ include "conexion.php";
               <div class="main-header anim" style="--delay: 0s">Descubre</div>
               <div class="main-blogs">
                 <div class="main-blog anim" style="--delay: .1s">
-                  <div class="main-blog__title">How to do Basic Jumping and how to landing safely</div>
+                  <div class="main-blog__title">Miles de libros y categorias al alcanze de un click</div>
                   <div class="main-blog__author">
                     <div class="author-img__wrapper">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
@@ -270,8 +270,8 @@ include "conexion.php";
                       <img class="author-img" src="https://images.unsplash.com/photo-1560941001-d4b52ad00ecc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" />
                     </div>
                     <div class="author-detail">
-                      <div class="author-name">Thomas Hope</div>
-                      <div class="author-info">53K views <span class="seperate"></span>2 weeks ago</div>
+                      <div class="author-name">Luis Mora</div>
+                      <div class="author-info">100 vistas<span class="seperate"></span>1 semana atrás</div>
                     </div>
                   </div>
                   <div class="main-blog__time">7 min</div>
@@ -293,10 +293,22 @@ include "conexion.php";
                   </div>
                 </div>
               </div>
-              <div class="small-header anim" style="--delay: .3s">Lo mas reciente en gook</div>
+              <div class="small-header anim" style="--delay: .3s">Nuestra colección de manga</div>
               <div class="videos">
                 <?php
-                $sql = $conexion->query("SELECT * from Libro order by lecturas DESC");
+                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
+                FROM Libro
+                INNER JOIN LibAut
+                ON Libro.idLib=LibAut.Libro_idLib
+                INNER JOIN Autor
+                ON Autor.idAut=LibAut.Autor_idAut
+                INNER JOIN LibEdi
+                ON Libro.idLib=LibEdi.Libro_idLib
+                INNER JOIN Editorial
+                ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                INNER JOIN Categoria
+                ON Libro.Categoria_idCat=Categoria.idCat
+                WHERE Categoria_idCat = 1");
                 while ($datos = $sql->fetch_object()) {
                 ?>
                   <div class="video anim" style="--delay: .4s">
@@ -306,10 +318,10 @@ include "conexion.php";
                           <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
                         </div>
                         <div class="profile-details">
-                          <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                          <img src="data:image/jpg;base64,<?php echo base64_encode($datos->foto_aut) ?>" alt="" />
                           <div class="name-job">
                             <h3 class="name"><?= $datos->titLib ?></h3>
-                            <h4 class="name"><?= $datos->fecPub ?></h4>
+                            <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
                             <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
                           </div>
                         </div>
@@ -321,6 +333,47 @@ include "conexion.php";
                 <?php }
                 ?>
               </div>
+              <div class="small-header anim" style="--delay: .3s">Para tu salud</div>
+              <div class="videos">
+                <?php
+                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
+                FROM Libro
+                INNER JOIN LibAut
+                ON Libro.idLib=LibAut.Libro_idLib
+                INNER JOIN Autor
+                ON Autor.idAut=LibAut.Autor_idAut
+                INNER JOIN LibEdi
+                ON Libro.idLib=LibEdi.Libro_idLib
+                INNER JOIN Editorial
+                ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                INNER JOIN Categoria
+                ON Libro.Categoria_idCat=Categoria.idCat
+                WHERE Categoria_idCat = 25");
+                while ($datos = $sql->fetch_object()) {
+                ?>
+                  <div class="video anim" style="--delay: .4s">
+                    <div class="card-wrapper swiper-wrapper">
+                      <div class="card swiper-slide">
+                        <div class="image-box">
+                          <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                        </div>
+                        <div class="profile-details">
+                          <img src="data:image/jpg;base64,<?php echo base64_encode($datos->foto_aut) ?>" alt="" />
+                          <div class="name-job">
+                            <h3 class="name"><?= $datos->titLib ?></h3>
+                            <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
+                            <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                <?php }
+                ?>
+              </div>
+
             </div>
 
             <!-- / ACA EMPIEZA GOOK -->
@@ -360,27 +413,6 @@ include "conexion.php";
                   <div class="swiper-button-prev swiper-navBtn"></div>
                   <div class="swiper-pagination"></div>
                 </div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-9">
-              <div class="row">
-                <?php
-
-                $sql = $conexion->query("SELECT * from Categoria");
-                while ($datos = $sql->fetch_object()) {
-                ?>
-                  <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-8">
-                          <h6 class="font-extrabold mb-0"><?= $datos->nomCat ?></h6>
-                        </div>
-                      </div>
-                      <hr class="my-4">
-                    </div>
-                  </div>
-                <?php }
-                ?>
               </div>
             </div>
             <div class="row">
@@ -455,6 +487,27 @@ include "conexion.php";
                     <?php }
                     ?>
                   </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-9">
+                <div class="row">
+                  <?php
+
+                  $sql = $conexion->query("SELECT * from Categoria");
+                  while ($datos = $sql->fetch_object()) {
+                  ?>
+                    <div class="col-6 col-lg-3 col-md-6">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-8">
+                            <h6 class="font-extrabold mb-0"><?= $datos->nomCat ?></h6>
+                          </div>
+                        </div>
+                        <hr class="my-4">
+                      </div>
+                    </div>
+                  <?php }
+                  ?>
                 </div>
               </div>
             </div>

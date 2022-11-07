@@ -146,12 +146,12 @@ img {
   font-size: 25px;
   max-width: 12ch;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: normal;
   color: #fff;
   margin-bottom: 30px;
 }
 .main-blog {
-  background-image: url("https://assets.codepen.io/3364143/skate-removebg-preview.png");
+  background-image: url("https://i.imgur.com/RyjbA0s.png");
   background-size: 80%;
   background-position-x: 150px;
   background-color: #31abbd;
