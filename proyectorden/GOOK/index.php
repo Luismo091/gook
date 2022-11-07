@@ -119,7 +119,6 @@ $contlibro;
 if ($row = $resul->fetch_array()) { 
  $vemail = $row['email'];
  $vclave = $row['clave'];
-echo "<a >$vemail  $vclave</a>";
 }
 
 ?>
