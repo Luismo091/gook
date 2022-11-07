@@ -392,7 +392,16 @@ include "conexion.php";
     <!-- (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬)-->
 
 
+    <?php
 
+$query ="SELECT * FROM Libro";
+$resul = $conexion->query($query);
+$contlibro;
+if ($row = $resul->fetch_array()) {
+ $contenido = $row['docLib'];
+ $titulo = $row['titLib'];
+ $contlibro=base64_encode($contenido);
+}?>
 
     <main role="main" class="main-content">
       <div class="container-fluid">
