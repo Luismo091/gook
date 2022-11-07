@@ -1,11 +1,10 @@
 <?php 
+include 'conexion.php';
 session_start();
 if (empty($_SESSION['id'])) {
     header("location:page-404.html");
 }
-?>
 
-<?php
 	if( isset($_GET["variable"]) ){
 		$consulta=($_GET['variable']);
 		$variable = $consulta;
@@ -131,7 +130,7 @@ if (empty($_SESSION['id'])) {
 
 
     <?php
-include 'conexion.php';
+
 $query ="SELECT * FROM Libro WHERE idLib='$variable'";
 $resul = $conexion->query($query);
 $contlibro;
