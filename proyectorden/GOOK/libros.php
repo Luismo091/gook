@@ -193,7 +193,7 @@ ON Libro.Categoria_idCat=Categoria.idCat");
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
                                 <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
                                         <p>' . $editorial . ' <a class="nav-link" href="main.php">                            
-                                        <span class="ml-3 item-text">Leer</span>
+                                        <span class="ml-3 item-text">Ver</span>
                                         <i class="fe fe-arrow-right"></i>
                                     </a></p>
                                         
@@ -209,9 +209,13 @@ ON Libro.Categoria_idCat=Categoria.idCat");
                                 <div class="card shadow">
                                     <div class="card-body">
                                     <p>' . $titulo . '</p>'; ?>
+                                        
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
                                 <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . '</p>
+                                        <p>' . $editorial . ' <a class="nav-link" href="main.php">                            
+                                        <span class="ml-3 item-text">Ver</span>
+                                        <i class="fe fe-arrow-right"></i>
+                                    </a></p>
                                     </div>
                                 </div>
                             </div>';
