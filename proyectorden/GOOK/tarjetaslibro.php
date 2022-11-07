@@ -382,18 +382,6 @@ include "conexion.php";
         <!-- (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬) (┬┬﹏┬┬)-->
 
 
-        <?php
-        $query = "SELECT * FROM Libro";
-        $resul = $conexion->query($query);
-        $contlibro;
-        $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
-        while ($datos = $sql->fetch_object()) {
-            $contadorcol = 0;
-            if ($contadorcol <= 6) {
-            } else {
-            }
-        }
-        ?>
 
 
         <main role="main" class="main-content">
@@ -449,9 +437,9 @@ ON Libro.Categoria_idCat=Categoria.idCat");
                                     <div class="col-md-2">
                                 <div class="card shadow">
                                     <div class="card-body">
-                                        <p>' . $titulo . '</p>
-                                        <img src="assets/images/logo.svg"></img>
-                                        <p>' . $autor . '</p>
+                                    <p>' . $titulo . '</p>'; ?>
+                                    <img width="100%" src="data:image/png;base64,<?= $imli ?>">
+                            <?php echo '<p>' . $autor . '</p>
                                         <p>' . $editorial . '</p>
                                     </div>
                                 </div>
