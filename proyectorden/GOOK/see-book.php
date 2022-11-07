@@ -1,17 +1,17 @@
-<?php 
+<?php
 include 'conexion.php';
 session_start();
 if (empty($_SESSION['id'])) {
-    header("location:page-404.html");
+  header("location:page-404.html");
 }
 
-	if( isset($_GET["variable"]) ){
-		$consulta=($_GET['variable']);
-		$variable = $consulta;
-		echo $consulta;
-	}else{
-		echo 'No se han recibido datos';
-	}
+if (isset($_GET["variable"])) {
+  $consulta = ($_GET['variable']);
+  $variable = $consulta;
+  echo $consulta;
+} else {
+  echo 'No se han recibido datos';
+}
 ?>
 
 
@@ -37,6 +37,7 @@ if (empty($_SESSION['id'])) {
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
   <link rel="stylesheet" href="css/mainb.css">
+  <link rel="stylesheet" href="css/stylesee.css">
 </head>
 
 <body class="vertical  dark  ">
@@ -46,17 +47,17 @@ if (empty($_SESSION['id'])) {
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
       <ul class="nav">
-        
+
         <li class="nav-item">
           <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
             <span class="fe fe-grid fe-16"></span>
           </a>
         </li>
-        
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="avatar avatar-sm mt-2">
-            <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>" alt="..." class="avatar-img rounded-circle">
+              <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>" alt="..." class="avatar-img rounded-circle">
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -131,14 +132,14 @@ if (empty($_SESSION['id'])) {
 
     <?php
 
-$query ="SELECT * FROM Libro WHERE idLib='$variable'";
-$resul = $conexion->query($query);
-$contlibro;
-if ($row = $resul->fetch_array()) {
- $contenido = $row['docLib'];
- $titulo = $row['titLib'];
- $contlibro=base64_encode($contenido);
-}?>
+    $query = "SELECT * FROM Libro WHERE idLib='$variable'";
+    $resul = $conexion->query($query);
+    $contlibro;
+    if ($row = $resul->fetch_array()) {
+      $contenido = $row['docLib'];
+      $titulo = $row['titLib'];
+      $contlibro = base64_encode($contenido);
+    } ?>
 
 
 
@@ -158,17 +159,12 @@ if ($row = $resul->fetch_array()) {
 
 
         <link rel="stylesheet" href="css/seebook.css">
- <div class="card mb-4 shadow" style="height: 800px;">
-      
-
-
-
- <?php echo '<embed src="data:application/pdf;base64,'.$contlibro.' #toolbar=0&zoom=170"  width="100%" height="100%" />';?>
+        <div class="card mb-4 shadow" style="height: 800px;">
 
 
 
 
-       
+          <?php echo '<embed src="data:application/pdf;base64,' . $contlibro . ' #toolbar=0&zoom=170"  width="100%" height="100%" />'; ?>
 
 
 
@@ -178,8 +174,37 @@ if ($row = $resul->fetch_array()) {
 
 
 
-        
-      </div>
+
+
+
+
+
+
+        </div>
+
+        <div class="main-container">
+          <div class="main-header anim" style="--delay: 0s">Discover</div>
+          <div class="small-header anim" style="--delay: .3s">Most Watched</div>
+          <div class="videos">
+            <div class="video anim" style="--delay: .4s">
+              <div class="video-time">8 min</div>
+              <div class="video-wrapper">
+                <video muted="">
+                  <source src="https://player.vimeo.com/external/436572488.sd.mp4?s=eae5fb490e214deb9ff532dd98d101efe94e7a8b&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+                </video>
+                <div class="author-img__wrapper video-author">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  <img class="author-img" src="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                </div>
+              </div>
+              <div class="video-by">Andy William</div>
+              <div class="video-name">Basic how to ride your skateboard comfortly</div>
+              <div class="video-view">54K views<span class="seperate video-seperate"></span>1 week ago</div>
+            </div>
+          </div>
+        </div>
       </div> <!-- .container-fluid -->
       <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
@@ -316,6 +341,7 @@ if ($row = $resul->fetch_array()) {
   <script src="js/tinycolor-min.js"></script>
   <script src="js/config.js"></script>
   <script src="js/apps.js"></script>
+  <script src="js/scriptsee.js"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
   <script>

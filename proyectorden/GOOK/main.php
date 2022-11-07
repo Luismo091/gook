@@ -34,6 +34,7 @@ include "conexion.php";
   <link rel="stylesheet" href="css/styleff.css">
   <link rel="stylesheet" href="css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/styleswiper.css">
+  <link rel="stylesheet" href="css/stylesee.css">
 
 </head>
 
@@ -60,11 +61,11 @@ include "conexion.php";
           }
           ?>
         </select>
-        
-          <a class="nav-link text-muted my-2" href="filtropage.php" data-toggle="modal" data-target=".modal-shortcut">
-            <span class="fe fe-arrow-right fe-16"></span>
-          </a>
-        
+
+        <a class="nav-link text-muted my-2" href="filtropage.php" data-toggle="modal" data-target=".modal-shortcut">
+          <span class="fe fe-arrow-right fe-16"></span>
+        </a>
+
       </form>
 
 
@@ -181,7 +182,7 @@ include "conexion.php";
               <div class="col-md-6 mb-4">
                 <div class="card-body">
                   <article>
-                    <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1436891620584-47fd0e565afb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');">
+                    <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://plus.unsplash.com/premium_photo-1661741368973-e2ccdf923b37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');">
                       <div class="upper-header">
                         <div class="mini-title">NUEVOS AÑADIDOS</div>
                         <div class="date-since">
@@ -214,9 +215,9 @@ include "conexion.php";
                             </defs>
                             <path class="d" d="M19.22,9.66L10.77,1.21c-.74-.74-1.86-1.21-2.97-1.21H1.67C.75,0,0,.75,0,1.67V7.8c0,1.11,.46,2.23,1.3,2.97l8.45,8.46c1,1,2.62,1,3.62,0l5.94-5.95c.93-.93,.93-2.6-.09-3.62ZM6.96,6.35c-.59,.59-1.56,.59-2.15,0-.59-.59-.59-1.56,0-2.15,.59-.59,1.56-.59,2.15,0,.59,.59,.59,1.56,0,2.15Z" />
                           </svg>
-                          <span>Literatura</span><span>Juvenil</span>
+                          <span>Categoria</span><span>Todas las clasificaciones</span>
                         </div>
-                        <h1 class="title">Libros,Libros Los mas nuevos</h1>
+                        <h1 class="title">Novedades de Noviembre</h1>
                         <p class="subtitle"></p>
                       </div>
                     </header>
@@ -256,6 +257,72 @@ include "conexion.php";
                 </div>
               </div>
             </div>
+            <div class="main-container">
+              <div class="main-header anim" style="--delay: 0s">Discover</div>
+              <div class="main-blogs">
+                <div class="main-blog anim" style="--delay: .1s">
+                  <div class="main-blog__title">How to do Basic Jumping and how to landing safely</div>
+                  <div class="main-blog__author">
+                    <div class="author-img__wrapper">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg>
+                      <img class="author-img" src="https://images.unsplash.com/photo-1560941001-d4b52ad00ecc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" />
+                    </div>
+                    <div class="author-detail">
+                      <div class="author-name">Thomas Hope</div>
+                      <div class="author-info">53K views <span class="seperate"></span>2 weeks ago</div>
+                    </div>
+                  </div>
+                  <div class="main-blog__time">7 min</div>
+                </div>
+                <div class="main-blog anim" style="--delay: .2s">
+                  <div class="main-blog__title">Skateboard Tips You need to know</div>
+                  <div class="main-blog__author tips">
+                    <div class="main-blog__time">7 min</div>
+                    <div class="author-img__wrapper">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg>
+                      <img class="author-img" src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fG1lbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+                    </div>
+                    <div class="author-detail">
+                      <div class="author-name">Tony Andrew</div>
+                      <div class="author-info">53K views <span></span>2 weeks ago</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="small-header anim" style="--delay: .3s">Lo mas reciente en gook</div>
+              <div class="videos">
+                <?php
+                $sql = $conexion->query("SELECT * from Libro order by lecturas DESC");
+                while ($datos = $sql->fetch_object()) {
+                ?>
+                  <div class="video anim" style="--delay: .4s">
+                    <div class="card-wrapper swiper-wrapper">
+                      <div class="card swiper-slide">
+                        <div class="image-box">
+                          <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                        </div>
+                        <div class="profile-details">
+                          <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                          <div class="name-job">
+                            <h3 class="name"><?= $datos->titLib ?></h3>
+                            <h4 class="name"><?= $datos->fecPub ?></h4>
+                            <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                <?php }
+                ?>
+              </div>
+            </div>
+
             <!-- / ACA EMPIEZA GOOK -->
             <div class="col-md-6 mb-4">
               <div class="card-header">
@@ -269,7 +336,7 @@ include "conexion.php";
                     <div class="card-wrapper swiper-wrapper">
                       <?php
 
-                      $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
+                      $sql = $conexion->query("SELECT * from Libro order by lecturas DESC");
                       while ($datos = $sql->fetch_object()) {
                       ?>
                         <div class="card swiper-slide">
