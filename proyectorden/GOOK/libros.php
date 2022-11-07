@@ -162,21 +162,22 @@ include "conexion.php";
                             <?php
 
 
-                            $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut idLA, Autor_idAut,idEdi, nomEdi,nomCat foto_edi ,idLE, Editorial_idEdi 
-FROM Libro
-INNER JOIN LibAut
-ON Libro.idLib=LibAut.Libro_idLib
-INNER JOIN Autor
-ON Autor.idAut=LibAut.Autor_idAut
-INNER JOIN LibEdi
-ON Libro.idLib=LibEdi.Libro_idLib
-INNER JOIN Editorial
-ON Editorial.idEdi=LibEdi.Editorial_idEdi
-INNER JOIN Categoria
-ON Libro.Categoria_idCat=Categoria.idCat");
+                            $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
+                            FROM Libro
+                            INNER JOIN LibAut
+                            ON Libro.idLib=LibAut.Libro_idLib
+                            INNER JOIN Autor
+                            ON Autor.idAut=LibAut.Autor_idAut
+                            INNER JOIN LibEdi
+                            ON Libro.idLib=LibEdi.Libro_idLib
+                            INNER JOIN Editorial
+                            ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                            INNER JOIN Categoria
+                            ON Libro.Categoria_idCat=Categoria.idCat");
                             $contadorcol = 0;
                             $contenido = "";
                             while ($datos = $sql->fetch_array()) {
+                                $idLib = $datos['idLib'];
                                 $titulo = $datos['titLib'];
                                 $autor = $datos['nomAut1'];
                                 $autor = $autor . " " . $datos['apeAut1'];
@@ -189,10 +190,9 @@ ON Libro.Categoria_idCat=Categoria.idCat");
                                 <div class="card shadow">
                                     <div class="card-body">
                                         <p>' . $titulo . '</p>'; ?>
-                                        
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
                                 <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . ' <a class="nav-link" href="main.php">                            
+                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
                                         <span class="ml-3 item-text">Ver</span>
                                         <i class="fe fe-arrow-right"></i>
                                     </a></p>
@@ -209,10 +209,9 @@ ON Libro.Categoria_idCat=Categoria.idCat");
                                 <div class="card shadow">
                                     <div class="card-body">
                                     <p>' . $titulo . '</p>'; ?>
-                                        
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
                                 <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . ' <a class="nav-link" href="main.php">                            
+                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
                                         <span class="ml-3 item-text">Ver</span>
                                         <i class="fe fe-arrow-right"></i>
                                     </a></p>
