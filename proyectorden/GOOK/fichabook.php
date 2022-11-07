@@ -189,7 +189,7 @@ if (isset($_GET["variable"])) {
               ON Editorial.idEdi=LibEdi.Editorial_idEdi
               INNER JOIN Categoria
               ON Libro.Categoria_idCat=Categoria.idCat
-              WHERE idLib = 1");
+              WHERE idLib = '$variable'");
               while ($datos = $sql->fetch_object()) {
               ?>
                 <article>
