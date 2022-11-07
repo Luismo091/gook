@@ -100,8 +100,7 @@
                 <input type="password" name="inputPassword" class="form-control form-control-lg" placeholder="Contraseña" required="">
               </div>
               <div class="checkbox mb-3">
-                <label>
-                  <input type="checkbox" value="remember-me"> Mantener logeado </label>
+                <!--<label><input type="checkbox" value="remember-me"> Mantener logeado </label>-->
               </div>
               <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
             </form>
