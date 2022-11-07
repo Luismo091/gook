@@ -48,7 +48,7 @@
                             </svg>
 
                         </a>
-
+                        <button onclick="validarclave()">Click me</button>
                         <h2 class="my-3">Registrate</h2>
                     </div>
 
@@ -60,11 +60,11 @@
 
                     <!-- Primer Formulario -->
 
-                    <form id="example-form" onsubmit="validarclave()" action="#">
+                    <form id="example-form" action="#">
                         <div>
                             <h3>Crea una cuenta</h3>
                             <section>
-                                <div class="form-group" onsubmit="validarclave()">
+                                <div class=" " onsubmit="validarclave()">
                                     <div class="form-group" onsubmit="validarclave()">
                                         <label for="inputEmail4">Correo</label>
                                         <input type="email" class="form-control required" id="txtemail">
@@ -97,7 +97,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword6">Confirma Contraseña</label>
-                                                <input type="password" class="form-control" id="txtconfipassword" required="true">
+                                                <input type="password" class="form-control" id="txtpassword2" required="true">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -342,6 +342,8 @@
 
                             </section>
                         </div>
+                        
+                        <button href ="#next" role="menuitem" onclick="">ClickMe</button>
                     </form>
                     <p class="mt-5 mb-3 text-muted text-center">©GOOK LM & AB 2022</p>
 
@@ -585,8 +587,8 @@
 
 <script>
     function validarclave(){
-    var p1 = document.getElementById("inputPassword5").value;
-    var p2 = document.getElementById("inputPassword6").value;
+    var p1 = document.getElementById("txtpassword").value;
+    var p2 = document.getElementById("txtpassword2").value;
     var espacios = false;
 var cont = 0;
 
