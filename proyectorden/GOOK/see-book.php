@@ -143,7 +143,11 @@ if (isset($_GET["variable"])) {
       $contlibro = base64_encode($contenido);
     }
     $nvi = $vistas + 1;
+    $fechaActual = date('Y-m-d');
+    $tiempo = date('h:i:s');
+    $usuid = $_SESSION['id'];
     $sql = $conexion->query("UPDATE Libro SET lecturas ='$nvi' WHERE idLib ='$variable'");
+    /**$sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES (4,$fechaActual','$variable','$usuid','$tiempo')");*/
     ?>
 
 
@@ -151,8 +155,10 @@ if (isset($_GET["variable"])) {
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h1 class="page-title"><?php echo $titulo; ?>, <?php echo $nvi; ?></h1>
-
+            <h1 class="page-title"><?php echo $titulo; ?></h1>
+            <h1 class="page-title"><?php echo $fechaActual; ?></h1>
+            <h1 class="page-title"><?php echo $tiempo; ?></h1>
+            <h1 class="page-title"><?php echo $usuid; ?></h1>
           </div> <!-- .col-12 -->
 
         </div> <!-- .row -->
