@@ -31,6 +31,8 @@ session_start();
   <link rel="stylesheet" href="css/stylelaunch.css">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>
   <link rel="stylesheet" href="css/styleff.css">
+  <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/styleswiper.css">
 
 </head>
 
@@ -229,6 +231,7 @@ session_start();
                           <div class="info">
                             <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub"><?= $datos->fecha ?></div>
+                            <a href="see-book.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
                           </div>
                         </div>
                       </div>
@@ -241,7 +244,40 @@ session_start();
             <!-- / ACA EMPIEZA GOOK -->
             <div class="col-md-6 mb-4">
               <div class="card-header">
-                <strong class="card-title">Categorias</strong>
+                <strong class="card-title">Aclamados por la critica</strong>
+              </div>
+            </div>
+            <div class="col-12 col-lg-9">
+              <div class="row">
+                <div class="container swiper">
+                  <div class="slide-container">
+                    <div class="card-wrapper swiper-wrapper">
+                      <?php
+                      include "conexion.php";
+                      $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
+                      while ($datos = $sql->fetch_object()) {
+                      ?>
+                        <div class="card swiper-slide">
+                          <div class="image-box">
+                            <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                          </div>
+                          <div class="profile-details">
+                            <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                            <div class="name-job">
+                              <h3 class="name"><?= $datos->titLib ?></h3>
+                              <h4 class="name"><?= $datos->fecPub ?></h4>
+                              <a href="see-book.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      <?php }
+                      ?>
+                    </div>
+                  </div>
+                  <div class="swiper-button-next swiper-navBtn"></div>
+                  <div class="swiper-button-prev swiper-navBtn"></div>
+                  <div class="swiper-pagination"></div>
+                </div>
               </div>
             </div>
             <div class="col-12 col-lg-9">
@@ -305,7 +341,6 @@ session_start();
                           <span>Literatura</span><span>Juvenil</span>
                         </div>
                         <h1 class="title">Lo mejor de colombia</h1>
-                        <p class="subtitle"></p>
                       </div>
                     </header>
                   </article>
@@ -331,6 +366,7 @@ session_start();
                           <div class="info">
                             <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub"><?= $datos->fecPub ?></div>
+                            <a href="see-book.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
                           </div>
                         </div>
                       </div>
@@ -339,66 +375,11 @@ session_start();
                   </div>
                 </div>
               </div>
-
-            </div>
-
-          </div>
-          <div class="row">
-          </div> <!-- .col -->
-          <div class="col-md-3">
-            <div class="card shadow mb-4">
-              <div class="card-body text-center">
-                <div class="avatar avatar-lg mt-4">
-                  <a href="">
-                    <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
-                  </a>
-                </div>
-                <div class="card-text my-2">
-                  <strong class="card-title my-0">Brown Asher</strong>
-                  <p class="small text-muted mb-0">Orci Luctus Et Inc.</p>
-                  <p class="small"><span class="badge badge-dark">USA</span></p>
-                </div>
-              </div> <!-- ./card-text -->
-              <div class="card-footer">
-                <div class="row align-items-center justify-content-between">
-                  <div class="col-auto">
-                    <small>
-                      <span class="dot dot-lg bg-success mr-1"></span> Online </small>
-                  </div>
-                  <div class="col-auto">
-                    <div class="file-action">
-                      <button type="button" class="btn btn-link dropdown-toggle more-vertical p-0 text-muted mx-auto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text-muted sr-only">Action</span>
-                      </button>
-                      <div class="dropdown-menu m-2">
-                        <a class="dropdown-item" href="#"><i class="fe fe-meh fe-12 mr-4"></i>Profile</a>
-                        <a class="dropdown-item" href="#"><i class="fe fe-message-circle fe-12 mr-4"></i>Chat</a>
-                        <a class="dropdown-item" href="#"><i class="fe fe-mail fe-12 mr-4"></i>Contact</a>
-                        <a class="dropdown-item" href="#"><i class="fe fe-delete fe-12 mr-4"></i>Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> <!-- /.card-footer -->
             </div>
           </div>
-          <!-- .col -->
-        
-        <div class="col-md-9">
-        </div> <!-- .col -->
-        </div> <!-- .row -->
-        <nav aria-label="Table Paging" class="my-3">
-          <ul class="pagination justify-content-end mb-0">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav>
-      </div> <!-- .col-12 -->
-  </div> <!-- .row -->
-  </div> <!-- .container-fluid -->
+        </div>
+      </div>
+  </div>
   <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
@@ -737,6 +718,8 @@ session_start();
         <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js'></script>
         <script src="js/scriptlaunc.js"></script>
         <script src="js/scriptff.js"></script>
+        <script src="js/swiper-bundle.min.js"></script>
+        <script src="js/scriptswiper.js"></script>
 </body>
 
 </html>
