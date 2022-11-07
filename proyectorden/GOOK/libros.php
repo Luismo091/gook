@@ -186,8 +186,8 @@ include "conexion.php";
                                 $imli = base64_encode($imagenlibro);
                                 if ($contadorcol <= 5) {
 
-                                    echo '<div class="col-md-2">
-                                <div class="card shadow">
+                                    echo '<div class="col-md-2"">
+                                <div class="card shadow" >
                                     <div class="card-body">
                                         <p>' . $titulo . '</p>'; ?>                                    
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
@@ -205,10 +205,10 @@ include "conexion.php";
                                     $contadorcol = 0;
                                     echo '</div><br>
                                     <div class="row">
-                                    <div class="col-md-2">
-                                <div class="card shadow">
+                                    <div class="col-md-2"">
+                                <div class="card shadow" >
                                     <div class="card-body">
-                                    <p>' . $titulo . '</p>'; ?>
+                                        <p>' . $titulo . '</p>'; ?>                                    
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
                                 <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
                                         <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
