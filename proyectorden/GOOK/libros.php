@@ -177,6 +177,7 @@ include "conexion.php";
                             $contadorcol = 0;
                             $contenido = "";
                             while ($datos = $sql->fetch_array()) {
+                                $idLib = $datos['idLib'];
                                 $titulo = $datos['titLib'];
                                 $autor = $datos['nomAut1'];
                                 $autor = $autor . " " . $datos['apeAut1'];
@@ -189,10 +190,9 @@ include "conexion.php";
                                 <div class="card shadow">
                                     <div class="card-body">
                                         <p>' . $titulo . '</p>'; ?>
-                                        
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
                                 <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . ' <a class="nav-link" href="main.php">                            
+                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
                                         <span class="ml-3 item-text">Ver</span>
                                         <i class="fe fe-arrow-right"></i>
                                     </a></p>
@@ -209,10 +209,9 @@ include "conexion.php";
                                 <div class="card shadow">
                                     <div class="card-body">
                                     <p>' . $titulo . '</p>'; ?>
-                                        
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
                                 <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . ' <a class="nav-link" href="main.php">                            
+                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
                                         <span class="ml-3 item-text">Ver</span>
                                         <i class="fe fe-arrow-right"></i>
                                     </a></p>
