@@ -198,177 +198,198 @@ if (isset($_GET["variable"])) {
                       <div class="mini-title"><?= $datos->fecPub ?></div>
                       <span class=".avatar-xl img mt-2">
                         <img width="100px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_edi) ?>">
+
                       </span>
 
                     </div>
+
                     <div class="lower-header">
-                      <div class="tags-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                          <defs>
-                            <style>
-                              .d {
-                                width: 20px;
-                                fill: #fff;
-                                opacity: .90;
-                              }
-                            </style>
-                          </defs>
-                          <path class="d" d="M19.22,9.66L10.77,1.21c-.74-.74-1.86-1.21-2.97-1.21H1.67C.75,0,0,.75,0,1.67V7.8c0,1.11,.46,2.23,1.3,2.97l8.45,8.46c1,1,2.62,1,3.62,0l5.94-5.95c.93-.93,.93-2.6-.09-3.62ZM6.96,6.35c-.59,.59-1.56,.59-2.15,0-.59-.59-.59-1.56,0-2.15,.59-.59,1.56-.59,2.15,0,.59,.59,.59,1.56,0,2.15Z" />
-                        </svg>
-                        <span>Categoria</span><span><?= $datos->nomCat ?></span>
+                      <div style="float:right; text-align: center;">
+                      <a href="see-book.php?variable=<?= $datos->idLib ?>">
+                          <div>
+                            <img width="100px" src="assets/images/AzulBlanco.png">
                       </div>
-                      <h1>
-                        <?= $datos->titLib ?>
-                      </h1>
-                      <p class="subtitle"><?= $datos->nomEdi ?>, <?= $datos->fecLib ?></p>
+                      <div>
+                        <span style="color: #ffffff; text-shadow: black 0.1em 0.1em 0.2em">Leer</span>
+                      </div>
+                      </a>
                     </div>
-                  </header>
 
-                  <section class="summary">
-                    <div class="summary-item">
-                      <h5 class="item-title">Autor</h5>
-                      <p class="item-text"><span class="item-data"><span class=".avatar-lg img mt-2">
-                            <img width="60px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_aut) ?>">
-                          </span><?= $datos->nomAut1 ?>, <?= $datos->apeAut1 ?></span></p>
-                    </div>
-                    <div class="summary-item">
-                      <h5 class="item-title">Vistas</h5>
-                      <p class="item-text"><span class="item-data"><?= $datos->lecturas ?></span> Vistas</p>
-                    </div>
-                    <div class="summary-item">
-                      <h5 class="item-title">Publicado y distribuido</h5>
-                      <p class="item-text"></span><?= $datos->nomEdi ?>, el <?= $datos->fecLib ?></p>
-                    </div>
-                  </section>
 
-                  <section class="main-article">
-                    <h4>Informacion acerca de este titulo</h4>
-                    <p><?= $datos->sinopsis ?></p>
-                  </section>
-                </article>
-              <?php }
-              ?>
+                    <div class="tags-container">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <defs>
+                          <style>
+                            .d {
+                              width: 20px;
+                              fill: #fff;
+                              opacity: .90;
+                            }
+                          </style>
+                        </defs>
+                        <path class="d" d="M19.22,9.66L10.77,1.21c-.74-.74-1.86-1.21-2.97-1.21H1.67C.75,0,0,.75,0,1.67V7.8c0,1.11,.46,2.23,1.3,2.97l8.45,8.46c1,1,2.62,1,3.62,0l5.94-5.95c.93-.93,.93-2.6-.09-3.62ZM6.96,6.35c-.59,.59-1.56,.59-2.15,0-.59-.59-.59-1.56,0-2.15,.59-.59,1.56-.59,2.15,0,.59,.59,.59,1.56,0,2.15Z" />
+                      </svg>
+
+                      <span>Categoria</span><span><?= $datos->nomCat ?></span>
+                    </div>
+
+                    <h1>
+                      <?= $datos->titLib ?>
+
+                    </h1>
+                    <p class="subtitle"><?= $datos->nomEdi ?>, <?= $datos->fecLib ?></p>
+
+
 
             </div>
-            <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="list-group list-group-flush my-n3">
-                      <div class="list-group-item bg-transparent">
-                        <div class="row align-items-center">
-                          <div class="col-auto">
-                            <span class="fe fe-box fe-24"></span>
-                          </div>
-                          <div class="col">
-                            <small><strong>Package has uploaded successfull</strong></small>
-                            <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                            <small class="badge badge-pill badge-light text-muted">1m ago</small>
-                          </div>
+
+            </header>
+
+            <section class="summary">
+              <div class="summary-item">
+                <h5 class="item-title">Autor</h5>
+                <p class="item-text"><span class="item-data"><span class=".avatar-lg img mt-2">
+                      <img width="60px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_aut) ?>">
+                    </span><?= $datos->nomAut1 ?>, <?= $datos->apeAut1 ?></span></p>
+              </div>
+              <div class="summary-item">
+                <h5 class="item-title">Vistas</h5>
+                <p class="item-text"><span class="item-data"><?= $datos->lecturas ?></span> Vistas</p>
+              </div>
+              <div class="summary-item">
+                <h5 class="item-title">Publicado y distribuido</h5>
+                <p class="item-text"></span><?= $datos->nomEdi ?>, el <?= $datos->fecLib ?></p>
+              </div>
+            </section>
+
+            <section class="main-article">
+              <h4>Informacion acerca de este titulo</h4>
+              <p><?= $datos->sinopsis ?></p>
+            </section>
+            </article>
+          <?php }
+          ?>
+
+          </div>
+          <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="list-group list-group-flush my-n3">
+                    <div class="list-group-item bg-transparent">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <span class="fe fe-box fe-24"></span>
+                        </div>
+                        <div class="col">
+                          <small><strong>Package has uploaded successfull</strong></small>
+                          <div class="my-0 text-muted small">Package is zipped and uploaded</div>
+                          <small class="badge badge-pill badge-light text-muted">1m ago</small>
                         </div>
                       </div>
-                      <div class="list-group-item bg-transparent">
-                        <div class="row align-items-center">
-                          <div class="col-auto">
-                            <span class="fe fe-download fe-24"></span>
-                          </div>
-                          <div class="col">
-                            <small><strong>Widgets are updated successfull</strong></small>
-                            <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
-                            <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                          </div>
+                    </div>
+                    <div class="list-group-item bg-transparent">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <span class="fe fe-download fe-24"></span>
+                        </div>
+                        <div class="col">
+                          <small><strong>Widgets are updated successfull</strong></small>
+                          <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
+                          <small class="badge badge-pill badge-light text-muted">2m ago</small>
                         </div>
                       </div>
-                      <div class="list-group-item bg-transparent">
-                        <div class="row align-items-center">
-                          <div class="col-auto">
-                            <span class="fe fe-inbox fe-24"></span>
-                          </div>
-                          <div class="col">
-                            <small><strong>Notifications have been sent</strong></small>
-                            <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                            <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                          </div>
-                        </div> <!-- / .row -->
-                      </div>
-                      <div class="list-group-item bg-transparent">
-                        <div class="row align-items-center">
-                          <div class="col-auto">
-                            <span class="fe fe-link fe-24"></span>
-                          </div>
-                          <div class="col">
-                            <small><strong>Link was attached to menu</strong></small>
-                            <div class="my-0 text-muted small">New layout has been attached to the menu</div>
-                            <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                          </div>
+                    </div>
+                    <div class="list-group-item bg-transparent">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <span class="fe fe-inbox fe-24"></span>
+                        </div>
+                        <div class="col">
+                          <small><strong>Notifications have been sent</strong></small>
+                          <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
+                          <small class="badge badge-pill badge-light text-muted">30m ago</small>
                         </div>
                       </div> <!-- / .row -->
                     </div>
+                    <div class="list-group-item bg-transparent">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <span class="fe fe-link fe-24"></span>
+                        </div>
+                        <div class="col">
+                          <small><strong>Link was attached to menu</strong></small>
+                          <div class="my-0 text-muted small">New layout has been attached to the menu</div>
+                          <small class="badge badge-pill badge-light text-muted">1h ago</small>
+                        </div>
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
 
 
-                    <!-- / .ACA SE MUESTRA LOS ACCE DIRECTOS -->
-                    <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
+                  <!-- / .ACA SE MUESTRA LOS ACCE DIRECTOS -->
+                  <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body px-5">
+                          <div class="row align-items-center">
+                            <div class="col-6 text-center">
+                              <div class="squircle bg-success justify-content-center">
+                                <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+                              </div>
+                              <p>Control area</p>
+                            </div>
+                            <div class="col-6 text-center">
+                              <div class="squircle bg-primary justify-content-center">
+                                <i class="fe fe-activity fe-32 align-self-center text-white"></i>
+                              </div>
+                              <p>Activity</p>
+                            </div>
                           </div>
-                          <div class="modal-body px-5">
-                            <div class="row align-items-center">
-                              <div class="col-6 text-center">
-                                <div class="squircle bg-success justify-content-center">
-                                  <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Control area</p>
+                          <div class="row align-items-center">
+                            <div class="col-6 text-center">
+                              <div class="squircle bg-primary justify-content-center">
+                                <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
                               </div>
-                              <div class="col-6 text-center">
-                                <div class="squircle bg-primary justify-content-center">
-                                  <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Activity</p>
-                              </div>
+                              <p>Droplet</p>
                             </div>
-                            <div class="row align-items-center">
-                              <div class="col-6 text-center">
-                                <div class="squircle bg-primary justify-content-center">
-                                  <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Droplet</p>
+                            <div class="col-6 text-center">
+                              <div class="squircle bg-primary justify-content-center">
+                                <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
                               </div>
-                              <div class="col-6 text-center">
-                                <div class="squircle bg-primary justify-content-center">
-                                  <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Upload</p>
-                              </div>
+                              <p>Upload</p>
                             </div>
-                            <div class="row align-items-center">
-                              <div class="col-6 text-center">
-                                <div class="squircle bg-primary justify-content-center">
-                                  <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Users</p>
+                          </div>
+                          <div class="row align-items-center">
+                            <div class="col-6 text-center">
+                              <div class="squircle bg-primary justify-content-center">
+                                <i class="fe fe-users fe-32 align-self-center text-white"></i>
                               </div>
-                              <div class="col-6 text-center">
-                                <div class="squircle bg-primary justify-content-center">
-                                  <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Settings</p>
+                              <p>Users</p>
+                            </div>
+                            <div class="col-6 text-center">
+                              <div class="squircle bg-primary justify-content-center">
+                                <i class="fe fe-settings fe-32 align-self-center text-white"></i>
                               </div>
+                              <p>Settings</p>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
     </main> <!-- main -->
   </div> <!-- .wrapper -->
   <script src="js/jquery.min.js"></script>
