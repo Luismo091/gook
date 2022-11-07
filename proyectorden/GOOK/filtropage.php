@@ -49,7 +49,7 @@ include "conexion.php";
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
-      <form class="form-inline mr-auto searchform text-muted" action="filtropage.php">
+      <form class="form-inline mr-auto searchform text-muted">
         <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
         <select class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
           <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
@@ -60,11 +60,6 @@ include "conexion.php";
           }
           ?>
         </select>
-        
-          <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
-            <span class="fe fe-arrow-right fe-16"></span>
-          </a>
-        
       </form>
 
 
@@ -397,6 +392,25 @@ include "conexion.php";
         </div>
       </div>
   </div>
+  <div class="card mb-3 custom_item2">
+  <div class="row g-0">
+    <div class="col-md-5 custom_thumb2">
+      <a href="https://jkanime.net/vanitas-no-karte-2nd-season/"><img src="https://cdn.jkdesu.com/assets/images/animes/image/vanitas-no-karte-2nd-season.jpg" class="img-fluid rounded-start" alt="Vanitas no Karte 2nd Season"></a>
+    </div>
+    <div class="col-md-7">
+      <div class="card-body">
+        <h5 class="card-title"><a href="https://jkanime.net/vanitas-no-karte-2nd-season/">Vanitas no Karte 2nd Season</a></h5>
+        
+         <p class="card-text ep">12 Eps, <small class="text-muted">Emitido Ene 14 de 2022</small></p>
+        
+         <div class="card-info"><p class="card-status finished">Concluido </p><p class="card-txt"> Anime
+                                        </p></div>
+        <p class="card-text synopsis">Segunda parte de Vanitas no Karte.</p>
+        <p class="card-text"></p>
+      </div>
+    </div>
+  </div>
+</div>
   <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
