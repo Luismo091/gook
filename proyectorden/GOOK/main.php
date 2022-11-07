@@ -258,7 +258,7 @@ include "conexion.php";
               </div>
             </div>
             <div class="main-container">
-              <div class="main-header anim" style="--delay: 0s">Discover</div>
+              <div class="main-header anim" style="--delay: 0s">Descubre</div>
               <div class="main-blogs">
                 <div class="main-blog anim" style="--delay: .1s">
                   <div class="main-blog__title">How to do Basic Jumping and how to landing safely</div>
