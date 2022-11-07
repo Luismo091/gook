@@ -190,7 +190,7 @@ ON Libro.Categoria_idCat=Categoria.idCat");
                                     <div class="card-body">
                                         <p>' . $titulo . '</p>'; ?>
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
-                            <?php echo '<p>' . $autor . '</p>
+                            <?php echo '<br><p>' . $autor . '</p>
                                         <p>' . $editorial . '</p>
                                     </div>
                                 </div>
@@ -203,9 +203,9 @@ ON Libro.Categoria_idCat=Categoria.idCat");
                                     <div class="col-md-2">
                                 <div class="card shadow">
                                     <div class="card-body">
-                                        <p>' . $titulo . '</p>
-                                        <img src="assets/images/logo.svg"></img>
-                                        <p>' . $autor . '</p>
+                                    <p>' . $titulo . '</p>'; ?>
+                                    <img width="100%" src="data:image/png;base64,<?= $imli ?>">
+                            <?php echo '<br><p>' . $autor . '</p>
                                         <p>' . $editorial . '</p>
                                     </div>
                                 </div>
