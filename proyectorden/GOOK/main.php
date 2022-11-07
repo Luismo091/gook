@@ -238,7 +238,7 @@ include "conexion.php";
                   ON Reciente.Libro_idLib=Libro.idLib
                   INNER JOIN Usuario
                   ON Reciente.Recientecol=Usuario.idUsu
-                  limit 6");
+                  limit 4");
                     while ($datos = $sql->fetch_object()) {
                     ?>
                       <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
@@ -459,7 +459,6 @@ include "conexion.php";
                     </header>
                   </article>
                 </div>
-
               </div>
               <div class="col-md-6 mb-4">
                 <div class="card-header">

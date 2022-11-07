@@ -125,7 +125,9 @@ if (isset($_GET["variable"])) {
       </nav>
     </aside>
 
+    <?php
 
+    ?>
 
 
 
@@ -135,17 +137,21 @@ if (isset($_GET["variable"])) {
     $resul = $conexion->query($query);
     $contlibro;
     if ($row = $resul->fetch_array()) {
+      $vistas = $row['lecturas'];
       $contenido = $row['docLib'];
       $titulo = $row['titLib'];
       $contlibro = base64_encode($contenido);
-    } ?>
+    }
+    $nvi = $vistas + 1;
+    $sql = $conexion->query("UPDATE Libro SET lecturas ='$nvi' WHERE idLib ='$variable'");
+    ?>
 
 
     <main role="main" class="main-content">
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h1 class="page-title"><?php echo $titulo; ?></h1>
+            <h1 class="page-title"><?php echo $titulo; ?>, <?php echo $nvi; ?></h1>
 
           </div> <!-- .col-12 -->
 
