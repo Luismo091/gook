@@ -246,7 +246,7 @@ include "conexion.php";
                           <div class="info">
                             <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub"><?= $datos->fecha ?></div>
-                            <a href="see-book.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                            <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
                           </div>
                         </div>
                       </div>
@@ -281,7 +281,7 @@ include "conexion.php";
                             <div class="name-job">
                               <h3 class="name"><?= $datos->titLib ?></h3>
                               <h4 class="name"><?= $datos->fecPub ?></h4>
-                              <a href="see-book.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                              <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
                             </div>
                           </div>
                         </div>
@@ -381,7 +381,7 @@ include "conexion.php";
                           <div class="info">
                             <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub"><?= $datos->fecPub ?></div>
-                            <a href="see-book.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                            <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
                           </div>
                         </div>
                       </div>
