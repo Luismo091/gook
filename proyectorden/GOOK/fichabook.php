@@ -195,7 +195,7 @@ if (isset($_GET["variable"])) {
                 <article>
                   <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
                     <div class="upper-header">
-                      <div class="mini-title"><?= $datos->fecPub ?></div>
+                      <div class="mini-title"><span class="badge badge-pill badge-warning">5/5</span></div>
                       <span class=".avatar-xl img mt-2">
                         <img width="100px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_edi) ?>">
 
@@ -398,7 +398,44 @@ if (isset($_GET["variable"])) {
                     </form>
                   </div> <!-- /.card-body -->
                 </div>
+                <!-- /.COMENTARIOS COMIENZA -->
+                <div class="card shadow mb-4">
+                  <div class="card shadow">
+                    <div class="card-header">
+                      <strong class="card-title">Comentarios</strong>
+                    </div>
+                    <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div>
+                <?php
+                $sql = $conexion->query("SELECT * from Comentario where Libro_idLib ='$variable'");
+                while ($datos = $sql->fetch_object()) {
+                ?>
+                  <div class="card shadow mb-3">
+                    <div class="card-body py-3">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <!-- /.FOTO Y NOMBRE DE COMENTARIO -->
+                          <strong class="card-title"><span class="avatar avatar-sm mt-2">
+                              <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
+                            </span><?php echo $_SESSION['nombre1']; ?> <?php echo $_SESSION['apellido1']; ?></strong>
+                        </div>
+                        <span class="badge badge-pill badge-warning">5/5</span>
+                        <div class="col">
+                          <small><strong>Dijo el 11:00 April 16, 2020</strong></small>
+                          <div class="mb-2 text-muted small"></div>
+                        </div>
+                        <div class="col-auto pr-0">
+                          <small class="fe fe-more-vertical fe-16 text-muted"></small>
+                        </div>
+                      </div>
+                    </div> <!-- / .card-body -->
+                  </div>
+                <?php }
+                ?>
+
                 </article>
+
 
 
             </div>

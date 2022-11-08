@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
 * {
   outline: none;
-  word-break: break-all;
   box-sizing: border-box;
 }
 
@@ -170,7 +169,7 @@ img {
 .main-blog + .main-blog {
   margin-left: 20px;
   width: 35%;
-  background-image: url(https://c0.anyrgb.com/images/1020/945/venice-beach-2018-outdoors-sport-men-jumping-desert-sunset-extreme-sports-one-person-action.jpg);
+  background-image: url(https://i.imgur.com/opij8Ke.png);
   background-color: unset;
   background-position-x: 0;
   background-size: 139%;

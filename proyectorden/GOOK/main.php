@@ -246,7 +246,7 @@ include "conexion.php";
                         <div class="shadow"></div>
                         <div class="label">
                           <div class="info">
-                            <div class="main"word-break:break-all;><?= $datos->titLib ?></div>
+                            <div class="main" word-break:break-all;><?= $datos->titLib ?></div>
                             <div class="sub">Última vez leido</div>
                             <div class="sub"><?= $datos->tiempo_re ?></div>
                             <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
@@ -263,34 +263,18 @@ include "conexion.php";
               <div class="main-header anim" style="--delay: 0s">Descubre</div>
               <div class="main-blogs">
                 <div class="main-blog anim" style="--delay: .1s">
-                  <div class="main-blog__title">Miles de libros y categorias al alcanze de un click</div>
+                  <div class="main-blog__title">Miles de libros organizados por categorias al alcanze de un click</div>
                   <div class="main-blog__author">
-                    <div class="author-img__wrapper">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
-                        <path d="M20 6L9 17l-5-5" />
-                      </svg>
-                      <img class="author-img" src="https://images.unsplash.com/photo-1560941001-d4b52ad00ecc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" />
-                    </div>
                     <div class="author-detail">
-                      <div class="author-name">Luis Mora</div>
-                      <div class="author-info">100 vistas<span class="seperate"></span>1 semana atrás</div>
                     </div>
                   </div>
                   <div class="main-blog__time">7 min</div>
                 </div>
                 <div class="main-blog anim" style="--delay: .2s">
-                  <div class="main-blog__title">Skateboard Tips You need to know</div>
+                  <div class="main-blog__title">Traidos desde japon directo a gook</div>
                   <div class="main-blog__author tips">
-                    <div class="main-blog__time">7 min</div>
-                    <div class="author-img__wrapper">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
-                        <path d="M20 6L9 17l-5-5" />
-                      </svg>
-                      <img class="author-img" src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fG1lbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-                    </div>
                     <div class="author-detail">
-                      <div class="author-name">Tony Andrew</div>
-                      <div class="author-info">53K views <span></span>2 weeks ago</div>
+                      <div class="author-name">¡Ve nuestras novedades en comics!</div>
                     </div>
                   </div>
                 </div>
@@ -379,12 +363,10 @@ include "conexion.php";
             </div>
 
             <!-- / ACA EMPIEZA GOOK -->
-            <div class="col-md-6 mb-4">
+            <div class="col-12 col-lg-9">
               <div class="card-header">
                 <strong class="card-title">Aclamados por la critica</strong>
               </div>
-            </div>
-            <div class="col-12 col-lg-9">
               <div class="row">
                 <div class="container swiper">
                   <div class="slide-container">
