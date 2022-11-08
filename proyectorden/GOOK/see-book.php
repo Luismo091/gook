@@ -142,20 +142,26 @@ if (isset($_GET["variable"])) {
     }
     $nvi = $vistas + 1;
     $nvi2 = $vistas + 4;
+    date_default_timezone_set("America/Bogota");
     $fechaActual = date('Y-m-d');
     $tiempo = date('H:i:s');
+    echo '<script>alert('.$tiempo.')</script>';
     $usuid = $_SESSION['id'];
     $sql = $conexion->query("UPDATE Libro SET lecturas ='$nvi' WHERE idLib ='$variable'");
     ?>
+
+
 
 <?php
 
 $query = "SELECT * from Reciente where Libro_idLib='$variable' and Recientecol='$usuid';";
 $resul = $conexion->query($query);
 $contlibro;
+$tiempo = date('H:i:s');
 if ($row = $resul->fetch_array()) {
   $idReci = $row['idReciente'];
-  $query ="UPDATE Reciente SET tiempo_re = '$tiempo' WHERE (`idReciente` = '$idReci');";
+
+  $query ="UPDATE Reciente SET tiempo_re = $tiempo WHERE (idReciente = '$idReci');";
 }else{
   $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$nvi2','$fechaActual','$variable','$usuid','$tiempo')");
 }
