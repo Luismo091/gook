@@ -233,7 +233,7 @@ include "conexion.php";
 
                   <div class="options">
                     <?php
-                    $sql = $conexion->query("SELECT DISTINCT idReciente,tiempo_re, fecha, Libro_idLib, Recientecol,idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat,idUsu from Reciente
+                    $sql = $conexion->query("SELECT idReciente,tiempo_re, fecha, Libro_idLib, Recientecol,idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat,idUsu from Reciente
                     INNER JOIN Libro
                     ON Reciente.Libro_idLib=Libro.idLib
                     INNER JOIN Usuario
@@ -244,9 +244,9 @@ include "conexion.php";
                     ?>
                       <div class="option active" style="--optionBackground:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
                         <div class="shadow"></div>
-                        <div class="label">
+                        <div class="label" style="text-shadow:0 0 5px #333333, 0 0 10px #333333, 0 0 15px #FFF, 0 0 20px #333333, 0 0 30px #333333, 0 0 40px #333333, 0 0 55px #333333, 0 0 75px #333333;">
                           <div class="info">
-                            <div class="main" word-break:break-all;><?= $datos->titLib ?></div>
+                            <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub">Última vez leido</div>
                             <div class="sub"><?= $datos->tiempo_re ?></div>
                             <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
