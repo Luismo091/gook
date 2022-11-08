@@ -297,8 +297,9 @@ body .options .option.active .label {
   left: 20px;
 }
 body .options .option.active .label .info > div {
-  left: 0px;
+  left: -7px;
   opacity: 1;
+  /* transform: rotate(90deg); */
 }
 body .options .option:not(.active) {
   flex-grow: 1;
@@ -357,7 +358,7 @@ body .options .option .label .info > div {
 }
 body .options .option .label .info .main {
   font-weight: bold;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
 }
 body .options .option .label .info .sub {
   transition-delay: 0.1s;

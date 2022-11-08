@@ -242,12 +242,13 @@ include "conexion.php";
                     limit 6 ");
                     while ($datos = $sql->fetch_object()) {
                     ?>
-                      <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
+                      <div class="option active" style="--optionBackground:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
                         <div class="shadow"></div>
                         <div class="label">
                           <div class="info">
-                            <div class="main"><?= $datos->titLib ?></div>
-                            <div class="sub"><?= $datos->fecha ?></div>
+                            <div class="main"word-break:break-all;><?= $datos->titLib ?></div>
+                            <div class="sub">Última vez leido</div>
+                            <div class="sub"><?= $datos->tiempo_re ?></div>
                             <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
                           </div>
                         </div>
