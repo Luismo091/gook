@@ -160,7 +160,9 @@ $contlibro;
 $tiempo = date('H:i:s');
 if ($row = $resul->fetch_array()) {
   $idReci = $row['idReciente'];
-  $query ='UPDATE Reciente SET tiempo_re ='.$tiempo.' WHERE idReciente = '.$idReci.';';
+  
+  $sql = $conexion->query("UPDATE Reciente SET tiempo_re ='$tiempo', fecha ='$fechaActual' WHERE idReciente = '$idReci';");
+  echo '<script>alert('.$sql.')</script>';
 }else{
   $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$nvi2','$fechaActual','$variable','$usuid','$tiempo')");
 }
