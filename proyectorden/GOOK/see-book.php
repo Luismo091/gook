@@ -143,11 +143,12 @@ if (isset($_GET["variable"])) {
       $contlibro = base64_encode($contenido);
     }
     $nvi = $vistas + 1;
+    $nvi2 = $vistas + 4;
     $fechaActual = date('Y-m-d');
-    $tiempo = date('h:i:s');
+    $tiempo = date('H:i:s');
     $usuid = $_SESSION['id'];
     $sql = $conexion->query("UPDATE Libro SET lecturas ='$nvi' WHERE idLib ='$variable'");
-    /**$sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES (4,$fechaActual','$variable','$usuid','$tiempo')");*/
+    $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$nvi2','$fechaActual','$variable','$usuid','$tiempo')");
     ?>
 
 
