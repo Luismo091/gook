@@ -154,7 +154,8 @@ $query = "SELECT * from Reciente where Libro_idLib='$variable' and Recientecol='
 $resul = $conexion->query($query);
 $contlibro;
 if ($row = $resul->fetch_array()) {
-  $query ="UPDATE Reciente SET tiempo_re = '$tiempo' WHERE (`idReciente` = '$nvi2');";
+  $idReci = $row['idReciente'];
+  $query ="UPDATE Reciente SET tiempo_re = '$tiempo' WHERE (`idReciente` = '$idReci');";
 }else{
   $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$nvi2','$fechaActual','$variable','$usuid','$tiempo')");
 }
