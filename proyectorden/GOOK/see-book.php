@@ -125,9 +125,7 @@ if (isset($_GET["variable"])) {
       </nav>
     </aside>
 
-    <?php
-
-    ?>
+    
 
 
 
@@ -148,7 +146,26 @@ if (isset($_GET["variable"])) {
     $tiempo = date('H:i:s');
     $usuid = $_SESSION['id'];
     $sql = $conexion->query("UPDATE Libro SET lecturas ='$nvi' WHERE idLib ='$variable'");
-    $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$nvi2','$fechaActual','$variable','$usuid','$tiempo')");
+    ?>
+
+<?php
+
+$query = "SELECT * from Reciente where Libro_idLib='$variable' and Recientecol='$usuid';";
+$resul = $conexion->query($query);
+$contlibro;
+echo '<script>alert("Hola 1 Mundo!");</script>';
+if ($row = $resul->fetch_array()) {
+  echo '<script>alert("Hola Mundo!");</script>';
+  $query ="UPDATE Reciente SET tiempo_re = '$tiempo' WHERE (`idReciente` = '$nvi2');";
+}else{
+  echo '<script>alert("Hola Mundo2!");</script>';
+  $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$nvi2','$fechaActual','$variable','$usuid','$tiempo')");
+}
+
+
+
+
+
     ?>
 
 
