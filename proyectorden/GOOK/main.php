@@ -244,7 +244,7 @@ include "conexion.php";
                     ?>
                       <div class="option active" style="--optionBackground:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
                         <div class="shadow"></div>
-                        <div class="label" style="text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #333333, 0 0 30px #333333, 0 0 40px #333333, 0 0 55px #333333, 0 0 75px #333333;">
+                        <div class="label" style="text-shadow:0 0 5px #333333, 0 0 10px #333333, 0 0 15px #FFF, 0 0 20px #333333, 0 0 30px #333333, 0 0 40px #333333, 0 0 55px #333333, 0 0 75px #333333;">
                           <div class="info">
                             <div class="main"word-break:break-all;><?= $datos->titLib ?></div>
                             <div class="sub">Última Vez</div>
