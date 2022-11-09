@@ -61,10 +61,12 @@ include "conexion.php";
           }
           ?>
         </select>
-
-        <a class="nav-link text-muted my-2" href="filtropage.php" data-toggle="modal" data-target=".modal-shortcut">
+<input class="nav-link text-muted my-2" type="submit"></input>
+          
+        
+        <!--<a class="nav-link text-muted my-2" type="submit">
           <span class="fe fe-arrow-right fe-16"></span>
-        </a>
+        </a>-->
 
       </form>
 
