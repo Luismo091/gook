@@ -46,7 +46,7 @@
 </svg>
 
 
-<form action="validarregistro.php" method="POST">
+<form action="validarregistro.php" method="GET">
 
 <input name="Holis" type="text" class="form-control required" >
   <div class="slideshow-container">
@@ -66,7 +66,7 @@
         <div class="form">
           
             <label for="inputEmail4">Correo</label>
-            <input type="text" class="form-control required" id="text">
+            <input type="email" class="form-control required" name="inputemail">
           </div>
           <input type="submit" value="Submit">
 
@@ -74,19 +74,19 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="firstname">Primer Nombre</label>
-              <input type="text" id="firstname" class="form-control ">
+              <input type="text" name="firstname" class="form-control ">
             </div>
             <div class="form-group col-md-6">
               <label for="lastname">Segundo Nombre</label>
-              <input type="text" id="2firstname" class="form-control">
+              <input type="text" name="2firstname" class="form-control">
             </div>
             <div class="form-group col-md-6">
               <label for="lastname">Primer Apellido</label>
-              <input type="text" id="lastname" class="form-control">
+              <input type="text" name="lastname" class="form-control">
             </div>
             <div class="form-group col-md-6">
               <label for="lastname">Segundo Apellido</label>
-              <input type="text" id="2lastname" class="form-control">
+              <input type="text" name="2lastname" class="form-control">
             </div>
           </div>
           <div class="row mb-4">
