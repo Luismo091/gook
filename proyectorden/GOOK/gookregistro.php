@@ -46,7 +46,9 @@
 </svg>
 
 
-<form action="index.php" method="POST">
+<form action="validarregistro.php" method="POST">
+
+<input name="Femail" type="email" class="form-control required" >
   <div class="slideshow-container">
 
 
@@ -64,7 +66,7 @@
         <div class="form">
           
             <label for="inputEmail4">Correo</label>
-            <input type="email" class="form-control required" id="inputEmail4">
+            <input type="email" class="form-control required" id="Femail">
           </div>
 
           <div class="form-row">
