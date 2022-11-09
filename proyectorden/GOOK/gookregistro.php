@@ -48,7 +48,7 @@
 
 <form action="validarregistro.php" method="POST">
 
-<input name="Femail" type="email" class="form-control required" >
+<input name="Holis" type="email" class="form-control required" >
   <div class="slideshow-container">
 
 
@@ -66,13 +66,15 @@
         <div class="form">
           
             <label for="inputEmail4">Correo</label>
-            <input type="email" class="form-control required" id="Femail">
+            <input type="text" class="form-control required" id="text">
           </div>
+          <input type="submit" value="Submit">
 
+</form>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="firstname">Primer Nombre</label>
-              <input type="text" id="firstname" class="form-control required">
+              <input type="text" id="firstname" class="form-control ">
             </div>
             <div class="form-group col-md-6">
               <label for="lastname">Segundo Nombre</label>
@@ -80,7 +82,7 @@
             </div>
             <div class="form-group col-md-6">
               <label for="lastname">Primer Apellido</label>
-              <input type="text" id="lastname" class="form-control" required="true">
+              <input type="text" id="lastname" class="form-control">
             </div>
             <div class="form-group col-md-6">
               <label for="lastname">Segundo Apellido</label>
@@ -353,9 +355,7 @@
 
 
     </div>
-    <input type="submit" value="Submit">
-
-  </form>
+    
 <!-- SLIDE 1-->
     <!-- SLIDE 1 <a  onclick="plusSlides(-1)"> ❮</a>
     <a class="siguiente" onclick="plusSlides(1)">Siguiente❯</a>-->
