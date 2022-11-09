@@ -38,6 +38,7 @@ if (isset($_GET["variable"])) {
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
   <link rel="stylesheet" href="css/mainb.css">
   <link rel="stylesheet" href="css/stylesee.css">
+  <link rel="stylesheet" href="css/seebook.css">
 </head>
 
 <body class="vertical  dark  ">
@@ -189,7 +190,7 @@ if ($row = $resul->fetch_array()) {
 
         <div class="card mb-4 shadow" style="height: 800px;">
 
-          <?php echo '<embed src="assets/libros/Libro1.pdf #toolbar=0&zoom=170"  width="100%" height="100%" />'; ?>
+          <?php echo '<embed src="assets/libros/Libro1.pdf #toolbar=1&zoom=170" style="#end {visibility: visible;}" width="100%" height="100%" />'; ?>
 
 
         </div>
