@@ -176,6 +176,16 @@ if (isset($_GET["variable"])) {
         <div class="row justify-content-center">
           <div class="col-12 mb-4">
             <div class="row">
+
+              <?php
+              $query = "SELECT Libro_idLibc, AVG(valCal) as prom FROM Calificacion  
+              group BY Libro_idLibc having Libro_idLibc = '$variable'";
+              $resul = $conexion->query($query);
+              if ($row = $resul->fetch_array()) {
+                $promedio = $row['prom'];
+                $promedio = $promedio - 0;
+              }
+              ?>
               <?php
               $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut,idLA, Autor_idAut,idEdi, nomEdi,nomCat,foto_edi ,idLE, Editorial_idEdi 
               FROM Libro
@@ -195,7 +205,7 @@ if (isset($_GET["variable"])) {
                 <article>
                   <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
                     <div class="upper-header">
-                      <div class="mini-title"><span class="badge badge-pill badge-warning">5/5</span></div>
+                      <div class="mini-title"><span class="badge badge-pill badge-warning"><?php echo $promedio ?>/5</span></div>
                       <span class=".avatar-xl img mt-2">
                         <img width="100px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_edi) ?>">
 
@@ -259,145 +269,152 @@ if (isset($_GET["variable"])) {
                   </section>
                 <?php }
                 ?>
-                <div class="card shadow mb-4">
-                  <div class="card-header">
-                    <strong class="card-title"><span class="avatar avatar-sm mt-2">
-                        <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
-                      </span><?php echo $_SESSION['nombre1']; ?> <?php echo $_SESSION['apellido1']; ?></strong>
-                  </div>
-                  <div class="card-body">
+                <?php
+                $idusu = $_SESSION['id'];
+                $sql = $conexion->query("SELECT * FROM Comentario WHERE Usuario_idUsu='$idusu'");
+                $datos = $sql->fetch_object();
+                if (empty($datos->Libro_idLib)) { ?>
+                  <div class="card shadow mb-4">
+                    <div class="card-header">
+                      <strong class="card-title"><span class="avatar avatar-sm mt-2">
+                          <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
+                        </span><?php echo $_SESSION['nombre1']; ?> <?php echo $_SESSION['apellido1']; ?></strong>
+                    </div>
+                    <div class="card-body">
+                      <form class="needs-validation" novalidate="">
+                        <div class="rating__stars">
+                          <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">
+                          <input id="rating-2" class="rating__input rating__input-2" type="radio" name="rating" value="2">
+                          <input id="rating-3" class="rating__input rating__input-3" type="radio" name="rating" value="3">
+                          <input id="rating-4" class="rating__input rating__input-4" type="radio" name="rating" value="4">
+                          <input id="rating-5" class="rating__input rating__input-5" type="radio" name="rating" value="5">
 
-                    <form class="needs-validation" novalidate="">
-                      <div class="rating__stars">
-                        <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">
-                        <input id="rating-2" class="rating__input rating__input-2" type="radio" name="rating" value="2">
-                        <input id="rating-3" class="rating__input rating__input-3" type="radio" name="rating" value="3">
-                        <input id="rating-4" class="rating__input rating__input-4" type="radio" name="rating" value="4">
-                        <input id="rating-5" class="rating__input rating__input-5" type="radio" name="rating" value="5">
-                        <label class="rating__label" for="rating-1">
-                          <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-                            <g transform="translate(16,16)">
-                              <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
-                            </g>
-                            <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                              <g transform="translate(16,16) rotate(180)">
-                                <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
-                                <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                          <label class="rating__label" for="rating-1">
+                            <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                              <g transform="translate(16,16)">
+                                <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
                               </g>
-                              <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
-                                <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                              <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <g transform="translate(16,16) rotate(180)">
+                                  <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
+                                  <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                                </g>
+                                <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
+                                  <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                                </g>
                               </g>
-                            </g>
-                          </svg>
-                          <span class="rating__sr">1 star—Terrible</span>
-                        </label>
-                        <label class="rating__label" for="rating-2">
-                          <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-                            <g transform="translate(16,16)">
-                              <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
-                            </g>
-                            <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                              <g transform="translate(16,16) rotate(180)">
-                                <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
-                                <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                            </svg>
+                            <span class="rating__sr">1 star—Terrible</span>
+                          </label>
+                          <label class="rating__label" for="rating-2">
+                            <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                              <g transform="translate(16,16)">
+                                <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
                               </g>
-                              <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
-                                <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                              <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <g transform="translate(16,16) rotate(180)">
+                                  <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
+                                  <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                                </g>
+                                <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
+                                  <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                                </g>
                               </g>
-                            </g>
-                          </svg>
-                          <span class="rating__sr">2 stars—Bad</span>
-                        </label>
-                        <label class="rating__label" for="rating-3">
-                          <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-                            <g transform="translate(16,16)">
-                              <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
-                            </g>
-                            <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                              <g transform="translate(16,16) rotate(180)">
-                                <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
-                                <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                            </svg>
+                            <span class="rating__sr">2 stars—Bad</span>
+                          </label>
+                          <label class="rating__label" for="rating-3">
+                            <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                              <g transform="translate(16,16)">
+                                <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
                               </g>
-                              <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
-                                <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                              <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <g transform="translate(16,16) rotate(180)">
+                                  <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
+                                  <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                                </g>
+                                <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
+                                  <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                                </g>
                               </g>
-                            </g>
-                          </svg>
-                          <span class="rating__sr">3 stars—OK</span>
-                        </label>
-                        <label class="rating__label" for="rating-4">
-                          <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-                            <g transform="translate(16,16)">
-                              <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
-                            </g>
-                            <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                              <g transform="translate(16,16) rotate(180)">
-                                <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
-                                <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                            </svg>
+                            <span class="rating__sr">3 stars—OK</span>
+                          </label>
+                          <label class="rating__label" for="rating-4">
+                            <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                              <g transform="translate(16,16)">
+                                <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
                               </g>
-                              <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
-                                <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                              <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <g transform="translate(16,16) rotate(180)">
+                                  <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
+                                  <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                                </g>
+                                <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
+                                  <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                                </g>
                               </g>
-                            </g>
-                          </svg>
-                          <span class="rating__sr">4 stars—Good</span>
-                        </label>
-                        <label class="rating__label" for="rating-5">
-                          <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-                            <g transform="translate(16,16)">
-                              <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
-                            </g>
-                            <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                              <g transform="translate(16,16) rotate(180)">
-                                <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
-                                <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                            </svg>
+                            <span class="rating__sr">4 stars—Good</span>
+                          </label>
+                          <label class="rating__label" for="rating-5">
+                            <svg class="rating__star" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                              <g transform="translate(16,16)">
+                                <circle class="rating__star-ring" fill="none" stroke="#000" stroke-width="16" r="8" transform="scale(0)" />
                               </g>
-                              <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
-                                <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
-                                <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                              <g stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <g transform="translate(16,16) rotate(180)">
+                                  <polygon class="rating__star-stroke" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="none" />
+                                  <polygon class="rating__star-fill" points="0,15 4.41,6.07 14.27,4.64 7.13,-2.32 8.82,-12.14 0,-7.5 -8.82,-12.14 -7.13,-2.32 -14.27,4.64 -4.41,6.07" fill="#000" />
+                                </g>
+                                <g transform="translate(16,16)" stroke-dasharray="12 12" stroke-dashoffset="12">
+                                  <polyline class="rating__star-line" transform="rotate(0)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(72)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(144)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(216)" points="0 4,0 16" />
+                                  <polyline class="rating__star-line" transform="rotate(288)" points="0 4,0 16" />
+                                </g>
                               </g>
-                            </g>
-                          </svg>
-                          <span class="rating__sr">5 stars—Excellent</span>
-                        </label>
-                        <p class="rating__display" data-rating="1" hidden>Terrible</p>
-                        <p class="rating__display" data-rating="2" hidden>Bad</p>
-                        <p class="rating__display" data-rating="3" hidden>OK</p>
-                        <p class="rating__display" data-rating="4" hidden>Good</p>
-                        <p class="rating__display" data-rating="5" hidden>Excellent</p>
-                      </div>
-                      <div class="form-group mb-3">
-                        <textarea class="form-control" id="validationTextarea1" placeholder="Comenta..." required="" rows="3"></textarea>
-                        <div class="invalid-feedback">Porfavor asegurese de enviar un comentario</div>
-                      </div>
-                      <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="customControlValidation16" required="">
-                        <label class="custom-control-label" for="customControlValidation16">Acepto todos los terminos y condiciones</label>
-                        <div class="invalid-feedback">Asegurese de aceptar los terminos y condiciones</div>
-                      </div>
-                      <button class="btn btn-primary" type="submit">Publicar comentario</button>
-                    </form>
-                  </div> <!-- /.card-body -->
-                </div>
+                            </svg>
+                            <span class="rating__sr">5 stars—Excellent</span>
+                          </label>
+                          <p class="rating__display" data-rating="1" hidden>Terrible</p>
+                          <p class="rating__display" data-rating="2" hidden>Bad</p>
+                          <p class="rating__display" data-rating="3" hidden>OK</p>
+                          <p class="rating__display" data-rating="4" hidden>Good</p>
+                          <p class="rating__display" data-rating="5" hidden>Excellent</p>
+                        </div>
+                        <div class="form-group mb-3">
+                          <textarea class="form-control" id="validationTextarea1" placeholder="Comenta..." required="" rows="3"></textarea>
+                          <div class="invalid-feedback">Porfavor asegurese de enviar un comentario</div>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-3">
+                          <input type="checkbox" class="custom-control-input" id="customControlValidation16" required="">
+                          <label class="custom-control-label" for="customControlValidation16">Acepto todos los terminos y condiciones</label>
+                          <div class="invalid-feedback">Asegurese de aceptar los terminos y condiciones</div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Publicar comentario</button>
+                      </form>
+                    </div> <!-- /.card-body -->
+                  </div>
+
+                <?php } ?>
                 <!-- /.COMENTARIOS COMIENZA -->
                 <div class="card shadow mb-4">
                   <div class="card shadow">
@@ -408,7 +425,14 @@ if (isset($_GET["variable"])) {
                   </div> <!-- / .card -->
                 </div>
                 <?php
-                $sql = $conexion->query("SELECT * from Comentario where Libro_idLib ='$variable'");
+                $sql = $conexion->query("SELECT idCom, txtCom, Usuario_idUsu, Libro_idLib, txtda, txttime,idUsu, nom1, nom2, ape1, ape2, eda, foto, Seguridad_idSeg, Favorito_idFav, 
+                Suscripcion_idSus,idCal, valCal, Usuario_idUsuc, Libro_idLibc
+                from Usuario
+                INNER JOIN Comentario
+                ON Usuario.idUsu=Comentario.Usuario_idUsu
+                INNER JOIN Calificacion
+                ON Usuario.idUsu=Calificacion.Usuario_idUsuc
+                where Libro_idLib ='$variable'");
                 while ($datos = $sql->fetch_object()) {
                 ?>
                   <div class="card shadow mb-3">
@@ -417,16 +441,16 @@ if (isset($_GET["variable"])) {
                         <div class="col-auto">
                           <!-- /.FOTO Y NOMBRE DE COMENTARIO -->
                           <strong class="card-title"><span class="avatar avatar-sm mt-2">
-                              <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
-                            </span><?php echo $_SESSION['nombre1']; ?> <?php echo $_SESSION['apellido1']; ?></strong>
+                              <img src="data:image/png;base64,<?php echo base64_encode($datos->foto) ?>">
+                            </span><?= $datos->nom1 ?> <?= $datos->nom2 ?></strong>
                         </div>
-                        <span class="badge badge-pill badge-warning">5/5</span>
+                        <span class="badge badge-pill badge-warning"><?= $datos->valCal ?>/5</span>
                         <div class="col">
-                          <small><strong>Dijo el 11:00 April 16, 2020</strong></small>
-                          <div class="mb-2 text-muted small"></div>
+                          <small><strong>Dijo el <?= $datos->txtda ?> a las <?= $datos->txttime ?> </strong></small>
+                          <div class="mb-2 text-muted small"><?= $datos->txtCom ?></div>
                         </div>
                         <div class="col-auto pr-0">
-                          <small class="fe fe-more-vertical fe-16 text-muted"></small>
+
                         </div>
                       </div>
                     </div> <!-- / .card-body -->
