@@ -50,7 +50,7 @@ include "conexion.php";
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
-      <form class="form-inline mr-auto searchform text-muted" action="filtropage.php">
+      <form class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="POST">
         <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
         <select class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
           <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
@@ -249,7 +249,8 @@ include "conexion.php";
                             <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub">Última vez leido</div>
                             <div class="sub"><?= $datos->tiempo_re ?></div>
-                            <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
+                           
                           </div>
                         </div>
                       </div>
@@ -308,7 +309,7 @@ include "conexion.php";
                           <div class="name-job">
                             <h3 class="name"><?= $datos->titLib ?></h3>
                             <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
-                            <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
                           </div>
                         </div>
                       </div>
@@ -348,7 +349,7 @@ include "conexion.php";
                           <div class="name-job">
                             <h3 class="name"><?= $datos->titLib ?></h3>
                             <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
-                            <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
                           </div>
                         </div>
                       </div>
@@ -385,7 +386,7 @@ include "conexion.php";
                             <div class="name-job">
                               <h3 class="name"><?= $datos->titLib ?></h3>
                               <h4 class="name"><?= $datos->fecPub ?></h4>
-                              <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                              <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
                             </div>
                           </div>
                         </div>
@@ -463,7 +464,7 @@ include "conexion.php";
                           <div class="info">
                             <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub"><?= $datos->fecPub ?></div>
-                            <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
                           </div>
                         </div>
                       </div>
@@ -472,27 +473,7 @@ include "conexion.php";
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-lg-9">
-                <div class="row">
-                  <?php
-
-                  $sql = $conexion->query("SELECT * from Categoria");
-                  while ($datos = $sql->fetch_object()) {
-                  ?>
-                    <div class="col-6 col-lg-3 col-md-6">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-md-8">
-                            <h6 class="font-extrabold mb-0"><?= $datos->nomCat ?></h6>
-                          </div>
-                        </div>
-                        <hr class="my-4">
-                      </div>
-                    </div>
-                  <?php }
-                  ?>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
