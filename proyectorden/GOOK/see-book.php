@@ -190,7 +190,7 @@ if (isset($_GET["variable"])) {
         <div class="card mb-4 shadow" style="height: 800px;">
         <div style="position: relative; width:100%;" >
 <div style="width:15%; height: 4vh; background: #323738; position: absolute; right:  0%; "></div>
-          <?php echo '<embed src="data:application/pdf;base64,' . $contlibro . ' #toolbar=1&zoom=170"  width="100%" height="100%" />'; ?>
+          <?php echo '<embed src="data:application/pdf;base64,' . $contlibro . ' #toolbar=1&zoom=160"  width="100%" height="100%" />'; ?>
 
           </div>
         </div>
