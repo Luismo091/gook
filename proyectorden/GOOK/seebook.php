@@ -189,10 +189,12 @@ if ($row = $resul->fetch_array()) {
 
 
         <div class="card mb-4 shadow" style="height: 800px;">
+<div style="position: relative; width:100%;">
+<div style="width:100%; background: #000;" ></div>
 
           <?php echo '<embed src="assets/libros/Libro1.pdf #toolbar=1&zoom=170" style="#end {visibility: visible;}" width="100%" height="100%" />'; ?>
 
-
+          </div>
         </div>
 
       </div>
