@@ -249,7 +249,8 @@ include "conexion.php";
                             <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub">Última vez leido</div>
                             <div class="sub"><?= $datos->tiempo_re ?></div>
-                            <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
+                           
                           </div>
                         </div>
                       </div>
