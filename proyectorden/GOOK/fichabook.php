@@ -187,7 +187,9 @@ if (isset($_GET["variable"])) {
               if ($row = $resul->fetch_array()) {
                 $promedio = $row['prom'];
                 $promedio = $promedio - 0;
-              }else {$promedio=0;}
+              } else {
+                $promedio = 0;
+              }
               ?>
               <?php
               $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut,idLA, Autor_idAut,idEdi, nomEdi,nomCat,foto_edi ,idLE, Editorial_idEdi 
@@ -212,9 +214,8 @@ if (isset($_GET["variable"])) {
                       <span class=".avatar-xl img mt-2">
                         <img width="100px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_edi) ?>">
                       </span>
-                      <a href="#">
+                      <a href="">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 42" style="overflow:visible">
-
                           <g id="fav-circles" transform="translate(24, 19)">
                             <circle cx="3" cy="3" r="3" />
                             <circle cx="3" cy="3" r="3" />
