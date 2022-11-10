@@ -205,7 +205,7 @@ if (isset($_GET["variable"])) {
               INNER JOIN Categoria
               ON Libro.Categoria_idCat=Categoria.idCat
               WHERE idLib = '$variable'");
-              while ($datos = $sql->fetch_object()) {
+              if ($datos = $sql->fetch_object()) {
                 $libroselect = $datos->idLib;
               ?>
                 <article>
@@ -219,8 +219,8 @@ if (isset($_GET["variable"])) {
                       <?php
                       $idusu = $_SESSION['id'];
                       $sql = $conexion->query("SELECT * FROM Favorito WHERE Usu_idusu='$idusu' and Libro_idLib=' $variable'");
-                      $datos = $sql->fetch_object();
-                      if (!empty($datos->Libro_idLib)) { ?>
+                      $datos1 = $sql->fetch_object();
+                      if (!empty($datos1->Libro_idLib)) { ?>
 
                         <a href="fav.php?variablel=<?= $libroselect ?>">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 42" style="overflow:visible">
