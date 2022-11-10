@@ -206,6 +206,7 @@ if (isset($_GET["variable"])) {
               ON Libro.Categoria_idCat=Categoria.idCat
               WHERE idLib = '$variable'");
               while ($datos = $sql->fetch_object()) {
+                $libroselect=$datos->idLib;
               ?>
                 <article>
                   <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
@@ -214,7 +215,7 @@ if (isset($_GET["variable"])) {
                       <span class=".avatar-xl img mt-2">
                         <img width="100px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_edi) ?>">
                       </span>
-                      <a href="">
+                      <a href="fav.php?variablel=<?= $libroselect ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 42" style="overflow:visible">
                           <g id="fav-circles" transform="translate(24, 19)">
                             <circle cx="3" cy="3" r="3" />
@@ -829,7 +830,6 @@ if (isset($_GET["variable"])) {
   <script src="js/scriptlett.js"></script>
   <script src='https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js'></script>
   <script src="js/scriptstar.js"></script>
-  <script src="js/scriptheart.js"></script>
 </body>
 
 </html>
