@@ -35,6 +35,7 @@ $sql = $conexion->query("INSERT INTO
  Seguridad (idSeg, email, clave, Rol_idRol)
  VALUES ('$idSEG','$email','$clav','$chec')");
   if ($sql) {
+    
     $sql = $conexion->query("INSERT INTO
  Usuario (nom1, nom2, ape1, ape2, eda, Seguridad_idSeg)
  VALUES ('$nom1','$nom2','$ape1','$ape2','$edad','$idSEG')");
