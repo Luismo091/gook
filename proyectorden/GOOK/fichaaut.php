@@ -217,32 +217,28 @@ if (isset($_GET["variable"])) {
                     <div class="summary-item">
                       <div class="small-header anim" style="--delay: .3s">Más de <?= $datos->nomAut1 ?></div>
                       <div class="videos">
+                      <div class="card-body">
+
+<div class="options">
                       <?php
                   while ($datos = $sql->fetch_object()) {
                   ?>
-                        <div class="video anim" style="--delay: .4s">
-                          <div class="card-wrapper swiper-wrapper">
-                            <div class="card swiper-slide">
-                              <div class="image-box">
-                                <img src="  data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
-                              </div>
-                             
-                              <div class="profile-details">
-                                <img src="<?php echo $datos->foto_aut; ?>" alt="" />
-                                <div class="name-job">
-                                  <h3 class="name"><?= $datos->titLib ?></h3>
-                                  <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
-                                  <a href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><i class="fe-maximize-2"></i></a>
-                                </div>
-                              </div>
-                            </div>
+                         <div class="option active" style="--optionBackground:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
+                        <div class="shadow"></div>
+                        <div class="label" style="text-shadow:0 0 5px #333333, 0 0 10px #333333, 0 0 15px #FFF, 0 0 20px #333333, 0 0 30px #333333, 0 0 40px #333333, 0 0 55px #333333, 0 0 75px #333333;">
+                          <div class="info">
+                            <div class="main"><?= $datos->titLib ?></div>
+                            <div class="sub">Última vez leido</div>
+                            
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
+                           
                           </div>
-
                         </div>
+                      </div>
                         <?php }
                   ?>
-
-
+</div>
+</div>
                       </div>
 
 
