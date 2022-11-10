@@ -251,8 +251,8 @@ include "conexion.php";
                             <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub">Última vez leido</div>
                             <div class="sub"><?= $datos->tiempo_re ?></div>
-                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
-                           
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
+
                           </div>
                         </div>
                       </div>
@@ -311,7 +311,7 @@ include "conexion.php";
                           <div class="name-job">
                             <h3 class="name"><?= $datos->titLib ?></h3>
                             <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
-                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
                           </div>
                         </div>
                       </div>
@@ -351,7 +351,7 @@ include "conexion.php";
                           <div class="name-job">
                             <h3 class="name"><?= $datos->titLib ?></h3>
                             <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
-                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
                           </div>
                         </div>
                       </div>
@@ -388,7 +388,7 @@ include "conexion.php";
                             <div class="name-job">
                               <h3 class="name"><?= $datos->titLib ?></h3>
                               <h4 class="name"><?= $datos->fecPub ?></h4>
-                              <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
+                              <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
                             </div>
                           </div>
                         </div>
@@ -466,7 +466,7 @@ include "conexion.php";
                           <div class="info">
                             <div class="main"><?= $datos->titLib ?></div>
                             <div class="sub"><?= $datos->fecPub ?></div>
-                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
                           </div>
                         </div>
                       </div>
@@ -475,7 +475,7 @@ include "conexion.php";
                   </div>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>

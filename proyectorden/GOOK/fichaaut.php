@@ -211,7 +211,9 @@ if (isset($_GET["variable"])) {
 
                 <?php }
                 ?>
-                
+                <?php
+                  while ($datos = $sql->fetch_object()) {
+                  ?>
                 <section class="summary">
                 
                     <div class="summary-item">
@@ -245,10 +247,8 @@ if (isset($_GET["variable"])) {
                     </div>
                  
                 </section>
-
-
-                
-                
+                <?php }
+                  ?>
 
 
             </div> <!-- /.card-body -->
