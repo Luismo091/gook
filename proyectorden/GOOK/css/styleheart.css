@@ -9,9 +9,17 @@ svg {
 }
 
 #fav-heart {
-  stroke: #5F5B58;
+  stroke: #5f5b5800;
   stroke-width: 3;
   fill: #FBFBFB;
+  transform-origin: center center;
+  transition: fill 250ms, stroke 150ms;
+}
+
+#fav-heartred {
+  stroke: #ffffff00;
+  stroke-width: 3;
+  fill: #b91414;
   transform-origin: center center;
   transition: fill 250ms, stroke 150ms;
 }

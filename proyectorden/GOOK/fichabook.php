@@ -206,7 +206,7 @@ if (isset($_GET["variable"])) {
               ON Libro.Categoria_idCat=Categoria.idCat
               WHERE idLib = '$variable'");
               while ($datos = $sql->fetch_object()) {
-                $libroselect=$datos->idLib;
+                $libroselect = $datos->idLib;
               ?>
                 <article>
                   <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
@@ -215,23 +215,33 @@ if (isset($_GET["variable"])) {
                       <span class=".avatar-xl img mt-2">
                         <img width="100px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_edi) ?>">
                       </span>
-                      <a href="fav.php?variablel=<?= $libroselect ?>">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 42" style="overflow:visible">
-                          <g id="fav-circles" transform="translate(24, 19)">
-                            <circle cx="3" cy="3" r="3" />
-                            <circle cx="3" cy="3" r="3" />
-                            <circle cx="3" cy="3" r="3" />
-                            <circle cx="3" cy="3" r="3" />
-                            <circle cx="3" cy="3" r="3" />
-                            <circle cx="3" cy="3" r="3" />
-                            <circle cx="3" cy="3" r="3" />
-                            <circle cx="3" cy="3" r="3" />
-                          </g>
 
-                          <path id="fav-heart" d="M12.7451667,0.0104661836 C9.47516667,0.0104661836 6.20516667,1.29046618 3.72516667,3.82046618 C-1.24172222,8.90940121 -1.24172222,17.0315312 3.72516667,22.1204662 L22.7051667,41.4604662 C23.0436748,41.805563 23.5067625,42 23.9901667,42 C24.4735708,42 24.9366586,41.805563 25.2751667,41.4604662 L44.2751667,22.1204662 C49.2408474,17.0349252 49.2408474,8.91600715 44.2751667,3.83046618 C41.8962578,1.40563426 38.6420796,0.039450324 35.2451667,0.039450324 C31.8482537,0.039450324 28.5940756,1.40563426 26.2151667,3.83046618 L24.0051667,6.09046618 L21.7751667,3.82046618 C19.3997023,1.38947059 16.1440737,0.0194386192 12.7451667,0.0204661836 L12.7451667,0.0104661836 Z" />
+                      <?php
+                      $idusu = $_SESSION['id'];
+                      $sql = $conexion->query("SELECT * FROM Favorito WHERE Usu_idusu='$idusu' and Libro_idLib=' $variable'");
+                      $datos = $sql->fetch_object();
+                      if (!empty($datos->Libro_idLib)) { ?>
 
-                        </svg>
-                      </a>
+                        <a href="fav.php?variablel=<?= $libroselect ?>">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 42" style="overflow:visible">
+                            <g id="fav-circles" transform="translate(24, 19)">
+                              <circle cx="3" cy="3" r="3" />
+                              <circle cx="3" cy="3" r="3" />
+                              <circle cx="3" cy="3" r="3" />
+                              <circle cx="3" cy="3" r="3" />
+                              <circle cx="3" cy="3" r="3" />
+                              <circle cx="3" cy="3" r="3" />
+                              <circle cx="3" cy="3" r="3" />
+                              <circle cx="3" cy="3" r="3" />
+                            </g>
+
+                            <path id="fav-heart" d="M12.7451667,0.0104661836 C9.47516667,0.0104661836 6.20516667,1.29046618 3.72516667,3.82046618 C-1.24172222,8.90940121 -1.24172222,17.0315312 3.72516667,22.1204662 L22.7051667,41.4604662 C23.0436748,41.805563 23.5067625,42 23.9901667,42 C24.4735708,42 24.9366586,41.805563 25.2751667,41.4604662 L44.2751667,22.1204662 C49.2408474,17.0349252 49.2408474,8.91600715 44.2751667,3.83046618 C41.8962578,1.40563426 38.6420796,0.039450324 35.2451667,0.039450324 C31.8482537,0.039450324 28.5940756,1.40563426 26.2151667,3.83046618 L24.0051667,6.09046618 L21.7751667,3.82046618 C19.3997023,1.38947059 16.1440737,0.0194386192 12.7451667,0.0204661836 L12.7451667,0.0104661836 Z" />
+
+                          </svg>
+                        </a>
+                      <?php }
+                      ?>
+
                     </div>
 
                     <div class="lower-header">
