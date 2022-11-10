@@ -198,7 +198,7 @@ if (isset($_GET["variable"])) {
                     <div class="lower-header">
                       <h1>
                         <span class=".avatar-lg img mt-2">
-                         
+                        <img width="160px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_aut) ?>">
                         </span> <?= $datos->nomAut1 ?>,<?= $datos->apeAut1 ?>
                       </h1>
                       <p class="subtitle"><?= $datos->nomEdi ?>, <?= $datos->fecLib ?></p>
