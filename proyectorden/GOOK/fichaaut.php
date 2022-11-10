@@ -211,21 +211,22 @@ if (isset($_GET["variable"])) {
 
                 <?php }
                 ?>
-                <?php
-                  while ($datos = $sql->fetch_object()) {
-                  ?>
+                
                 <section class="summary">
                 
                     <div class="summary-item">
                       <div class="small-header anim" style="--delay: .3s">Más de <?= $datos->nomAut1 ?></div>
                       <div class="videos">
-
+                      <?php
+                  while ($datos = $sql->fetch_object()) {
+                  ?>
                         <div class="video anim" style="--delay: .4s">
                           <div class="card-wrapper swiper-wrapper">
                             <div class="card swiper-slide">
                               <div class="image-box">
                                 <img src="  data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
                               </div>
+                             
                               <div class="profile-details">
                                 <img src="<?php echo $datos->foto_aut; ?>" alt="" />
                                 <div class="name-job">
@@ -238,6 +239,8 @@ if (isset($_GET["variable"])) {
                           </div>
 
                         </div>
+                        <?php }
+                  ?>
 
 
                       </div>
@@ -249,8 +252,7 @@ if (isset($_GET["variable"])) {
 
 
                 
-                <?php }
-                  ?>
+                
 
 
             </div> <!-- /.card-body -->
