@@ -187,7 +187,7 @@ if (isset($_GET["variable"])) {
               if ($row = $resul->fetch_array()) {
                 $promedio = $row['prom'];
                 $promedio = $promedio - 0;
-              }
+              }else {$promedio=0;}
               ?>
               <?php
               $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut,idLA, Autor_idAut,idEdi, nomEdi,nomCat,foto_edi ,idLE, Editorial_idEdi 
