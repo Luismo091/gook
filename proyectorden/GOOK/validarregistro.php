@@ -66,9 +66,14 @@ if (empty($datos["email"])) {
 
 
 }else{
-    echo "<script>alert('emailocupado')</script>";
-    header("location:registrogook.php");
-   
+    //echo "<script>alert('emailocupado')</script>";
+    
+    //header("location:registrogook.php");
+    echo'<script type="text/javascript">
+alert("emailocupado");
+window.location.href="registrogook.php";
+</script>';
+    
 }
 
 
