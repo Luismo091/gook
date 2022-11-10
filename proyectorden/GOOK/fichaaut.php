@@ -198,7 +198,7 @@ if (isset($_GET["variable"])) {
                     <div class="lower-header">
                       <h1>
                         <span class=".avatar-lg img mt-2">
-                         
+
                         </span> <?= $datos->nomAut1 ?>,<?= $datos->apeAut1 ?>
                       </h1>
                       <p class="subtitle"><?= $datos->nomEdi ?>, <?= $datos->fecLib ?></p>
@@ -212,43 +212,49 @@ if (isset($_GET["variable"])) {
                 <?php }
                 ?>
                 <?php
-                  while ($datos = $sql->fetch_object()) {
-                  ?>
-                <section class="summary">
-                
+                while ($datos = $sql->fetch_object()) {
+                ?>
+                  <section class="summary">
+
                     <div class="summary-item">
                       <div class="small-header anim" style="--delay: .3s">Más de <?= $datos->nomAut1 ?></div>
                       <div class="videos">
-                      <div class="card-body">
+                      <div class="row">
+                      <div class="container swiper">
+                        <div class="slide-container">
 
-<div class="options">
-                      <?php
-                  while ($datos = $sql->fetch_object()) {
-                  ?>
-                         <div class="option active" style="--optionBackground:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
-                        <div class="shadow"></div>
-                        <div class="label" style="text-shadow:0 0 5px #333333, 0 0 10px #333333, 0 0 15px #FFF, 0 0 20px #333333, 0 0 30px #333333, 0 0 40px #333333, 0 0 55px #333333, 0 0 75px #333333;">
-                          <div class="info">
-                            <div class="main"><?= $datos->titLib ?></div>
-                            <div class="sub">Última vez leido</div>
-                            
-                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span    class="fe fe-arrow-right fe-16"></span></a>
-                           
+                          <div class="card-wrapper swiper-wrapper">
+                            <?php
+                            while ($datos = $sql->fetch_object()) {
+                            ?>
+                              <div class="card swiper-slide">
+                          <div class="image-box">
+                            <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                          </div>
+                          <div class="profile-details">
+                            <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                            <div class="name-job">
+                              <h3 class="name"><?= $datos->titLib ?></h3>
+                              <h4 class="name"><?= $datos->fecPub ?></h4>
+                              <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                        <?php }
-                  ?>
-</div>
-</div>
-                      </div>
+                            <?php }
+                            ?>
+                          </div>
+                        </div>
 
+
+                      </div>
+                      </div>
+                    </div>
 
                     </div>
-                 
-                </section>
+
+                  </section>
                 <?php }
-                  ?>
+                ?>
 
 
             </div> <!-- /.card-body -->
