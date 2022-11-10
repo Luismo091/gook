@@ -55,11 +55,10 @@ if (empty($datos["email"])) {
      Usuario (idUsu,nom1, nom2, ape1, ape2, eda, Seguridad_idSeg,Suscripcion_idSus)
      VALUES ('$idUSU','$nom1','$nom2','$ape1','$ape2','$edad','$idSEG','1')");
       if ($sql) {
-          header("");
+        header("location:main.php");
       } else {
       
-      }
-          header("");
+      }         
       } else {
       
       }
@@ -68,6 +67,7 @@ if (empty($datos["email"])) {
 
 }else{
     echo "<script>alert('emailocupado')</script>";
+    header("location:registrogook.php");
    
 }
 
