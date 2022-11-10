@@ -16,4 +16,7 @@ $edad = $_GET["inputedad"];
 $clav = $_GET["inputpassword"];
 $clac = $_GET["inputpasswordconfi"];
 
+
+echo "INSERT INTO `GookPochita`.`Usuario` (`idUsu`, `nom1`, `nom2`, `ape1`, `ape2`, `eda`, `Seguridad_idSeg`, `Suscripcion_idSus`) VALUES ('5', '1', '1', '1', '1', '1', '5', '1')";
+
 ?>
