@@ -211,18 +211,20 @@ if (isset($_GET["variable"])) {
                 <article>
                   <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
                     <div class="upper-header">
-                      <div class="mini-title"><span class="badge badge-pill badge-warning"><?php echo $promedio ?>/5</span></div>
+                      <div class="mini-title">
+                      <div>
                       <span class=".avatar-xl img mt-2">
-                        <img width="100px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_edi) ?>">
-                      </span>
-
+                        <img  width="100px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_edi) ?>">
+                      </span></div>
+                        
+                      </div>
                       <?php
                       $idusu = $_SESSION['id'];
                       $sql = $conexion->query("SELECT * FROM Favorito WHERE Usu_idusu='$idusu' and Libro_idLib=' $variable'");
                       $datos1 = $sql->fetch_object();
                       if (empty($datos1->Libro_idLib)) { ?>
 
-                        <a href="fav.php?variablel=<?= $libroselect ?>">
+                        <a href="fav.php?variable1=<?= $libroselect ?>">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 42" style="overflow:visible">
                             <g id="fav-circles" transform="translate(24, 19)">
                               <circle cx="3" cy="3" r="3" />
@@ -239,10 +241,10 @@ if (isset($_GET["variable"])) {
 
                           </svg>
                         </a>
-                      <?php } else { ?> <a href="fav.php?variablel=<?= $libroselect ?>">
+                      <?php } else { ?> <a>
                           
                         <div style="float:right; text-align: center;">
-                        <a href="">
+                        <a href="fav.php?variable1=<?= $libroselect ?>">
                           <div>
                           <img width="100px" src="https://i.imgur.com/PklShmT.png">
                           </div>
@@ -250,7 +252,7 @@ if (isset($_GET["variable"])) {
                             <span style="color: #ffffff; text-shadow: black 0.1em 0.1em 0.2em">Plis Fav</span>
                           </div>
                         </a>
-                        <a href="fav.php?variable=<?= $libroselect ?>">
+                        <a href="fav.php?variablel=<?= $libroselect ?>">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 42" style="overflow:visible">
                             <g id="fav-circles" transform="translate(24, 19)">
                               <circle cx="3" cy="3" r="3" />
@@ -307,6 +309,9 @@ if (isset($_GET["variable"])) {
                         <?= $datos->titLib ?>
                       </h1>
                       <p class="subtitle"><?= $datos->nomEdi ?>, <?= $datos->fecLib ?></p>
+                      <div>
+                        <span style="font-size:15px;" class="badge badge-pill badge-warning"><?php echo $promedio ?>/5</span>
+              </div>
                     </div>
                   </header>
                   <section class="summary">
