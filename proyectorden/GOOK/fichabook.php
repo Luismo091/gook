@@ -275,7 +275,7 @@ if (isset($_GET["variable"])) {
                 ?>
                 <?php
                 $idusu = $_SESSION['id'];
-                $sql = $conexion->query("SELECT * FROM Comentario WHERE Usuario_idUsu='$idusu'");
+                $sql = $conexion->query("SELECT * FROM Comentario WHERE Usuario_idUsu='$idusu' and Libro_idLib=' $variable' ");
                 $datos = $sql->fetch_object();
                 if (empty($datos->Libro_idLib)) { ?>
                   <div class="card shadow mb-4">
