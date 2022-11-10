@@ -204,18 +204,16 @@ if (isset($_GET["variable"])) {
               ?>
                 <article>
                   <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
-                    <div class="upper-header">
+                  <div class="upper-header">
                       <div class="mini-title"><span class="badge badge-pill badge-warning"><?php echo $promedio ?>/5</span></div>
                       <span class=".avatar-xl img mt-2">
                         <img width="100px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_edi) ?>">
-
                       </span>
-
                     </div>
 
                     <div class="lower-header">
                       <div style="float:right; text-align: center;">
-                        <a href="seebook.php?variable=<?= $datos->idLib ?>">
+                        <a href="see-book.php?variable=<?= $datos->idLib ?>">
                           <div>
                             <img width="100px" src="assets/images/AzulBlanco.png">
                           </div>
@@ -224,6 +222,7 @@ if (isset($_GET["variable"])) {
                           </div>
                         </a>
                       </div>
+
 
 
                       <div class="tags-container">
@@ -253,14 +252,14 @@ if (isset($_GET["variable"])) {
                       <p class="item-text"><span class="item-data">
                           <img width="60px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_aut) ?>">
                           <span class=".avatar-lg img mt-2">
-                      
-                          <a href="fichaaut.php?variable=<?= $datos->idAut ?>" class="subtitle"><?= $datos->nomAut1 ?>, <?= $datos->apeAut1 ?></a>
-                        
-                          
+
+                            <a href="fichaaut.php?variable=<?= $datos->idAut ?>" class="subtitle"><?= $datos->nomAut1 ?>, <?= $datos->apeAut1 ?></a>
+
+
                     </div>
                     <div class=" summary-item">
-                        <h5 class="item-title">Vistas</h5>
-                        <p class="item-text"><span class="item-data"><?= $datos->lecturas ?></span> Vistas</p>
+                      <h5 class="item-title">Vistas</h5>
+                      <p class="item-text"><span class="item-data"><?= $datos->lecturas ?></span> Vistas</p>
                     </div>
                     <div class="summary-item">
                       <h5 class="item-title">Publicado y distribuido</h5>
