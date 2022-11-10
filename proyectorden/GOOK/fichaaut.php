@@ -246,6 +246,9 @@ if (isset($_GET["variable"])) {
                     </div>
                  
                 </section>
+
+
+                
                 <?php }
                   ?>
 
