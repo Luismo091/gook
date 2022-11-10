@@ -212,10 +212,10 @@ if (isset($_GET["variable"])) {
                 <?php }
                 ?>
                 <?php
-                  while ($datos = $sql->fetch_object()) {
-                  ?>
-                <section class="summary">
-                
+                while ($datos = $sql->fetch_object()) {
+                ?>
+
+                  <div class="main-container">
                     <div class="summary-item">
                       <div class="small-header anim" style="--delay: .3s">Más de <?= $datos->nomAut1 ?></div>
                       <div class="videos">
@@ -244,10 +244,11 @@ if (isset($_GET["variable"])) {
 
 
                     </div>
-                 
-                </section>
+                  </div>
+
+
                 <?php }
-                  ?>
+                ?>
 
 
             </div> <!-- /.card-body -->
