@@ -49,32 +49,32 @@
                 <div class="form">
 
                     <label for="inputEmail4">Correo</label>
-                    <input type="email" class="form-control required" name="inputemail">
+                    <input type="email" class="form-control" name="inputemail" required="true">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="firstname">Primer Nombre</label>
-                        <input type="text" name="firstname" class="form-control ">
+                        <input type="text" name="inputname1" class="form-control" required="true">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastname">Segundo Nombre</label>
-                        <input type="text" name="2firstname" class="form-control">
+                        <input type="text" name="inputname2" class="form-control">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastname">Primer Apellido</label>
-                        <input type="text" name="lastname" class="form-control">
+                        <input type="text" name="inputlastname1" class="form-control" required="true">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastname">Segundo Apellido</label>
-                        <input type="text" name="2lastname" class="form-control">
+                        <input type="text" name="inputlastname2" class="form-control">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastname">Edad</label>
-                        <input type="number" name="edad" class="form-control">
+                        <input type="number" name="inputedad" class="form-control" required="true">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="escritor">¿Quieres Ser Escritor?</label>
-                        <input type="checkbox" style="left:0px; width: 50px; " name="escritor" class="form-control">
+                        <input type="checkbox" style="left:0px; width: 50px; " name="inputescritor" class="form-control">
                         <p style="margin-left: 51px; margin-top: 6px;" for="escritor">Marca si quieres ser escritor</p>
                         </input>
                     </div>
@@ -83,11 +83,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="inputPassword5">Nueva Contraseña</label>
-                            <input type="password" class="form-control" id="inputPassword5" required="true">
+                            <input type="password" class="form-control" name="inputpassword" required="true">
                         </div>
                         <div class="form-group">
                             <label for="inputPassword6">Confirma Contraseña</label>
-                            <input type="password" class="form-control" id="confiPassword6" required="true">
+                            <input type="password" class="form-control" name="inputpasswordconfi" required="true">
                         </div>
                     </div>
                     <div class="col-md-6">

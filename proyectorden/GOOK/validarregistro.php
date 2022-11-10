@@ -2,10 +2,14 @@
  session_start();
  
     $email = $_GET["inputemail"];
-    $nom1 = $_GET["firstname"];
-    $nom2 = $_GET["2firstname"];
-    $ape1 = $_GET["lastname"];
-    $ape2 = $_GET["lastname"];
+    $nom1 = $_GET["inputname1"];
+    $nom2 = $_GET["inputname2"];
+    $ape1 = $_GET["inputlastname1"];
+    $ape2 = $_GET["inputlastname2"];
+    $edad = $_GET["inputedad"];
+    $chec = $_GET["inputescritor"];
+    $clav = $_GET["inputpassword"];
+    $clac = $_GET["inputpasswordconfi"];
     
     echo "<script>alert($email$nom1$nom2$ape1$ape2)</script>";
     
