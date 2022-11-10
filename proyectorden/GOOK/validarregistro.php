@@ -71,7 +71,7 @@ if (empty($datos["email"])) {
     //header("location:registrogook.php");
     echo'<script type="text/javascript">
 alert("emailocupado");
-window.location.href="registrogook.php";
+history.back();
 </script>';
     
 }
