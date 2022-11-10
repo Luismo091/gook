@@ -2,6 +2,7 @@
 session_start();
 include "conexion.php";
 if (empty($_SESSION['id'])) {
+  $idusu = $_SESSION['id'];
   header("location:page-404.html");
 }
 
@@ -49,6 +50,7 @@ if (isset($_GET["variable"])) {
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/stylelett.css">
   <link rel="stylesheet" href="css/stylestar.css">
+  <link rel="stylesheet" href="css/styleheart.css">
 </head>
 
 <body class="vertical  dark  ">
@@ -178,6 +180,7 @@ if (isset($_GET["variable"])) {
             <div class="row">
 
               <?php
+              $idusu = $_SESSION['id'];
               $query = "SELECT Libro_idLibc, AVG(valCal) as prom FROM Calificacion  
               group BY Libro_idLibc having Libro_idLibc = '$variable'";
               $resul = $conexion->query($query);
@@ -204,11 +207,12 @@ if (isset($_GET["variable"])) {
               ?>
                 <article>
                   <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
-                  <div class="upper-header">
+                    <div class="upper-header">
                       <div class="mini-title"><span class="badge badge-pill badge-warning"><?php echo $promedio ?>/5</span></div>
                       <span class=".avatar-xl img mt-2">
                         <img width="100px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_edi) ?>">
                       </span>
+
                     </div>
 
                     <div class="lower-header">
@@ -252,10 +256,7 @@ if (isset($_GET["variable"])) {
                       <p class="item-text"><span class="item-data">
                           <img width="60px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_aut) ?>">
                           <span class=".avatar-lg img mt-2">
-
                             <a href="fichaaut.php?variable=<?= $datos->idAut ?>" class="subtitle"><?= $datos->nomAut1 ?>, <?= $datos->apeAut1 ?></a>
-
-
                     </div>
                     <div class=" summary-item">
                       <h5 class="item-title">Vistas</h5>
@@ -428,7 +429,8 @@ if (isset($_GET["variable"])) {
                   </div> <!-- / .card -->
                 </div>
                 <?php
-                $sql = $conexion->query("SELECT idCom, txtCom, Usuario_idUsu, Libro_idLib, txtda, txttime,idUsu, nom1, nom2, ape1, ape2, eda, foto, Seguridad_idSeg, Favorito_idFav, 
+                $idusu = $_SESSION['id'];
+                $sql = $conexion->query("SELECT idCom, txtCom, Usuario_idUsu, Libro_idLib, txtda, txttime,idUsu, nom1, nom2, ape1, ape2, eda, foto, Seguridad_idSeg, 
                 Suscripcion_idSus,idCal, valCal, Usuario_idUsuc, Libro_idLibc
                 from Usuario
                 INNER JOIN Comentario
@@ -809,6 +811,7 @@ if (isset($_GET["variable"])) {
   <script src="js/scriptlett.js"></script>
   <script src='https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js'></script>
   <script src="js/scriptstar.js"></script>
+  <script src="js/scriptheart.js"></script>
 </body>
 
 </html>

@@ -8,11 +8,7 @@ if (empty($_POST['inputEmail']) || empty($_POST['inputPassword'])) {
 
     $email = $_POST['inputEmail'];
     $clave = $_POST['inputPassword'];
-    $query = "SELECT idSeg, email, clave, 
-    Rol_idRol,idUsu, nom1, nom2, ape1, ape2, 
-    eda, foto, Seguridad_idSeg, Favorito_idFav,
-     Suscripcion_idSus
-     FROM Seguridad INNER JOIN Usuario ON Seguridad.idSeg=Usuario.Seguridad_idSeg
+    $query = "SELECT idSeg, email, clave,Rol_idRol,idUsu, nom1, nom2, ape1, ape2,eda, foto, Seguridad_idSeg,Suscripcion_idSus FROM Seguridad INNER JOIN Usuario ON Seguridad.idSeg=Usuario.Seguridad_idSeg
     WHERE Seguridad.email='$email' AND  Seguridad.clave='$clave'";
     $resul = $conexion->query($query);
     if ($datos = $resul->fetch_array()) {
