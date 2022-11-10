@@ -250,7 +250,7 @@ if (isset($_GET["variable"])) {
                             <span style="color: #ffffff; text-shadow: black 0.1em 0.1em 0.2em">Plis Fav</span>
                           </div>
                         </a>
-                        <a href="fav.php?variablel=<?= $libroselect ?>">
+                        <a href="fav.php?variable=<?= $libroselect ?>">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 42" style="overflow:visible">
                             <g id="fav-circles" transform="translate(24, 19)">
                               <circle cx="3" cy="3" r="3" />
