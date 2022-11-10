@@ -221,7 +221,6 @@ if (isset($_GET["variable"])) {
                       $sql = $conexion->query("SELECT * FROM Favorito WHERE Usu_idusu='$idusu' and Libro_idLib=' $variable'");
                       $datos1 = $sql->fetch_object();
                       if (empty($datos1->Libro_idLib)) { ?>
-
                         <a href="fav.php?variablel=<?= $libroselect ?>">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 42" style="overflow:visible">
                             <g id="fav-circles" transform="translate(24, 19)">
@@ -239,17 +238,8 @@ if (isset($_GET["variable"])) {
 
                           </svg>
                         </a>
-                      <?php } else { ?> <a href="fav.php?variablel=<?= $libroselect ?>">
-                          
+                      <?php } else { ?>                      
                         <div style="float:right; text-align: center;">
-                        <a href="">
-                          <div>
-                          <img width="100px" src="https://i.imgur.com/PklShmT.png">
-                          </div>
-                          <div>
-                            <span style="color: #ffffff; text-shadow: black 0.1em 0.1em 0.2em">Plis Fav</span>
-                          </div>
-                        </a>
                         <a href="fav.php?variablel=<?= $libroselect ?>">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 42" style="overflow:visible">
                             <g id="fav-circles" transform="translate(24, 19)">
