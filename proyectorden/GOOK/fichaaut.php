@@ -198,7 +198,7 @@ if (isset($_GET["variable"])) {
                     <div class="lower-header">
                       <h1>
                         <span class=".avatar-lg img mt-2">
-                          <img width="160px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_aut) ?>">
+                         
                         </span> <?= $datos->nomAut1 ?>,<?= $datos->apeAut1 ?>
                       </h1>
                       <p class="subtitle"><?= $datos->nomEdi ?>, <?= $datos->fecLib ?></p>
@@ -212,22 +212,25 @@ if (isset($_GET["variable"])) {
                 <?php }
                 ?>
                 <?php
-                while ($datos = $sql->fetch_object()) {
-                ?>
-
-                  <div class="main-container">
+                  while ($datos = $sql->fetch_object()) {
+                  ?>
+                <section class="summary">
+                
                     <div class="summary-item">
                       <div class="small-header anim" style="--delay: .3s">Más de <?= $datos->nomAut1 ?></div>
                       <div class="videos">
-
+                      <?php
+                  while ($datos = $sql->fetch_object()) {
+                  ?>
                         <div class="video anim" style="--delay: .4s">
                           <div class="card-wrapper swiper-wrapper">
                             <div class="card swiper-slide">
                               <div class="image-box">
-                                <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                                <img src="  data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
                               </div>
+                             
                               <div class="profile-details">
-                                <img src="data:image/jpg;base64,<?php echo base64_encode($datos->foto_aut) ?>" alt="" />
+                                <img src="<?php echo $datos->foto_aut; ?>" alt="" />
                                 <div class="name-job">
                                   <h3 class="name"><?= $datos->titLib ?></h3>
                                   <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
@@ -238,17 +241,18 @@ if (isset($_GET["variable"])) {
                           </div>
 
                         </div>
+                        <?php }
+                  ?>
 
 
                       </div>
 
 
                     </div>
-                  </div>
-
-
+                 
+                </section>
                 <?php }
-                ?>
+                  ?>
 
 
             </div> <!-- /.card-body -->
