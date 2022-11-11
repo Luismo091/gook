@@ -180,9 +180,6 @@ if ($row = $resul->fetch_array()) {
         <div class="row justify-content-center">
           <div class="col-12">
             <h1 class="page-title"><?php echo $titulo; ?></h1>
-            <h1 class="page-title"><?php echo $fechaActual; ?></h1>
-            <h1 class="page-title"><?php echo $tiempo; ?></h1>
-            <h1 class="page-title"><?php echo $usuid; ?></h1>
           </div> <!-- .col-12 -->
 
         </div> <!-- .row -->

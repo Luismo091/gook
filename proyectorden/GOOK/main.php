@@ -42,15 +42,13 @@ include "conexion.php";
 
   <div class="wrapper">
 
-
-
-
-
     <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
+
       <form class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="POST">
+
         <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
         <select class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
           <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
@@ -61,9 +59,9 @@ include "conexion.php";
           }
           ?>
         </select>
-<input class="nav-link text-muted my-2" type="submit"></input>
-          
-        
+        <input class="nav-link text-muted my-2" type="submit"></input>
+
+
         <!--<a class="nav-link text-muted my-2" type="submit">
           <span class="fe fe-arrow-right fe-16"></span>
         </a>-->
@@ -84,8 +82,8 @@ include "conexion.php";
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span  class="avatar avatar-sm mt-2">
-              <img  src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
+            <span class="avatar avatar-sm mt-2">
+              <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -95,10 +93,12 @@ include "conexion.php";
         </li>
       </ul>
     </nav>
+    
     <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
       <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
         <i class="fe fe-x"><span class="sr-only"></span></i>
       </a>
+
       <nav class="vertnav navbar navbar-light">
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
@@ -142,9 +142,9 @@ include "conexion.php";
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="see-book.php?variable=1">
+            <a class="nav-link" href="sesion.php">
               <i class="fe fe-profile fe-16"></i>
-              <span class="ml-3 item-text">Home</span>
+              <span class="ml-3 item-text">Salir</span>
             </a>
           </li>
 
