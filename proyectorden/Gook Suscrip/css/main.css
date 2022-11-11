@@ -1550,15 +1550,10 @@ li.sub-menu--item.nav-item-has-children i {
   line-height: 28px;
   margin-bottom: 0;
 }
-@font-face {
-  font-family: 'Open Sans';
-  src: url('fonts/OpenSans-Regular.ttf') format('truetype');
-  font-style: normal;
-  font-weight: normal;
-}
+
 /*Section heading style-4*/
 .section-heading-4 h2 {
-  font-family: Gilroy-ExtraBold.otf;
+  font-family: Karla;
   color: #1F1F1F;
   font-size: 34px;
   font-weight: 700;
