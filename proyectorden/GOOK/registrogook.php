@@ -74,7 +74,7 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="lastname">Foto de Perfil</label> 
-                        <input type="file" id="example-fileinput" class="form-control-file">
+                        <input type="file" id="example-fileinput" name="image" class="form-control-file" required="true">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="escritor">¿Quieres Ser Escritor?</label>

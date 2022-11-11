@@ -53,10 +53,15 @@ if($clav==$clac){
          Seguridad (idSeg, email, clave, Rol_idRol)
          VALUES ('$idSEG','$email','$clav','$chec')");
           if ($sql) {
+           $image;
+            if(isset($_GET["submit"])){
+                $check = getimagesize($_FILES["image"]["tmp_name"]);
+                if($check !== false)
+                $image = $_FILES['image']['name'];
+                $foto = addslashes(file_get_contents($image));
+            }
 
-            $sql3 = $conexion->query("SELECT foto FROM Usuario WHERE idUsu='0';");
-        $datos3=$sql3->fetch_array();
-        $foto=$datos["foto"];
+          
             //$d=rand(1,300);
             $sql = $conexion->query("INSERT INTO
          Usuario (idUsu,nom1, nom2, ape1, ape2, eda, foto, Seguridad_idSeg,Suscripcion_idSus)
