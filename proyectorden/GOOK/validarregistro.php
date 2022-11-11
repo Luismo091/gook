@@ -1,5 +1,5 @@
 <?php
- session_start();
+
  include "conexion.php";
  if (empty($_GET['inputescritor'])) {    
     $chec = "3";
@@ -58,7 +58,7 @@ if($clav==$clac){
          Usuario (idUsu,nom1, nom2, ape1, ape2, eda, Seguridad_idSeg,Suscripcion_idSus)
          VALUES ('$idUSU','$nom1','$nom2','$ape1','$ape2','$edad','$idSEG','1')");
           if ($sql) {
-            header("location:main.php");
+            header("location:registrotomain.php?email=$email&clave=$clav");
           } else {
           
           }         
