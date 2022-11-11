@@ -612,11 +612,6 @@
   <script src='https://unpkg.com/vue-the-mask@0.11.1/dist/vue-the-mask.js'></script>
   <script src="js/script.js"></script>
 
-
-
-
-
-
 </body>
 
 </html>

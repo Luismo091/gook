@@ -126,7 +126,7 @@ if (isset($_GET["variable"])) {
       </nav>
     </aside>
 
-    
+
 
 
 
@@ -146,27 +146,27 @@ if (isset($_GET["variable"])) {
     date_default_timezone_set("America/Bogota");
     $fechaActual = date('Y-m-d');
     $tiempo = date('H:i:s');
-    echo '<script>alert('.$tiempo.')</script>';
+    echo '<script>alert(' . $tiempo . ')</script>';
     $usuid = $_SESSION['id'];
     $sql = $conexion->query("UPDATE Libro SET lecturas ='$nvi' WHERE idLib ='$variable'");
     ?>
 
 
 
-<?php
+    <?php
 
-$query = "SELECT * from Reciente where Libro_idLib='$variable' and Recientecol='$usuid';";
-$resul = $conexion->query($query);
-$contlibro;
-$tiempo = date('H:i:s');
-if ($row = $resul->fetch_array()) {
-  $idReci = $row['idReciente'];
-  
-  $sql = $conexion->query("UPDATE Reciente SET tiempo_re ='$tiempo', fecha ='$fechaActual' WHERE idReciente = '$idReci';");
-  //echo '<script>alert('.$sql.')</script>';
-}else{
-  $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$nvi2','$fechaActual','$variable','$usuid','$tiempo')");
-}
+    $query = "SELECT * from Reciente where Libro_idLib='$variable' and Recientecol='$usuid';";
+    $resul = $conexion->query($query);
+    $contlibro;
+    $tiempo = date('H:i:s');
+    if ($row = $resul->fetch_array()) {
+      $idReci = $row['idReciente'];
+
+      $sql = $conexion->query("UPDATE Reciente SET tiempo_re ='$tiempo', fecha ='$fechaActual' WHERE idReciente = '$idReci';");
+      //echo '<script>alert('.$sql.')</script>';
+    } else {
+      $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$nvi2','$fechaActual','$variable','$usuid','$tiempo')");
+    }
 
 
 
@@ -186,10 +186,10 @@ if ($row = $resul->fetch_array()) {
 
 
         <div class="card mb-4 shadow" style="height: 800px;">
-<div style="position: relative; width:100%;" >
-<div style="width:15%; height: 4vh; background: #323738; position: absolute; right:  0%; "></div>
+          <div style="position: relative; width:100%;">
+            <div style="width:15%; height: 4vh; background: #323738; position: absolute; right:  0%; "></div>
 
-          <?php echo '<embed src="assets/libros/Libro1.pdf #toolbar=1&zoom=170" style="#end {visibility: visible;}" width="100%" height="800px" />'; ?>
+            <?php echo '<embed src="assets/libros/Libro1.pdf #toolbar=1&zoom=170" style="#end {visibility: visible;}" width="100%" height="800px" />'; ?>
 
           </div>
         </div>

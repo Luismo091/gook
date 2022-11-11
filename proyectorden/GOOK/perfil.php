@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "conexion.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,6 +23,16 @@ session_start();
   <!-- App CSS -->
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>
+  <link rel="stylesheet" href="css/styleff.css">
+  <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/styleswiper.css">
+  <link rel="stylesheet" href="css/stylesee.css">
+  <link rel="stylesheet" href="css/feather.css">
+  <link rel="stylesheet" href="css/daterangepicker.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/stylef.css">
+
 </head>
 
 <body class="vertical  dark  ">
@@ -126,19 +137,11 @@ session_start();
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h2 class="h3 mb-4 page-title">Profile</h2>
+            <h2 class="h3 mb-4 page-title">Perfil</h2>
             <div class="row mt-5 align-items-center">
               <div class="col-md-3 text-center mb-5">
                 <div class="avatar avatar-xl">
-
-
-
-
                   <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>" alt="..." class="avatar-img rounded-circle">
-
-
-
-
                 </div>
               </div>
               <div class="col">
@@ -218,133 +221,175 @@ session_start();
                 </div> <!-- .card -->
               </div> <!-- .col-md-->
             </div> <!-- .row-->
-            <h3>Subscription</h3>
+            <h3>Suscripción</h3>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus.</p>
             <div class="card-deck my-4">
-              <div class="card mb-4 shadow">
-                <div class="card-body text-center my-4">
-                  <a href="#">
-                    <h3 class="h5 mt-4 mb-0">Basic</h3>
-                  </a>
-                  <p class="text-muted">package</p>
-                  <span class="h1 mb-0">$9.9</span>
-                  <p class="text-muted">year</p>
-                  <ul class="list-unstyled">
-                    <li>Lorem ipsum dolor sit amet</li>
-                    <li>Consectetur adipiscing elit</li>
-                    <li>Integer molestie lorem at massa</li>
-                    <li>Eget porttitor lorem</li>
-                  </ul>
-                  <span class="dot dot-lg bg-success"></span>
-                  <span class="text-muted ml-3">Active</span>
-                </div> <!-- .card-body -->
-              </div> <!-- .card -->
+
+              <?php
+              $sus = $_SESSION['sus'];
+              $sql = $conexion->query("SELECT * FROM Suscripcion WHERE idSus = '$sus'");
+              if ($datos = $sql->fetch_object()) {
+              ?>
+                <div class="card mb-4 shadow">
+                  <div class="card-body text-center my-4">
+                    <div><span class="dot dot-lg bg-success"></span>
+                      <span class="text-muted ml-3">Activo</span>
+                    </div>
+                    <a href="#">
+                      <h3 class="h5 mt-4 mb-0"><?= $datos->titsus ?></h3>
+                    </a>
+                    <p class="text-muted">Suscripción</p>
+                    <span class="h1 mb-0">$<?= $datos->preSus ?></span>
+                    <p class="text-muted">Mes</p>
+                    <ul class="list-unstyled">
+                      <li><?= $datos->desSus ?></li>
+                    </ul>
+                    <button type="button" class="btn mb-2 btn-primary btn-lg">Cambia tu plan</button>
+                  </div>
+                  <!-- .card-body -->
+                </div> <!-- .card -->
+              <?php }
+              ?>
               <div class="card mb-4">
+
                 <div class="card-body text-center my-4">
-                  <a href="#">
-                    <h3 class="h5 mt-4 mb-0">Professional</h3>
-                  </a>
-                  <p class="text-muted">package</p>
-                  <span class="h1 mb-0">$16.9</span>
-                  <p class="text-muted">year</p>
-                  <ul class="list-unstyled">
-                    <li>Lorem ipsum dolor sit amet</li>
-                    <li>Consectetur adipiscing elit</li>
-                    <li>Integer molestie lorem at massa</li>
-                    <li>Eget porttitor lorem</li>
-                  </ul>
-                  <button type="button" class="btn mb-2 btn-primary btn-lg">Ugrade</button>
-                </div> <!-- .card-body -->
+                <?php
+                  $idsus = $_SESSION['id'];
+                  $sql = $conexion->query("SELECT * FROM tarjeta WHERE id_usuf = '$idsus'");
+                  if ($datos = $sql->fetch_object()) {
+                  ?>
+
+                  <div class="wrapper" id="app">
+                    <div class="card-form">
+                      <div class="card-list">
+                        <div class="card-item" v-bind:class="{ '-active' : isCardFlipped }">
+                          <div class="card-item__side -front">
+                            <div class="card-item__focus" v-bind:class="{'-active' : focusElementStyle }" v-bind:style="focusElementStyle" ref="focusElement"></div>
+                            <div class="card-item__cover">
+                              <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + currentCardBackground + '.jpeg'" class="card-item__bg">
+                            </div>
+                            <div class="card-item__wrapper">
+                              <div class="card-item__top">
+                                <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" class="card-item__chip">
+                                <div class="card-item__type">
+                                  <transition name="slide-fade-up">
+                                    <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'" v-if="getCardType" v-bind:key="getCardType" alt="" class="card-item__typeImg">
+                                  </transition>
+                                </div>
+                              </div>
+
+                              <label for="cardNumber" class="card-item__number" ref="cardNumber">
+                                <template v-if="getCardType === 'amex'">
+                                  <span v-for="(n, $index) in amexCardMask" :key="$index">
+                                    <transition name="slide-fade-up">
+                                      <div class="card-item__numberItem" v-if="$index > 4 && $index < 14 && cardNumber.length > $index && n.trim() !== ''">
+                                        *</div>
+                                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" :key="$index" v-else-if="cardNumber.length > $index">
+                                        {{cardNumber[$index]}}
+                                      </div>
+                                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" v-else :key="$index + 1">{{n}}</div>
+                                    </transition>
+                                  </span>
+                                </template>
+
+                                <template v-else>
+                                  <span v-for="(n, $index) in otherCardMask" :key="$index">
+                                    <transition name="slide-fade-up">
+                                      <div class="card-item__numberItem" v-if="$index > 4 && $index < 15 && cardNumber.length > $index && n.trim() !== ''">
+                                        *</div>
+                                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" :key="$index" v-else-if="cardNumber.length > $index">
+                                        {{cardNumber[$index]}}
+                                      </div>
+                                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" v-else :key="$index + 1">{{n}}</div>
+                                    </transition>
+                                  </span>
+                                </template>
+                              </label>
+                              <div class="card-item__content">
+                                <label for="cardName" class="card-item__info" ref="cardName">
+                                  <div class="card-item__holder">Nombre de la tarjeta</div>
+                                  <transition name="slide-fade-up">
+                                    <div class="card-item__name" v-if="cardName.length" key="1">
+                                      <transition-group name="slide-fade-right">
+                                        <span class="card-item__nameItem" v-for="(n, $index) in cardName.replace(/\s\s+/g, ' ')" v-if="$index === $index" v-bind:key="$index + 1">{{n}}</span>
+                                      </transition-group>
+                                    </div>
+                                    <div class="card-item__name" v-else key="2"><?= $datos->notitular ?></div>
+                                  </transition>
+                                </label>
+                                <div class="card-item__date" ref="cardDate">
+                                  <label for="cardMonth" class="card-item__dateTitle">Exp</label>
+                                  <label for="cardMonth" class="card-item__dateItem">
+                                    <transition name="slide-fade-up">
+                                      <span v-if="cardMonth" v-bind:key="cardMonth">{{cardMonth}}</span>
+                                      <span v-else key="2"><?= $datos->mm ?></span>
+                                    </transition>
+                                  </label>
+                                  /
+                                  <label for="cardYear" class="card-item__dateItem">
+                                    <transition name="slide-fade-up">
+                                      <span v-if="cardYear" v-bind:key="cardYear">{{String(cardYear).slice(2,4)}}</span>
+                                      <span v-else key="2"><?= $datos->yy ?></span>
+                                    </transition>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-item__side -back">
+                            <div class="card-item__cover">
+                              <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + currentCardBackground + '.jpeg'" class="card-item__bg">
+                            </div>
+                            <div class="card-item__band"></div>
+                            <div class="card-item__cvv">
+                              <div class="card-item__cvvTitle"><?= $datos->idPag ?></div>
+                              <div class="card-item__cvvBand">
+                                <span v-for="(n, $index) in cardCvv" :key="$index">
+                                  *
+                                </span>
+
+                              </div>
+                              <div class="card-item__type">
+                                <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'" v-if="getCardType" class="card-item__typeImg">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <?php }
+                  ?><!-- .card-body -->
               </div> <!-- .card -->
             </div> <!-- .card-group -->
-            <h6 class="mb-3">Last payment</h6>
+            <h6 class="mb-3">últimos Pagos</h6>
             <table class="table table-borderless table-striped">
               <thead>
                 <tr role="row">
                   <th>ID</th>
-                  <th>Purchase Date</th>
+                  <th>Fecha de pago</th>
                   <th>Total</th>
-                  <th>Payment</th>
-                  <th>Status</th>
-                  <th>Action</th>
+                  <th>Metodo</th>
+                  <th>Estado</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="col">1331</th>
-                  <td>2020-12-26 01:32:21</td>
-                  <td>$16.9</td>
-                  <td>Paypal</td>
-                  <td><span class="dot dot-lg bg-warning mr-2"></span>Due</td>
-                  <td>
-                    <div class="dropdown">
-                      <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text-muted sr-only">Action</span>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a class="dropdown-item" href="#">Remove</a>
-                        <a class="dropdown-item" href="#">Assign</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="col">1156</th>
-                  <td>2020-04-21 00:38:38</td>
-                  <td>$9.9</td>
-                  <td>Paypal</td>
-                  <td><span class="dot dot-lg bg-danger mr-2"></span>False</td>
-                  <td>
-                    <div class="dropdown">
-                      <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text-muted sr-only">Action</span>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a class="dropdown-item" href="#">Remove</a>
-                        <a class="dropdown-item" href="#">Assign</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="col">1038</th>
-                  <td>2019-06-25 19:13:36</td>
-                  <td>$9.9</td>
-                  <td>Credit Card </td>
-                  <td><span class="dot dot-lg bg-success mr-2"></span>Paid</td>
-                  <td>
-                    <div class="dropdown">
-                      <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text-muted sr-only">Action</span>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a class="dropdown-item" href="#">Remove</a>
-                        <a class="dropdown-item" href="#">Assign</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="col">1227</th>
-                  <td>2021-01-22 13:28:00</td>
-                  <td>$9.9</td>
-                  <td>Paypal</td>
-                  <td><span class="dot dot-lg bg-success mr-2"></span>Paid</td>
-                  <td>
-                    <div class="dropdown">
-                      <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text-muted sr-only">Action</span>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a class="dropdown-item" href="#">Remove</a>
-                        <a class="dropdown-item" href="#">Assign</a>
-                      </div>
-                    </div>
-                  </td>
+                  <?php
+                  $idsus = $_SESSION['id'];
+                  $sql = $conexion->query("SELECT * FROM Pago WHERE Usuario_idUsu = '$idsus'");
+                  while ($datos = $sql->fetch_object()) {
+                  ?>
+                    <th scope="col"><?= $datos->idPag ?></th>
+                    <td><?= $datos->fecPag ?></td>
+                    <td><?= $datos->valPag ?></td>
+                    <td><?= $datos->metodo ?></td>
+                    <td><span class="dot dot-lg bg-success mr-2"></span>Pago</td>
+                    <td>
+                    </td>
+                  <?php }
+                  ?>
                 </tr>
               </tbody>
             </table>
@@ -498,5 +543,9 @@ session_start();
     gtag('config', 'UA-56159088-1');
   </script>
 </body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+<script src='https://unpkg.com/vue-the-mask@0.11.1/dist/vue-the-mask.js'></script>
+<script src="js/script.js"></script>
 
 </html>

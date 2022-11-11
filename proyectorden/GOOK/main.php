@@ -93,7 +93,7 @@ include "conexion.php";
         </li>
       </ul>
     </nav>
-    
+
     <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
       <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
         <i class="fe fe-x"><span class="sr-only"></span></i>
@@ -143,7 +143,7 @@ include "conexion.php";
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="sesion.php">
-              <i class="fe fe-profile fe-16"></i>
+              <i class="fa-solid fa-crown"></i>
               <span class="ml-3 item-text">Salir</span>
             </a>
           </li>
