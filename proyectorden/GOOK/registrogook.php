@@ -68,9 +68,13 @@
                         <label for="lastname">Segundo Apellido</label>
                         <input type="text" name="inputlastname2" class="form-control">
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label for="lastname">Edad</label>
                         <input type="number" name="inputedad" class="form-control" required="true">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="lastname">Foto de Perfil</label> 
+                        <input type="file" id="example-fileinput" class="form-control-file">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="escritor">¿Quieres Ser Escritor?</label>

@@ -53,10 +53,14 @@ if($clav==$clac){
          Seguridad (idSeg, email, clave, Rol_idRol)
          VALUES ('$idSEG','$email','$clav','$chec')");
           if ($sql) {
+
+            $sql3 = $conexion->query("SELECT foto FROM Usuario WHERE idUsu='0';");
+        $datos3=$sql3->fetch_array();
+        $foto=$datos["foto"];
             //$d=rand(1,300);
             $sql = $conexion->query("INSERT INTO
-         Usuario (idUsu,nom1, nom2, ape1, ape2, eda, Seguridad_idSeg,Suscripcion_idSus)
-         VALUES ('$idUSU','$nom1','$nom2','$ape1','$ape2','$edad','$idSEG','1')");
+         Usuario (idUsu,nom1, nom2, ape1, ape2, eda, foto, Seguridad_idSeg,Suscripcion_idSus)
+         VALUES ('$idUSU','$nom1','$nom2','$ape1','$ape2','$edad','$foto','$idSEG','1')");
           if ($sql) {
             header("location:registrotomain.php?email=$email&clave=$clav");
           } else {
@@ -87,7 +91,6 @@ if($clav==$clac){
     </script>';
 
 }
-
 
 
 
