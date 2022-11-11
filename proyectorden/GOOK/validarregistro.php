@@ -1,20 +1,31 @@
 <?php
 
  include "conexion.php";
- if (empty($_GET['inputescritor'])) {    
+ if (empty($_POST['inputescritor'])) {    
     $chec = "3";
 }else{
     $chec = "1"; 
 }
 
-$email = $_GET["inputemail"];
-$nom1 = $_GET["inputname1"];
-$nom2 = $_GET["inputname2"];
-$ape1 = $_GET["inputlastname1"];
-$ape2 = $_GET["inputlastname2"];
-$edad = $_GET["inputedad"];
-$clav = $_GET["inputpassword"];
-$clac = $_GET["inputpasswordconfi"];
+$email = $_POST["inputemail"];
+$nom1 = $_POST["inputname1"];
+$nom2 = $_POST["inputname2"];
+$ape1 = $_POST["inputlastname1"];
+$ape2 = $_POST["inputlastname2"];
+$edad = $_POST["inputedad"];
+$clav = $_POST["inputpassword"];
+$clac = $_POST["inputpasswordconfi"];
+
+
+
+
+
+if(isset($_FILES['image']['name'])){
+    $tamanoArchivo=$_FILES['image']['size'];
+$imagenSubida=fopen($_FILES['image']['tmp_name'],'r');
+$foto=fread($imagenSubida,$tamanoArchivo);
+$foto=mysqli_escape_string($conexion,$binariosImagen);
+
 
 
 echo "INSERT INTO `GookPochita`.`Usuario` (`idUsu`, `nom1`, `nom2`, `ape1`, `ape2`, `eda`, `Seguridad_idSeg`, `Suscripcion_idSus`) VALUES ('5', '1', '1', '1', '1', '1', '5', '1')";
@@ -53,14 +64,7 @@ if($clav==$clac){
          Seguridad (idSeg, email, clave, Rol_idRol)
          VALUES ('$idSEG','$email','$clav','$chec')");
           if ($sql) {
-           $image;
-            if(isset($_GET["submit"])){
-                $check = getimagesize($_FILES["image"]["tmp_name"]);
-                if($check !== false)
-                $image = $_FILES['image']['name'];
-                $foto = addslashes(file_get_contents($image));
-            }
-
+           
           
             //$d=rand(1,300);
             $sql = $conexion->query("INSERT INTO
@@ -98,7 +102,9 @@ if($clav==$clac){
 }
 
 
+}else{
 
+}
 
 
 
