@@ -1,7 +1,6 @@
 <?php
 session_start();
 include "conexion.php";
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -48,7 +47,7 @@ include "conexion.php";
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
 
-      <form name="filform"class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="POST">
+      <form name="filform"class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
 
         <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
         <select name="filcat"class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
@@ -147,7 +146,104 @@ function enviar_formulario(){
     </aside>
     <main role="main" class="main-content">
       
+<div>
+<?php 
+if (isset($_GET["filtxt"])) {
+  $filtro = ($_GET['filtxt']);
+  $categoria =($_GET['filcat']);
+if ($categoria=="Seleccione una..."){
+  $categoria=="";
+echo "<script>alert('holis')</script>";
 
+
+}else{
+  ?>
+
+
+<div class="row">
+
+
+                            <?php
+
+
+                            $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
+                            FROM Libro
+                            INNER JOIN LibAut
+                            ON Libro.idLib=LibAut.Libro_idLib
+                            INNER JOIN Autor
+                            ON Autor.idAut=LibAut.Autor_idAut
+                            INNER JOIN LibEdi
+                            ON Libro.idLib=LibEdi.Libro_idLib
+                            INNER JOIN Editorial
+                            ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                            INNER JOIN Categoria
+                            ON Libro.Categoria_idCat=Categoria.idCat");
+                            $contadorcol = 0;
+                            $contenido = "";
+                            while ($datos = $sql->fetch_array()) {
+                                $idLib = $datos['idLib'];
+                                $titulo = $datos['titLib'];
+                                $autor = $datos['nomAut1'];
+                                $autor = $autor . " " . $datos['apeAut1'];
+                                $editorial = $datos['nomEdi'];
+                                $imagenlibro = $datos['imagen'];
+                                $imli = base64_encode($imagenlibro);
+                                if ($contadorcol <= 5) {
+
+                                    echo '<div class="col-md-2"">
+                                <div class="card shadow" >
+                                    <div class="card-body">
+                                        <p>' . $titulo . '</p>'; ?>                                    
+                                    <img width="100%" src="data:image/png;base64,<?= $imli ?>">
+                                <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
+                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
+                                        <span class="ml-3 item-text">Ver</span>
+                                        <i class="fe fe-arrow-right"></i>
+                                    </a></p>
+                                        
+                                    </div>
+                                </div>
+                            </div>';
+                                    $contadorcol++;
+                                } else {
+                                    $contadorcol = 0;
+                                    echo '</div><br>
+                                    <div class="row">
+                                    <div class="col-md-2"">
+                                <div class="card shadow" >
+                                    <div class="card-body">
+                                        <p>' . $titulo . '</p>'; ?>                                    
+                                    <img width="100%" src="data:image/png;base64,<?= $imli ?>">
+                                <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
+                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
+                                        <span class="ml-3 item-text">Ver</span>
+                                        <i class="fe fe-arrow-right"></i>
+                                    </a></p>
+                                    </div>
+                                </div>
+                            </div>';
+                                }
+                            }
+                            ?>
+                        </div>
+
+
+
+
+
+
+  <?php 
+}
+
+
+
+} 
+
+
+?>
+
+
+</div>
 
 
 
