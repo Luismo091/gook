@@ -1,0 +1,12 @@
+.ad {
+  margin: 1px auto;
+  max-width: 100%;
+  background-size: cover;
+  background-position: left center;
+  border: 1px solid #333;
+  background-image:url(banner.jpg);
+  border-radius: 10px;
+}
+ embed{
+    border-radius: 10px;
+ }
