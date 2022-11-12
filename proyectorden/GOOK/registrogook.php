@@ -74,7 +74,7 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="lastname">Foto de Perfil</label> 
-                        <input type="file" id="example-fileinput" name="image" class="form-control-file" required="true">
+                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="escritor">¿Quieres Ser Escritor?</label>
@@ -105,7 +105,7 @@
                         </ul>
                     </div>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarse</button>
+                <input class="btn btn-lg btn-primary btn-block" type="submit">
             </section>
 
 
@@ -292,7 +292,7 @@
 
         </div>
     </form>
-    <br>
+   
     <!--
   <div style="text-align:center">
     <span class="dot" onclick="currentSlide(1)"></span>

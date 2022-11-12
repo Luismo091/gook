@@ -20,11 +20,9 @@ $clac = $_POST["inputpasswordconfi"];
 
 
 
-if(isset($_FILES['image']['name'])){
-    $tamanoArchivo=$_FILES['image']['size'];
-$imagenSubida=fopen($_FILES['image']['tmp_name'],'r');
-$foto=fread($imagenSubida,$tamanoArchivo);
-$foto=mysqli_escape_string($conexion,$binariosImagen);
+if(isset($_FILES['imagen']['name'])){
+$foto= addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
+
 
 
 
