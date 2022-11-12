@@ -226,6 +226,7 @@ include "conexion.php";
             <div class="card-deck my-4">
 
               <?php
+              include "conexion.php";
               $sus = $_SESSION['sus'];
               $sql = $conexion->query("SELECT * FROM Suscripcion WHERE idSus = '$sus'");
               if ($datos = $sql->fetch_object()) {
@@ -257,7 +258,7 @@ include "conexion.php";
                   $idsus = $_SESSION['id'];
                   $sql = $conexion->query("SELECT * FROM tarjeta WHERE id_usuf = '$idsus'");
                   if ($datos = $sql->fetch_object()) {
-                  ?>
+                      ?>
 
                   <div class="wrapper" id="app">
                     <div class="card-form">

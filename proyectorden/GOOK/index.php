@@ -157,16 +157,6 @@ if ($row = $resul->fetch_array()) {
 
 
 
-
-
-
-
-
-
-
-
-
-
   </body>
 </html>
 </body>
