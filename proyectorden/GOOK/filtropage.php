@@ -190,20 +190,22 @@ echo "<script>alert('holis')</script>";
                                 $imli = base64_encode($imagenlibro);
                                 if ($contadorcol <= 5) {
 
-                                    echo '<div class="col-md-2"">
-                                <div class="card shadow" >
-                                    <div class="card-body">
-                                        <p>' . $titulo . '</p>'; ?>                                    
-                                    <img width="100%" src="data:image/png;base64,<?= $imli ?>">
-                                <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
-                                        <span class="ml-3 item-text">Ver</span>
-                                        <i class="fe fe-arrow-right"></i>
-                                    </a></p>
-                                        
-                                    </div>
-                                </div>
-                            </div>';
+                                    echo '
+                                    <div class="col-md-2"">
+                                      <div class="card shadow" >
+                                        <div class="card-body">
+                                          <p>' . $titulo . '</p>'; ?> 
+                                          <div class="image-box">                                   
+                                          <img width="100%" src="data:image/png;base64,<?= $imli ?>" alt="">
+                                          </div>
+                              <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
+                                          <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
+                                          <span class="ml-3 item-text">Ver</span>
+                                          <i class="fe fe-arrow-right"></i>
+                                          </a></p>  
+                                        </div>
+                                      </div>
+                                    </div>';
                                     $contadorcol++;
                                 } else {
                                     $contadorcol = 0;
