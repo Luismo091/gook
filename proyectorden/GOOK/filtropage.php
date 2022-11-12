@@ -178,7 +178,7 @@ echo "<script>alert('holis')</script>";
                             ON Editorial.idEdi=LibEdi.Editorial_idEdi
                             INNER JOIN Categoria
                             ON Libro.Categoria_idCat=Categoria.idCat");
-                            $contadorcol = 0;
+                            $contadorcol = 1;
                             $contenido = "";
                             while ($datos = $sql->fetch_array()) {
                                 $idLib = $datos['idLib'];
@@ -188,7 +188,7 @@ echo "<script>alert('holis')</script>";
                                 $editorial = $datos['nomEdi'];
                                 $imagenlibro = $datos['imagen'];
                                 $imli = base64_encode($imagenlibro);
-                                if ($contadorcol <= 5) {
+                                if ($contadorcol <= 6) {
 
                                     echo '
                                     <div class="col-md-2"">
@@ -208,14 +208,16 @@ echo "<script>alert('holis')</script>";
                                     </div>';
                                     $contadorcol++;
                                 } else {
-                                    $contadorcol = 0;
+                                    $contadorcol = 2;
                                     echo '</div><br>
                                     <div class="row">
                                     <div class="col-md-2"">
                                 <div class="card shadow" >
                                     <div class="card-body">
-                                        <p>' . $titulo . '</p>'; ?>                                    
+                                        <p>' . $titulo . '</p>'; ?>
+                                        <div class="image-box">                                     
                                     <img width="100%" src="data:image/png;base64,<?= $imli ?>">
+                                </div>
                                 <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
                                         <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
                                         <span class="ml-3 item-text">Ver</span>
