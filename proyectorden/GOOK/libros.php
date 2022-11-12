@@ -1,11 +1,7 @@
 <?php
 session_start();
 include('conexion.php');
-echo '<script>alert ('.$_POST['Filtro'].');</script>';
 ?>
-
-
-
 <!doctype html>
 <html lang="en">
 
@@ -15,7 +11,7 @@ echo '<script>alert ('.$_POST['Filtro'].');</script>';
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>GoodBook - Pagina Principal</title>
+    <title>Filtro</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="css/simplebar.css">
     <!-- Fonts CSS -->
