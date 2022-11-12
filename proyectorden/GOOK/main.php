@@ -237,13 +237,15 @@ function enviar_formulario(){
 
                   <div class="options">
                     <?php
+                    $idsus = $_SESSION['id'];
                     $sql = $conexion->query("SELECT idReciente,tiempo_re, fecha, Libro_idLib, Recientecol,idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat,idUsu from Reciente
                     INNER JOIN Libro
                     ON Reciente.Libro_idLib=Libro.idLib
                     INNER JOIN Usuario
                     ON Reciente.Recientecol=Usuario.idUsu
+                    where idUsu = '$idsus'
                     ORDER BY tiempo_re DESC
-                    limit 6 ");
+                    limit 6   ");
                     while ($datos = $sql->fetch_object()) {
                     ?>
                       <div class="option active" style="--optionBackground:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
