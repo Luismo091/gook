@@ -49,8 +49,8 @@ include "conexion.php";
 
       <form class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="POST">
 
-        <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
-        <select class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
+        <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
+        <select name="filcat"class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
           <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
           <?php
           $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
@@ -59,12 +59,12 @@ include "conexion.php";
           }
           ?>
         </select>
-        <input class="nav-link text-muted my-2" type="submit"></input>
+      
 
 
-        <!--<a class="nav-link text-muted my-2" type="submit">
+        <a type="submit">
           <span class="fe fe-arrow-right fe-16"></span>
-        </a>-->
+        </a>
 
       </form>
 
