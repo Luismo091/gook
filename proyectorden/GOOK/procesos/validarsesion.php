@@ -3,7 +3,7 @@ session_start();
 include('conexion.php');
 
 if (empty($_POST['inputEmail']) || empty($_POST['inputPassword'])) {
-    include('index.php');
+    include('/index.php');
 } else {
 
     $email = $_POST['inputEmail'];

@@ -27,7 +27,7 @@
         </div> <!-- ./col -->
         <div class="col-lg-6">
           <div class="w-50 mx-auto">
-            <form action="validarsesion.php"  class="mx-auto text-center" method="POST">
+            <form action="procesos/validarsesion.php"  class="mx-auto text-center" method="POST">
               <a class="navbar-brand mx-auto mt-2 text-center">
                 <svg
    width="auto"
