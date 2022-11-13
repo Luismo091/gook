@@ -47,7 +47,7 @@ include "conexion.php";
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
 
-      <form name="filform"class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="POST">
+      <form name="filform"class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
 
         <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
         <select name="filcat"class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
@@ -238,7 +238,7 @@ function enviar_formulario(){
                   <div class="options">
                     <?php
                     $idsus = $_SESSION['id'];
-                    $sql = $conexion->query("SELECT idReciente,tiempo_re, fecha, Libro_idLib, Recientecol,idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat,idUsu from Reciente
+                    $sql = $conexion->query("SELECT idReciente,tiempo_re, fecha, Libro_idLib, Recientecol,idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat,idUsu from Reciente
                     INNER JOIN Libro
                     ON Reciente.Libro_idLib=Libro.idLib
                     INNER JOIN Usuario
@@ -289,7 +289,7 @@ function enviar_formulario(){
               <div class="small-header anim" style="--delay: .3s">Nuestra colección de manga</div>
               <div class="videos">
                 <?php
-                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
+                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
                 FROM Libro
                 INNER JOIN LibAut
                 ON Libro.idLib=LibAut.Libro_idLib
@@ -329,7 +329,7 @@ function enviar_formulario(){
               <div class="small-header anim" style="--delay: .3s">Para tu salud</div>
               <div class="videos">
                 <?php
-                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
+                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
                 FROM Libro
                 INNER JOIN LibAut
                 ON Libro.idLib=LibAut.Libro_idLib

@@ -152,21 +152,12 @@ if (isset($_GET["filtxt"])) {
   $filtro = ($_GET['filtxt']);
   $categoria =($_GET['filcat']);
 if ($categoria=="Seleccione una..."){
-  $categoria=="";
-echo "<script>alert('holis')</script>";
 
 
-}else{
-  ?>
 
-
-<div class="row">
-
-
-                            <?php
-
-
-                            $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
+echo '<div class="row">';
+                       
+                            $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
                             FROM Libro
                             INNER JOIN LibAut
                             ON Libro.idLib=LibAut.Libro_idLib
@@ -177,7 +168,8 @@ echo "<script>alert('holis')</script>";
                             INNER JOIN Editorial
                             ON Editorial.idEdi=LibEdi.Editorial_idEdi
                             INNER JOIN Categoria
-                            ON Libro.Categoria_idCat=Categoria.idCat");
+                            ON Libro.Categoria_idCat=Categoria.idCat
+                            WHERE titLib LIKE '%$filtro%' ");
                             $contadorcol = 1;
                             $contenido = "";
                             while ($datos = $sql->fetch_array()) {
@@ -228,15 +220,101 @@ echo "<script>alert('holis')</script>";
                             </div>';
                                 }
                             }
-                            ?>
-                        </div>
+                            
+                        echo '</div>';
 
 
 
 
 
 
-  <?php 
+
+
+
+
+
+}else{
+
+
+
+echo '<div class="row">';
+
+
+                    
+
+
+                            $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
+                            FROM Libro
+                            INNER JOIN LibAut
+                            ON Libro.idLib=LibAut.Libro_idLib
+                            INNER JOIN Autor
+                            ON Autor.idAut=LibAut.Autor_idAut
+                            INNER JOIN LibEdi
+                            ON Libro.idLib=LibEdi.Libro_idLib
+                            INNER JOIN Editorial
+                            ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                            INNER JOIN Categoria
+                            ON Libro.Categoria_idCat=Categoria.idCat
+                            WHERE Categoria_idCat=$categoria AND titLib LIKE '%$filtro%' ");
+                            $contadorcol = 1;
+                            $contenido = "";
+                            while ($datos = $sql->fetch_array()) {
+                                $idLib = $datos['idLib'];
+                                $titulo = $datos['titLib'];
+                                $autor = $datos['nomAut1'];
+                                $autor = $autor . " " . $datos['apeAut1'];
+                                $editorial = $datos['nomEdi'];
+                                $imagenlibro = $datos['imagen'];
+                                $imli = base64_encode($imagenlibro);
+                                if ($contadorcol <= 6) {
+
+                                    echo '
+                                    <div class="col-md-2"">
+                                      <div class="card shadow" >
+                                        <div class="card-body">
+                                          <p>' . $titulo . '</p>'; ?> 
+                                          <div class="image-box">                                   
+                                          <img width="100%" src="data:image/png;base64,<?= $imli ?>" alt="">
+                                          </div>
+                              <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
+                                          <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
+                                          <span class="ml-3 item-text">Ver</span>
+                                          <i class="fe fe-arrow-right"></i>
+                                          </a></p>  
+                                        </div>
+                                      </div>
+                                    </div>';
+                                    $contadorcol++;
+                                } else {
+                                    $contadorcol = 2;
+                                    echo '</div><br>
+                                    <div class="row">
+                                    <div class="col-md-2"">
+                                <div class="card shadow" >
+                                    <div class="card-body">
+                                        <p>' . $titulo . '</p>'; ?>
+                                        <div class="image-box">                                     
+                                    <img width="100%" src="data:image/png;base64,<?= $imli ?>">
+                                </div>
+                                <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
+                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
+                                        <span class="ml-3 item-text">Ver</span>
+                                        <i class="fe fe-arrow-right"></i>
+                                    </a></p>
+                                    </div>
+                                </div>
+                            </div>';
+                                }
+                            }
+                            
+                        echo '</div>';
+
+
+
+
+
+
+  
 }
 
 
