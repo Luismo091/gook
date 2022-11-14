@@ -137,6 +137,16 @@ function enviar_formulario(){
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
+
+
+          <li class="nav-item w-100">
+            <a class="nav-link" href="#">
+              <i class="fe fe-upload fe-16"></i>
+              <span class="ml-3 item-text">Subir Produccion</span>
+            </a>
+          </li>
+
+          
           <li class="nav-item w-100">
             <a class="nav-link" href="procesos/sesion.php">
               <i class="fe fe-log-out fe-16"></i>
