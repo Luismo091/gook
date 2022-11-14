@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "conexion.php";
+include "procesos/conexion.php";
 if (empty($_SESSION['id'])) {
   $idusu = $_SESSION['id'];
   header("location:page-404.html");

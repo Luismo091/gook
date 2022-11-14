@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexion.php');
+include('procesos/conexion.php');
 echo '<script>alert ('.$_POST['Filtro'].');</script>';
 ?>
 

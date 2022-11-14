@@ -109,7 +109,7 @@
 
 <script>function square(number) {
    <?php
-include 'conexion.php';
+include 'procesos/conexion.php';
 $email=$_GET["inputEmail"];
 $clave=$_GET["inputPassword"];
 $query ="SELECT * FROM Seguridad WHERE email=$email";

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "conexion.php";
+include "procesos/conexion.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -240,7 +240,7 @@ function enviar_formulario(){
             <div class="card-deck my-4">
 
               <?php
-              include "conexion.php";
+        
               $sus = $_SESSION['sus'];
               $sql = $conexion->query("SELECT * FROM Suscripcion WHERE idSus = '$sus'");
               if ($datos = $sql->fetch_object()) {

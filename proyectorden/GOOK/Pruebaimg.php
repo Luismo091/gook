@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include 'procesos/conexion.php';
 $query ="SELECT * FROM Usuario WHERE idUsu='1'";
 $resul = $conexion->query($query);
 $contlibro;

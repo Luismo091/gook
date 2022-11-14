@@ -1,6 +1,6 @@
 <?php
 
- include "conexion.php";
+ include "procesos/conexion.php";
  if (empty($_POST['inputescritor'])) {    
     $chec = "3";
 }else{

@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include 'procesos/conexion.php';
 session_start();
 if (empty($_SESSION['id'])) {
   header("location:page-404.html");
