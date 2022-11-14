@@ -24,7 +24,7 @@ if (isset($_GET["variable"])) {
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
-  <title><?php echo   $variable ?> - A Bootstrap Dashboard Template</title>
+  <title>Lectura GOOK</title>
   <!-- Simple bar CSS -->
   <link rel="stylesheet" href="css/simplebar.css">
   <!-- Fonts CSS -->
