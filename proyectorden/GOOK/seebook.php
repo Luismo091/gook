@@ -130,13 +130,13 @@ function enviar_formulario(){
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="main.php">
+            <a class="nav-link" href="favoritos.php">
               <i class="fe fe-heart fe-16"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="main.php">
+            <a class="nav-link" href="perfil.php">
               <i class="fe fe-user fe-16"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>

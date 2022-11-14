@@ -1,11 +1,7 @@
 <?php
 session_start();
-include('conexion.php');
-echo '<script>alert ('.$_POST['Filtro'].');</script>';
+include "conexion.php";
 ?>
-
-
-
 <!doctype html>
 <html lang="en">
 
@@ -38,6 +34,7 @@ echo '<script>alert ('.$_POST['Filtro'].');</script>';
     <link rel="stylesheet" href="css/styleff.css">
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/styleswiper.css">
+    <link rel="stylesheet" href="css/stylesee.css">
 
 </head>
 
@@ -45,18 +42,15 @@ echo '<script>alert ('.$_POST['Filtro'].');</script>';
 
     <div class="wrapper">
 
-
-
-
-
         <nav class="topnav navbar navbar-light">
             <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
                 <i class="fe fe-menu navbar-toggler-icon"></i>
             </button>
-           
-            <form class="form-inline mr-auto searchform text-muted" action="libros.php" method="POST">
-                <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search" id="Filtro">
-                <select class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
+
+            <form name="filform" class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
+
+                <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
+                <select name="filcat" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
                     <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
                     <?php
                     $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
@@ -65,48 +59,43 @@ echo '<script>alert ('.$_POST['Filtro'].');</script>';
                     }
                     ?>
                 </select>
-                
-<?php
-echo ' <input type="submit"
-                    <span class="fe fe-arrow-right fe-16"></span>
-                >';?>
-                
+                <a href="javascript:enviar_formulario()">
+                    <span style="position: absolute; " class="fe fe-arrow-right fe-16"></span>
+                </a>
+
 
             </form>
 
-
+            <script>
+                function enviar_formulario() {
+                    document.filform.submit()
+                }
+            </script>
 
 
 
 
             <ul class="nav">
 
-                <li class="nav-item">
-                    <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
-                        <span class="fe fe-grid fe-16"></span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="avatar avatar-sm mt-2">
-                            <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
-                        </span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="perfil.php">Perfil</a>
-                        <a class="dropdown-item" href="#">Ajustes de tu cuenta</a>
-                    </div>
-                </li>
+
+                <a href="perfil.php">
+                    <span class="avatar avatar-sm mt-2">
+                        <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
+                    </span>
+                </a>
+
             </ul>
         </nav>
+
         <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
             <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
                 <i class="fe fe-x"><span class="sr-only"></span></i>
             </a>
+
             <nav class="vertnav navbar navbar-light">
                 <!-- nav bar -->
                 <div class="w-100 mb-4 d-flex">
-                    <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+                    <a class="navbar-brand mx-auto mt-2 flex-fill text-center">
                         <svg width="auto" height="100px" viewBox="0 0 1920 645.52203" version="1.1" id="svg5" xml:space="preserve" inkscape:export-filename="..\..\..\..\..\..\..\..\Good Book\IconoGookFullAzul.svg" inkscape:export-xdpi="96" inkscape:export-ydpi="96" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)" sodipodi:docname="LogoPoquitaChiquito.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                             <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="px" showgrid="true" inkscape:zoom="0.5" inkscape:cx="771.00001" inkscape:cy="520" inkscape:window-width="1920" inkscape:window-height="1017" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="g509" />
                             <defs id="defs2" />
@@ -134,7 +123,7 @@ echo ' <input type="submit"
                         </a>
                     </li>
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="main.php">
+                        <a class="nav-link" href="favoritos.php">
                             <i class="fe fe-heart fe-16"></i>
                             <span class="ml-3 item-text">Favoritos</span>
                         </a>
@@ -146,30 +135,26 @@ echo ' <input type="submit"
                         </a>
                     </li>
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="see-book.php?variable=1">
-                            <i class="fe fe-profile fe-16"></i>
-                            <span class="ml-3 item-text">Home</span>
+                        <a class="nav-link" href="sesion.php">
+                            <i class="fe fe-log-out fe-16"></i>
+                            <span class="ml-3 item-text">Salir</span>
                         </a>
                     </li>
 
                 </ul>
             </nav>
         </aside>
-
         <main role="main" class="main-content">
 
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <h2 class="page-title">GOOK</h2>
-                        <p> (￣o￣) . z Z </p>
-                        <div class="row">
+            <div>
+                <?php
 
 
-                            <?php
 
 
-                            $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, docLib, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
+                echo '<div class="row">';
+                $idsus = $_SESSION['id'];
+                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
                             FROM Libro
                             INNER JOIN LibAut
                             ON Libro.idLib=LibAut.Libro_idLib
@@ -180,118 +165,131 @@ echo ' <input type="submit"
                             INNER JOIN Editorial
                             ON Editorial.idEdi=LibEdi.Editorial_idEdi
                             INNER JOIN Categoria
-                            ON Libro.Categoria_idCat=Categoria.idCat");
-                            $contadorcol = 0;
-                            $contenido = "";
-                            while ($datos = $sql->fetch_array()) {
-                                $idLib = $datos['idLib'];
-                                $titulo = $datos['titLib'];
-                                $autor = $datos['nomAut1'];
-                                $autor = $autor . " " . $datos['apeAut1'];
-                                $editorial = $datos['nomEdi'];
-                                $imagenlibro = $datos['imagen'];
-                                $imli = base64_encode($imagenlibro);
-                                if ($contadorcol <= 5) {
+                            ON Libro.Categoria_idCat=Categoria.idCat
+                            WHERE idLib IN (Select Libro_idLib FROM Favorito WHERE Usu_idusu='$idsus')");
+                $contadorcol = 1;
+                $contenido = "";
+                while ($datos = $sql->fetch_array()) {
+                    $idLib = $datos['idLib'];
+                    $titulo = $datos['titLib'];
+                    $autor = $datos['nomAut1'];
+                    $autor = $autor . " " . $datos['apeAut1'];
+                    $editorial = $datos['nomEdi'];
+                    $imagenlibro = $datos['imagen'];
+                    $imli = base64_encode($imagenlibro);
+                    if ($contadorcol <= 6) {
 
-                                    echo '<div class="col-md-2"">
-                                <div class="card shadow" >
-                                    <div class="card-body">
-                                        <p>' . $titulo . '</p>'; ?>                                    
-                                    <img width="100%" src="data:image/png;base64,<?= $imli ?>">
-                                <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
-                                        <span class="ml-3 item-text">Ver</span>
-                                        <i class="fe fe-arrow-right"></i>
-                                    </a></p>
-                                        
-                                    </div>
-                                </div>
-                            </div>';
-                                    $contadorcol++;
-                                } else {
-                                    $contadorcol = 0;
-                                    echo '</div><br>
+                        echo '
+                                    <div class="col-md-2"">
+                                      <div class="card shadow" >
+                                        <div class="card-body">
+                                          <p>' . $titulo . '</p>'; ?>
+                        <div class="image-box">
+                            <img width="100%" src="data:image/png;base64,<?= $imli ?>" alt="">
+                        </div>
+                    <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
+                                          <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
+                                          <span class="ml-3 item-text">Ver</span>
+                                          <i class="fe fe-arrow-right"></i>
+                                          </a></p>  
+                                        </div>
+                                      </div>
+                                    </div>';
+                        $contadorcol++;
+                    } else {
+                        $contadorcol = 2;
+                        echo '</div><br>
                                     <div class="row">
                                     <div class="col-md-2"">
                                 <div class="card shadow" >
                                     <div class="card-body">
-                                        <p>' . $titulo . '</p>'; ?>                                    
-                                    <img width="100%" src="data:image/png;base64,<?= $imli ?>">
-                                <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable='.$idLib.'?>">                            
+                                        <p>' . $titulo . '</p>'; ?>
+                        <div class="image-box">
+                            <img width="100%" src="data:image/png;base64,<?= $imli ?>">
+                        </div>
+                <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
+                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
                                         <span class="ml-3 item-text">Ver</span>
                                         <i class="fe fe-arrow-right"></i>
                                     </a></p>
                                     </div>
                                 </div>
                             </div>';
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
 
-                <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body px-5">
-                                <div class="row align-items-center">
-                                    <div class="col-6 text-center">
-                                        <div class="squircle bg-success justify-content-center">
-                                            <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                                        </div>
-                                        <p>Control area</p>
-                                    </div>
-                                    <div class="col-6 text-center">
-                                        <div class="squircle bg-primary justify-content-center">
-                                            <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                                        </div>
-                                        <p>Activity</p>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center">
-                                    <div class="col-6 text-center">
-                                        <div class="squircle bg-primary justify-content-center">
-                                            <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                                        </div>
-                                        <p>Droplet</p>
-                                    </div>
-                                    <div class="col-6 text-center">
-                                        <div class="squircle bg-primary justify-content-center">
-                                            <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                                        </div>
-                                        <p>Upload</p>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center">
-                                    <div class="col-6 text-center">
-                                        <div class="squircle bg-primary justify-content-center">
-                                            <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                                        </div>
-                                        <p>Users</p>
-                                    </div>
-                                    <div class="col-6 text-center">
-                                        <div class="squircle bg-primary justify-content-center">
-                                            <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                                        </div>
-                                        <p>Settings</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                echo '</div>';
 
-        </main>
 
-        <!-- main -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                ?>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </main> <!-- main -->
     </div> <!-- .wrapper -->
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
