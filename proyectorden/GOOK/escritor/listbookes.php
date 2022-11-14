@@ -140,8 +140,8 @@ include "../procesos/conexion.php";
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
-              <h2 class="mb-2 page-title">Data table</h2>
-              <p class="card-text">DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, built upon the foundations of progressive enhancement, that adds all of these advanced features to any HTML table. </p>
+              <h2 class="mb-2 page-title">Libros Subidos</h2>
+              <p class="card-text"></p>
               <div class="row my-4">
                 <!-- Small table -->
                 <div class="col-md-12">
@@ -165,13 +165,12 @@ include "../procesos/conexion.php";
 
 <?php
                   
-                       
+                  $idEscri=$_SESSION['rol'];
                       $sql = $conexion->query("SELECT idLibEsc, titLib, sinopsis,imagen,estado,Categoria_idCat2,nomCat
                        FROM LibroEscritor
                        INNER JOIN Categoria
                        ON LibroEscritor.Categoria_idCat2=Categoria.idCat
-                       WHERE Usuario_escri =3;
-                       ");
+                       WHERE Usuario_escri ='$idEscri';");
   
                        while ($datos = $sql->fetch_array()) {
                            $idLib = $datos['idLibEsc'];
@@ -190,10 +189,6 @@ include "../procesos/conexion.php";
 
 
 
-
-
-
-
                           <tr>
                           
                             <td><?php echo $idLib; ?></td>
@@ -202,11 +197,11 @@ include "../procesos/conexion.php";
                             <td width="12%"><img  src="data:image/png;base64,<?= $imli ?>"></td>
                             <td><?php
                             if ($estado==3){
-                              echo "Por Revisar";
+                              echo "<span class='badge badge-pill badge-warning'>Por confirmar</span>";
                             }else{if($estado==2){
-                              echo "Rechazado";
+                              echo "<span class='badge badge-pill badge-danger'>Denegado</span>";
                             }else{if($estado==1){
-                              echo "Aprobado";
+                              echo "<span class='badge badge-pill badge-success'>Aprobado</span>";
                             }
                             }}
                              
