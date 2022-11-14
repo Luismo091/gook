@@ -139,9 +139,19 @@ include "../procesos/conexion.php";
       <main role="main" class="main-content">
         <div class="container-fluid">
           <div class="row justify-content-center">
-            <div class="col-12">
-              <h2 class="mb-2 page-title">Libros Subidos</h2>
-              <p class="card-text"></p>
+            
+              
+             
+              <div class="col-10">
+                <h2 class="mb-2 page-title">Libros Subidos</h2>
+                </div>
+                <div class="col-2">
+              <button type="button" class="btn btn-lg btn-primary"><span class="fe fe-plus fe-16 mr-3"></span>Sube uno</button>
+              </div>
+
+
+              <div class="col-12">
+              
               <div class="row my-4">
                 <!-- Small table -->
                 <div class="col-md-12">

@@ -287,7 +287,7 @@ function enviar_formulario(){
 
                     <div class="lower-header">
                       <div style="float:right; text-align: center;">
-                        <a href="see-book.php?variable=<?= $datos->idLib ?>">
+                        <a href="seebook.php?variable=<?= $datos->idLib ?>">
                           <div>
                             <img width="100px" src="assets/images/AzulBlanco.png">
                           </div>
