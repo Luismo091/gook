@@ -200,7 +200,6 @@ function enviar_formulario(){
 
     ?>
 
-
     <main role="main" class="main-content">
       <div class="container-fluid">
         <div class="row justify-content-center">
