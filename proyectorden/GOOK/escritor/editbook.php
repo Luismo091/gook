@@ -148,20 +148,9 @@ include "../procesos/conexion.php";
                   <div class="card shadow">
                     <div class="card-body">
                       <!-- table -->
-                      <table class="table datatables" id="dataTable-1">
-                        <thead>
-                          <tr>
-                          
-                            <th>#</th>
-                            <th>Titulo</th>
-                            <th>Sinopsis</th>
-                            <th>Imagen</th>
-                            <th>Estado</th>
-                            <th>Categoria</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
+                      
+                        
+                      
 
 <?php
                         echo '<div class="row">';
@@ -181,7 +170,7 @@ include "../procesos/conexion.php";
                        WHERE idLib =2;
                        ");
   
-                       while ($datos = $sql->fetch_array()) {
+                       if ($datos = $sql->fetch_array()) {
                            $idLib = $datos['idLib'];
                            $titulo = $datos['titLib'];
                            $autor = $datos['nomAut1'];
@@ -190,39 +179,75 @@ include "../procesos/conexion.php";
                            $imagenlibro = $datos['imagen'];
                            $imli = base64_encode($imagenlibro); 
                            $sinopsis = $datos['sinopsis'];  
-                           $categoria = $datos['nomCat'];                        
+                           $categoria = $datos['nomCat'];  
+                           $idcat = $datos['Categoria_idCat'];                    
                        }
                        
+                    
+
+
                    echo '</div>';
 
 ?>
+<form action="#" method="POST" enctype="multipart/form-data">
+<section>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-1">
+                        <label for="id">ID</label>
+                        <input type="text" name="idlibro" class="form-control" value="<?php echo $idLib; ?>" readonly>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastname">Titulo</label>
+                        <input type="text" name="inputname2" class="form-control" value="<?php echo $titulo; ?>">
+                    </div>
+
+
+                    <div class="form-group col-md-2">
+                        <label for="lastname">Categoria</label>
+                        <select name="filcat"class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" style="width: 200px;">
+          <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
+          <?php
+          $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
+          while ($row = mysqli_fetch_assoc($result)) {
+            
+            if ($idcat==$row["idCat"]){
+                echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+            }else{
+                echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+            }
+            
+          }
+          ?>
+        </select>
+                    </div>
+
+
+                   
+                    <div class="form-group col-md-3">
+                        <label for="lastname">Foto de Perfil</label> 
+                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                    <td width="12%"><img  src="data:image/png;base64,<?= $imli ?>"></td>
+                    </div>
+                </div>
+                
+                <input class="btn btn-lg btn-primary btn-block" type="submit">
+            </section>
+</form>
+
+
+
+
+
+                     
 
 
 
 
 
 
-
-
-                          <tr>
-                          
-                            <td><?php echo $idLib; ?></td>
-                            <td><?php echo $titulo; ?></td>
-                            <td><?php echo $sinopsis; ?></td>                          
-                            <td width="12%"><img  src="data:image/png;base64,<?= $imli ?>"></td>
-                            <td>9022 Suspendisse Rd.</td>
-                            <td><?php echo $categoria; ?></td>
-                            <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="text-muted sr-only">Action</span>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="listbookes.php?variable=<?php echo $idLib; ?>">Edit</a>
-                                <a class="dropdown-item" href="listbookes.php?variable=<?php echo $idLib; ?>">Remove</a>
-                              </div>
-                            </td>
-                          </tr> 
-                        </tbody>
-                      </table>
                     </div>
                   </div>
                 </div> <!-- simple table -->
