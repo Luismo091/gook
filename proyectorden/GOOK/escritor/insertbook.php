@@ -172,7 +172,7 @@ include "../procesos/conexion.php";
                                         echo '</div>';
 
                                         ?>
-                                        <form action="#" method="POST" enctype="multipart/form-data">
+                                        <form action="../procesos/savebook.php" method="POST" enctype="multipart/form-data">
                                             <section>
 
                                                 <div class="form-row">
@@ -216,13 +216,14 @@ include "../procesos/conexion.php";
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label for="lastname">Documento Libro</label>
-                                                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file" required>
+                                                        <input type="file" id="example-fileinput" name="fileTest" class="form-control-file" required>
                                                     </div>
                                                 </div>
                                     </div>
 
                                     <input class="btn btn-lg btn-primary btn-block" type="submit">
                                     </section>
+
                                     </form>
 
 
