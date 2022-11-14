@@ -39,6 +39,7 @@ if (isset($_GET["variable"])) {
   <link rel="stylesheet" href="css/mainb.css">
   <link rel="stylesheet" href="css/stylesee.css">
   <link rel="stylesheet" href="css/seebook.css">
+  <link rel="stylesheet" href="css/stylelaunch.css">
 </head>
 
 <body class="vertical  dark  ">
@@ -49,22 +50,14 @@ if (isset($_GET["variable"])) {
       </button>
       <ul class="nav">
 
-        <li class="nav-item">
-          <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
-            <span class="fe fe-grid fe-16"></span>
-          </a>
-        </li>
+        
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item dropdown">
+          <a href="perfil.php">
             <span class="avatar avatar-sm mt-2">
-              <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>" alt="..." class="avatar-img rounded-circle">
+              <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
             </span>
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Perfil</a>
-            <a class="dropdown-item" href="#">Ajustes</a>
-          </div>
         </li>
       </ul>
     </nav>
@@ -187,9 +180,9 @@ if (isset($_GET["variable"])) {
 
         <div class="card mb-4 shadow" style="height: 800px;">
           <div style="position: relative; width:100%;">
-            <div style="width:15%; height: 4vh; background: #323738; position: absolute; right:  0%; "></div>
+            <!--<div style="width:15%; height: 4vh; background: #323738; position: absolute; right:  0%; "></div>-->
 
-            <?php echo '<embed src="assets/libros/Libro1.pdf #toolbar=1&zoom=170" style="#end {visibility: visible;}" width="100%" height="800px" />'; ?>
+            <?php echo '<embed src="assets/libros/Libro1.pdf #toolbar=0&zoom=170" style="#end {visibility: visible;}" width="100%" height="800px" />'; ?>
 
           </div>
         </div>

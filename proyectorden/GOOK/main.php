@@ -77,21 +77,13 @@ function enviar_formulario(){
 
       <ul class="nav">
 
-        <li class="nav-item">
-          <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
-            <span class="fe fe-grid fe-16"></span>
-          </a>
-        </li>
+        
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a href="perfil.php">
             <span class="avatar avatar-sm mt-2">
               <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
             </span>
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="perfil.php">Perfil</a>
-            <a class="dropdown-item" href="#">Ajustes de tu cuenta</a>
-          </div>
         </li>
       </ul>
     </nav>
