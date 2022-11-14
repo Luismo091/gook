@@ -135,7 +135,7 @@ function enviar_formulario(){
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="sesion.php">
+            <a class="nav-link" href="../procesos/sesion.php">
               <i class="fe fe-log-out fe-16"></i>
               <span class="ml-3 item-text">Salir</span>
             </a>
