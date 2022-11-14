@@ -47,30 +47,7 @@ include "../procesos/conexion.php";
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
 
-      <form name="filform"class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
-
-        <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
-        <select name="filcat"class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
-          <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
-          <?php
-          $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
-          }
-          ?>
-        </select>
-        <a  href="javascript:enviar_formulario()"> 
-          <span style="position: absolute; " class="fe fe-arrow-right fe-16"></span>
-        </a>
-        
       
-      </form>
-
-      <script>
-function enviar_formulario(){
-   document.filform.submit()
-}
-</script>
 
 
 
