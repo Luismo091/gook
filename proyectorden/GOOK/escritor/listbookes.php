@@ -164,36 +164,26 @@ include "../procesos/conexion.php";
                         <tbody>
 
 <?php
-                        echo '<div class="row">';
+                  
                        
-                       $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
-                       FROM Libro
-                       INNER JOIN LibAut
-                       ON Libro.idLib=LibAut.Libro_idLib
-                       INNER JOIN Autor
-                       ON Autor.idAut=LibAut.Autor_idAut
-                       INNER JOIN LibEdi
-                       ON Libro.idLib=LibEdi.Libro_idLib
-                       INNER JOIN Editorial
-                       ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                      $sql = $conexion->query("SELECT idLibEsc, titLib, sinopsis,imagen,estado,Categoria_idCat2,nomCat
+                       FROM LibroEscritor
                        INNER JOIN Categoria
-                       ON Libro.Categoria_idCat=Categoria.idCat
-                       WHERE idLib =2;
+                       ON LibroEscritor.Categoria_idCat2=Categoria.idCat
+                       WHERE Usuario_escri =3;
                        ");
   
                        while ($datos = $sql->fetch_array()) {
-                           $idLib = $datos['idLib'];
+                           $idLib = $datos['idLibEsc'];
                            $titulo = $datos['titLib'];
-                           $autor = $datos['nomAut1'];
-                           $autor = $autor . " " . $datos['apeAut1'];
-                           $editorial = $datos['nomEdi'];
                            $imagenlibro = $datos['imagen'];
                            $imli = base64_encode($imagenlibro); 
-                           $sinopsis = $datos['sinopsis'];  
+                           $sinopsis = $datos['sinopsis']; 
+                           $estado = $datos['estado']; 
                            $categoria = $datos['nomCat'];                        
                        }
                        
-                   echo '</div>';
+                
 
 ?>
 
@@ -210,7 +200,17 @@ include "../procesos/conexion.php";
                             <td><?php echo $titulo; ?></td>
                             <td><?php echo $sinopsis; ?></td>                          
                             <td width="12%"><img  src="data:image/png;base64,<?= $imli ?>"></td>
-                            <td>9022 Suspendisse Rd.</td>
+                            <td><?php
+                            if ($estado==3){
+                              echo "Por Revisar";
+                            }else{if($estado==2){
+                              echo "Rechazado";
+                            }else{if($estado==1){
+                              echo "Aprobado";
+                            }
+                            }}
+                             
+                             ?></td>
                             <td><?php echo $categoria; ?></td>
                             <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="text-muted sr-only">Action</span>
