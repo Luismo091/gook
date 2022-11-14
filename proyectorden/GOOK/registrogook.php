@@ -30,7 +30,7 @@
     </svg>
 
 
-    <form action="validarregistro.php" method="POST" enctype="multipart/form-data">
+    <form action="procesos/validarregistro.php" method="POST" enctype="multipart/form-data">
 
         <div class="slideshow-container" style="margin:0 auto; width: 80%; ">
 

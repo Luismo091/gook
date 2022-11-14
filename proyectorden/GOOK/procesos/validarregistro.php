@@ -1,10 +1,10 @@
 <?php
 
- include "procesos/conexion.php";
+ include "conexion.php";
  if (empty($_POST['inputescritor'])) {    
-    $chec = "3";
+    $chec = "4";
 }else{
-    $chec = "1"; 
+    $chec = "3"; 
 }
 
 $email = $_POST["inputemail"];

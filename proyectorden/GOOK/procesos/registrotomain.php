@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('procesos/conexion.php');
+include('conexion.php');
 
 
     $email = $_GET['email'];
@@ -19,17 +19,18 @@ include('procesos/conexion.php');
         $_SESSION['edad'] = $datos['eda'];
         $_SESSION['foto'] = $datos['foto'];
         $typeusu['tipousurio'] = $datos['Rol_idRol'];
+        $_SESSION['rol'] = $datos['Rol_idRol'];
         echo $typeusu['tipousurio'];
         echo "hola";
 
         if ($typeusu['tipousurio'] == 1) { //Admin
-            header("location:main.php");
+            header("location:../administrador/mainadmin.php");
         } else if ($typeusu['tipousurio'] == 2) {//Editor
-            header("location:see-book.php");
+            header("location:../editor/maineditor.php");
         } else if ($typeusu['tipousurio'] == 3) {//Escritor
-            header("location:see-book.php");
+            header("location:../main.php");
         } else if ($typeusu['tipousurio'] == 4) {//Lector
-            header("location:main.php");
+            header("location:../main.php");
         } else {
 ?>
             <?php
