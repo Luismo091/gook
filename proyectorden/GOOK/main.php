@@ -142,7 +142,7 @@ function enviar_formulario(){
   
   if($_SESSION['rol']==3){
     echo '<li class="nav-item w-100">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="escritor/listbookes.php">
       <i class="fe fe-upload fe-16"></i>
       <span class="ml-3 item-text">Subir Produccion</span>
     </a>
