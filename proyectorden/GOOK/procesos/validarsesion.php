@@ -23,15 +23,16 @@ if (empty($_POST['inputEmail']) || empty($_POST['inputPassword'])) {
         $_SESSION['foto'] = $datos['foto'];
         $typeusu['tipousurio'] = $datos['Rol_idRol'];
         $_SESSION['sus'] = $datos['Suscripcion_idSus'];
+        $_SESSION['rol'] = $datos['Rol_idRol'];
         echo $typeusu['tipousurio'];
         echo "hola";
 
         if ($typeusu['tipousurio'] == 1) { //Admin
-            header("location:../main.php");
+            header("location:../administrador/mainadmin.php");
         } else if ($typeusu['tipousurio'] == 2) {//Editor
-            header("location:see-book.php");
+            header("location:../editor/maineditor.php");
         } else if ($typeusu['tipousurio'] == 3) {//Escritor
-            header("location:see-book.php");
+            header("location:../main.php");
         } else if ($typeusu['tipousurio'] == 4) {//Lector
             header("location:../main.php");
         } else {

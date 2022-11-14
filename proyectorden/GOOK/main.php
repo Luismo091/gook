@@ -138,13 +138,20 @@ function enviar_formulario(){
             </a>
           </li>
 
+<?php
+  
+  if($_SESSION['rol']==3){
+    echo '<li class="nav-item w-100">
+    <a class="nav-link" href="#">
+      <i class="fe fe-upload fe-16"></i>
+      <span class="ml-3 item-text">Subir Produccion</span>
+    </a>
+  </li>';
+  }
+?>
 
-          <li class="nav-item w-100">
-            <a class="nav-link" href="#">
-              <i class="fe fe-upload fe-16"></i>
-              <span class="ml-3 item-text">Subir Produccion</span>
-            </a>
-          </li>
+
+          
 
           
           <li class="nav-item w-100">
