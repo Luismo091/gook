@@ -47,10 +47,10 @@ include "procesos/conexion.php";
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
 
-      <form name="filform"class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
+      <form name="filform" class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
 
         <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
-        <select name="filcat"class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
+        <select name="filcat" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
           <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
           <?php
           $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
@@ -59,25 +59,25 @@ include "procesos/conexion.php";
           }
           ?>
         </select>
-        <a  href="javascript:enviar_formulario()"> 
+        <a href="javascript:enviar_formulario()">
           <span style="position: absolute; " class="fe fe-arrow-right fe-16"></span>
         </a>
-        
-      
+
+
       </form>
 
       <script>
-function enviar_formulario(){
-   document.filform.submit()
-}
-</script>
+        function enviar_formulario() {
+          document.filform.submit()
+        }
+      </script>
 
 
 
 
       <ul class="nav">
 
-        
+
         <li class="nav-item dropdown">
           <a href="perfil.php">
             <span class="avatar avatar-sm mt-2">
@@ -121,39 +121,36 @@ function enviar_formulario(){
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
             <a class="nav-link" href="main.php">
-            <i class="fa-solid fa-newspaper fa-bounce"></i>
+              <i class="fa-solid fa-newspaper fa-bounce"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="favoritos.php">
-            <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="perfil.php">
-            <i class="fa-solid fa-user"></i>
+              <i class="fa-solid fa-user"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
 
-<?php
-  
-  if($_SESSION['rol']==3){
-    echo '<li class="nav-item w-100">
+          <?php
+
+          if ($_SESSION['rol'] == 3) {
+            echo '<li class="nav-item w-100">
     <a class="nav-link" href="escritor/listbookes.php">
       <i class="fe fe-upload fe-16"></i>
       <span class="ml-3 item-text">Subir Produccion</span>
     </a>
   </li>';
-  }
-?>
+          }
+          ?>
 
 
-          
-
-          
           <li class="nav-item w-100">
             <a class="nav-link" href="procesos/sesion.php">
               <i class="fe fe-log-out fe-16"></i>
@@ -192,6 +189,89 @@ function enviar_formulario(){
           </div>
         </div>
       </div>
+      <?php
+      $idusu = $_SESSION['rol'];
+      $sql = $conexion->query("SELECT * FROM Libro");
+      $datos12 = $sql->fetch_object();
+      if (empty($datos12->Libro_idLib)) { ?>
+        <div class="col-12 col-lg-10">
+          <div class="row align-items-center my-4">
+            <div class="col">
+              <h2 class="page-title">Tus Libros</h2>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="btn btn-lg btn-primary"><span class="fe fe-plus fe-16 mr-3"></span>Sube uno</button>
+            </div>
+          </div>
+          <h6 class="mb-3">Rápido Acceso</h6>
+          <div class="card-deck mb-4">
+            <div class="card border-0 bg-transparent">
+              <img src="./assets/products/p4.jpg" alt="..." class="card-img-top img-fluid rounded">
+              <div class="card-body">
+                <h5 class="h6 card-title mb-1">Mi libro</h5>
+                <p class="card-text">
+                  <span class="badge badge-light text-muted mr-2">1.2M</span>
+                  <span class="badge badge-pill badge-light text-muted">PDF</span>
+                </p>
+              </div>
+            </div> <!-- .card -->
+            <div class="card border-0 bg-transparent">
+              <img src="./assets/products/p1.jpg" alt="..." class="card-img-top img-fluid rounded">
+              <div class="card-body">
+                <h5 class="h6 card-title mb-1">Mi libro</h5>
+                <p class="card-text">
+                  <span class="badge badge-light text-muted mr-2">1.2M</span>
+                  <span class="badge badge-pill badge-light text-muted">PDF</span>
+                </p>
+              </div>
+            </div>
+            <div class="card border-0 bg-transparent">
+              <img src="./assets/products/p1.jpg" alt="..." class="card-img-top img-fluid rounded">
+              <div class="card-body">
+                <h5 class="h6 card-title mb-1">Mi libro</h5>
+                <p class="card-text">
+                  <span class="badge badge-light text-muted mr-2">Mi libro</span>
+                  <span class="badge badge-pill badge-light text-muted">PDF</span>
+                </p>
+              </div>
+            </div>
+            <div class="card border-0 bg-transparent">
+              <img src="./assets/products/p1.jpg" alt="..." class="card-img-top img-fluid rounded">
+              <div class="card-body">
+                <h5 class="h6 card-title mb-1">Mi libro</h5>
+                <p class="card-text">
+                  <span class="badge badge-light text-muted mr-2">Mi libro</span>
+                  <span class="badge badge-pill badge-light text-muted">PDF</span>
+                </p>
+              </div>
+            </div>
+            <div class="card border-0 bg-transparent">
+              <img src="./assets/products/p1.jpg" alt="..." class="card-img-top img-fluid rounded">
+              <div class="card-body">
+                <h5 class="h6 card-title mb-1">Mi libro</h5>
+                <p class="card-text">
+                  <span class="badge badge-light text-muted mr-2">Mi libro</span>
+                  <span class="badge badge-pill badge-light text-muted">PDF</span>
+                </p>
+              </div>
+            </div>
+            <div class="card border-0 bg-transparent">
+              <img src="./assets/products/p1.jpg" alt="..." class="card-img-top img-fluid rounded">
+              <div class="card-body">
+                <h5 class="h6 card-title mb-1">Mi libro</h5>
+                <p class="card-text">
+                  <span class="badge badge-light text-muted mr-2">Mi libro</span>
+                  <span class="badge badge-pill badge-light text-muted">Mi libro</span>
+                </p>
+              </div>
+            </div> <!-- .card -->
+            <!-- .card -->
+          </div>
+        </div>
+
+
+
+      <?php }  ?>
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12 mb-4">
@@ -244,7 +324,7 @@ function enviar_formulario(){
               </div>
               <div class="col-md-6 mb-4">
                 <div class="card-header">
-                  <strong class="card-title">Ultimos Leidos</strong>
+                  <strong class="card-title">Últimos Leidos</strong>
                 </div>
                 <div class="card-body">
 
@@ -382,88 +462,88 @@ function enviar_formulario(){
 
             </div>
 
-          
-            </div> -->
+
+          </div> -->
 
 
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <div class="card-body">
-                  <article>
-                    <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/4807060/pexels-photo-4807060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
-                      <div class="upper-header">
-                        <div class="mini-title">HISTORIAS INSPIRADAS EN COLOMBIA</div>
-                        <div class="date-since">
-                          <p><span class="date-value" id="sinceData"></span></p>
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                            <defs>
-                              <style>
-                                .d {
-                                  width: 20px;
-                                  fill: #fff;
-                                  opacity: .7;
-                                }
-                              </style>
-                            </defs>
-                            <path class="d" d="M15,0C6.75,0,0,6.75,0,15s6.75,15,15,15,15-6.75,15-15S23.25,0,15,0Zm7.35,16.65h-7.35c-.83,0-1.5-.67-1.5-1.5V7.8c0-.9,.6-1.5,1.5-1.5s1.5,.6,1.5,1.5v5.85h5.85c.9,0,1.5,.6,1.5,1.5s-.6,1.5-1.5,1.5Z" />
-                          </svg>
-                        </div>
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card-body">
+                <article>
+                  <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/4807060/pexels-photo-4807060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                    <div class="upper-header">
+                      <div class="mini-title">HISTORIAS INSPIRADAS EN COLOMBIA</div>
+                      <div class="date-since">
+                        <p><span class="date-value" id="sinceData"></span></p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                          <defs>
+                            <style>
+                              .d {
+                                width: 20px;
+                                fill: #fff;
+                                opacity: .7;
+                              }
+                            </style>
+                          </defs>
+                          <path class="d" d="M15,0C6.75,0,0,6.75,0,15s6.75,15,15,15,15-6.75,15-15S23.25,0,15,0Zm7.35,16.65h-7.35c-.83,0-1.5-.67-1.5-1.5V7.8c0-.9,.6-1.5,1.5-1.5s1.5,.6,1.5,1.5v5.85h5.85c.9,0,1.5,.6,1.5,1.5s-.6,1.5-1.5,1.5Z" />
+                        </svg>
                       </div>
-                      <div class="lower-header">
-                        <div class="tags-container">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <defs>
-                              <style>
-                                .d {
-                                  width: 20px;
-                                  fill: #fff;
-                                  opacity: .50;
-                                }
-                              </style>
-                            </defs>
-                            <path class="d" d="M19.22,9.66L10.77,1.21c-.74-.74-1.86-1.21-2.97-1.21H1.67C.75,0,0,.75,0,1.67V7.8c0,1.11,.46,2.23,1.3,2.97l8.45,8.46c1,1,2.62,1,3.62,0l5.94-5.95c.93-.93,.93-2.6-.09-3.62ZM6.96,6.35c-.59,.59-1.56,.59-2.15,0-.59-.59-.59-1.56,0-2.15,.59-.59,1.56-.59,2.15,0,.59,.59,.59,1.56,0,2.15Z" />
-                          </svg>
-                          <span>Literatura</span><span>Juvenil</span>
-                        </div>
-                        <h1 class="title">Lo mejor de colombia</h1>
+                    </div>
+                    <div class="lower-header">
+                      <div class="tags-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                          <defs>
+                            <style>
+                              .d {
+                                width: 20px;
+                                fill: #fff;
+                                opacity: .50;
+                              }
+                            </style>
+                          </defs>
+                          <path class="d" d="M19.22,9.66L10.77,1.21c-.74-.74-1.86-1.21-2.97-1.21H1.67C.75,0,0,.75,0,1.67V7.8c0,1.11,.46,2.23,1.3,2.97l8.45,8.46c1,1,2.62,1,3.62,0l5.94-5.95c.93-.93,.93-2.6-.09-3.62ZM6.96,6.35c-.59,.59-1.56,.59-2.15,0-.59-.59-.59-1.56,0-2.15,.59-.59,1.56-.59,2.15,0,.59,.59,.59,1.56,0,2.15Z" />
+                        </svg>
+                        <span>Literatura</span><span>Juvenil</span>
                       </div>
-                    </header>
-                  </article>
-                </div>
+                      <h1 class="title">Lo mejor de colombia</h1>
+                    </div>
+                  </header>
+                </article>
               </div>
-              <div class="col-md-6 mb-4">
-                <div class="card-header">
-                  <strong class="card-title">Top de los más populares</strong>
-                </div>
-                <div class="card-body">
-
-                  <div class="options">
-                    <?php
-
-                    $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
-                    while ($datos = $sql->fetch_object()) {
-                    ?>
-                      <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
-                        <div class="shadow"></div>
-                        <div class="label">
-
-                          <div class="info">
-                            <div class="main"><?= $datos->titLib ?></div>
-                            <div class="sub"><?= $datos->fecPub ?></div>
-                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
-                          </div>
-                        </div>
-                      </div>
-                    <?php }
-                    ?>
-                  </div>
-                </div>
-              </div>
-
             </div>
+            <div class="col-md-6 mb-4">
+              <div class="card-header">
+                <strong class="card-title">Top de los más populares</strong>
+              </div>
+              <div class="card-body">
+
+                <div class="options">
+                  <?php
+
+                  $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
+                  while ($datos = $sql->fetch_object()) {
+                  ?>
+                    <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
+                      <div class="shadow"></div>
+                      <div class="label">
+
+                        <div class="info">
+                          <div class="main"><?= $datos->titLib ?></div>
+                          <div class="sub"><?= $datos->fecPub ?></div>
+                          <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
+                        </div>
+                      </div>
+                    </div>
+                  <?php }
+                  ?>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
+  </div>
   </div>
   <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
