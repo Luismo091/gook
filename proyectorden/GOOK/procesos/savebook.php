@@ -1,4 +1,17 @@
 <?php
+session_start();
+include "conexion.php";
+
+
+
+
+
+
+
+
+
+
+
 
 $file = $_FILES["fileTest"]["name"]; //Nombre de nuestro archivo
 
@@ -48,4 +61,7 @@ if($validator == 1){
 }else{
     echo "Error: el archivo no se ha cargado";
 }
+
+
+
 ?>
