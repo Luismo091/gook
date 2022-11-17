@@ -156,14 +156,14 @@ include "../procesos/conexion.php";
 
                                         <?php
                                         echo '<div class="row">';
-                                        $idCat;
-                                        $sql = $conexion->query("SELECT MAX(idCat) FROM Categoria");
+                                        $idAut;
+                                        $sql = $conexion->query("SELECT MAX(idAut) FROM Autor");
 
                                         if ($datos = $sql->fetch_array()) {
-                                            $idCat = $datos['MAX(idCat)'];
-                                            $idCat++;
+                                            $idAut = $datos['MAX(idAut)'];
+                                            $idAut++;
                                         } else {
-                                            $idCat = 1;
+                                            $idAut = 1;
                                         }
 
 
@@ -178,7 +178,7 @@ include "../procesos/conexion.php";
                                                 <div class="form-row">
                                                     <div class="form-group col-md-2">
                                                         <label for="id">ID</label>
-                                                        <input type="text" name="idCate" class="form-control" value="<?php echo $idCat; ?>" readonly>
+                                                        <input type="text" name="idAute" class="form-control" value="<?php echo $idAut; ?>" readonly>
                                                     </div>
                                                     <div class="form-group col-md-10">
                                                         <label for="catego">Categoria</label>

@@ -147,7 +147,7 @@ include "../procesos/conexion.php";
                 </div>
                 
                 <div  class="col-2">
-                <a href="insertcat.php">
+                <a href="insertaut.php">
               <span class="fe fe-plus fe-16 mr-3"></span>Nuevo Autor
             
               </a>
