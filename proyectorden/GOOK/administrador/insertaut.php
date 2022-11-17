@@ -172,30 +172,43 @@ include "../procesos/conexion.php";
                                         echo '</div>';
 
                                         ?>
-                                        <form action="../procesos/insertnewaut.php" method="POST">
+                                        <form action="../procesos/insertnewaut.php" method="POST" enctype="multipart/form-data">
                                             <section>
 
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-2">
+                                                    <div class="form-group col-md-1">
                                                         <label for="id">ID</label>
                                                         <input type="text" name="idAut" class="form-control" value="<?php echo $idAut; ?>" readonly>
                                                     </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-12"></div>
+                                                    <div class="form-group col-md-3">
                                                         <label for="catego">Primer Nombre</label>
                                                         <input type="text" name="nomaut1" class="form-control">
                                                     </div>  
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-3">
                                                         <label for="catego">Segundo Nombre</label>
                                                         <input type="text" name="nomaut2" class="form-control">
-                                                    </div>    
-                                                    <div class="form-group col-md-4">
+                                                    </div>                  
+                                                    <div class="form-group col-md-3">
                                                         <label for="catego">Primer Apellido</label>
                                                         <input type="text" name="apeaut1" class="form-control">
                                                     </div> 
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-3">
                                                         <label for="catego">Segundo Apellido</label>
                                                         <input type="text" name="apeaut2" class="form-control">
-                                                    </div>                                                                 
+                                                    </div>  
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lastname">Imagen del Autor</label>
+                                                        <input type="file" id="example-fileinput" name="imagenaut" class="form-control-file" required>
+                                                    </div>   
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lastname">Imagen del Banner</label>
+                                                        <input type="file" id="example-fileinput" name="imagenban" class="form-control-file" required>
+                                                    </div>   
+                                                    <div class="form-group col-md-12">
+                                                        <label for="lastname">Biografia</label>
+                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="bio" class="form-control-file" required></textarea>
+                                                    </div>                                                              
                                                 </div>                                                
                                     </div>
 
