@@ -176,7 +176,7 @@ include "../procesos/conexion.php";
 
 <?php
                   
-                  $idEscri=$_SESSION['rol'];
+            
                       $sql = $conexion->query("SELECT * FROM Categoria;");
   
                        while ($datos = $sql->fetch_array()) {
