@@ -172,7 +172,7 @@ include "../procesos/conexion.php";
                                         echo '</div>';
 
                                         ?>
-                                        <form action="#" method="POST">
+                                        <form action="../procesos/insertnewcat.php" method="POST">
                                             <section>
 
                                                 <div class="form-row">

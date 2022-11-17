@@ -1,10 +1,10 @@
 <?php
 
  include "conexion.php";
- if (empty($_POST['inputescritor'])) {    
-    $chec = "4";
+ if (empty($_POST['idCate']) ||empty($_POST['idCate'])) {    
+    
 }else{
-    $chec = "3"; 
+    
 }
 
 $email = $_POST["inputemail"];
