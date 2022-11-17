@@ -111,7 +111,7 @@ include "../procesos/conexion.php";
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="#">
-              <i class="fe fe-user fe-16"></i>
+              <i class="fe fe-users fe-16"></i>
               <span class="ml-3 item-text">Cuentas</span>
             </a>
           </li>
@@ -122,20 +122,20 @@ include "../procesos/conexion.php";
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="#">
-              <i class="fe fe-user fe-16"></i>
+            <a class="nav-link" href="listautor.php">
+              <i class="fe fe-folder fe-16"></i>
               <span class="ml-3 item-text">Autores</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="#">
-              <i class="fe fe-user fe-16"></i>
+            <a class="nav-link" href="listeditoriales.php	">
+              <i class="fe fe-folder fe-16"></i>
               <span class="ml-3 item-text">Editoriales</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="#">
-              <i class="fe fe-user fe-16"></i>
+            <a class="nav-link" href="listcategorias.php">
+              <i class="fe fe-folder fe-16"></i>
               <span class="ml-3 item-text">Categorias</span>
             </a>
           </li>
