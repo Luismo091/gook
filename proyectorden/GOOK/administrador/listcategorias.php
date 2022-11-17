@@ -143,11 +143,11 @@ include "../procesos/conexion.php";
               
              
               <div class="col-10">
-                <h2 class="mb-2 page-title">Libros Subidos</h2>
+                <h2 class="mb-2 page-title">Categorias</h2>
                 </div>
                 
                 <div  class="col-2">
-                <a href="insertcat.php">
+                <a href="insertaut.php">
               <span class="fe fe-plus fe-16 mr-3"></span>Nueva Categoria
             
               </a>

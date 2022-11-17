@@ -142,7 +142,7 @@ include "../procesos/conexion.php";
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <h2 class="mb-2 page-title">Nueva Categoria</h2>
+                        <h2 class="mb-2 page-title">Nuevo Autor</h2>
                         <p class="card-text"> </p>
                         <div class="row my-4">
                             <!-- Small table -->
