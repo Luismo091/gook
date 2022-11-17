@@ -172,18 +172,30 @@ include "../procesos/conexion.php";
                                         echo '</div>';
 
                                         ?>
-                                        <form action="../procesos/insertnewcat.php" method="POST">
+                                        <form action="../procesos/insertnewaut.php" method="POST">
                                             <section>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-2">
                                                         <label for="id">ID</label>
-                                                        <input type="text" name="idAute" class="form-control" value="<?php echo $idAut; ?>" readonly>
+                                                        <input type="text" name="idAut" class="form-control" value="<?php echo $idAut; ?>" readonly>
                                                     </div>
-                                                    <div class="form-group col-md-10">
-                                                        <label for="catego">Categoria</label>
-                                                        <input type="text" name="catego" class="form-control">
-                                                    </div>                                                                     
+                                                    <div class="form-group col-md-4">
+                                                        <label for="catego">Primer Nombre</label>
+                                                        <input type="text" name="nomaut1" class="form-control">
+                                                    </div>  
+                                                    <div class="form-group col-md-4">
+                                                        <label for="catego">Segundo Nombre</label>
+                                                        <input type="text" name="nomaut2" class="form-control">
+                                                    </div>    
+                                                    <div class="form-group col-md-4">
+                                                        <label for="catego">Primer Apellido</label>
+                                                        <input type="text" name="apeaut1" class="form-control">
+                                                    </div> 
+                                                    <div class="form-group col-md-4">
+                                                        <label for="catego">Segundo Apellido</label>
+                                                        <input type="text" name="apeaut2" class="form-control">
+                                                    </div>                                                                 
                                                 </div>                                                
                                     </div>
 
