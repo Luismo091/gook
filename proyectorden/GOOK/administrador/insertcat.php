@@ -142,7 +142,7 @@ include "../procesos/conexion.php";
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <h2 class="mb-2 page-title">Subir Libro</h2>
+                        <h2 class="mb-2 page-title">Nueva Categoria</h2>
                         <p class="card-text"> </p>
                         <div class="row my-4">
                             <!-- Small table -->
@@ -156,14 +156,14 @@ include "../procesos/conexion.php";
 
                                         <?php
                                         echo '<div class="row">';
-                                        $idLib;
-                                        $sql = $conexion->query("SELECT MAX(idLibEsc) FROM LibroEscritor");
+                                        $idCat;
+                                        $sql = $conexion->query("SELECT MAX(idCat) FROM Categoria");
 
                                         if ($datos = $sql->fetch_array()) {
-                                            $idLib = $datos['MAX(idLibEsc)'];
-                                            $idLib++;
+                                            $idCat = $datos['MAX(idCat)'];
+                                            $idCat++;
                                         } else {
-                                            $idLib = 1;
+                                            $idCat = 1;
                                         }
 
 
@@ -172,53 +172,19 @@ include "../procesos/conexion.php";
                                         echo '</div>';
 
                                         ?>
-                                        <form action="../procesos/savebook.php" method="POST" enctype="multipart/form-data">
+                                        <form action="#" method="POST">
                                             <section>
 
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-1">
-                                                        <label for="id">ID</label>
-                                                        <input type="text" name="idlibro" class="form-control" value="<?php echo $idLib; ?>" readonly>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="lastname">Titulo</label>
-                                                        <input type="text" name="inputname2" class="form-control">
-                                                    </div>
-
-
                                                     <div class="form-group col-md-2">
-                                                        <label for="lastname">Categoria</label>
-                                                        <select name="filcat" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" style="width: 200px;">
-                                                            <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
-                                                            <?php
-                                                            $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
-                                                            while ($row = mysqli_fetch_assoc($result)) {
-
-
-                                                                echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
-                                                            }
-                                                            ?>
-                                                        </select>
+                                                        <label for="id">ID</label>
+                                                        <input type="text" name="idCate" class="form-control" value="<?php echo $idCat; ?>" readonly>
                                                     </div>
-
-
-
-                                                    <div class="form-group col-md-3">
-                                                        <label for="lastname">Imagen del Libro</label>
-                                                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file" required>
-                                                    </div>
-
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-9">
-                                                        <label for="lastname">Sinopsis</label>
-                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="imagen" class="form-control-file" required></textarea>
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <label for="lastname">Documento Libro</label>
-                                                        <input type="file" id="example-fileinput" name="fileTest" class="form-control-file" required>
-                                                    </div>
-                                                </div>
+                                                    <div class="form-group col-md-10">
+                                                        <label for="catego">Categoria</label>
+                                                        <input type="text" name="catego" class="form-control">
+                                                    </div>                                                                     
+                                                </div>                                                
                                     </div>
 
                                     <input class="btn btn-lg btn-primary btn-block" type="submit">
