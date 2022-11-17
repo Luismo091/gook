@@ -9,10 +9,6 @@
 }else{
     $idEdi = $_POST["idEdi"];
     $nomedi = $_POST["nomedi"];
-   
-    
-   
-
     if(isset($_FILES['imagenedi']['name'])){
         $foto= addslashes(file_get_contents($_FILES['imagenedi']['tmp_name']));
 
