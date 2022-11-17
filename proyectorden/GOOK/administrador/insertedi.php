@@ -172,7 +172,7 @@ include "../procesos/conexion.php";
                                         echo '</div>';
 
                                         ?>
-                                        <form action="../procesos/insertnewedi.php" method="POST">
+                                        <form action="../procesos/insertnewedi.php" method="POST" enctype="multipart/form-data">
                                             <section>
 
                                                 <div class="form-row">

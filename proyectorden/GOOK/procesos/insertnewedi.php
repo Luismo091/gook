@@ -29,7 +29,7 @@
           }
 }
 echo'<script type="text/javascript">
-            alert("Error");
+            alert("Error1");
             history.back();
             </script>';
 }
