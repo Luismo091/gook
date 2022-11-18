@@ -202,8 +202,8 @@ include "../procesos/conexion.php";
                        <td>$bioAut</td>  
                        <td>";
                        ?>
-                       <span class="avatar avatar-sm mt-2">
-              <img src="data:image/png;base64,<?= base64_encode($fotAut) ?>">
+                       <span class="image-box">
+              <img src="data:image/png;base64,<?= base64_encode($banner) ?>">
             </span>
             <?php
                        echo "</td>";
