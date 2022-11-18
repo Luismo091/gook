@@ -193,9 +193,10 @@ if (isset($_GET["variable"])) {
               WHERE idAut = '$variable'");
               if ($datos = $sql->fetch_object()) {
               ?>
-                <article>
-                  <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<?= $datos->banner ?>);">
-                    <div class="lower-header">
+                <article class="col-12">
+                
+                  <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/png;base64,<?php echo base64_encode($datos->banner) ?>);">
+                  <div class="lower-header">
                       <h1>
                         <span class=".avatar-lg img mt-2" >
                         <img  width="160px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_aut) ?>">
