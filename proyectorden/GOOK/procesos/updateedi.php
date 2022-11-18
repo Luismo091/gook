@@ -18,7 +18,7 @@
                              WHERE idEdi=$idEdi");
           if ($sql) {
             echo'<script type="text/javascript">
-            alert("Autor Registrada");
+            alert("Editorial Actualizada");
             </script>';
             header("location:../administrador/listeditoriales.php");
            
