@@ -199,8 +199,8 @@ include "../procesos/conexion.php";
                         <span class="text-muted sr-only">Action</span>
                       </button>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="listbookes.php?variable=<?php echo $idCat; ?>">Edit</a>
-                        <a class="dropdown-item" href="listbookes.php?variable=<?php echo $idCat; ?>">Remove</a>
+                        <a class="dropdown-item" href="editedi.php?variable='.$idEdi.'">Editar</a>
+                        <a class="dropdown-item" href="listbookes.php?variable='.$idEdi.'">Eliminar</a>
                       </div>
                     </td>
                   </tr>';
