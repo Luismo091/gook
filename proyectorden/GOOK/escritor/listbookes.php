@@ -145,9 +145,12 @@ include "../procesos/conexion.php";
               <div class="col-10">
                 <h2 class="mb-2 page-title">Libros Subidos</h2>
                 </div>
-                <div class="col-2">
-              <button type="button" class="btn btn-lg btn-primary"><span class="fe fe-plus fe-16 mr-3"></span>Sube uno</button>
-              </div>
+                <div  class="col-2">
+                <a href="insertbook.php">
+              <span class="fe fe-plus fe-16 mr-3"></span>Subir Libro
+            
+              </a>
+            </div>
 
 
               <div class="col-12">
