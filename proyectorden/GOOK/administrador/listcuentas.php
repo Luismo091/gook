@@ -211,8 +211,8 @@ include "../procesos/conexion.php";
                         <span class="text-muted sr-only">Action</span>
                       </button>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="editaut.php?variable='.$idUsu.'">Editar</a>
-                        <a class="dropdown-item" href="deletaut.php?variable='.$idUsu.'">Eliminar</a>
+                        <a class="dropdown-item" href="editusu.php?variable='.$idUsu.'">Editar</a>
+                        <a class="dropdown-item" href="deletusu.php?variable='.$idUsu.'">Eliminar</a>
                       </div>
                     </td>
                   </tr>';

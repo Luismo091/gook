@@ -1,6 +1,10 @@
 <?php
 session_start();
 include "../procesos/conexion.php";
+if (isset($_GET["variable"])) {
+    $consulta = ($_GET['variable']);
+    $variable = $consulta;
+  }
 ?>
 
 <!doctype html>
@@ -156,14 +160,27 @@ include "../procesos/conexion.php";
 
                                         <?php
                                         echo '<div class="row">';
-                                        $idAut;
-                                        $sql = $conexion->query("SELECT MAX(idSeg) FROM Seguridad");
-
+                                        $idUs=$variable;
+                                        $sql = $conexion->query("SELECT idSeg, email, clave, Rol_idRol, nom1, nom2, ape1, ape2, eda, foto, desRol
+							                                     FROM Seguridad
+                                                                 INNER JOIN Usuario
+                                                                 ON Seguridad.idSeg=Usuario.Seguridad_idSeg
+                                                                 INNER JOIN Rol
+                                                                 ON Seguridad.Rol_idRol=Rol.idRol
+                                                                 WHERE idSeg='$idUs';");
                                         if ($datos = $sql->fetch_array()) {
-                                            $idAut = $datos['MAX(idSeg)'];
-                                            $idAut++;
-                                        } else {
-                                            $idAut = 1;
+                                            $idSeg = $datos['idSeg'];
+                                            $email = $datos['email'];
+                                            $clave = $datos['clave']; 
+                                            $Rol_idRol = $datos['Rol_idRol'];
+                                            $desRol = $datos['desRol'];
+                                            $nom1 = $datos['nom1'];
+                                            $nom2 = $datos['nom2'];
+                                            $ape1 = $datos['ape1'];
+                                            $ape2 = $datos['ape2'];
+                                            $eda = $datos['eda'];
+                                            $foto = $datos['foto'];
+
                                         }
 
 
@@ -172,34 +189,34 @@ include "../procesos/conexion.php";
                                         echo '</div>';
 
                                         ?>
-                                        <form action="../procesos/insertnewusu.php" method="POST" enctype="multipart/form-data">
+                                        <form action="../procesos/updateusu.php" method="POST" enctype="multipart/form-data">
                                             <section>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-1">
                                                         <label for="id">ID</label>
-                                                        <input type="text" name="idUsu" class="form-control" value="<?php echo $idAut; ?>" readonly>
+                                                        <input type="text" name="idUsu" class="form-control" value="<?php echo $idSeg; ?>" readonly>
                                                     </div>
                                                     <div class="form-group col-md-12"></div>
                                                     <div class="form-group col-md-3">
                                                         <label for="catego">Primer Nombre</label>
-                                                        <input type="text" name="nom1" class="form-control">
+                                                        <input type="text" name="nom1" class="form-control" value="<?php echo $nom1; ?>">
                                                     </div>  
                                                     <div class="form-group col-md-3">
                                                         <label for="catego">Segundo Nombre</label>
-                                                        <input type="text" name="nom2" class="form-control">
+                                                        <input type="text" name="nom2" class="form-control" value="<?php echo $nom2; ?>">
                                                     </div>                  
                                                     <div class="form-group col-md-3">
                                                         <label for="catego">Primer Apellido</label>
-                                                        <input type="text" name="ape1" class="form-control">
+                                                        <input type="text" name="ape1" class="form-control" value="<?php echo $ape1; ?>">
                                                     </div> 
                                                     <div class="form-group col-md-3">
                                                         <label for="catego">Segundo Apellido</label>
-                                                        <input type="text" name="ape2" class="form-control">
+                                                        <input type="text" name="ape2" class="form-control" value="<?php echo $ape2; ?>">
                                                     </div>  
                                                     <div class="form-group col-md-1">
                                                         <label for="catego">Edad</label>
-                                                        <input type="number" name="edad" class="form-control">
+                                                        <input type="number" name="edad" class="form-control" value="<?php echo $eda; ?>">
                                                     </div>  
                                                     <div class="form-group col-md-3">
                                                         <label for="lastname">Foto de Perfil</label>
@@ -212,18 +229,22 @@ include "../procesos/conexion.php";
           <?php
           $result = mysqli_query($conexion, 'SELECT * FROM Rol');
           while ($row = mysqli_fetch_assoc($result)) {
-            echo "<option style='background-color:#212529; color:#6c757d' value='$row[idRol]'>$row[desRol]</option>";
+            if ($Rol_idRol==$row["idRol"]){
+                echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idRol]'>$row[desRol] </option>";
+            }else{
+                echo "<option style='background-color:#212529; color:#6c757d' value='$row[idRol]'>$row[desRol] </option>";
+            }
           }
           ?>
         </select>
         </div>
                                                     <div class="form-group col-md-3">
                                                         <label for="catego">Correo</label>
-                                                        <input type="email" name="correo" class="form-control">
+                                                        <input type="email" name="correo" class="form-control" value="<?php echo $email; ?>">
                                                     </div> 
                                                     <div class="form-group col-md-3">
                                                         <label for="catego">Contraseña</label>
-                                                        <input type="password" name="clave" class="form-control">
+                                                        <input type="password" name="clave" class="form-control" value="<?php echo $clave; ?>">
                                                     </div> 
                                                       
                                                                                                                 
