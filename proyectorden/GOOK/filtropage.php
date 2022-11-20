@@ -185,15 +185,18 @@ include "procesos/conexion.php";
                                     <div class="col-md-2"">
                                       <div class="card shadow" >
                                         <div class="card-body">
-                                        <div style="height:21px;">
-                                          <p>' . $titulo . '</p>
-                                          </div>
+                                        
                                           
-                                          '; ?>
+                                      '; ?>
                 <div class="image-box" style="height: 380px;">
                   <img src="data:image/png;base64,<?= $imli ?>" alt="">
                 </div>
-              <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
+                
+              <?php echo '<div style="height:21px;">
+                                          <p>' . $titulo . '</p>
+                                          </div>
+              
+              <p style="margin-top: 2px;"></p><p>' . $autor . '</p>
                                           <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
                                           <span class="ml-3 item-text">Ver</span>
                                           <i class="fe fe-arrow-right"></i>
