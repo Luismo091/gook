@@ -60,7 +60,7 @@ include "procesos/conexion.php";
           ?>
         </select>
         <a href="javascript:enviar_formulario()">
-          <span style="position: absolute; " class="fe fe-arrow-right fe-16"></span>
+          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
         </a>
 
 
@@ -169,7 +169,7 @@ include "procesos/conexion.php";
           <div class="col-12">
             <div class="row align-items-center mb-2">
               <div class="col">
-                <h2 class="h5 page-title">Bienvenido </h2>
+                <div class="main-header anim" style="--delay: 0s">Tu gook de le semana</div>
               </div>
               <div class="col-auto">
                 <form class="form-inline">
@@ -193,7 +193,8 @@ include "procesos/conexion.php";
       $idusu = $_SESSION['rol'];
       $sql = $conexion->query("SELECT * FROM Libro");
       $datos12 = $sql->fetch_object();
-      if (empty($datos12->Libro_idLib)) { ?>
+      if (empty($datos12->Libro_idLib))
+        if ($_SESSION['rol'] == 3) { ?>
         <div class="col-12 col-lg-10">
           <div class="row align-items-center my-4">
             <div class="col">
@@ -272,6 +273,7 @@ include "procesos/conexion.php";
 
 
       <?php }  ?>
+
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12 mb-4">
@@ -279,7 +281,7 @@ include "procesos/conexion.php";
               <div class="col-md-6 mb-4">
                 <div class="card-body">
                   <article>
-                    <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://plus.unsplash.com/premium_photo-1661741368973-e2ccdf923b37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');">
+                    <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/250177/pexels-photo-250177.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
                       <div class="upper-header">
                         <div class="mini-title">NUEVOS AÑADIDOS</div>
                         <div class="date-since">
@@ -314,7 +316,7 @@ include "procesos/conexion.php";
                           </svg>
                           <span>Categoria</span><span>Todas las clasificaciones</span>
                         </div>
-                        <h1 class="title">Novedades de Noviembre</h1>
+                        <h1 class="title">Fiestas Decembrinas</h1>
                         <p class="subtitle"></p>
                       </div>
                     </header>
@@ -359,6 +361,50 @@ include "procesos/conexion.php";
                 </div>
               </div>
             </div>
+            <div class="main-container">
+              <div class="small-header anim" style="--delay: .3s">Nuestra selección basados en ti</div>
+              <div class="videos">
+                <?php
+                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
+                FROM Libro
+                INNER JOIN LibAut
+                ON Libro.idLib=LibAut.Libro_idLib
+                INNER JOIN Autor
+                ON Autor.idAut=LibAut.Autor_idAut
+                INNER JOIN LibEdi
+                ON Libro.idLib=LibEdi.Libro_idLib
+                INNER JOIN Editorial
+                ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                INNER JOIN Categoria
+                ON Libro.Categoria_idCat=Categoria.idCat
+                WHERE Categoria_idCat = 1 limit 4");
+                while ($datos = $sql->fetch_object()) {
+                ?>
+                  <div class="video anim" style="--delay: .4s">
+                    <div class="card-wrapper swiper-wrapper">
+                      <div class="card swiper-slide">
+                      <span style="font-size:15px;" class="badge badge-pill badge-warning">Novedad</span>
+                        <div class="image-box">
+                          <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                        </div>
+                        <div class="profile-details">
+                          <img src="data:image/jpg;base64,<?php echo base64_encode($datos->foto_aut) ?>" alt="" />
+                          <div class="name-job">
+                            <h3 class="name"><?= $datos->titLib ?></h3>
+                            <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
+                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                <?php }
+                ?>
+              </div>
+            </div>
+
             <div class="main-container">
               <div class="main-header anim" style="--delay: 0s">Descubre</div>
               <div class="main-blogs">
@@ -461,85 +507,78 @@ include "procesos/conexion.php";
               </div>
 
             </div>
+          </div>
 
-
-          </div> -->
-
-
-          <div class="row">
-            <div class="col-md-6 mb-4">
-              <div class="card-body">
-                <article>
-                  <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/4807060/pexels-photo-4807060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
-                    <div class="upper-header">
-                      <div class="mini-title">HISTORIAS INSPIRADAS EN COLOMBIA</div>
-                      <div class="date-since">
-                        <p><span class="date-value" id="sinceData"></span></p>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                          <defs>
-                            <style>
-                              .d {
-                                width: 20px;
-                                fill: #fff;
-                                opacity: .7;
-                              }
-                            </style>
-                          </defs>
-                          <path class="d" d="M15,0C6.75,0,0,6.75,0,15s6.75,15,15,15,15-6.75,15-15S23.25,0,15,0Zm7.35,16.65h-7.35c-.83,0-1.5-.67-1.5-1.5V7.8c0-.9,.6-1.5,1.5-1.5s1.5,.6,1.5,1.5v5.85h5.85c.9,0,1.5,.6,1.5,1.5s-.6,1.5-1.5,1.5Z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div class="lower-header">
-                      <div class="tags-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                          <defs>
-                            <style>
-                              .d {
-                                width: 20px;
-                                fill: #fff;
-                                opacity: .50;
-                              }
-                            </style>
-                          </defs>
-                          <path class="d" d="M19.22,9.66L10.77,1.21c-.74-.74-1.86-1.21-2.97-1.21H1.67C.75,0,0,.75,0,1.67V7.8c0,1.11,.46,2.23,1.3,2.97l8.45,8.46c1,1,2.62,1,3.62,0l5.94-5.95c.93-.93,.93-2.6-.09-3.62ZM6.96,6.35c-.59,.59-1.56,.59-2.15,0-.59-.59-.59-1.56,0-2.15,.59-.59,1.56-.59,2.15,0,.59,.59,.59,1.56,0,2.15Z" />
-                        </svg>
-                        <span>Literatura</span><span>Juvenil</span>
-                      </div>
-                      <h1 class="title">Lo mejor de colombia</h1>
-                    </div>
-                  </header>
-                </article>
-              </div>
-            </div>
-            <div class="col-md-6 mb-4">
-              <div class="card-header">
-                <strong class="card-title">Top de los más populares</strong>
-              </div>
-              <div class="card-body">
-
-                <div class="options">
-                  <?php
-
-                  $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
-                  while ($datos = $sql->fetch_object()) {
-                  ?>
-                    <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
-                      <div class="shadow"></div>
-                      <div class="label">
-
-                        <div class="info">
-                          <div class="main"><?= $datos->titLib ?></div>
-                          <div class="sub"><?= $datos->fecPub ?></div>
-                          <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
-                        </div>
-                      </div>
-                    </div>
-                  <?php }
-                  ?>
+          <div class="card-body">
+            <article>
+              <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/3075974/pexels-photo-3075974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+                <div class="upper-header">
+                  <div class="mini-title">HISTORIAS INSPIRADAS EN COLOMBIA</div>
+                  <div class="date-since">
+                    <p><span class="date-value" id="sinceData"></span></p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                      <defs>
+                        <style>
+                          .d {
+                            width: 20px;
+                            fill: #fff;
+                            opacity: .7;
+                          }
+                        </style>
+                      </defs>
+                      <path class="d" d="M15,0C6.75,0,0,6.75,0,15s6.75,15,15,15,15-6.75,15-15S23.25,0,15,0Zm7.35,16.65h-7.35c-.83,0-1.5-.67-1.5-1.5V7.8c0-.9,.6-1.5,1.5-1.5s1.5,.6,1.5,1.5v5.85h5.85c.9,0,1.5,.6,1.5,1.5s-.6,1.5-1.5,1.5Z" />
+                    </svg>
+                  </div>
                 </div>
+                <div class="lower-header">
+                  <div class="tags-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <defs>
+                        <style>
+                          .d {
+                            width: 20px;
+                            fill: #fff;
+                            opacity: .50;
+                          }
+                        </style>
+                      </defs>
+                      <path class="d" d="M19.22,9.66L10.77,1.21c-.74-.74-1.86-1.21-2.97-1.21H1.67C.75,0,0,.75,0,1.67V7.8c0,1.11,.46,2.23,1.3,2.97l8.45,8.46c1,1,2.62,1,3.62,0l5.94-5.95c.93-.93,.93-2.6-.09-3.62ZM6.96,6.35c-.59,.59-1.56,.59-2.15,0-.59-.59-.59-1.56,0-2.15,.59-.59,1.56-.59,2.15,0,.59,.59,.59,1.56,0,2.15Z" />
+                    </svg>
+                    <span>Literatura</span><span>Juvenil</span>
+                  </div>
+                  <h1 class="title">Lo mejor de colombia</h1>
+                </div>
+              </header>
+            </article>
+          </div>
+
+          <div class="col-md-6 mb-4">
+            <div class="card-header">
+              <strong class="card-title">Top de los más populares</strong>
+            </div>
+            <div class="card-body">
+
+              <div class="options">
+                <?php
+
+                $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
+                while ($datos = $sql->fetch_object()) {
+                ?>
+                  <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
+                    <div class="shadow"></div>
+                    <div class="label">
+
+                      <div class="info">
+                        <div class="main"><?= $datos->titLib ?></div>
+                        <div class="sub"><?= $datos->fecPub ?></div>
+                        <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
+                      </div>
+                    </div>
+                  </div>
+                <?php }
+                ?>
               </div>
             </div>
-
           </div>
         </div>
       </div>
