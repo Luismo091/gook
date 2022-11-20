@@ -76,8 +76,6 @@ include "procesos/conexion.php";
 
 
       <ul class="nav">
-
-
         <a href="perfil.php">
           <span class="avatar avatar-sm mt-2">
             <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
@@ -269,7 +267,7 @@ include "procesos/conexion.php";
                                     <div class="col-md-2"">
                                       <div class="card shadow" >
                                         <div class="card-body">
-                                          <p>' . $titulo . '</p>'; ?>
+                                          <h4>' . $titulo . '</h4>'; ?>
                 <div class="image-box">
                   <img width="100%" src="data:image/png;base64,<?= $imli ?>" alt="">
                 </div>
