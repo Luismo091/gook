@@ -172,7 +172,7 @@ include "../procesos/conexion.php";
                                         echo '</div>';
 
                                         ?>
-                                        <form action="../procesos/insertnewaut.php" method="POST" enctype="multipart/form-data">
+                                        <form action="../procesos/insertnewbook.php" method="POST" enctype="multipart/form-data">
                                             <section>
 
                                                 <div class="form-row">
@@ -188,7 +188,14 @@ include "../procesos/conexion.php";
                                                     <div class="form-group col-md-3">
                                                         <label for="catego">Fecha Libro</label>
                                                         <input type="date" name="fecLib" class="form-control">
-                                                    </div>                  
+                                                    </div>     
+                                                    <?php $gethoy=getdate();
+                                                        $hoy=$gethoy['year']."-".$gethoy['mon']."-".$gethoy['mday'];            
+                                                    ?>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="catego">Fecha Publicación</label>
+                                                        <input type="date" name="fecPub" class="form-control" value="<?php echo $hoy; ?>" readonly>
+                                                    </div>              
                                                 
                                                     <div class="form-group col-md-3">
                                                         <label for="lastname">Categoria</label>
@@ -206,7 +213,7 @@ include "../procesos/conexion.php";
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="lastname">Autor</label>
-                                                        <select name="filcat" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" >
+                                                        <select name="idAut" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" >
                                                             <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
                                                             <?php
                                                             $result = mysqli_query($conexion, 'SELECT idAut,nomAut1,nomAut2,apeAut1,apeAut2 FROM Autor');
@@ -219,7 +226,7 @@ include "../procesos/conexion.php";
                                                         </select>
                                                     </div><div class="form-group col-md-6">
                                                         <label for="lastname">Editorial</label>
-                                                        <select name="filcat" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" >
+                                                        <select name="idEdi" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" >
                                                             <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
                                                             <?php
                                                             $result = mysqli_query($conexion, 'SELECT * FROM Editorial');
@@ -232,11 +239,15 @@ include "../procesos/conexion.php";
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="lastname">Imagen del Libro</label>
-                                                        <input type="file" id="example-fileinput" name="imagenaut" class="form-control-file" required>
-                                                    </div>   
+                                                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file" required>
+                                                    </div>  
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lastname">Libro</label>
+                                                        <input type="file" id="example-fileinput" name="fileTest" class="form-control-file" required>
+                                                    </div>    
                                                     <div class="form-group col-md-12">
                                                         <label for="lastname">Sinopsis</label>
-                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="bio" class="form-control-file" required></textarea>
+                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="sinopsis" class="form-control-file" required></textarea>
                                                     </div>                                                              
                                                 </div>                                                
                                     </div>
