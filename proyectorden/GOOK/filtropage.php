@@ -187,9 +187,13 @@ include "procesos/conexion.php";
                                     <div class="col-md-2"">
                                       <div class="card shadow" >
                                         <div class="card-body">
-                                          <p>' . $titulo . '</p>'; ?>
-                <div class="image-box">
-                  <img width="100%" src="data:image/png;base64,<?= $imli ?>" alt="">
+                                        <div style="height:21px;">
+                                          <p>' . $titulo . '</p>
+                                          </div>
+                                          
+                                          '; ?>
+                <div class="image-box" style="height: 380px;">
+                  <img src="data:image/png;base64,<?= $imli ?>" alt="">
                 </div>
               <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
                                           <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
@@ -208,8 +212,8 @@ include "procesos/conexion.php";
                                 <div class="card shadow" >
                                     <div class="card-body">
                                         <p>' . $titulo . '</p>'; ?>
-                <div class="image-box">
-                  <img width="100%" src="data:image/png;base64,<?= $imli ?>">
+                <div class="image-box" style="height: 380px;">
+                  <img src="data:image/png;base64,<?= $imli ?>">
                 </div>
               <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
                                         <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
