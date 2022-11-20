@@ -35,6 +35,7 @@ include "procesos/conexion.php";
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/styleswiper.css">
     <link rel="stylesheet" href="css/stylesee.css">
+    <link rel="stylesheet" href="css/styleheart.css">
 
 </head>
 
@@ -144,102 +145,101 @@ include "procesos/conexion.php";
                 </ul>
             </nav>
         </aside>
+
         <main role="main" class="main-content">
-
-            <div>
-                <?php
-
-
-
-
-                echo '<div class="row">';
-                $idsus = $_SESSION['id'];
-                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
-                            FROM Libro
-                            INNER JOIN LibAut
-                            ON Libro.idLib=LibAut.Libro_idLib
-                            INNER JOIN Autor
-                            ON Autor.idAut=LibAut.Autor_idAut
-                            INNER JOIN LibEdi
-                            ON Libro.idLib=LibEdi.Libro_idLib
-                            INNER JOIN Editorial
-                            ON Editorial.idEdi=LibEdi.Editorial_idEdi
-                            INNER JOIN Categoria
-                            ON Libro.Categoria_idCat=Categoria.idCat
-                            WHERE idLib IN (Select Libro_idLib FROM Favorito WHERE Usu_idusu='$idsus')");
-                $contadorcol = 1;
-                $contenido = "";
-                while ($datos = $sql->fetch_array()) {
-                    $idLib = $datos['idLib'];
-                    $titulo = $datos['titLib'];
-                    $autor = $datos['nomAut1'];
-                    $autor = $autor . " " . $datos['apeAut1'];
-                    $editorial = $datos['nomEdi'];
-                    $imagenlibro = $datos['imagen'];
-                    $imli = base64_encode($imagenlibro);
-                    if ($contadorcol <= 6) {
-
-                        echo '
-                                    <div class="col-md-2"">
-                                      <div class="card shadow" >
-                                        <div class="card-body">
-                                          <p>' . $titulo . '</p>'; ?>
-                        <div class="image-box">
-                            <img width="100%" src="data:image/png;base64,<?= $imli ?>" alt="">
-                        </div>
-                    <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                          <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
-                                          <span class="ml-3 item-text">Ver</span>
-                                          <i class="fe fe-arrow-right"></i>
-                                          </a></p>  
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="row align-items-center mb-2">
+                            <div class="col">
+                                <div class="main-header anim" style="--delay: 0s">Tus favortios</div>
+                            </div>
+                            <div class="col-auto">
+                                <form class="form-inline">
+                                    <div class="form-group d-none d-lg-inline">
+                                        <label for="reportrange" class="sr-only">Date Ranges</label>
+                                        <div id="reportrange" class="px-2 py-2 text-muted">
+                                            <span class="small"></span>
                                         </div>
-                                      </div>
-                                    </div>';
-                        $contadorcol++;
-                    } else {
-                        $contadorcol = 2;
-                        echo '</div><br>
-                                    <div class="row">
-                                    <div class="col-md-2"">
-                                <div class="card shadow" >
-                                    <div class="card-body">
-                                        <p>' . $titulo . '</p>'; ?>
-                        <div class="image-box">
-                            <img width="100%" src="data:image/png;base64,<?= $imli ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-sm"><span class="fe fe-refresh-ccw fe-16 text-muted"></span></button>
+                                        <button type="button" class="btn btn-sm mr-2"><span class="fe fe-filter fe-16 text-muted"></span></button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                <?php echo '<p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
-                                        <span class="ml-3 item-text">Ver</span>
-                                        <i class="fe fe-arrow-right"></i>
-                                    </a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-4">
+                    <div class="card-body">
+                        <article>
+                            <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.imgur.com/ePWwPMI.png');">
+                                <div class="upper-header">
+                                    <div class="mini-title">HISTORIAS INSPIRADAS EN COLOMBIA</div>
+                                </div>
+                                <div class="lower-header">
+                                    <div class="tags-container">
+                                    </div>
+                                    <h1 class="title">Tus Favoritos</h1>
+                                </div>
+                            </header>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="main-container">
+
+                <div class="videos">
+                    <?php
+                    $idsus = $_SESSION['id'];
+                    $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
+ FROM Libro
+ INNER JOIN LibAut
+ ON Libro.idLib=LibAut.Libro_idLib
+ INNER JOIN Autor
+ ON Autor.idAut=LibAut.Autor_idAut
+ INNER JOIN LibEdi
+ ON Libro.idLib=LibEdi.Libro_idLib
+ INNER JOIN Editorial
+ ON Editorial.idEdi=LibEdi.Editorial_idEdi
+ INNER JOIN Categoria
+ ON Libro.Categoria_idCat=Categoria.idCat
+ WHERE idLib IN (Select Libro_idLib FROM Favorito WHERE Usu_idusu='$idsus')");;
+                    while ($datos = $sql->fetch_object()) {
+                    ?>
+                        <div class="video anim" style="--delay: .4s">
+                            <div class="card-wrapper swiper-wrapper">
+                                <div class="card swiper-slide">
+                                    <div class="image-box">
+                                        <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                                    </div>
+                                    <div class="profile-details">
+                                        <img src="data:image/jpg;base64,<?php echo base64_encode($datos->foto_aut) ?>" alt="" />
+                                        <div class="name-job">
+                                            <h3 class="name"><?= $datos->titLib ?></h3>
+                                            <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
+                                            <span style="font-size:15px;" class="badge badge-pill badge-warning">5/5</span>
+                                            <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>';
-                    }
-                }
+                            </div>
 
-                echo '</div>';
+                        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                ?>
-
-
+                    <?php }
+                    ?>
+                </div>
             </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
 
 
@@ -289,7 +289,7 @@ include "procesos/conexion.php";
 
 
 
-        </main> <!-- main -->
+    </main> <!-- main -->
     </div> <!-- .wrapper -->
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>

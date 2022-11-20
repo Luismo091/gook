@@ -191,7 +191,7 @@ include "procesos/conexion.php";
                 <div class="image-box" style="height: 380px;">
                   <img src="data:image/png;base64,<?= $imli ?>" alt="">
                 </div>
-                
+
               <?php echo '<div style="height:21px;">
                                           <p>' . $titulo . '</p>
                                           </div>
