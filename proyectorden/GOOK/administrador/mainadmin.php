@@ -116,9 +116,9 @@ include "../procesos/conexion.php";
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="#">
-              <i class="fe fe-user fe-16"></i>
-              <span class="ml-3 item-text">Consultar Libro</span>
+            <a class="nav-link" href="listbook.php">
+              <i class="fe fe-book fe-16"></i>
+              <span class="ml-3 item-text">Libros</span>
             </a>
           </li>
           <li class="nav-item w-100">
