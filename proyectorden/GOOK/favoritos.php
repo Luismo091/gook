@@ -191,13 +191,13 @@ include "procesos/conexion.php";
                 </div>
             </div>
             <div class="main-container">
-
+                <h1 class="title">Tu lista</h1>
                 <div class="videos">
                     <?php
                     $idsus = $_SESSION['id'];
                     $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
- FROM Libro
- INNER JOIN LibAut
+                    FROM Libro
+                    INNER JOIN LibAut
  ON Libro.idLib=LibAut.Libro_idLib
  INNER JOIN Autor
  ON Autor.idAut=LibAut.Autor_idAut
