@@ -1,6 +1,10 @@
 <?php
 session_start();
 include "../procesos/conexion.php";
+if (isset($_GET["variable"])) {
+    $consulta = ($_GET['variable']);
+    $variable = $consulta;
+  }
 ?>
 
 <!doctype html>
@@ -142,7 +146,7 @@ include "../procesos/conexion.php";
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <h2 class="mb-2 page-title">Nuevo Libro</h2>
+                        <h2 class="mb-2 page-title">Editar Libro</h2>
                         <p class="card-text"> </p>
                         <div class="row my-4">
                             <!-- Small table -->
@@ -157,13 +161,39 @@ include "../procesos/conexion.php";
                                         <?php
                                         echo '<div class="row">';
                                         $idLib;
-                                        $sql = $conexion->query("SELECT MAX(idLib) FROM Libro");
+                                        $sql = $conexion->query("SELECT idLib, titLib, fecPub,fecLib,
+                                         sinopsis, imagen, idAut, nomAut1, nomAut2, apeAut1,apeAut2,
+                                         idCat, nomCat,idEdi, nomEdi, idLA,idLE
+                                        FROM Libro
+                                              INNER JOIN LibAut
+                                              ON Libro.idLib=LibAut.Libro_idLib
+                                              INNER JOIN Autor
+                                              ON Autor.idAut=LibAut.Autor_idAut
+                                              INNER JOIN LibEdi
+                                              ON Libro.idLib=LibEdi.Libro_idLib
+                                              INNER JOIN Editorial
+                                              ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                                              INNER JOIN Categoria
+                                              ON Libro.Categoria_idCat=Categoria.idCat
+                                              WHERE idLib=$variable;");
 
                                         if ($datos = $sql->fetch_array()) {
-                                            $idLib = $datos['MAX(idLib)'];
-                                            $idLib++;
-                                        } else {
-                                            $idLib = 1;
+                                            $idLib = $datos['idLib'];
+                                            $titLib = $datos['titLib'];
+                                            $fecPub = $datos['fecPub'];
+                                            $fecLib = $datos['fecLib'];
+                                            $sinopsis = $datos['sinopsis'];
+                                            $imagen = $datos['imagen'];
+                                            $nomAut1 = $datos['nomAut1'];
+                                            $nomAut2 = $datos['nomAut2'];
+                                            $apeAut1 = $datos['apeAut1'];
+                                            $apeAut2 = $datos['apeAut2'];
+                                            $nomCat = $datos['nomCat'];
+                                            $idCat = $datos['idCat'];
+                                            $idAut = $datos['idAut'];
+                                            $idEdi = $datos['idEdi'];
+                                            $idLA = $datos['idLA'];
+                                            $idLE = $datos['idLE'];
                                         }
 
 
@@ -172,29 +202,28 @@ include "../procesos/conexion.php";
                                         echo '</div>';
 
                                         ?>
-                                        <form action="../procesos/insertnewbook.php" method="POST" enctype="multipart/form-data">
+                                        <form action="../procesos/updatebook.php" method="POST" enctype="multipart/form-data">
                                             <section>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-1">
+                                                    <input type="number" name="idLA" class="form-control" value="<?php echo $idLA; ?>" hidden>
+                                                    <input type="number" name="idLE" class="form-control" value="<?php echo $idLE; ?>" hidden>
                                                         <label for="id">ID</label>
                                                         <input type="text" name="idLib" class="form-control" value="<?php echo $idLib; ?>" readonly>
                                                     </div>
                                                   
                                                     <div class="form-group col-md-5">
                                                         <label for="catego">Titulo</label>
-                                                        <input type="text" name="titLib" class="form-control">
+                                                        <input type="text" name="titLib" class="form-control" value="<?php echo $titLib; ?>">
                                                     </div>  
                                                     <div class="form-group col-md-3">
                                                         <label for="catego">Fecha Libro</label>
-                                                        <input type="date" name="fecLib" class="form-control">
-                                                    </div>     
-                                                    <?php $gethoy=getdate();
-                                                        $hoy=$gethoy['year']."-".$gethoy['mon']."-".$gethoy['mday'];            
-                                                    ?>
+                                                        <input type="date" name="fecLib" class="form-control" value="<?php echo $fecLib; ?>">
+                                                    </div>                                     
                                                     <div class="form-group col-md-3">
                                                         <label for="catego">Fecha Publicación</label>
-                                                        <input type="date" name="fecPub" class="form-control" value="<?php echo $hoy; ?>" readonly>
+                                                        <input type="date" name="fecPub" class="form-control" value="<?php echo $fecPub; ?>">
                                                     </div>              
                                                 
                                                     <div class="form-group col-md-3">
@@ -204,9 +233,12 @@ include "../procesos/conexion.php";
                                                             <?php
                                                             $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
                                                             while ($row = mysqli_fetch_assoc($result)) {
+                                                                if ($idCat==$row["idCat"]){
+                                                                    echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+                                                                }else{
+                                                                    echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+                                                                }        
 
-
-                                                                echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
                                                             }
                                                             ?>
                                                         </select>
@@ -219,8 +251,12 @@ include "../procesos/conexion.php";
                                                             $result = mysqli_query($conexion, 'SELECT idAut,nomAut1,nomAut2,apeAut1,apeAut2 FROM Autor');
                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                                 $nombreAut=$row['nomAut1']." ".$row['nomAut2']." ".$row['apeAut1']." ".$row['apeAut2'];
-
-                                                                echo "<option style='background-color:#212529; color:#6c757d' value='$row[idAut]'>$nombreAut </option>";
+                                                                if ($idAut==$row["idAut"]){
+                                                                    echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idAut]'>$nombreAut </option>";
+                                                                }else{
+                                                                    echo "<option style='background-color:#212529; color:#6c757d' value='$row[idAut]'>$nombreAut </option>";
+                                                                } 
+                                                                
                                                             }
                                                             ?>
                                                         </select>
@@ -231,8 +267,11 @@ include "../procesos/conexion.php";
                                                             <?php
                                                             $result = mysqli_query($conexion, 'SELECT * FROM Editorial');
                                                             while ($row = mysqli_fetch_assoc($result)) {                                                                
-
-                                                                echo "<option style='background-color:#212529; color:#6c757d' value='$row[idEdi]'>$row[nomEdi] </option>";
+                                                                if ($idEdi==$row["idEdi"]){
+                                                                    echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idEdi]'>$row[nomEdi] </option>";
+                                                                }else{
+                                                                    echo "<option style='background-color:#212529; color:#6c757d' value='$row[idEdi]'>$row[nomEdi] </option>";
+                                                                }                                                                
                                                             }
                                                             ?>
                                                         </select>
@@ -247,7 +286,7 @@ include "../procesos/conexion.php";
                                                     </div>    
                                                     <div class="form-group col-md-12">
                                                         <label for="lastname">Sinopsis</label>
-                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="sinopsis" class="form-control-file" required></textarea>
+                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="sinopsis" class="form-control-file"  required><?php echo $sinopsis; ?></textarea>
                                                     </div>                                                              
                                                 </div>                                                
                                     </div>
