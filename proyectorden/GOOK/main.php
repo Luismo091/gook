@@ -80,11 +80,13 @@ include "procesos/conexion.php";
 
         <li class="nav-item dropdown">
           <a href="perfil.php">
+
             <span class="avatar avatar-sm mt-2">
               <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
             </span>
           </a>
         </li>
+
       </ul>
     </nav>
 
@@ -164,13 +166,27 @@ include "procesos/conexion.php";
 
 
     <main role="main" class="main-content">
+
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
             <div class="row align-items-center mb-2">
               <div class="col">
                 <div class="main-header anim" style="--delay: 0s">Tu gook de le semana</div>
+                <a class="weatherwidget-io" href="https://forecast7.com/es/6d55n73d13/san-gil/" data-label_1="SAN GIL" data-label_2="WEATHER" data-font="Roboto" data-textcolor="#ffffff">SAN GIL WEATHER</a>
+              <script>
+                ! function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = 'https://weatherwidget.io/js/widget.min.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                  }
+                }(document, 'script', 'weatherwidget-io-js');
+              </script>
               </div>
+            
               <div class="col-auto">
                 <form class="form-inline">
                   <div class="form-group d-none d-lg-inline">
@@ -277,6 +293,7 @@ include "procesos/conexion.php";
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12 mb-4">
+
             <div class="row">
               <div class="col-md-6 mb-4">
                 <div class="card-body">
@@ -321,6 +338,7 @@ include "procesos/conexion.php";
                       </div>
                     </header>
                   </article>
+
                 </div>
 
               </div>
@@ -391,7 +409,7 @@ include "procesos/conexion.php";
                           <img src="data:image/jpg;base64,<?php echo base64_encode($datos->foto_aut) ?>" alt="" />
                           <div class="name-job">
                             <h3 class="name"><?= $datos->titLib ?></h3>
-                            <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?> <span class="badge badge-pill badge-success"><?= $datos->lan ?></span></h4> 
+                            <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?> <span class="badge badge-pill badge-success"><?= $datos->lan ?></span></h4>
                             <div class="row align-items-center my-2">
                               <div class="col">
                                 <div class="my-0 text-muted small">Lecturas acumuladas</div>
@@ -442,7 +460,7 @@ include "procesos/conexion.php";
               <div class="small-header anim" style="--delay: .3s">Nuestra colección de manga</div>
               <div class="videos">
                 <?php
-                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
+                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat,lan, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
                 FROM Libro
                 INNER JOIN LibAut
                 ON Libro.idLib=LibAut.Libro_idLib
@@ -454,7 +472,7 @@ include "procesos/conexion.php";
                 ON Editorial.idEdi=LibEdi.Editorial_idEdi
                 INNER JOIN Categoria
                 ON Libro.Categoria_idCat=Categoria.idCat
-                WHERE Categoria_idCat = 1");
+                WHERE Categoria_idCat = 1 ORDER BY titLib");
                 while ($datos = $sql->fetch_object()) {
                 ?>
                   <div class="video anim" style="--delay: .4s">
@@ -467,7 +485,20 @@ include "procesos/conexion.php";
                           <img src="data:image/jpg;base64,<?php echo base64_encode($datos->foto_aut) ?>" alt="" />
                           <div class="name-job">
                             <h3 class="name"><?= $datos->titLib ?></h3>
-                            <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
+                            <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?> <span class="badge badge-pill badge-success"><?= $datos->lan ?></span></h4>
+                            <div class="row align-items-center my-2">
+                              <div class="col">
+                                <div class="my-0 text-muted small">Lecturas acumuladas</div>
+                              </div>
+                              <div class="col-auto">
+                                <strong><?= $datos->lecturas ?></strong>
+                              </div>
+                              <div class="col-3">
+                                <div class="progress" style="height: 4px;">
+                                  <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                            </div>
                             <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
                           </div>
                         </div>
@@ -939,6 +970,7 @@ include "procesos/conexion.php";
         <script src="js/swiper-bundle.min.js"></script>
         <script src="js/scriptswiper.js"></script>
         <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
+        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
 </body>
 
 </html>
