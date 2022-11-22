@@ -365,7 +365,7 @@ include "procesos/conexion.php";
               <div class="small-header anim" style="--delay: .3s">Nuestra selección basados en ti</div>
               <div class="videos">
                 <?php
-                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
+                $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat,lan, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
                 FROM Libro
                 INNER JOIN LibAut
                 ON Libro.idLib=LibAut.Libro_idLib
@@ -383,7 +383,7 @@ include "procesos/conexion.php";
                   <div class="video anim" style="--delay: .4s">
                     <div class="card-wrapper swiper-wrapper">
                       <div class="card swiper-slide">
-                      <span style="font-size:15px;" class="badge badge-pill badge-warning">Novedad</span>
+                        <span style="font-size:15px;" class="badge badge-pill badge-warning">Novedad</span>
                         <div class="image-box">
                           <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
                         </div>
@@ -391,7 +391,21 @@ include "procesos/conexion.php";
                           <img src="data:image/jpg;base64,<?php echo base64_encode($datos->foto_aut) ?>" alt="" />
                           <div class="name-job">
                             <h3 class="name"><?= $datos->titLib ?></h3>
-                            <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
+                            <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?> <span class="badge badge-pill badge-success"><?= $datos->lan ?></span></h4> 
+                            <div class="row align-items-center my-2">
+                              <div class="col">
+                                <div class="my-0 text-muted small">Lecturas acumuladas</div>
+                              </div>
+                              <div class="col-auto">
+                                <strong><?= $datos->lecturas ?></strong>
+                              </div>
+                              <div class="col-3">
+                                <div class="progress" style="height: 4px;">
+                                  <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                            </div>
+
                             <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
                           </div>
                         </div>
