@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "procesos/conexion.php";
+$haylibrosxd=0;
 ?>
 <!doctype html>
 <html lang="en">
@@ -172,6 +173,7 @@ include "procesos/conexion.php";
             $contadorcol = 1;
             $contenido = "";
             while ($datos = $sql->fetch_array()) {
+              $haylibrosxd=1;
               $idLib = $datos['idLib'];
               $titulo = $datos['titLib'];
               $autor = $datos['nomAut1'];
@@ -238,9 +240,13 @@ include "procesos/conexion.php";
                                         </div>
                                       </div>';
                     }
-              if (!empty($idLib)) {
-                echo '<h1>Lo sentimos por el momento no tenemos este titulo</h1>';
-              }
+              
+            }if ($haylibrosxd==0) {
+              echo '
+                  <script>alert("Lo sentimos por el momento no tenemos este titulo")
+                  history.back();
+                  </script>
+                  ';
             }
 
             echo '</div>';
@@ -271,6 +277,7 @@ include "procesos/conexion.php";
             $contadorcol = 1;
             $contenido = "";
             while ($datos = $sql->fetch_array()) {
+              $haylibrosxd=1;
               $idLib = $datos['idLib'];
               $titulo = $datos['titLib'];
               $autor = $datos['nomAut1'];
@@ -337,9 +344,14 @@ include "procesos/conexion.php";
                                         </div>
                                       </div>';
                   }
-                  if (!empty($idLib)) {
-                    echo '<h1>Lo sentimos por el momento no tenemos este titulo</h1>';
-                  }
+                  
+                }
+                if ($haylibrosxd==0) {
+                  echo '
+                  <script>alert("Lo sentimos por el momento no tenemos este titulo")
+                  history.back();
+                  </script>
+                  ';
                 }
 
                 echo '</div>';
