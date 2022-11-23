@@ -278,15 +278,15 @@ if (isset($_GET["variable"])) {
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="lastname">Imagen del Libro</label>
-                                                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file" required>
+                                                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file">
                                                     </div>  
                                                     <div class="form-group col-md-6">
                                                         <label for="lastname">Libro</label>
-                                                        <input type="file" id="example-fileinput" name="fileTest" class="form-control-file" required>
+                                                        <input type="file" id="example-fileinput" name="fileTest" class="form-control-file">
                                                     </div>    
                                                     <div class="form-group col-md-12">
                                                         <label for="lastname">Sinopsis</label>
-                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="sinopsis" class="form-control-file"  required><?php echo $sinopsis; ?></textarea>
+                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="sinopsis" class="form-control-file"><?php echo $sinopsis; ?></textarea>
                                                     </div>                                                              
                                                 </div>                                                
                                     </div>
