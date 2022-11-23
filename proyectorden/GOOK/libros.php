@@ -146,7 +146,7 @@ echo ' <input type="submit"
                         </a>
                     </li>
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="see-book.php?variable=1">
+                        <a class="nav-link" href="seebook.php?variable=1">
                             <i class="fe fe-profile fe-16"></i>
                             <span class="ml-3 item-text">Home</span>
                         </a>
