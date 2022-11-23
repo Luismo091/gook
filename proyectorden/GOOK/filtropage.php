@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "procesos/conexion.php";
+$haylibrosxd=0;
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,7 +37,6 @@ include "procesos/conexion.php";
   <link rel="stylesheet" href="css/styleswiper.css">
   <link rel="stylesheet" href="css/stylesee.css">
   <link rel="stylesheet" href="css/pstyle.css">
-
 </head>
 
 <body class="vertical  dark  ">
@@ -173,6 +173,7 @@ include "procesos/conexion.php";
             $contadorcol = 1;
             $contenido = "";
             while ($datos = $sql->fetch_array()) {
+              $haylibrosxd=1;
               $idLib = $datos['idLib'];
               $titulo = $datos['titLib'];
               $autor = $datos['nomAut1'];
@@ -181,58 +182,71 @@ include "procesos/conexion.php";
               $imagenlibro = $datos['imagen'];
               $imli = base64_encode($imagenlibro);
               if ($contadorcol <= 6) {
-
-                echo '
-                                    <div class="col-md-2"">
-                                      <div class="card shadow" >
-                                        <div class="card-body">
-                                        
-                                          
-                                      '; ?>
-                <div class="image-box" style="height: 380px;">
-                  <img src="data:image/png;base64,<?= $imli ?>" alt="">
-                </div>
-
-              <?php echo '<div style="height:21px;">
-                                          <p>' . $titulo . '</p>
+                ?>
+  
+                  <div class="col-md-2">
+                    <div class="card shadow">
+                      <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
+  
+  
+  
+  
+  
+  
+                      <?php echo '
+                      <div style="height:65%;"></div>
+                      
+                      <div style="background-color: rgba(0, 0, 0, 0.34);">
+                      
+                                            <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
+                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
+                                            <span class="ml-3 item-text">Ver</span>
+                                            <i class="fe fe-arrow-right"></i>
+                                            </a></p>
+                                            </div>  
                                           </div>
-              
-              <p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                          <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
-                                          <span class="ml-3 item-text">Ver</span>
-                                          <i class="fe fe-arrow-right"></i>
-                                          </a></p>  
                                         </div>
-                                      </div>
-                                    </div>';
-                $contadorcol++;
-              } else {
-                $contadorcol = 2;
-                echo '</div><br>
-                                    <div class="row">
-                                    <div class="col-md-2"">
-                                <div class="card shadow" >
-                                    <div class="card-body">
-                                       '; ?>
-                <div class="image-box" style="height: 380px;">
-                  <img src="data:image/png;base64,<?= $imli ?>">
-                </div>
-              <?php echo '<div style="height:21px;">
-                                          <p>' . $titulo . '</p>
+                                      </div>';
+                      $contadorcol++;
+                    } else {
+                      $contadorcol = 2;
+                      echo '</div><br>
+                                      <div class="row">'
+
+                                      
+                                      ?>
+  
+                  <div class="col-md-2">
+                    <div class="card shadow">
+                      <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
+  
+  
+  
+  
+  
+  
+                      <?php echo '
+                      <div style="height:65%;"></div>
+                      
+                      <div style="background-color: rgba(0, 0, 0, 0.34);">
+                      
+                                            <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
+                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
+                                            <span class="ml-3 item-text">Ver</span>
+                                            <i class="fe fe-arrow-right"></i>
+                                            </a></p>
+                                            </div>  
                                           </div>
+                                        </div>
+                                      </div>';
+                    }
               
-              <p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
-                                        <span class="ml-3 item-text">Ver</span>
-                                        <i class="fe fe-arrow-right"></i>
-                                    </a></p>
-                                    </div>
-                                </div>
-                            </div>';
-              }
-              if (!empty($datos->titLib)) {
-                echo '<h1>Lo sentimos por el momento no tenemos este titulo</h1>';
-              }
+            }if ($haylibrosxd==0) {
+              echo '
+                  <script>alert("Lo sentimos por el momento no tenemos este titulo")
+                  history.back();
+                  </script>
+                  ';
             }
 
             echo '</div>';
@@ -263,6 +277,7 @@ include "procesos/conexion.php";
             $contadorcol = 1;
             $contenido = "";
             while ($datos = $sql->fetch_array()) {
+              $haylibrosxd=1;
               $idLib = $datos['idLib'];
               $titulo = $datos['titLib'];
               $autor = $datos['nomAut1'];
@@ -271,19 +286,17 @@ include "procesos/conexion.php";
               $imagenlibro = $datos['imagen'];
               $imli = base64_encode($imagenlibro);
               if ($contadorcol <= 6) {
+              ?>
 
-                echo '
-                                    <div class="col-md-2"">
-                                      <div class="card shadow" >
-                                        <div class="card-body">
-                                        
-                                          
-                                      '; ?>
-                <div class="image-box" style="height: 380px;">
-                  <img src="data:image/png;base64,<?= $imli ?>" alt="">
-                </div>
+                <div class="col-md-2">
+                  <div class="card shadow">
+                    <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
 
 
+
+
+
+              
               <?php echo '<div style="height:21px;">
                                           <p style="text-overflow: ellipsis;">' . $titulo . '</p>
                                           </div>
@@ -292,7 +305,8 @@ include "procesos/conexion.php";
                                           <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
                                           <span class="ml-3 item-text">Ver</span>
                                           <i class="fe fe-arrow-right"></i>
-                                          </a></p>  
+                                          </a></p>
+                                          </div>  
                                         </div>
                                       </div>
                                     </div>';
@@ -308,33 +322,31 @@ include "procesos/conexion.php";
                 <div class="image-box" style="height: 380px;">
                   <img src="data:image/png;base64,<?= $imli ?>">
                 </div>
-        <?php echo '<div style="height:21px;">
+              <?php echo '<div style="height:21px;">
                                           <p>' . $titulo . '</p>
                                           </div>
-              
-              <p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                        <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
-                                        <span class="ml-3 item-text">Ver</span>
-                                        <i class="fe fe-arrow-right"></i>
-                                    </a></p>
-                                    </div>
-                                </div>
-                            </div>';
-              }
-              if (!empty($datos->titLib)) {
-                echo '<h1>Lo sentimos por el momento no tenemos este titulo</h1>';
+                                        </div>
+                                      </div>';
+                  }
+                  
+                }
+                if ($haylibrosxd==0) {
+                  echo '
+                  <script>alert("Lo sentimos por el momento no tenemos este titulo")
+                  history.back();
+                  </script>
+                  ';
+                }
+
+                echo '</div>';
               }
             }
 
-            echo '</div>';
-          }
-        }
+
+              ?>
 
 
-        ?>
-
-
-      </div>
+                    </div>
 
 
 
