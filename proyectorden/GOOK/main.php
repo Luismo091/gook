@@ -173,7 +173,7 @@ include "procesos/conexion.php";
             <div class="row align-items-center mb-2">
               <div class="col">
                 <div class="main-header anim" style="--delay: 0s">Tu gook de le semana</div>
-                <a class="weatherwidget-io" href="https://forecast7.com/es/6d55n73d13/san-gil/" data-label_1="SAN GIL" data-label_2="WEATHER" data-font="Roboto" data-textcolor="#ffffff">SAN GIL WEATHER</a>
+                <a class="weatherwidget-io" href="https://forecast7.com/es/6d55n73d13/san-gil/" data-label_1="SAN GIL" data-label_2="Clima de gook"  data-textcolor="#ffffff">SAN GIL WEATHER</a>
               <script>
                 ! function(d, s, id) {
                   var js, fjs = d.getElementsByTagName(s)[0];
@@ -185,6 +185,7 @@ include "procesos/conexion.php";
                   }
                 }(document, 'script', 'weatherwidget-io-js');
               </script>
+
               </div>
             
               <div class="col-auto">
@@ -333,7 +334,7 @@ include "procesos/conexion.php";
                           </svg>
                           <span>Categoria</span><span>Todas las clasificaciones</span>
                         </div>
-                        <h1 class="title">Fiestas Decembrinas</h1>
+                        <h1 class="title">Tematicas Navideñas</h1>
                         <p class="subtitle"></p>
                       </div>
                     </header>
