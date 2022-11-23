@@ -221,7 +221,20 @@ include "procesos/conexion.php";
                                         <div class="name-job">
                                             <h3 class="name"><?= $datos->titLib ?></h3>
                                             <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
-                                            <span style="font-size:15px;" class="badge badge-pill badge-warning">5/5</span>
+                                            <span style="font-size:15px;" class="badge badge-pill badge-warning"><?php
+                                                                                                                     
+                                                                                                                    $idusu = $_SESSION['id'];
+                                                                                                                    $query = "SELECT Libro_idLib, AVG(cal) as prom FROM Comentario  
+                                                                                                                    group BY Libro_idLib having Libro_idLib = '$datos->idLib'";
+                                                                                                                    $resul = $conexion->query($query);
+                                                                                                                    if ($row = $resul->fetch_array()) {
+                                                                                                                        $promedio = $row['prom'];
+                                                                                                                        $promedio = $promedio - 0;
+                                                                                                                    } else {
+                                                                                                                        $promedio = 0;
+                                                                                                                    }
+                                                                                                                    echo $promedio;
+                                                                                                                    ?>/5</span>
                                             <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
 
                                         </div>

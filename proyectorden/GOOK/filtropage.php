@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "procesos/conexion.php";
-$haylibrosxd=0;
+$haylibrosxd = 0;
 ?>
 <!doctype html>
 <html lang="en">
@@ -173,7 +173,7 @@ $haylibrosxd=0;
             $contadorcol = 1;
             $contenido = "";
             while ($datos = $sql->fetch_array()) {
-              $haylibrosxd=1;
+              $haylibrosxd = 1;
               $idLib = $datos['idLib'];
               $titulo = $datos['titLib'];
               $autor = $datos['nomAut1'];
@@ -182,24 +182,24 @@ $haylibrosxd=0;
               $imagenlibro = $datos['imagen'];
               $imli = base64_encode($imagenlibro);
               if ($contadorcol <= 6) {
-                ?>
-  
-                  <div class="col-md-2">
-                    <div class="card shadow">
-                      <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
-  
-  
-  
-  
-  
-  
-                      <?php echo '
+        ?>
+
+                <div class="col-md-2">
+                  <div class="card shadow">
+                    <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
+
+
+
+
+
+
+                    <?php echo '
                       <div style="height:65%;"></div>
                       
                       <div style="background-color: rgba(0, 0, 0, 0.34);">
                       
                                             <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
-                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
+                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
                                             <span class="ml-3 item-text">Ver</span>
                                             <i class="fe fe-arrow-right"></i>
                                             </a></p>
@@ -207,31 +207,31 @@ $haylibrosxd=0;
                                           </div>
                                         </div>
                                       </div>';
-                      $contadorcol++;
-                    } else {
-                      $contadorcol = 2;
-                      echo '</div><br>
+                    $contadorcol++;
+                  } else {
+                    $contadorcol = 2;
+                    echo '</div><br>
                                       <div class="row">'
 
-                                      
-                                      ?>
-  
-                  <div class="col-md-2">
-                    <div class="card shadow">
-                      <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
-  
-  
-  
-  
-  
-  
-                      <?php echo '
+
+                    ?>
+
+                      <div class="col-md-2">
+                        <div class="card shadow">
+                          <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
+
+
+
+
+
+
+                          <?php echo '
                       <div style="height:65%;"></div>
                       
                       <div style="background-color: rgba(0, 0, 0, 0.34);">
                       
                                             <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
-                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
+                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
                                             <span class="ml-3 item-text">Ver</span>
                                             <i class="fe fe-arrow-right"></i>
                                             </a></p>
@@ -239,29 +239,29 @@ $haylibrosxd=0;
                                           </div>
                                         </div>
                                       </div>';
-                    }
-              
-            }if ($haylibrosxd==0) {
-              echo '
+                        }
+                      }
+                      if ($haylibrosxd == 0) {
+                        echo '
                   <script>alert("Lo sentimos por el momento no tenemos este titulo")
                   history.back();
                   </script>
                   ';
-            }
+                      }
 
-            echo '</div>';
-          } else {
+                      echo '</div>';
+                    } else {
 
 
-            echo '<h1> Resultados para : "' . $filtro . '"  </h1>
+                      echo '<h1> Resultados para : "' . $filtro . '"  </h1>
             <div class="row">';
-            echo '<div class="row">';
+                      echo '<div class="row">';
 
 
 
 
 
-            $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
+                      $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
                             FROM Libro
                             INNER JOIN LibAut
                             ON Libro.idLib=LibAut.Libro_idLib
@@ -274,36 +274,35 @@ $haylibrosxd=0;
                             INNER JOIN Categoria
                             ON Libro.Categoria_idCat=Categoria.idCat
                             WHERE Categoria_idCat=$categoria AND titLib LIKE '%$filtro%' ");
-            $contadorcol = 1;
-            $contenido = "";
-            while ($datos = $sql->fetch_array()) {
-              $haylibrosxd=1;
-              $idLib = $datos['idLib'];
-              $titulo = $datos['titLib'];
-              $autor = $datos['nomAut1'];
-              $autor = $autor . " " . $datos['apeAut1'];
-              $editorial = $datos['nomEdi'];
-              $imagenlibro = $datos['imagen'];
-              $imli = base64_encode($imagenlibro);
-              if ($contadorcol <= 6) {
-              ?>
+                      $contadorcol = 1;
+                      $contenido = "";
+                      while ($datos = $sql->fetch_array()) {
+                        $haylibrosxd = 1;
+                        $idLib = $datos['idLib'];
+                        $titulo = $datos['titLib'];
+                        $autor = $datos['nomAut1'];
+                        $autor = $autor . " " . $datos['apeAut1'];
+                        $editorial = $datos['nomEdi'];
+                        $imagenlibro = $datos['imagen'];
+                        $imli = base64_encode($imagenlibro);
+                        if ($contadorcol <= 6) {
+                          ?>
 
-                <div class="col-md-2">
-                  <div class="card shadow">
-                    <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
-
-
+                            <div class="col-md-2">
+                              <div class="card shadow">
+                                <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
 
 
 
 
-                    <?php echo '
-                    <div style="height:65%;"></div>
-                    
-                    <div style="background-color: rgba(0, 0, 0, 0.34);">
-                    
-                                          <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
-                                          <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
+
+
+                                <?php echo '<div style="height:21px;">
+                                          <p style="text-overflow: ellipsis;">' . $titulo . '</p>
+                                          </div>
+              
+              <p style="margin-top: 2px;"></p><p>' . $autor . '</p>
+                                          <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
                                           <span class="ml-3 item-text">Ver</span>
                                           <i class="fe fe-arrow-right"></i>
                                           </a></p>
@@ -311,58 +310,42 @@ $haylibrosxd=0;
                                         </div>
                                       </div>
                                     </div>';
-                    $contadorcol++;
-                  } else {
-                    $contadorcol = 2;
-                      echo '</div><br>
-                                      <div class="row">'
-
-                                      
-                                      ?>
-  
-                  <div class="col-md-2">
-                    <div class="card shadow">
-                      <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
-  
-  
-  
-  
-  
-  
-                      <?php echo '
-                      <div style="height:65%;"></div>
-                      
-                      <div style="background-color: rgba(0, 0, 0, 0.34);">
-                      
-                                            <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
-                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
-                                            <span class="ml-3 item-text">Ver</span>
-                                            <i class="fe fe-arrow-right"></i>
-                                            </a></p>
-                                            </div>  
+                                $contadorcol++;
+                              } else {
+                                $contadorcol = 2;
+                                echo '</div><br>
+                                    <div class="row">
+                                    <div class="col-md-2"">
+                                <div class="card shadow" >
+                                    <div class="card-body">
+                                       '; ?>
+                                  <div class="image-box" style="height: 380px;">
+                                    <img src="data:image/png;base64,<?= $imli ?>">
+                                  </div>
+                          <?php echo '<div style="height:21px;">
+                                          <p>' . $titulo . '</p>
                                           </div>
                                         </div>
                                       </div>';
-                  }
-                  
-                }
-                if ($haylibrosxd==0) {
-                  echo '
+                              }
+                            }
+                            if ($haylibrosxd == 0) {
+                              echo '
                   <script>alert("Lo sentimos por el momento no tenemos este titulo")
                   history.back();
                   </script>
                   ';
-                }
+                            }
 
-                echo '</div>';
-              }
-            }
-
-
-              ?>
+                            echo '</div>';
+                          }
+                        }
 
 
-                    </div>
+                          ?>
+
+
+                                </div>
 
 
 
