@@ -173,21 +173,21 @@ include "procesos/conexion.php";
             <div class="row align-items-center mb-2">
               <div class="col">
                 <div class="main-header anim" style="--delay: 0s">Tu gook de le semana</div>
-                <a class="weatherwidget-io" href="https://forecast7.com/es/6d55n73d13/san-gil/" data-label_1="SAN GIL" data-label_2="Clima de gook"  data-textcolor="#ffffff">SAN GIL WEATHER</a>
-              <script>
-                ! function(d, s, id) {
-                  var js, fjs = d.getElementsByTagName(s)[0];
-                  if (!d.getElementById(id)) {
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = 'https://weatherwidget.io/js/widget.min.js';
-                    fjs.parentNode.insertBefore(js, fjs);
-                  }
-                }(document, 'script', 'weatherwidget-io-js');
-              </script>
+                <a class="weatherwidget-io" href="https://forecast7.com/es/6d55n73d13/san-gil/" data-label_1="SAN GIL" data-label_2="Clima de gook" data-textcolor="#ffffff">SAN GIL WEATHER</a>
+                <script>
+                  ! function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (!d.getElementById(id)) {
+                      js = d.createElement(s);
+                      js.id = id;
+                      js.src = 'https://weatherwidget.io/js/widget.min.js';
+                      fjs.parentNode.insertBefore(js, fjs);
+                    }
+                  }(document, 'script', 'weatherwidget-io-js');
+                </script>
 
               </div>
-            
+
               <div class="col-auto">
                 <form class="form-inline">
                   <div class="form-group d-none d-lg-inline">

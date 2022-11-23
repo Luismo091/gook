@@ -283,7 +283,7 @@ include "procesos/conexion.php";
                   <img src="data:image/png;base64,<?= $imli ?>" alt="">
                 </div>
 
-              
+
               <?php echo '<div style="height:21px;">
                                           <p style="text-overflow: ellipsis;">' . $titulo . '</p>
                                           </div>
@@ -308,7 +308,7 @@ include "procesos/conexion.php";
                 <div class="image-box" style="height: 380px;">
                   <img src="data:image/png;base64,<?= $imli ?>">
                 </div>
-              <?php echo '<div style="height:21px;">
+        <?php echo '<div style="height:21px;">
                                           <p>' . $titulo . '</p>
                                           </div>
               

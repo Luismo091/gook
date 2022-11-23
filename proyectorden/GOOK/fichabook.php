@@ -359,7 +359,29 @@ if (isset($_GET["variable"])) {
                         </span><?php echo $_SESSION['nombre1']; ?> <?php echo $_SESSION['apellido1']; ?></strong>
                     </div>
                     <div class="card-body">
-                      <form class="needs-validation" novalidate="">
+                      <?php
+                      $idsus = $_SESSION['id'];
+                      $query = "SELECT * FROM Comentario ORDER BY idCom DESC LIMIT 1";
+          
+                      $resul = $conexion->query($query);
+
+                      if ($row = $resul->fetch_array()) {
+                        $IDCO = $row['idCom'];
+                      }
+
+                      if (empty($_POST['rating']) and empty($_POST['comment'])) {
+                      } else {
+                        date_default_timezone_set("America/Bogota");
+                        $IDCO2 = $IDCO + 1;
+                        $fechaActual = date('Y-m-d');
+                        $tiempo = date('H:i:s');
+                        $comen = $_POST["comment"];
+                        $rat = $_POST["rating"];
+                        $sql = $conexion->query("INSERT INTO Comentario (idCom, txtCom, Usuario_idUsu, Libro_idLib, txtda, txttime) VALUES ('$IDCO2','$comen','$idsus','$variable','$fechaActual','$tiempo')");
+                        $sql = $conexion->query("INSERT INTO Calificacion (idCal, valCal, Usuario_idUsuc, Libro_idLibc) VALUES ('$IDCO2','$rat','$idsus','$variable')");
+                      }
+                      ?>
+                      <form class="needs-validation" novalidate="" method="POST">
                         <div class="rating__stars">
                           <input id="rating-1" class="rating__input rating__input-1" type="radio" name="rating" value="1">
                           <input id="rating-2" class="rating__input rating__input-2" type="radio" name="rating" value="2">
@@ -479,7 +501,7 @@ if (isset($_GET["variable"])) {
                           <p class="rating__display" data-rating="5" hidden>Excellent</p>
                         </div>
                         <div class="form-group mb-3">
-                          <textarea class="form-control" id="validationTextarea1" placeholder="Comenta..." required="" rows="3"></textarea>
+                          <textarea class="form-control" id="validationTextarea1" placeholder="Comenta..." required="" rows="3" name="comment"></textarea>
                           <div class="invalid-feedback">Porfavor asegurese de enviar un comentario</div>
                         </div>
                         <div class="custom-control custom-checkbox mb-3">
