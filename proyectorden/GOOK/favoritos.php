@@ -222,10 +222,10 @@ include "procesos/conexion.php";
                                             <h3 class="name"><?= $datos->titLib ?></h3>
                                             <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?></h4>
                                             <span style="font-size:15px;" class="badge badge-pill badge-warning"><?php
-                                                                                                                     
+
                                                                                                                     $idusu = $_SESSION['id'];
                                                                                                                     $query = "SELECT Libro_idLib, AVG(cal) as prom FROM Comentario  
-                                                                                                                    group BY Libro_idLib having Libro_idLib = '$datos->idLib'";
+                                                group BY Libro_idLib having Libro_idLib = '$datos->idLib'";
                                                                                                                     $resul = $conexion->query($query);
                                                                                                                     if ($row = $resul->fetch_array()) {
                                                                                                                         $promedio = $row['prom'];
