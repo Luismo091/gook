@@ -155,7 +155,7 @@ $haylibrosxd = 0;
 
 
             echo '<h1> Resultados para : "' . $filtro . '"  </h1>
-<div class="row">';
+            <div class="row">';
 
             $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
                             FROM Libro
@@ -253,13 +253,8 @@ $haylibrosxd = 0;
                     } else {
 
 
-                      echo '<h1> Resultados para : "' . $filtro . '"  </h1>
-            <div class="row">';
-                      echo '<div class="row">';
-
-
-
-
+                      echo '<h1> Resultados para : ' . $filtro . '  </h1>
+            <div class="row">';                  
 
                       $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
                             FROM Libro
@@ -274,6 +269,7 @@ $haylibrosxd = 0;
                             INNER JOIN Categoria
                             ON Libro.Categoria_idCat=Categoria.idCat
                             WHERE Categoria_idCat=$categoria AND titLib LIKE '%$filtro%' ");
+
                       $contadorcol = 1;
                       $contenido = "";
                       while ($datos = $sql->fetch_array()) {
@@ -292,11 +288,6 @@ $haylibrosxd = 0;
                               <div class="card shadow">
                                 <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
 
-
-
-
-
-
                                 <?php echo '<div style="height:21px;">
                                           <p style="text-overflow: ellipsis;">' . $titulo . '</p>
                                           </div>
@@ -306,8 +297,7 @@ $haylibrosxd = 0;
                                           <span class="ml-3 item-text">Ver</span>
                                           <i class="fe fe-arrow-right"></i>
                                           </a></p>
-                                          </div>  
-                                        </div>
+                                          </div>                           
                                       </div>
                                     </div>';
                                 $contadorcol++;
