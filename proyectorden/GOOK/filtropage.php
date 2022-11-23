@@ -238,7 +238,7 @@ include "procesos/conexion.php";
                                         </div>
                                       </div>';
                     }
-              if (!empty($datos->titLib)) {
+              if (!empty($idLib)) {
                 echo '<h1>Lo sentimos por el momento no tenemos este titulo</h1>';
               }
             }
@@ -337,7 +337,7 @@ include "procesos/conexion.php";
                                         </div>
                                       </div>';
                   }
-                  if (!empty($datos->titLib)) {
+                  if (!empty($idLib)) {
                     echo '<h1>Lo sentimos por el momento no tenemos este titulo</h1>';
                   }
                 }
