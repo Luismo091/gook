@@ -190,8 +190,8 @@ if (isset($_GET["variable"])) {
 
               <?php
               $idusu = $_SESSION['id'];
-              $query = "SELECT Libro_idLibc, AVG(valCal) as prom FROM Calificacion  
-              group BY Libro_idLibc having Libro_idLibc = '$variable'";
+              $query = "SELECT Libro_idLib, AVG(cal) as prom FROM Comentario  
+              group BY Libro_idLib having Libro_idLib = '$variable'";
               $resul = $conexion->query($query);
               if ($row = $resul->fetch_array()) {
                 $promedio = $row['prom'];
@@ -362,7 +362,7 @@ if (isset($_GET["variable"])) {
                       <?php
                       $idsus = $_SESSION['id'];
                       $query = "SELECT * FROM Comentario ORDER BY idCom DESC LIMIT 1";
-          
+
                       $resul = $conexion->query($query);
 
                       if ($row = $resul->fetch_array()) {
@@ -377,8 +377,8 @@ if (isset($_GET["variable"])) {
                         $tiempo = date('H:i:s');
                         $comen = $_POST["comment"];
                         $rat = $_POST["rating"];
-                        $sql = $conexion->query("INSERT INTO Comentario (idCom, txtCom, Usuario_idUsu, Libro_idLib, txtda, txttime) VALUES ('$IDCO2','$comen','$idsus','$variable','$fechaActual','$tiempo')");
-                        $sqlinse = $conexion->query("INSERT INTO Calificacion (idCal, valCal, Usuario_idUsuc, Libro_idLibc) VALUES ('$IDCO2','$rat','$idsus','$variable')");
+                        echo $variable, $rat;
+                        $sql = $conexion->query("INSERT INTO Comentario (idCom, txtCom, Usuario_idUsu, Libro_idLib, txtda, txttime,cal) VALUES ('$IDCO2','$comen','$idsus','$variable','$fechaActual','$tiempo','$rat')");
                       }
                       ?>
                       <form class="needs-validation" novalidate="" method="POST">
@@ -526,13 +526,11 @@ if (isset($_GET["variable"])) {
                 </div>
                 <?php
                 $idusu = $_SESSION['id'];
-                $sql = $conexion->query("SELECT idCom, txtCom, Usuario_idUsu, Libro_idLib, txtda, txttime,idUsu, nom1, nom2, ape1, ape2, eda, foto, Seguridad_idSeg, 
-                Suscripcion_idSus,idCal, valCal, Usuario_idUsuc, Libro_idLibc
+                $sql = $conexion->query("SELECT idCom, txtCom, Usuario_idUsu, Libro_idLib, txtda, txttime,cal,idUsu, nom1, nom2, ape1, ape2, eda, foto, Seguridad_idSeg, 
+                Suscripcion_idSus
                 from Usuario
                 INNER JOIN Comentario
                 ON Usuario.idUsu=Comentario.Usuario_idUsu
-                INNER JOIN Calificacion
-                ON Usuario.idUsu=Calificacion.Usuario_idUsuc
                 where Libro_idLib ='$variable'");
                 while ($datos = $sql->fetch_object()) {
                 ?>
@@ -545,7 +543,7 @@ if (isset($_GET["variable"])) {
                               <img src="data:image/png;base64,<?php echo base64_encode($datos->foto) ?>">
                             </span><?= $datos->nom1 ?> <?= $datos->nom2 ?></strong>
                         </div>
-                        <span class="badge badge-pill badge-warning"><?= $datos->valCal ?>/5</span>
+                        <span class="badge badge-pill badge-warning"><?= $datos->cal ?>/5</span>
                         <div class="col">
                           <small><strong>Dijo el <?= $datos->txtda ?> a las <?= $datos->txttime ?> </strong></small>
                           <div class="mb-2 text-muted small"><?= $datos->txtCom ?></div>

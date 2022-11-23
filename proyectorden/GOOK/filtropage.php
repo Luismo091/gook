@@ -199,7 +199,7 @@ $haylibrosxd = 0;
                       <div style="background-color: rgba(0, 0, 0, 0.34);">
                       
                                             <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
-                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
+                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
                                             <span class="ml-3 item-text">Ver</span>
                                             <i class="fe fe-arrow-right"></i>
                                             </a></p>
@@ -231,7 +231,7 @@ $haylibrosxd = 0;
                       <div style="background-color: rgba(0, 0, 0, 0.34);">
                       
                                             <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
-                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
+                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
                                             <span class="ml-3 item-text">Ver</span>
                                             <i class="fe fe-arrow-right"></i>
                                             </a></p>
@@ -302,7 +302,7 @@ $haylibrosxd = 0;
                                           </div>
               
               <p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                          <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '?>">                            
+                                          <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
                                           <span class="ml-3 item-text">Ver</span>
                                           <i class="fe fe-arrow-right"></i>
                                           </a></p>
