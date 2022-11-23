@@ -378,7 +378,7 @@ if (isset($_GET["variable"])) {
                         $comen = $_POST["comment"];
                         $rat = $_POST["rating"];
                         $sql = $conexion->query("INSERT INTO Comentario (idCom, txtCom, Usuario_idUsu, Libro_idLib, txtda, txttime) VALUES ('$IDCO2','$comen','$idsus','$variable','$fechaActual','$tiempo')");
-                        $sql = $conexion->query("INSERT INTO Calificacion (idCal, valCal, Usuario_idUsuc, Libro_idLibc) VALUES ('$IDCO2','$rat','$idsus','$variable')");
+                        $sqlinse = $conexion->query("INSERT INTO Calificacion (idCal, valCal, Usuario_idUsuc, Libro_idLibc) VALUES ('$IDCO2','$rat','$idsus','$variable')");
                       }
                       ?>
                       <form class="needs-validation" novalidate="" method="POST">
