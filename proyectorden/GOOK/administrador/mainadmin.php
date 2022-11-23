@@ -190,7 +190,7 @@ include "../procesos/conexion.php";
                   <div class="card shadow mb-4">
                     <div class="card-body">
                       <div class="py-5 text-center">
-                        <p class="text-muted mb-2">Real time</p>
+                        <p class="text-muted mb-2">Libros En plataforma</p>
                         <h2 class="mb-1">1,254</h2>
                         <span class="small text-success">+2%</span>
                       </div>
@@ -276,72 +276,8 @@ include "../procesos/conexion.php";
                       </div>
                     </div> <!-- /.card-body -->
                   </div> <!-- /.card -->
-                  <div class="card shadow mb-4">
-                    <div class="card-header">
-                      <strong class="card-title">Notification List</strong>
-                      <a class="float-right small text-muted" href="#!">View all</a>
-                    </div>
-                    <div class="card-body scrollable">
-                      <div class="list-group list-group-flush my-n3">
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col-auto">
-                              <span class="fe fe-link fe-24"></span>
-                            </div>
-                            <div class="col">
-                              <small><strong>Link was attached to menu</strong></small>
-                              <div class="my-0 text-muted small">New layout has been attached to the menu</div>
-                            </div>
-                            <div class="col-auto">
-                              <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col-auto">
-                              <span class="fe fe-box fe-24"></span>
-                            </div>
-                            <div class="col">
-                              <small><strong>Package has uploaded successfull</strong></small>
-                              <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                            </div>
-                            <div class="col-auto">
-                              <small class="badge badge-pill badge-light text-muted">1m ago</small>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col-auto">
-                              <span class="fe fe-download fe-24"></span>
-                            </div>
-                            <div class="col">
-                              <small><strong>Widgets are updated successfull</strong></small>
-                              <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
-                            </div>
-                            <div class="col-auto">
-                              <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="list-group-item mb-2">
-                          <div class="row align-items-center">
-                            <div class="col-auto">
-                              <span class="fe fe-inbox fe-24"></span>
-                            </div>
-                            <div class="col">
-                              <small><strong>Notifications have been sent</strong></small>
-                              <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                            </div>
-                            <div class="col-auto">
-                              <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                            </div>
-                          </div> <!-- / .row -->
-                        </div>
-                      </div> <!-- / .list-group -->
-                    </div> <!-- / .card-body -->
-                  </div> <!-- / .card -->
+                  
+                      <!-- / .card -->
                 </div> <!-- ./col -->
                 <div class="col-md-8">
                   <div class="row">
@@ -484,10 +420,10 @@ include "../procesos/conexion.php";
                         <div class="card-header">
                           <div class="row align-items-center">
                             <div class="col">
-                              <h3 class="h6 mb-0">Users</h3>
+                              <h3 class="h6 mb-0">Usuarios  </h3>
                             </div>
                             <div class="col-auto">
-                              <a class="small text-muted" href="#!">View all</a>
+                              <a class="small text-muted" href="#!">Ver mas</a>
                             </div>
                           </div>
                         </div>
@@ -602,7 +538,7 @@ include "../procesos/conexion.php";
                       <!-- Log -->
                       <div class="card shadow">
                         <div class="card-header">
-                          <strong class="card-title">Logging</strong>
+                          <strong class="card-title">Últimos Usuarios Registrados</strong>
                           <a class="float-right small text-muted" href="#!">View all</a>
                         </div>
                         <div class="card-body">
