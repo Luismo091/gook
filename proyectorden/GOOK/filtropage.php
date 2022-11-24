@@ -295,18 +295,20 @@ $haylibrosxd = 0;
                               <div class="card shadow">
                                 <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
 
-                                <?php echo '<div style="height:21px;">
-                                          <p style="text-overflow: ellipsis;">' . $titulo . '</p>
-                                          </div>
-              
-              <p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                          <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
-                                          <span class="ml-3 item-text">Ver</span>
-                                          <i class="fe fe-arrow-right"></i>
-                                          </a></p>
-                                          </div>                           
-                                      </div>
-                                    </div>';
+                                <?php echo '
+                                <div style="height:65%;"></div>
+                      
+                                <div style="background-color: rgba(0, 0, 0, 0.34);">
+                                
+                                                      <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
+                                                      <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
+                                                      <span class="ml-3 item-text">Ver</span>
+                                                      <i class="fe fe-arrow-right"></i>
+                                                      </a></p>
+                                                      </div>  
+                                                    </div>
+                                                  </div>
+                                                </div>';
                                 $contadorcol++;
                               } else {
                                 $contadorcol = 2;
@@ -319,8 +321,16 @@ $haylibrosxd = 0;
                                   <div class="image-box" style="height: 380px;">
                                     <img src="data:image/png;base64,<?= $imli ?>">
                                   </div>
-                          <?php echo '<div style="height:21px;">
-                                          <p>' . $titulo . '</p>
+                          <?php echo '<div style="height:65%;"></div>
+                      
+                      <div style="background-color: rgba(0, 0, 0, 0.34);">
+                      
+                                            <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
+                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
+                                            <span class="ml-3 item-text">Ver</span>
+                                            <i class="fe fe-arrow-right"></i>
+                                            </a></p>
+                                            </div>  
                                           </div>
                                         </div>
                                       </div>';
