@@ -186,7 +186,7 @@ if ($_SESSION['rol'] == 1) {
 
 
 
-            echo '<h1> Resultados para : "' . $filtro . '"  </h1>
+            echo '<h1> Resultados para :' . $filtro . '  </h1>       
             <div class="row">';
 
             $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 

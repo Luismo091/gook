@@ -119,7 +119,7 @@ include "procesos/conexion.php";
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
             <a class="nav-link" href="main.php">
-              <i class="fa-solid fa-newspaper fa-bounce"></i>
+              <i class="fa-solid fa-newspaper"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
@@ -131,7 +131,7 @@ include "procesos/conexion.php";
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="perfil.php">
-              <i class="fa-solid fa-user"></i>
+              <i class="fa-solid fa-user fa-bounce"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
