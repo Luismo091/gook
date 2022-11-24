@@ -62,7 +62,7 @@ include "../procesos/conexion.php";
         </li>
       </ul>
     </nav>
-      <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+    <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
       <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
         <i class="fe fe-x"><span class="sr-only"></span></i>
       </a>
@@ -92,40 +92,55 @@ include "../procesos/conexion.php";
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
-            <a class="nav-link" href="../main.php">
-              <i class="fe fe-home fe-16"></i>
+            <a class="nav-link" href="mainadmin.php">
+            <i class="fe fe-home fe-16"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="../favoritos.php">
-              <i class="fe fe-heart fe-16"></i>
-              <span class="ml-3 item-text">Favoritos</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="../perfil.php">
+            <a class="nav-link" href="perfiladmin.php">
               <i class="fe fe-user fe-16"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listcuentas.php">
+              <i class="fe fe-users fe-16"></i>
+              <span class="ml-3 item-text">Cuentas</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listbook.php">
+              <i class="fe fe-book fe-16"></i>
+              <span class="ml-3 item-text">Libros</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listautor.php">
+            <i class="fe fe-feather fe-16"></i>
+              <span class="ml-3 item-text">Autores</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listeditoriales.php	">
+              <i class="fe fe-edit fe-16"></i>
+              <span class="ml-3 item-text">Editoriales</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listcategorias.php">
+              <i class="fe fe-tag fe-16"></i>
+              <span class="ml-3 item-text">Categorias</span>
+            </a>
+          </li>
 
-<?php
-  
-  if($_SESSION['rol']==3){
-    echo '<li class="nav-item w-100">
-    <a class="nav-link" href="listbookes.php">
-      <i class="fe fe-upload fe-16"></i>
-      <span class="ml-3 item-text">Subir Produccion</span>
-    </a>
-  </li>';
-  }
-?>
 
-
-          
-
-          
+          <li class="nav-item w-100">
+            <a class="nav-link" href="#">
+              <i class="fe fe-plus fe-16"></i>
+              <span class="ml-3 item-text">Suscripciones</span>
+            </a>
+          </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="../procesos/sesion.php">
               <i class="fe fe-log-out fe-16"></i>
