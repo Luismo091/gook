@@ -94,10 +94,11 @@ if (isset($_GET["variable"])) {
       <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
         <i class="fe fe-x"><span class="sr-only"></span></i>
       </a>
+
       <nav class="vertnav navbar navbar-light">
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
-          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+          <a class="navbar-brand mx-auto mt-2 flex-fill text-center">
             <svg width="auto" height="100px" viewBox="0 0 1920 645.52203" version="1.1" id="svg5" xml:space="preserve" inkscape:export-filename="..\..\..\..\..\..\..\..\Good Book\IconoGookFullAzul.svg" inkscape:export-xdpi="96" inkscape:export-ydpi="96" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)" sodipodi:docname="LogoPoquitaChiquito.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
               <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:document-units="px" showgrid="true" inkscape:zoom="0.5" inkscape:cx="771.00001" inkscape:cy="520" inkscape:window-width="1920" inkscape:window-height="1017" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="g509" />
               <defs id="defs2" />
@@ -120,26 +121,50 @@ if (isset($_GET["variable"])) {
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
             <a class="nav-link" href="main.php">
-              <i class="fe fe-home fe-16"></i>
+              <i class="fa-solid fa-newspaper fa-bounce"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="main.php">
-              <i class="fe fe-heart fe-16"></i>
+            <a class="nav-link" href="favoritos.php">
+            <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="main.php">
-              <i class="fe fe-user fe-16"></i>
+            <a class="nav-link" href="perfil.php">
+              <i class="fa-solid fa-user"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
+
+          <?php
+
+          if ($_SESSION['rol'] == 3) {
+            echo '<li class="nav-item w-100">
+    <a class="nav-link" href="escritor/listbookes.php">
+    <i class="fa-solid fa-upload"></i>
+      <span class="ml-3 item-text">Subir Produccion</span>
+    </a>
+  </li>';
+          }
+         
+
+if ($_SESSION['rol'] == 1) {
+  echo '<li class="nav-item w-100">
+<a class="nav-link" href="administrador/mainadmin.php">
+<i class="fa-solid fa-house-lock"></i>
+<span class="ml-3 item-text">Admin Home</span>
+</a>
+</li>';
+}
+?>
+
+
           <li class="nav-item w-100">
-            <a class="nav-link" href="seebook.php?variable=1">
-              <i class="fe fe-profile fe-16"></i>
-              <span class="ml-3 item-text">Home</span>
+            <a class="nav-link" href="procesos/sesion.php">
+              <i class="fe fe-log-out fe-16"></i>
+              <span class="ml-3 item-text">Salir</span>
             </a>
           </li>
 
@@ -621,6 +646,7 @@ if (isset($_GET["variable"])) {
   <script src='https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js'></script>
   <script src="js/scriptstar.js"></script>
   <script src="js/scriptswiper.js"></script>
+  <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

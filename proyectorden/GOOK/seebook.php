@@ -131,7 +131,7 @@ if (isset($_GET["variable"])) {
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="favoritos.php">
-              <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
@@ -147,7 +147,7 @@ if (isset($_GET["variable"])) {
           if ($_SESSION['rol'] == 3) {
             echo '<li class="nav-item w-100">
     <a class="nav-link" href="escritor/listbookes.php">
-      <i class="fe fe-upload fe-16"></i>
+    <i class="fa-solid fa-upload"></i>
       <span class="ml-3 item-text">Subir Produccion</span>
     </a>
   </li>';
@@ -157,7 +157,7 @@ if (isset($_GET["variable"])) {
 if ($_SESSION['rol'] == 1) {
   echo '<li class="nav-item w-100">
 <a class="nav-link" href="administrador/mainadmin.php">
-<i class="fe fe-home fe-16"></i>
+<i class="fa-solid fa-house-lock"></i>
 <span class="ml-3 item-text">Admin Home</span>
 </a>
 </li>';
