@@ -125,22 +125,46 @@ if (isset($_GET["variable"])) {
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
             <a class="nav-link" href="main.php">
-              <i class="fe fe-home fe-16"></i>
+              <i class="fa-solid fa-newspaper fa-bounce"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="favoritos.php">
-              <i class="fe fe-heart fe-16"></i>
+              <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="perfil.php">
-              <i class="fe fe-user fe-16"></i>
+              <i class="fa-solid fa-user"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
+
+          <?php
+
+          if ($_SESSION['rol'] == 3) {
+            echo '<li class="nav-item w-100">
+    <a class="nav-link" href="escritor/listbookes.php">
+      <i class="fe fe-upload fe-16"></i>
+      <span class="ml-3 item-text">Subir Produccion</span>
+    </a>
+  </li>';
+          }
+         
+
+if ($_SESSION['rol'] == 1) {
+  echo '<li class="nav-item w-100">
+<a class="nav-link" href="administrador/mainadmin.php">
+<i class="fe fe-home fe-16"></i>
+<span class="ml-3 item-text">Admin Home</span>
+</a>
+</li>';
+}
+?>
+
+
           <li class="nav-item w-100">
             <a class="nav-link" href="procesos/sesion.php">
               <i class="fe fe-log-out fe-16"></i>
@@ -365,6 +389,7 @@ if (isset($_GET["variable"])) {
   <script src="js/config.js"></script>
   <script src="js/apps.js"></script>
   <script src="js/scriptsee.js"></script>
+  <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
   <script>
