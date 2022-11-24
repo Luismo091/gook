@@ -56,10 +56,15 @@ $haylibrosxd = 0;
           <?php
           $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
           while ($row = mysqli_fetch_assoc($result)) {
-            echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
+              if ($_GET['filcat']==$row["idCat"]){
+                  echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+              }else{
+                  echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+              }        
+
           }
           ?>
-        </select>
+      </select>
         <a href="javascript:enviar_formulario()">
           <i class="fa-solid fa-filter"></i>
         </a>
