@@ -115,6 +115,7 @@
          VALUES ('$idLE','$idLib','$idEdi')");
             echo'<script type="text/javascript">
             alert("Libro Subido");
+            window.location= "../administrador/listbook.php";
             </script>';
             //header("location:../administrador/listbook.php");
            
