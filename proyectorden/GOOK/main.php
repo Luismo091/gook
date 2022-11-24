@@ -396,7 +396,7 @@ include "procesos/conexion.php";
                 ON Editorial.idEdi=LibEdi.Editorial_idEdi
                 INNER JOIN Categoria
                 ON Libro.Categoria_idCat=Categoria.idCat
-                WHERE Categoria_idCat = 1 limit 4");
+                 ORDER BY fecPub ASC limit 4");
                 while ($datos = $sql->fetch_object()) {
                 ?>
                   <div class="video anim" style="--delay: .4s">
@@ -473,7 +473,7 @@ include "procesos/conexion.php";
                 ON Editorial.idEdi=LibEdi.Editorial_idEdi
                 INNER JOIN Categoria
                 ON Libro.Categoria_idCat=Categoria.idCat
-                WHERE Categoria_idCat = 1 ORDER BY titLib");
+                WHERE Categoria_idCat = 2 ORDER BY titLib");
                 while ($datos = $sql->fetch_object()) {
                 ?>
                   <div class="video anim" style="--delay: .4s">
@@ -511,7 +511,7 @@ include "procesos/conexion.php";
                 <?php }
                 ?>
               </div>
-              <div class="small-header anim" style="--delay: .3s">Para tu salud</div>
+              <div class="small-header anim" style="--delay: .3s">Colombianos influyentes</div>
               <div class="videos">
                 <?php
                 $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
@@ -526,7 +526,7 @@ include "procesos/conexion.php";
                 ON Editorial.idEdi=LibEdi.Editorial_idEdi
                 INNER JOIN Categoria
                 ON Libro.Categoria_idCat=Categoria.idCat
-                WHERE Categoria_idCat = 25");
+                WHERE Categoria_idCat = 3");
                 while ($datos = $sql->fetch_object()) {
                 ?>
                   <div class="video anim" style="--delay: .4s">
