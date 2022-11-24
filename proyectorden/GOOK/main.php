@@ -150,7 +150,17 @@ include "procesos/conexion.php";
     </a>
   </li>';
           }
-          ?>
+         
+
+if ($_SESSION['rol'] == 1) {
+  echo '<li class="nav-item w-100">
+<a class="nav-link" href="administrador/mainadmin.php">
+<i class="fe fe-home fe-16"></i>
+<span class="ml-3 item-text">Admin Home</span>
+</a>
+</li>';
+}
+?>
 
 
           <li class="nav-item w-100">
