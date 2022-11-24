@@ -242,18 +242,11 @@ $haylibrosxd = 0;
                         }
                       }
                       if ($haylibrosxd == 0) {
-                        echo '<div class="wrapper vh-80">
-                        <div class="align-items-center h-100 d-flex w-50 mx-auto">
-                          <div class="mx-auto text-center"> 
-                        
-                          <img src="./assets/images/pochigod.png">
-                            <h1 class="display-1 m-0 font-weight-bolder text-muted" style="font-size:80px;"></h1>
-                            <h1 class="mb-1 text-muted font-weight-bold">No tenemos disponible el titulo que estabas buscando</h1>
-                            <h6 class="mb-3 text-muted">Beep boop pochita se encargara de traerlo.</h6>
-                            <a href="" class="btn btn-lg btn-primary px-5">Envia este titulo a la cola</a>
-                          </div>
-                        </div>
-                      </div>';
+                        echo '
+                  <script>alert("Lo sentimos por el momento no tenemos este titulo")
+                  history.back();
+                  </script>
+                  ';
                       }
 
                       echo '</div>';
@@ -292,7 +285,6 @@ $haylibrosxd = 0;
                           ?>
 
                             <div class="col-md-2">
-                            
                               <div class="card shadow">
                                 <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
 
