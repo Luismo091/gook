@@ -168,7 +168,7 @@ if (isset($_GET["variable"])) {
       $contlibro = base64_encode($contenido);
     }
     $nvi = $vistas + 1;
-   
+
     date_default_timezone_set("America/Bogota");
     $fechaActual = date('Y-m-d');
     $tiempo = date('H:i:s');
@@ -182,10 +182,10 @@ if (isset($_GET["variable"])) {
     <?php
     $sql = $conexion->query("SELECT MAX(idReciente) FROM Reciente");
     if ($datos = $sql->fetch_array()) {
-        $maxid = $datos['MAX(idReciente)'];
-        $maxid++;
+      $maxid = $datos['MAX(idReciente)'];
+      $maxid++;
     } else {
-        $maxid = 1;
+      $maxid = 1;
     }
 
     $query = "SELECT * from Reciente where Libro_idLib='$variable' and Recientecol='$usuid';";
@@ -220,9 +220,38 @@ if (isset($_GET["variable"])) {
         <div class="card mb-4 shadow" style="height: 800px;">
           <div style="position: relative; width:100%;">
             <!--<div style="width:15%; height: 4vh; background: #323738; position: absolute; right:  0%; "></div>-->
-            <?php
 
-            echo '<embed src="./assets/libros/' . $variable . '.pdf #toolbar=0" style="#end {visibility: visible;}" width="100%" height="800px" />'; ?>
+            <embed src="./assets/libros/<?php echo $variable ?>.pdf #toolbar=0" style="#end {visibility: visible;}" width="100%" height="800px" />
+
+          </div>
+        </div>
+
+
+        <div class="card mb-4 shadow" style="height: 800px;">
+          <div style="position: relative; width:100%;">
+            <!--<div style="width:15%; height: 4vh; background: #323738; position: absolute; right:  0%; "></div>-->
+
+            <embed src="<?php echo $variable ?>.pdf #toolbar=0" style="#end {visibility: visible;}" width="100%" height="800px" />
+
+          </div>
+        </div>
+
+
+
+        <div class="card mb-4 shadow" style="height: 800px;">
+          <div style="position: relative; width:100%;">
+            <!--<div style="width:15%; height: 4vh; background: #323738; position: absolute; right:  0%; "></div>-->
+
+            <embed src="/libros/<?php echo $variable ?>.pdf #toolbar=0" style="#end {visibility: visible;}" width="100%" height="800px" />
+
+          </div>
+        </div>
+
+        <div class="card mb-4 shadow" style="height: 800px;">
+          <div style="position: relative; width:100%;">
+            <!--<div style="width:15%; height: 4vh; background: #323738; position: absolute; right:  0%; "></div>-->
+
+            <embed src="../assets/libros/<?php echo $variable ?>.pdf #toolbar=0" style="#end {visibility: visible;}" width="100%" height="800px" />
 
           </div>
         </div>
