@@ -142,6 +142,12 @@ include "../procesos/conexion.php";
             </a>
           </li>
           <li class="nav-item w-100">
+            <a class="nav-link" href="../main.php">
+              <i class="fa-solid fa-newspaper fa-bounce"></i>
+              <span class="ml-3 item-text">Pagina Principal</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
             <a class="nav-link" href="../procesos/sesion.php">
               <i class="fe fe-log-out fe-16"></i>
               <span class="ml-3 item-text">Salir</span>

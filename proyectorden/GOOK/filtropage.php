@@ -43,7 +43,7 @@ $haylibrosxd = 0;
 
   <div class="wrapper">
 
-    <nav class="topnav navbar navbar-light">
+  <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
@@ -56,12 +56,17 @@ $haylibrosxd = 0;
           <?php
           $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
           while ($row = mysqli_fetch_assoc($result)) {
-            echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
+              if ($_GET['filcat']==$row["idCat"]){
+                  echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+              }else{
+                  echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+              }        
+
           }
           ?>
-        </select>
+      </select>
         <a href="javascript:enviar_formulario()">
-          <span style="position: absolute; " class="fe fe-arrow-right fe-16"></span>
+          <i class="fa-solid fa-filter"></i>
         </a>
 
 
@@ -77,15 +82,22 @@ $haylibrosxd = 0;
 
 
       <ul class="nav">
-        <a href="perfil.php">
-          <span class="avatar avatar-sm mt-2">
-            <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
-          </span>
-        </a>
+
+
+        <li class="nav-item dropdown">
+          <a href="perfil.php">
+
+            <span class="avatar avatar-sm mt-2">
+              <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
+            </span>
+          </a>
+        </li>
 
       </ul>
     </nav>
 
+
+    <!--Menu Lateral-->
     <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
       <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
         <i class="fe fe-x"><span class="sr-only"></span></i>
@@ -117,22 +129,46 @@ $haylibrosxd = 0;
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
             <a class="nav-link" href="main.php">
-              <i class="fe fe-home fe-16"></i>
+              <i class="fa-solid fa-newspaper fa-bounce"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="favoritos.php">
-              <i class="fe fe-heart fe-16"></i>
+            <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="perfil.php">
-              <i class="fe fe-user fe-16"></i>
+              <i class="fa-solid fa-user"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
+
+          <?php
+
+          if ($_SESSION['rol'] == 3) {
+            echo '<li class="nav-item w-100">
+    <a class="nav-link" href="escritor/listbookes.php">
+    <i class="fa-solid fa-upload"></i>
+      <span class="ml-3 item-text">Subir Produccion</span>
+    </a>
+  </li>';
+          }
+         
+
+if ($_SESSION['rol'] == 1) {
+  echo '<li class="nav-item w-100">
+<a class="nav-link" href="administrador/mainadmin.php">
+<i class="fa-solid fa-house-lock"></i>
+<span class="ml-3 item-text">Admin Home</span>
+</a>
+</li>';
+}
+?>
+
+
           <li class="nav-item w-100">
             <a class="nav-link" href="procesos/sesion.php">
               <i class="fe fe-log-out fe-16"></i>
@@ -143,6 +179,7 @@ $haylibrosxd = 0;
         </ul>
       </nav>
     </aside>
+
     <main role="main" class="main-content">
 
       <div>
@@ -154,7 +191,7 @@ $haylibrosxd = 0;
 
 
 
-            echo '<h1> Resultados para : "' . $filtro . '"  </h1>
+            echo '<h1> Resultados para :' . $filtro . '  </h1>       
             <div class="row">';
 
             $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
@@ -295,18 +332,20 @@ $haylibrosxd = 0;
                               <div class="card shadow">
                                 <div class="card-body" style="height:300px; background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/jpg;base64,<?php echo $imli ?>); background-size: cover;">
 
-                                <?php echo '<div style="height:21px;">
-                                          <p style="text-overflow: ellipsis;">' . $titulo . '</p>
-                                          </div>
-              
-              <p style="margin-top: 2px;"></p><p>' . $autor . '</p>
-                                          <p>' . $editorial . ' <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
-                                          <span class="ml-3 item-text">Ver</span>
-                                          <i class="fe fe-arrow-right"></i>
-                                          </a></p>
-                                          </div>                           
-                                      </div>
-                                    </div>';
+                                <?php echo '
+                                <div style="height:65%;"></div>
+                      
+                                <div style="background-color: rgba(0, 0, 0, 0.34);">
+                                
+                                                      <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
+                                                      <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
+                                                      <span class="ml-3 item-text">Ver</span>
+                                                      <i class="fe fe-arrow-right"></i>
+                                                      </a></p>
+                                                      </div>  
+                                                    </div>
+                                                  </div>
+                                                </div>';
                                 $contadorcol++;
                               } else {
                                 $contadorcol = 2;
@@ -319,8 +358,16 @@ $haylibrosxd = 0;
                                   <div class="image-box" style="height: 380px;">
                                     <img src="data:image/png;base64,<?= $imli ?>">
                                   </div>
-                          <?php echo '<div style="height:21px;">
-                                          <p>' . $titulo . '</p>
+                          <?php echo '<div style="height:65%;"></div>
+                      
+                      <div style="background-color: rgba(0, 0, 0, 0.34);">
+                      
+                                            <p style="text-overflow: ellipsis;">' . $titulo . '<br>' . $autor . '<br>' . $editorial . ' 
+                                            <a class="nav-link" href="fichabook.php?variable=' . $idLib . '">                            
+                                            <span class="ml-3 item-text">Ver</span>
+                                            <i class="fe fe-arrow-right"></i>
+                                            </a></p>
+                                            </div>  
                                           </div>
                                         </div>
                                       </div>';
@@ -619,6 +666,7 @@ $haylibrosxd = 0;
   <script src="js/scriptff.js"></script>
   <script src="js/swiper-bundle.min.js"></script>
   <script src="js/scriptswiper.js"></script>
+  <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
