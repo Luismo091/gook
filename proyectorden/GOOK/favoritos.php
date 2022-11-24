@@ -43,50 +43,53 @@ include "procesos/conexion.php";
 
     <div class="wrapper">
 
-        <nav class="topnav navbar navbar-light">
-            <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
-                <i class="fe fe-menu navbar-toggler-icon"></i>
-            </button>
+    <nav class="topnav navbar navbar-light">
+      <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+        <i class="fe fe-menu navbar-toggler-icon"></i>
+      </button>
 
-            <form name="filform" class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
+      <form name="filform" class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
 
-                <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
-                <select name="filcat" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
-                    <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
-                    <?php
-                    $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
-                    }
-                    ?>
-                </select>
-                <a href="javascript:enviar_formulario()">
-                    <span style="position: absolute; " class="fe fe-arrow-right fe-16"></span>
-                </a>
-
-
-            </form>
-
-            <script>
-                function enviar_formulario() {
-                    document.filform.submit()
-                }
-            </script>
+        <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
+        <select name="filcat" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
+          <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
+          <?php
+          $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
+          }
+          ?>
+        </select>
+        <a href="javascript:enviar_formulario()">
+          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        </a>
 
 
+      </form>
+
+      <script>
+        function enviar_formulario() {
+          document.filform.submit()
+        }
+      </script>
 
 
-            <ul class="nav">
 
 
-                <a href="perfil.php">
-                    <span class="avatar avatar-sm mt-2">
-                        <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
-                    </span>
-                </a>
+      <ul class="nav">
 
-            </ul>
-        </nav>
+
+        <li class="nav-item dropdown">
+          <a href="perfil.php">
+
+            <span class="avatar avatar-sm mt-2">
+              <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
+            </span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
 
         <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
       <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
@@ -125,7 +128,7 @@ include "procesos/conexion.php";
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="favoritos.php">
-            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart fa-beat-fade"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
@@ -272,13 +275,10 @@ if ($_SESSION['rol'] == 1) {
                     ?>
                 </div>
             </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-
+          
+    
+      
+        
 
 
 
