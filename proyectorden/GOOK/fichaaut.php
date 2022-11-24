@@ -194,13 +194,13 @@ if (isset($_GET["variable"])) {
               if ($datos = $sql->fetch_object()) {
               ?>
                 <article class="col-12">
-                
+
                   <header style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(data:image/png;base64,<?php echo base64_encode($datos->banner) ?>);">
-                  <div class="lower-header">
+                    <div class="lower-header">
                       <h1>
-                        <span class=".avatar-lg img mt-2" >
-                        <img  width="160px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_aut) ?>">
-                        </span> <?= $datos->nomAut1 ?>,<?= $datos->apeAut1 ?>
+                        <span class=".avatar-lg img mt-2">
+                          <img width="160px" src="data:image/png;base64,<?php echo base64_encode($datos->foto_aut) ?>">
+                        </span> <?= $datos->nomAut1 ?> <?= $datos->apeAut1 ?> <?= $datos->apeAut2 ?>
                       </h1>
                       <p class="subtitle"><?= $datos->nomEdi ?>, <?= $datos->fecLib ?></p>
                     </div>
@@ -212,50 +212,61 @@ if (isset($_GET["variable"])) {
 
                 <?php }
                 ?>
-                <?php
-                while ($datos = $sql->fetch_object()) {
-                ?>
-                  <section class="summary">
+                <div class="main-container">
+                  <div class="small-header anim" style="--delay: .3s">Obras relacionadas con <?= $datos->nomAut1 ?> <?= $datos->apeAut1 ?> <?= $datos->apeAut2 ?></div>
+                  <div class="videos">
+                    <?php
+                    $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat,lan, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi, foto_edi ,idLE,nomCat, Editorial_idEdi 
+                FROM Libro
+                INNER JOIN LibAut
+                ON Libro.idLib=LibAut.Libro_idLib
+                INNER JOIN Autor
+                ON Autor.idAut=LibAut.Autor_idAut
+                INNER JOIN LibEdi
+                ON Libro.idLib=LibEdi.Libro_idLib
+                INNER JOIN Editorial
+                ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                INNER JOIN Categoria
+                ON Libro.Categoria_idCat=Categoria.idCat
+                WHERE idAut = '$variable'");
+                    while ($datos = $sql->fetch_object()) {
+                    ?>
+                      <div class="video anim" style="--delay: .4s">
+                        <div class="card-wrapper swiper-wrapper">
+                          <div class="card swiper-slide">
+                            <div class="image-box">
+                              <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
+                            </div>
+                            <div class="profile-details">
+                              <div class="name-job">
+                                <h3 class="name"><?= $datos->titLib ?></h3>
+                                <h4 class="name">De <?= $datos->nomAut1 ?> / <?= $datos->nomEdi ?> <span class="badge badge-pill badge-success"><?= $datos->lan ?></span></h4>
+                                <div class="row align-items-center my-2">
+                                  <div class="col">
+                                    <div class="my-0 text-muted small">Lecturas acumuladas</div>
+                                  </div>
+                                  <div class="col-auto">
+                                    <strong><?= $datos->lecturas ?></strong>
+                                  </div>
+                                  <div class="col-3">
+                                    <div class="progress" style="height: 4px;">
+                                      <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                  </div>
+                                </div>
 
-                    <div class="summary-item">
-                      <div class="small-header anim" style="--delay: .3s">Más de <?= $datos->nomAut1 ?></div>
-                      <div class="videos">
-                      <div class="row">
-                      <div class="container swiper">
-                        <div class="slide-container">
-
-                          <div class="card-wrapper swiper-wrapper">
-                            <?php
-                            while ($datos = $sql->fetch_object()) {
-                            ?>
-                              <div class="card swiper-slide">
-                          <div class="image-box">
-                            <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
-                          </div>
-                          <div class="profile-details">
-                            <img src="data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>" alt="" />
-                            <div class="name-job">
-                              <h3 class="name"><?= $datos->titLib ?></h3>
-                              <h4 class="name"><?= $datos->fecPub ?></h4>
-                              <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
+                                <a class="nav-link text-muted my-2" href="fichabook.php?variable=<?= $datos->idLib ?>" class="subtitle"><span class="fe fe-arrow-right fe-16"></span></a>
+                              </div>
                             </div>
                           </div>
                         </div>
-                            <?php }
-                            ?>
-                          </div>
-                        </div>
-
 
                       </div>
-                      </div>
-                    </div>
 
-                    </div>
-
-                  </section>
-                <?php }
-                ?>
+                    <?php }
+                    ?>
+                  </div>
+                </div>
 
 
             </div> <!-- /.card-body -->
