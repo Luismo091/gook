@@ -26,11 +26,7 @@
     };
     
     //Validamos el tamaño del archivo
-    $file_size = $_FILES["fileTest"]["size"];
-    if ( $file_size > 1000000) {
-      echo "El archivo es muy pesado";
-      $validator = 0;
-    }
+    
     
     //Validamos la extensión del archivo
     if($file_type != "pdf") {
