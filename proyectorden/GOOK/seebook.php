@@ -215,7 +215,7 @@ function enviar_formulario(){
             <!--<div style="width:15%; height: 4vh; background: #323738; position: absolute; right:  0%; "></div>-->
 <?php 
 
- echo '<embed src="assets/libros/'.$variable.'.pdf #toolbar=0&zoom=170" style="#end {visibility: visible;}" width="100%" height="800px" />'; ?>
+ echo '<embed src="assets/libros/'.$variable.'.pdf #toolbar=0" style="#end {visibility: visible;}" width="100%" height="800px" />'; ?>
 
           </div>
         </div>
