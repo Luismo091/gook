@@ -168,7 +168,7 @@ function enviar_formulario(){
       $contlibro = base64_encode($contenido);
     }
     $nvi = $vistas + 1;
-    $nvi2 = $vistas + 4;
+   
     date_default_timezone_set("America/Bogota");
     $fechaActual = date('Y-m-d');
     $tiempo = date('H:i:s');
@@ -180,6 +180,13 @@ function enviar_formulario(){
 
 
     <?php
+    $sql = $conexion->query("SELECT MAX(idReciente) FROM Reciente");
+    if ($datos = $sql->fetch_array()) {
+        $maxid = $datos['MAX(idReciente)'];
+        $maxid++;
+    } else {
+        $maxid = 1;
+    }
 
     $query = "SELECT * from Reciente where Libro_idLib='$variable' and Recientecol='$usuid';";
     $resul = $conexion->query($query);
@@ -191,7 +198,7 @@ function enviar_formulario(){
       $sql = $conexion->query("UPDATE Reciente SET tiempo_re ='$tiempo', fecha ='$fechaActual' WHERE idReciente = '$idReci';");
       //echo '<script>alert('.$sql.')</script>';
     } else {
-      $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$nvi2','$fechaActual','$variable','$usuid','$tiempo')");
+      $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$maxid','$fechaActual','$variable','$usuid','$tiempo')");
     }
 
 

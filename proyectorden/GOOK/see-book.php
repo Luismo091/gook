@@ -141,7 +141,7 @@ if (isset($_GET["variable"])) {
       $contlibro = base64_encode($contenido);
     }
     $nvi = $vistas + 1;
-    $nvi2 = $vistas + 4;
+    
     date_default_timezone_set("America/Bogota");
     $fechaActual = date('Y-m-d');
     $tiempo = date('H:i:s');
@@ -153,7 +153,9 @@ if (isset($_GET["variable"])) {
 
 
     <?php
-
+    $query = "SELECT MAX(idReciente) from Reciente;";  
+    $resul = $conexion->query($query);
+    $maxidrec = $row['MAX(idReciente)'];
     $query = "SELECT * from Reciente where Libro_idLib='$variable' and Recientecol='$usuid';";
     $resul = $conexion->query($query);
     $contlibro;
@@ -164,7 +166,7 @@ if (isset($_GET["variable"])) {
       $sql = $conexion->query("UPDATE Reciente SET tiempo_re ='$tiempo', fecha ='$fechaActual' WHERE idReciente = '$idReci';");
       echo '<script>alert(' . $sql . ')</script>';
     } else {
-      $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$nvi2','$fechaActual','$variable','$usuid','$tiempo')");
+      $sql = $conexion->query("INSERT INTO Reciente (idReciente,fecha, Libro_idLib, Recientecol, tiempo_re) VALUES ('$maxidrec','$fechaActual','$variable','$usuid','$tiempo')");
     }
 
 
