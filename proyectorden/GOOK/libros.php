@@ -49,57 +49,57 @@ echo '<script>alert ('.$_POST['Filtro'].');</script>';
 
 
 
-        <nav class="topnav navbar navbar-light">
-            <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
-                <i class="fe fe-menu navbar-toggler-icon"></i>
-            </button>
-           
-            <form class="form-inline mr-auto searchform text-muted" action="libros.php" method="POST">
-                <input class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search" id="Filtro">
-                <select class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
-                    <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
-                    <?php
-                    $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
-                    }
-                    ?>
-                </select>
-                
-<?php
-echo ' <input type="submit"
-                    <span class="fe fe-arrow-right fe-16"></span>
-                >';?>
-                
+    <nav class="topnav navbar navbar-light">
+      <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+        <i class="fe fe-menu navbar-toggler-icon"></i>
+      </button>
 
-            </form>
+      <form name="filform" class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
+
+        <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
+        <select name="filcat" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
+          <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
+          <?php
+          $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
+          }
+          ?>
+        </select>
+        <a href="javascript:enviar_formulario()">
+          <i class="fa-solid fa-filter"></i>
+        </a>
 
 
+      </form>
+
+      <script>
+        function enviar_formulario() {
+          document.filform.submit()
+        }
+      </script>
 
 
 
 
-            <ul class="nav">
+      <ul class="nav">
 
-                <li class="nav-item">
-                    <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
-                        <span class="fe fe-grid fe-16"></span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="avatar avatar-sm mt-2">
-                            <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
-                        </span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="perfil.php">Perfil</a>
-                        <a class="dropdown-item" href="#">Ajustes de tu cuenta</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+
+        <li class="nav-item dropdown">
+          <a href="perfil.php">
+
+            <span class="avatar avatar-sm mt-2">
+              <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
+            </span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+
+    <!--Menu Lateral-->
+    <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
       <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
         <i class="fe fe-x"><span class="sr-only"></span></i>
       </a>
@@ -180,6 +180,7 @@ if ($_SESSION['rol'] == 1) {
         </ul>
       </nav>
     </aside>
+
 
         <main role="main" class="main-content">
 

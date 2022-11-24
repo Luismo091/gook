@@ -45,7 +45,7 @@ if (isset($_GET["variable"])) {
 
 <body class="vertical  dark  ">
   <div class="wrapper">
-    <nav class="topnav navbar navbar-light">
+  <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
@@ -63,7 +63,7 @@ if (isset($_GET["variable"])) {
           ?>
         </select>
         <a href="javascript:enviar_formulario()">
-          <span style="position: absolute; " class="fe fe-arrow-right fe-16"></span>
+          <i class="fa-solid fa-filter"></i>
         </a>
 
 
@@ -83,14 +83,15 @@ if (isset($_GET["variable"])) {
 
         <li class="nav-item dropdown">
           <a href="perfil.php">
+
             <span class="avatar avatar-sm mt-2">
               <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
             </span>
           </a>
         </li>
+
       </ul>
     </nav>
-
 
 
     <!--Menu Lateral-->
@@ -175,6 +176,8 @@ if ($_SESSION['rol'] == 1) {
         </ul>
       </nav>
     </aside>
+
+
 
 
 

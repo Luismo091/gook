@@ -42,7 +42,7 @@ include "procesos/conexion.php";
 
   <div class="wrapper">
 
-    <nav class="topnav navbar navbar-light">
+  <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
@@ -60,7 +60,7 @@ include "procesos/conexion.php";
           ?>
         </select>
         <a href="javascript:enviar_formulario()">
-          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-filter"></i>
         </a>
 
 
@@ -123,13 +123,13 @@ include "procesos/conexion.php";
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
             <a class="nav-link" href="main.php">
-              <i class="fa-solid fa-newspaper fa-bounce"></i>
+              <i class="fa-solid fa-newspaper"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="favoritos.php">
-            <i class="fa-solid fa-heart fa-beat-fade"></i>
+            <i class="fa-solid fa-heart fa-bounce"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>

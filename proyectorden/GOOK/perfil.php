@@ -43,10 +43,10 @@ include "procesos/conexion.php";
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
 
-      <form name="filform"class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
+      <form name="filform" class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
 
         <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
-        <select name="filcat"class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
+        <select name="filcat" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
           <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
           <?php
           $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
@@ -55,37 +55,40 @@ include "procesos/conexion.php";
           }
           ?>
         </select>
-        <a  href="javascript:enviar_formulario()"> 
-          <span style="position: absolute; " class="fe fe-arrow-right fe-16"></span>
+        <a href="javascript:enviar_formulario()">
+          <i class="fa-solid fa-filter"></i>
         </a>
-        
-      
+
+
       </form>
 
       <script>
-function enviar_formulario(){
-   document.filform.submit()
-}
-</script>
+        function enviar_formulario() {
+          document.filform.submit()
+        }
+      </script>
 
 
 
 
       <ul class="nav">
 
-        
+
         <li class="nav-item dropdown">
           <a href="perfil.php">
+
             <span class="avatar avatar-sm mt-2">
               <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
             </span>
           </a>
         </li>
+
       </ul>
     </nav>
-    
-  <!--Menu Lateral-->
-  <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+
+
+    <!--Menu Lateral-->
+    <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
       <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
         <i class="fe fe-x"><span class="sr-only"></span></i>
       </a>
@@ -166,6 +169,7 @@ if ($_SESSION['rol'] == 1) {
         </ul>
       </nav>
     </aside>
+
 
 
 

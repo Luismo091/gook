@@ -60,7 +60,7 @@ include "procesos/conexion.php";
           ?>
         </select>
         <a href="javascript:enviar_formulario()">
-          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-filter"></i>
         </a>
 
 
@@ -129,7 +129,7 @@ include "procesos/conexion.php";
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="favoritos.php">
-            <i class="fa-solid fa-heart fa-beat-fade"></i>
+            <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
