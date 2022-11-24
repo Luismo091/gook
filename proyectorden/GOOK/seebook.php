@@ -390,6 +390,7 @@ if ($_SESSION['rol'] == 1) {
   <script src="js/apps.js"></script>
   <script src="js/scriptsee.js"></script>
   <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
+  
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
   <script>
