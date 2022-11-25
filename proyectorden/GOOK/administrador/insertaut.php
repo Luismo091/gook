@@ -219,12 +219,18 @@ include "../procesos/conexion.php";
                                                         <input type="text" name="apeaut2" class="form-control">
                                                     </div>  
                                                     <div class="form-group col-md-6">
-                                                        <label for="lastname">Imagen del Autor</label>
-                                                        <input type="file" id="example-fileinput" name="imagenaut" class="form-control-file" required>
+                                                        <label for="lastname">Imagen del Autor</label>                                                       
+                                                        <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="imagenaut" class="form-control-file" required>
+                                                        <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+                                                        </div>                                                        
                                                     </div>   
                                                     <div class="form-group col-md-6">
-                                                        <label for="lastname">Imagen del Banner</label>
-                                                        <input type="file" id="example-fileinput" name="imagenban" class="form-control-file" required>
+                                                        <label for="lastname">Imagen del Banner</label>                                                       
+                                                        <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="imagenban" class="form-control-file" required>
+                                                        <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+                                                        </div>                            
                                                     </div>   
                                                     <div class="form-group col-md-12">
                                                         <label for="lastname">Biografia</label>

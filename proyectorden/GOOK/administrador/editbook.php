@@ -298,12 +298,18 @@ if (isset($_GET["variable"])) {
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label for="lastname">Imagen del Libro</label>
-                                                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file">
+                                                    <label for="lastname">Imagen del Libro</label>                                                       
+                                                        <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="imagen" class="form-control-file">
+                                                        <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+                                                        </div>                           
                                                     </div>  
                                                     <div class="form-group col-md-6">
-                                                        <label for="lastname">Libro</label>
-                                                        <input type="file" id="example-fileinput" name="fileTest" class="form-control-file">
+                                                        <label for="lastname">Libro</label>                                                       
+                                                        <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="fileTest" class="form-control-file">
+                                                        <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+                                                        </div>                                          
                                                     </div>    
                                                     <div class="form-group col-md-12">
                                                         <label for="lastname">Sinopsis</label>

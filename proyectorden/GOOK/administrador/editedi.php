@@ -209,8 +209,12 @@ if (isset($_GET["variable"])) {
                                                     </div>  
                                 
                                                     <div class="form-group col-md-5">
-                                                        <label for="lastname">Imagen de la Editorial</label>
-                                                        <input type="file" id="example-fileinput" name="imagenedi" class="form-control-file" required>
+                                                        <label for="lastname">Imagen de la Editorial</label>                                                       
+                                                        <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="imagenedi" class="form-control-file">
+                                                        <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+                                                        </div>                           
+                                                    </div>                                                         
                                                     </div>   
                                                    
                                                                                                                

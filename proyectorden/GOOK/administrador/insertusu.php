@@ -223,9 +223,12 @@ include "../procesos/conexion.php";
                                                         <input type="number" name="edad" class="form-control">
                                                     </div>  
                                                     <div class="form-group col-md-3">
-                                                        <label for="lastname">Foto de Perfil</label>
-                                                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file" required>
-                                                    </div>   
+                                                        <label for="lastname">Foto de Perfil</label>                                                       
+                                                        <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="imagen" class="form-control-file">
+                                                        <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+                                                        </div>                                                                                                         
+                                                    </div>
                                                     <div class="form-group col-md-2">
                                                     <label for="lastname">Rol</label>
                                                     <select name="rol" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" style="width: 200px;">
