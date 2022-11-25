@@ -180,9 +180,8 @@ if ($_SESSION['rol'] == 1) {
           <div class="col-12">
             <h2 class="h3 mb-4 page-title">Perfil</h2>
 
-            <div class="row mt-12 align-items-center">
-        
-              <div class="col-md-3">
+            <div class="row mt-12 align-items-center">          
+              <div class="col-md-3" style="text-align:center;">
                 <div class="avatar avatar-xl">
                   <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>" alt="..." class="avatar-img rounded-circle">
                 </div>
@@ -190,7 +189,7 @@ if ($_SESSION['rol'] == 1) {
               <div class="col">
                 <div class="row align-items-center">
                   <div class="col-md-3">
-                    <h4 class="mb-1"> <?php echo $_SESSION["nombre1"] . " " . $_SESSION["nombre2"] . " " . $_SESSION["apellido1"] . " " . $_SESSION["apellido2"] ?></h4>
+                    <h1 class="mb-1"> <?php echo $_SESSION["nombre1"] . " " . $_SESSION["nombre2"] . " " . $_SESSION["apellido1"] . " " . $_SESSION["apellido2"] ?></h1>
                   </div>
                 </div>
                 <div class="row mb-4"></div>
@@ -208,7 +207,7 @@ if ($_SESSION['rol'] == 1) {
                         </span>
                       </div> <!-- .col -->
                       <div class="col">
-                        <a href="configperfil/editarperfil.php">
+                        <a href="editarperfil.php">
                           <h3 class="h5 mt-4 mb-1">Personal</h3>
                         </a>
                         <p class="text-muted">Cambia tus datos personales en GOOK</p>
@@ -216,7 +215,7 @@ if ($_SESSION['rol'] == 1) {
                     </div> <!-- .row -->
                   </div> <!-- .card-body -->
                   <div class="card-footer">
-                    <a href="configperfil/editarperfil.php" class="d-flex justify-content-between text-muted"><span>Configuración de Cuenta</span><i class="fe fe-chevron-right"></i></a>
+                    <a href="editarperfil.php" class="d-flex justify-content-between text-muted"><span>Configuración de Cuenta</span><i class="fe fe-chevron-right"></i></a>
                   </div> <!-- .card-footer -->
                 </div> <!-- .card -->
               </div> <!-- .col-md-->
