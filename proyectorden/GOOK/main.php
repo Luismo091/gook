@@ -129,7 +129,7 @@ include "procesos/conexion.php";
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="favoritos.php">
-            <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
@@ -150,17 +150,17 @@ include "procesos/conexion.php";
     </a>
   </li>';
           }
-         
 
-if ($_SESSION['rol'] == 1) {
-  echo '<li class="nav-item w-100">
+
+          if ($_SESSION['rol'] == 1) {
+            echo '<li class="nav-item w-100">
 <a class="nav-link" href="administrador/mainadmin.php">
 <i class="fa-solid fa-house-lock"></i>
 <span class="ml-3 item-text">Admin Home</span>
 </a>
 </li>';
-}
-?>
+          }
+          ?>
 
 
           <li class="nav-item w-100">
