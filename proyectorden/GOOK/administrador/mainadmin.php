@@ -41,7 +41,7 @@ include "../procesos/conexion.php";
 <body class="vertical  dark  ">
 
   <div class="wrapper">
-
+  <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
   <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
@@ -435,7 +435,7 @@ include "../procesos/conexion.php";
         <script src="../js/scriptff.js"></script>
         <script src="../js/swiper-bundle.min.js"></script>
         <script src="../js/scriptswiper.js"></script>
-        <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
+        
 
 </body>
 

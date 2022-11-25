@@ -1,6 +1,10 @@
 <?php
 session_start();
-include "../procesos/conexion.php";
+include "procesos/conexion.php";
+if (isset($_SESSION['id'])) {
+    $consulta = ($_SESSION['id']);
+    $variable = $consulta;
+  }
 ?>
 
 <!doctype html>
@@ -11,62 +15,85 @@ include "../procesos/conexion.php";
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../favicon.ico">
+    <link rel="icon" href="favicon.ico">
     <title>GoodBook - Pagina Principal</title>
     <!-- Simple bar CSS -->
-    <link rel="stylesheet" href="../css/simplebar.css">
+    <link rel="stylesheet" href="css/simplebar.css">
     <!-- Fonts CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Icons CSS -->
-    <link rel="stylesheet" href="../css/feather.css">
-    <link rel="stylesheet" href="../css/select2.css">
-    <link rel="stylesheet" href="../css/dropzone.css">
-    <link rel="stylesheet" href="../css/uppy.min.css">
-    <link rel="stylesheet" href="../css/jquery.steps.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
-    <link rel="stylesheet" href="../css/quill.snow.css">
+    <link rel="stylesheet" href="css/feather.css">
+    <link rel="stylesheet" href="css/select2.css">
+    <link rel="stylesheet" href="css/dropzone.css">
+    <link rel="stylesheet" href="css/uppy.min.css">
+    <link rel="stylesheet" href="css/jquery.steps.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/quill.snow.css">
     <!-- Date Range Picker CSS -->
-    <link rel="stylesheet" href="../css/daterangepicker.css">
+    <link rel="stylesheet" href="css/daterangepicker.css">
     <!-- App CSS -->
-    <link rel="stylesheet" href="../css/app-light.css" id="lightTheme" disabled>
-    <link rel="stylesheet" href="../css/app-dark.css" id="darkTheme">
-    <link rel="stylesheet" href="../css/stylelaunch.css">
+    <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
+    <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
+    <link rel="stylesheet" href="css/stylelaunch.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>
-    <link rel="stylesheet" href="../css/styleff.css">
-    <link rel="stylesheet" href="../css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../css/styleswiper.css">
-    <link rel="stylesheet" href="../css/stylesee.css">
+    <link rel="stylesheet" href="css/styleff.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/styleswiper.css">
+    <link rel="stylesheet" href="css/stylesee.css">
 
 
 </head>
 
 <body class="vertical  dark  ">
     <div class="wrapper">
-    <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
-  <nav class="topnav navbar navbar-light">
+    <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
 
-      
+      <form name="filform" class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
+
+        <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
+        <select name="filcat" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
+          <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
+          <?php
+          $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
+          }
+          ?>
+        </select>
+        <a href="javascript:enviar_formulario()">
+          <i class="fa-solid fa-filter"></i>
+        </a>
+
+
+      </form>
+
+      <script>
+        function enviar_formulario() {
+          document.filform.submit()
+        }
+      </script>
 
 
 
 
       <ul class="nav">
 
-        
+
         <li class="nav-item dropdown">
-          <a href="perfiladmin.php">
+          <a href="perfil.php">
+
             <span class="avatar avatar-sm mt-2">
               <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
             </span>
           </a>
         </li>
+
       </ul>
     </nav>
 
-    
 
     <!--Menu Lateral-->
     <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
@@ -99,64 +126,50 @@ include "../procesos/conexion.php";
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
-            <a class="nav-link" href="mainadmin.php">
-            <i class="fa-solid fa-house-lock"></i>
+            <a class="nav-link" href="main.php">
+              <i class="fa-solid fa-newspaper"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="perfiladmin.php">
-            <i class="fa-solid fa-user"></i>
+            <a class="nav-link" href="favoritos.php">
+            <i class="fa-solid fa-heart"></i>
+              <span class="ml-3 item-text">Favoritos</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="perfil.php">
+              <i class="fa-solid fa-user fa-bounce"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="listcuentas.php">
-            <i class="fa-solid fa-users"></i>
-              <span class="ml-3 item-text">Cuentas</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="listbook.php">
-            <i class="fa-solid fa-book-tanakh"></i>
-              <span class="ml-3 item-text">Libros</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="listautor.php">
-            <i class="fa-solid fa-user-pen"></i>
-              <span class="ml-3 item-text">Autores</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="listeditoriales.php	">
-            <i class="fa-solid fa-pen-nib"></i>
-              <span class="ml-3 item-text">Editoriales</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="listcategorias.php">
-            <i class="fa-solid fa-tags"></i>
-              <span class="ml-3 item-text">Categorias</span>
-            </a>
-          </li>
+
+          <?php
+
+          if ($_SESSION['rol'] == 3) {
+            echo '<li class="nav-item w-100">
+    <a class="nav-link" href="escritor/listbookes.php">
+    <i class="fa-solid fa-upload"></i>
+      <span class="ml-3 item-text">Subir Produccion</span>
+    </a>
+  </li>';
+          }
+         
+
+if ($_SESSION['rol'] == 1) {
+  echo '<li class="nav-item w-100">
+<a class="nav-link" href="administrador/mainadmin.php">
+<i class="fa-solid fa-house-lock"></i>
+<span class="ml-3 item-text">Admin Home</span>
+</a>
+</li>';
+}
+?>
 
 
           <li class="nav-item w-100">
-            <a class="nav-link" href="#">
-            <i class="fa-solid fa-circle-plus"></i>
-              <span class="ml-3 item-text">Suscripciones</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="../main.php">
-              <i class="fa-solid fa-newspaper"></i>
-              <span class="ml-3 item-text">Pagina Principal</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="../procesos/sesion.php">
-            <i class="fa-solid fa-right-from-bracket"></i>
+            <a class="nav-link" href="procesos/sesion.php">
+              <i class="fe fe-log-out fe-16"></i>
               <span class="ml-3 item-text">Salir</span>
             </a>
           </li>
@@ -168,7 +181,7 @@ include "../procesos/conexion.php";
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <h2 class="mb-2 page-title">Nueva Editorial</h2>
+                        <h2 class="mb-2 page-title">Editar Información Personal</h2>
                         <p class="card-text"> </p>
                         <div class="row my-4">
                             <!-- Small table -->
@@ -182,14 +195,27 @@ include "../procesos/conexion.php";
 
                                         <?php
                                         echo '<div class="row">';
-                                        $idEdi;
-                                        $sql = $conexion->query("SELECT MAX(idEdi) FROM Editorial");
-
+                                        $idUs=$variable;
+                                        $sql = $conexion->query("SELECT idSeg, email, clave, Rol_idRol, nom1, nom2, ape1, ape2, eda, foto, desRol
+							                                     FROM Seguridad
+                                                                 INNER JOIN Usuario
+                                                                 ON Seguridad.idSeg=Usuario.Seguridad_idSeg
+                                                                 INNER JOIN Rol
+                                                                 ON Seguridad.Rol_idRol=Rol.idRol
+                                                                 WHERE idSeg='$idUs';");
                                         if ($datos = $sql->fetch_array()) {
-                                            $idEdi = $datos['MAX(idEdi)'];
-                                            $idEdi++;
-                                        } else {
-                                            $idEdi = 1;
+                                            $idSeg = $datos['idSeg'];
+                                            $email = $datos['email'];
+                                            $clave = $datos['clave']; 
+                                            $Rol_idRol = $datos['Rol_idRol'];
+                                            $desRol = $datos['desRol'];
+                                            $nom1 = $datos['nom1'];
+                                            $nom2 = $datos['nom2'];
+                                            $ape1 = $datos['ape1'];
+                                            $ape2 = $datos['ape2'];
+                                            $eda = $datos['eda'];
+                                            $foto = $datos['foto'];
+
                                         }
 
 
@@ -198,25 +224,42 @@ include "../procesos/conexion.php";
                                         echo '</div>';
 
                                         ?>
-                                        <form action="../procesos/insertnewedi.php" method="POST" enctype="multipart/form-data">
+                                        <form action="procesos/updateperfil.php" method="POST" enctype="multipart/form-data">
                                             <section>
 
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-2">
-                                                        <label for="id">ID</label>
-                                                        <input type="text" name="idEdi" class="form-control" value="<?php echo $idEdi; ?>" readonly>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="catego">Editorial</label>
-                                                        <input type="text" name="nomedi" class="form-control" required>
+                                                <div class="form-row">                                                                                              
+                                                    <div class="form-group col-md-5">
+                                                        <label for="catego">Primer Nombre</label>
+                                                        <input type="text" name="nom1" class="form-control" value="<?php echo $nom1; ?>">
                                                     </div>  
-                                                    <div class="form-group col-md-4">
-                                                        <label for="lastname">Imagen de la Editorial</label>                                                       
+                                                    <div class="form-group col-md-5">
+                                                        <label for="catego">Segundo Nombre</label>
+                                                        <input type="text" name="nom2" class="form-control" value="<?php echo $nom2; ?>">
+                                                    </div>  
+                                                    <div class="form-group col-md-2">
+                                                        <label for="catego">Edad</label>
+                                                        <input type="number" name="edad" class="form-control" value="<?php echo $eda; ?>">
+                                                    </div>                  
+                                                    <div class="form-group col-md-5">
+                                                        <label for="catego">Primer Apellido</label>
+                                                        <input type="text" name="ape1" class="form-control" value="<?php echo $ape1; ?>">
+                                                    </div> 
+                                                    <div class="form-group col-md-5">
+                                                        <label for="catego">Segundo Apellido</label>
+                                                        <input type="text" name="ape2" class="form-control" value="<?php echo $ape2; ?>">
+                                                    </div>  
+                                                    <div class="form-group col-md-2">
+                                                        <label for="lastname">Foto de Perfil</label>                                                       
                                                         <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="imagenedi" class="form-control-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="imagen" class="form-control-file" required>
                                                         <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
-                                                        </div>                           
-                                                    </div>                                                                   
+                                                        </div>
+                                                        
+                                                    </div>   
+                                                 
+                                                    
+                                                      
+                                                                                                                
                                                 </div>                                                
                                     </div>
 
@@ -368,17 +411,18 @@ include "../procesos/conexion.php";
     </div>
     </main> <!-- main -->
     </div> <!-- .wrapper -->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/moment.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/simplebar.min.js"></script>
-    <script src='../js/daterangepicker.js'></script>
-    <script src='../js/jquery.stickOnScroll.js'></script>
-    <script src="../js/tinycolor-min.js"></script>
-    <script src="../js/config.js"></script>
-    <script src='../js/jquery.dataTables.min.js'></script>
-    <script src='../js/dataTables.bootstrap4.min.js'></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/simplebar.min.js"></script>
+    <script src='js/daterangepicker.js'></script>
+    <script src='js/jquery.stickOnScroll.js'></script>
+    <script src="js/tinycolor-min.js"></script>
+    <script src="js/config.js"></script>
+    <script src='js/jquery.dataTables.min.js'></script>
+    <script src='js/dataTables.bootstrap4.min.js'></script>
+    <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
     <script>
         $('#dataTable-1').DataTable({
             autoWidth: true,
@@ -388,7 +432,7 @@ include "../procesos/conexion.php";
             ]
         });
     </script>
-    <script src="../js/apps.js"></script>
+    <script src="js/apps.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
     <script>
