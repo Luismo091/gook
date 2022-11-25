@@ -224,7 +224,7 @@ if ($_SESSION['rol'] == 1) {
                                         echo '</div>';
 
                                         ?>
-                                        <form action="procesos/updateusu.php" method="POST" enctype="multipart/form-data">
+                                        <form action="procesos/updateperfil.php" method="POST" enctype="multipart/form-data">
                                             <section>
 
                                                 <div class="form-row">                                                                                              
