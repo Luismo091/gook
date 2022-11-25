@@ -41,36 +41,13 @@ include "../procesos/conexion.php";
 <body class="vertical  dark  ">
 
   <div class="wrapper">
-
+  <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
   <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
 
-      <form name="filform"class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
-
-        <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
-        <select name="filcat"class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
-          <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
-          <?php
-          $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
-          }
-          ?>
-        </select>
-        <a  href="javascript:enviar_formulario()"> 
-          <span style="position: absolute; " class="fe fe-arrow-right fe-16"></span>
-        </a>
-        
       
-      </form>
-
-      <script>
-function enviar_formulario(){
-   document.filform.submit()
-}
-</script>
 
 
 
@@ -79,7 +56,7 @@ function enviar_formulario(){
 
         
         <li class="nav-item dropdown">
-          <a href="perfileditor.php">
+          <a href="perfiladmin.php">
             <span class="avatar avatar-sm mt-2">
               <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
             </span>
@@ -121,20 +98,64 @@ function enviar_formulario(){
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
-            <a class="nav-link" href="maineditor.php">
-              <i class="fe fe-home fe-16"></i>
+            <a class="nav-link" href="mainadmin.php">
+            <i class="fa-solid fa-house-lock"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="perfileditor.php">
-              <i class="fe fe-user fe-16"></i>
+            <a class="nav-link" href="perfiladmin.php">
+            <i class="fa-solid fa-user"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="sesion.php">
-              <i class="fe fe-log-out fe-16"></i>
+            <a class="nav-link" href="listcuentas.php">
+            <i class="fa-solid fa-users"></i>
+              <span class="ml-3 item-text">Cuentas</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listbook.php">
+            <i class="fa-solid fa-book-tanakh"></i>
+              <span class="ml-3 item-text">Libros</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listautor.php">
+            <i class="fa-solid fa-user-pen"></i>
+              <span class="ml-3 item-text">Autores</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listeditoriales.php	">
+            <i class="fa-solid fa-pen-nib"></i>
+              <span class="ml-3 item-text">Editoriales</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listcategorias.php">
+            <i class="fa-solid fa-tags"></i>
+              <span class="ml-3 item-text">Categorias</span>
+            </a>
+          </li>
+
+
+          <li class="nav-item w-100">
+            <a class="nav-link" href="#">
+            <i class="fa-solid fa-circle-plus"></i>
+              <span class="ml-3 item-text">Suscripciones</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="../main.php">
+              <i class="fa-solid fa-newspaper"></i>
+              <span class="ml-3 item-text">Pagina Principal</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="../procesos/sesion.php">
+            <i class="fa-solid fa-right-from-bracket"></i>
               <span class="ml-3 item-text">Salir</span>
             </a>
           </li>
@@ -142,19 +163,13 @@ function enviar_formulario(){
         </ul>
       </nav>
     </aside>
-
-
-
-
-
     <main role="main" class="main-content">
-      
+    
 
 
 
 
-
-
+    
 
 
 
@@ -420,6 +435,8 @@ function enviar_formulario(){
         <script src="../js/scriptff.js"></script>
         <script src="../js/swiper-bundle.min.js"></script>
         <script src="../js/scriptswiper.js"></script>
+        
+
 </body>
 
 </html>
