@@ -135,7 +135,7 @@ $haylibrosxd = 0;
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="procesos/sesion.php">
-              <i class="fe fe-log-out fe-16"></i>
+              <i class="fa-solid fa-right-from-bracket"></i>
               <span class="ml-3 item-text">Salir</span>
             </a>
           </li>

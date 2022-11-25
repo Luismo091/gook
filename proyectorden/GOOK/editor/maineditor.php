@@ -98,59 +98,21 @@ include "../procesos/conexion.php";
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
-            <a class="nav-link" href="mainadmin.php">
+            <a class="nav-link" href="maineditor.php">
             <i class="fa-solid fa-house-lock"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="perfiladmin.php">
+            <a class="nav-link" href="perfileditor.php">
             <i class="fa-solid fa-user"></i>
               <span class="ml-3 item-text">Perfil</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="listcuentas.php">
-            <i class="fa-solid fa-users"></i>
-              <span class="ml-3 item-text">Cuentas</span>
             </a>
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="listbook.php">
             <i class="fa-solid fa-book-tanakh"></i>
               <span class="ml-3 item-text">Libros</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="listautor.php">
-            <i class="fa-solid fa-user-pen"></i>
-              <span class="ml-3 item-text">Autores</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="listeditoriales.php	">
-            <i class="fa-solid fa-pen-nib"></i>
-              <span class="ml-3 item-text">Editoriales</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="listcategorias.php">
-            <i class="fa-solid fa-tags"></i>
-              <span class="ml-3 item-text">Categorias</span>
-            </a>
-          </li>
-
-
-          <li class="nav-item w-100">
-            <a class="nav-link" href="#">
-            <i class="fa-solid fa-circle-plus"></i>
-              <span class="ml-3 item-text">Suscripciones</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="../main.php">
-              <i class="fa-solid fa-newspaper"></i>
-              <span class="ml-3 item-text">Pagina Principal</span>
             </a>
           </li>
           <li class="nav-item w-100">

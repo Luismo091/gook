@@ -45,24 +45,52 @@ include "../procesos/conexion.php";
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
 
-      
+      <form name="filform" class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
+
+        <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
+        <select name="filcat" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
+          <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
+          <?php
+          $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
+          }
+          ?>
+        </select>
+        <a href="javascript:enviar_formulario()">
+          <i class="fa-solid fa-filter"></i>
+        </a>
+
+
+      </form>
+
+      <script>
+        function enviar_formulario() {
+          document.filform.submit()
+        }
+      </script>
 
 
 
 
       <ul class="nav">
 
-        
+
         <li class="nav-item dropdown">
-          <a href="perfiladmin.php">
+          <a href="perfil.php">
+
             <span class="avatar avatar-sm mt-2">
               <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
             </span>
           </a>
         </li>
+
       </ul>
     </nav>
-      <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+
+
+    <!--Menu Lateral-->
+    <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
       <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
         <i class="fe fe-x"><span class="sr-only"></span></i>
       </a>
@@ -92,43 +120,50 @@ include "../procesos/conexion.php";
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
-            <a class="nav-link" href="../main.php">
-              <i class="fe fe-home fe-16"></i>
+            <a class="nav-link" href="main.php">
+              <i class="fa-solid fa-newspaper fa-bounce"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="../favoritos.php">
-              <i class="fe fe-heart fe-16"></i>
+            <a class="nav-link" href="favoritos.php">
+            <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="../perfil.php">
-              <i class="fe fe-user fe-16"></i>
+            <a class="nav-link" href="perfil.php">
+              <i class="fa-solid fa-user"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
 
-<?php
-  
-  if($_SESSION['rol']==3){
-    echo '<li class="nav-item w-100">
-    <a class="nav-link" href="listbookes.php">
-      <i class="fe fe-upload fe-16"></i>
+          <?php
+
+          if ($_SESSION['rol'] == 3) {
+            echo '<li class="nav-item w-100">
+    <a class="nav-link" href="escritor/listbookes.php">
+    <i class="fa-solid fa-upload"></i>
       <span class="ml-3 item-text">Subir Produccion</span>
     </a>
   </li>';
-  }
+          }
+         
+
+if ($_SESSION['rol'] == 1) {
+  echo '<li class="nav-item w-100">
+<a class="nav-link" href="administrador/mainadmin.php">
+<i class="fa-solid fa-house-lock"></i>
+<span class="ml-3 item-text">Admin Home</span>
+</a>
+</li>';
+}
 ?>
 
 
-          
-
-          
           <li class="nav-item w-100">
-            <a class="nav-link" href="../procesos/sesion.php">
-              <i class="fe fe-log-out fe-16"></i>
+            <a class="nav-link" href="procesos/sesion.php">
+              <i class="fa-solid fa-right-from-bracket"></i>
               <span class="ml-3 item-text">Salir</span>
             </a>
           </li>
