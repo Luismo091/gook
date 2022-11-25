@@ -40,12 +40,13 @@ include "../procesos/conexion.php";
   </head>
   <body class="vertical  dark  ">
     <div class="wrapper">
+    <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
     <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
 
-      <form name="filform" class="form-inline mr-auto searchform text-muted" action="filtropage.php" method="GET">
+      <form name="filform" class="form-inline mr-auto searchform text-muted" action="../filtropage.php" method="GET">
 
         <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
         <select name="filcat" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
@@ -120,19 +121,19 @@ include "../procesos/conexion.php";
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
-            <a class="nav-link" href="main.php">
-              <i class="fa-solid fa-newspaper fa-bounce"></i>
+            <a class="nav-link" href="../main.php">
+              <i class="fa-solid fa-newspaper"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="favoritos.php">
+            <a class="nav-link" href="../favoritos.php">
             <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="perfil.php">
+            <a class="nav-link" href="../perfil.php">
               <i class="fa-solid fa-user"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
@@ -142,8 +143,8 @@ include "../procesos/conexion.php";
 
           if ($_SESSION['rol'] == 3) {
             echo '<li class="nav-item w-100">
-    <a class="nav-link" href="escritor/listbookes.php">
-    <i class="fa-solid fa-upload"></i>
+    <a class="nav-link" href="listbookes.php">
+    <i class="fa-solid fa-upload fa-bounce"></i>
       <span class="ml-3 item-text">Subir Produccion</span>
     </a>
   </li>';
@@ -152,7 +153,7 @@ include "../procesos/conexion.php";
 
 if ($_SESSION['rol'] == 1) {
   echo '<li class="nav-item w-100">
-<a class="nav-link" href="administrador/mainadmin.php">
+<a class="nav-link" href="../administrador/mainadmin.php">
 <i class="fa-solid fa-house-lock"></i>
 <span class="ml-3 item-text">Admin Home</span>
 </a>
@@ -162,7 +163,7 @@ if ($_SESSION['rol'] == 1) {
 
 
           <li class="nav-item w-100">
-            <a class="nav-link" href="procesos/sesion.php">
+            <a class="nav-link" href="../procesos/sesion.php">
               <i class="fa-solid fa-right-from-bracket"></i>
               <span class="ml-3 item-text">Salir</span>
             </a>
@@ -228,7 +229,7 @@ if ($_SESSION['rol'] == 1) {
                            $sinopsis = $datos['sinopsis']; 
                            $estado = $datos['estado']; 
                            $categoria = $datos['nomCat'];                        
-                       }
+                       
                        
                 
 
@@ -264,6 +265,7 @@ if ($_SESSION['rol'] == 1) {
                               </div>
                             </td>
                           </tr> 
+                        <?php }; ?>
                         </tbody>
                       </table>
                     </div>
