@@ -227,7 +227,9 @@ if ($_SESSION['rol'] == 1) {
                                         <form action="procesos/updateperfil.php" method="POST" enctype="multipart/form-data">
                                             <section>
 
-                                                <div class="form-row">                                                                                              
+                                                <div class="form-row">                                                                                                           
+                                                  <input type="text" name="idUsu" class="form-control" value="<?php echo $idSeg; ?>" hidden>                                                    
+                                                    <div class="form-group col-md-12"></div>
                                                     <div class="form-group col-md-5">
                                                         <label for="catego">Primer Nombre</label>
                                                         <input type="text" name="nom1" class="form-control" value="<?php echo $nom1; ?>">

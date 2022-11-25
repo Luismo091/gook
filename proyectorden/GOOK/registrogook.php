@@ -76,7 +76,7 @@
                         <label for="lastname">Foto de Perfil</label> 
                         <input type="file" id="example-fileinput" name="imagen" class="form-control-file" required>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6" style="text-align: center;">
                         <label for="escritor">¿Quieres Ser Escritor?</label>
                         <input type="checkbox" style="left:0px; width: 50px; " name="inputescritor" class="form-control" value="si">
                         <p style="margin-left: 51px; margin-top: 6px;" for="escritor">Marca si quieres ser escritor</p>

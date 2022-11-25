@@ -1,7 +1,12 @@
 <?php
 session_start();
 include "procesos/conexion.php";
+if (isset($_SESSION['id'])) {
+  $consulta = ($_SESSION['id']);
+  $variable = $consulta;
+}
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -11,34 +16,37 @@ include "procesos/conexion.php";
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
-  <title>Tiny Dashboard - A Bootstrap Dashboard Template</title>
+  <title>GoodBook - Pagina Principal</title>
   <!-- Simple bar CSS -->
   <link rel="stylesheet" href="css/simplebar.css">
   <!-- Fonts CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <!-- Icons CSS -->
   <link rel="stylesheet" href="css/feather.css">
+  <link rel="stylesheet" href="css/select2.css">
+  <link rel="stylesheet" href="css/dropzone.css">
+  <link rel="stylesheet" href="css/uppy.min.css">
+  <link rel="stylesheet" href="css/jquery.steps.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="css/quill.snow.css">
   <!-- Date Range Picker CSS -->
   <link rel="stylesheet" href="css/daterangepicker.css">
   <!-- App CSS -->
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
+  <link rel="stylesheet" href="css/stylelaunch.css">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>
   <link rel="stylesheet" href="css/styleff.css">
   <link rel="stylesheet" href="css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/styleswiper.css">
   <link rel="stylesheet" href="css/stylesee.css">
-  <link rel="stylesheet" href="css/feather.css">
-  <link rel="stylesheet" href="css/daterangepicker.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/stylef.css">
-  <link rel="stylesheet" href="css/stylelaunch.css">
+
 
 </head>
 
 <body class="vertical  dark  ">
   <div class="wrapper">
-  <nav class="topnav navbar navbar-light">
+    <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
@@ -125,7 +133,7 @@ include "procesos/conexion.php";
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="favoritos.php">
-            <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
@@ -146,17 +154,17 @@ include "procesos/conexion.php";
     </a>
   </li>';
           }
-         
 
-if ($_SESSION['rol'] == 1) {
-  echo '<li class="nav-item w-100">
+
+          if ($_SESSION['rol'] == 1) {
+            echo '<li class="nav-item w-100">
 <a class="nav-link" href="administrador/mainadmin.php">
 <i class="fa-solid fa-house-lock"></i>
 <span class="ml-3 item-text">Admin Home</span>
 </a>
 </li>';
-}
-?>
+          }
+          ?>
 
 
           <li class="nav-item w-100">
@@ -169,379 +177,245 @@ if ($_SESSION['rol'] == 1) {
         </ul>
       </nav>
     </aside>
-
-
-
-
-
     <main role="main" class="main-content">
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h2 class="h3 mb-4 page-title">Perfil</h2>
-
-            <div class="row mt-12 align-items-center">          
-              <div class="col-md-3" style="text-align:center;">
-                <div class="avatar avatar-xl">
-                  <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>" alt="..." class="avatar-img rounded-circle">
-                </div>
-              </div>
-              <div class="col">
-                <div class="row align-items-center">
-                  <div class="col-md-3">
-                    <h1 class="mb-1"> <?php echo $_SESSION["nombre1"] . " " . $_SESSION["nombre2"] . " " . $_SESSION["apellido1"] . " " . $_SESSION["apellido2"] ?></h1>
-                  </div>
-                </div>
-                <div class="row mb-4"></div>
-              </div>
-            </div>
-
+            <h2 class="mb-2 page-title">Editar Seguridad de la Cuenta</h2>
+            <p class="card-text"> </p>
             <div class="row my-4">
-              <div class="col-md-6">
-                <div class="card mb-4 shadow">
-                  <div class="card-body my-n3">
-                    <div class="row align-items-center">
-                      <div class="col-3 text-center">
-                        <span class="circle circle-lg bg-light">
-                          <i class="fe fe-user fe-24 text-primary"></i>
-                        </span>
-                      </div> <!-- .col -->
-                      <div class="col">
-                        <a href="editarperfil.php">
-                          <h3 class="h5 mt-4 mb-1">Personal</h3>
-                        </a>
-                        <p class="text-muted">Cambia tus datos personales en GOOK</p>
-                      </div> <!-- .col -->
-                    </div> <!-- .row -->
-                  </div> <!-- .card-body -->
-                  <div class="card-footer">
-                    <a href="editarperfil.php" class="d-flex justify-content-between text-muted"><span>Configuración de Cuenta</span><i class="fe fe-chevron-right"></i></a>
-                  </div> <!-- .card-footer -->
-                </div> <!-- .card -->
-              </div> <!-- .col-md-->
-              <div class="col-md-6">
-                <div class="card mb-4 shadow">
-                  <div class="card-body my-n3">
-                    <div class="row align-items-center">
-                      <div class="col-3 text-center">
-                        <span class="circle circle-lg bg-light">
-                          <i class="fe fe-shield fe-24 text-primary"></i>
-                        </span>
-                      </div> <!-- .col -->
-                      <div class="col">
-                        <a href="editarseguridad.php">
-                          <h3 class="h5 mt-4 mb-1">Seguridad</h3>
-                        </a>
-                        <p class="text-muted">Administra tu cuenta en GOOK</p>
-                      </div> <!-- .col -->
-                    </div> <!-- .row -->
-                  </div> <!-- .card-body -->
-                  <div class="card-footer">
-                    <a href="editarseguridad.php" class="d-flex justify-content-between text-muted"><span>Configuración de Seguridad</span><i class="fe fe-chevron-right"></i></a>
-                  </div> <!-- .card-footer -->
-                </div> <!-- .card -->
-              </div> <!-- .col-md-->           
-            </div> <!-- .row-->
-            <h3>Suscripción</h3>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus.</p>
-            <div class="card-deck my-4">
+              <!-- Small table -->
+              <div class="col-md-12">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <!-- table -->
 
-              <?php
-        
-              $sus = $_SESSION['sus'];
-              $sql = $conexion->query("SELECT * FROM Suscripcion WHERE idSus = '$sus'");
-              if ($datos = $sql->fetch_object()) {
-              ?>
-                <div class="card mb-4 shadow">
-                  <div class="card-body text-center my-4">
-                    <div><span class="dot dot-lg bg-success"></span>
-                      <span class="text-muted ml-3">Activo</span>
-                    </div>
-                    <a href="#">
-                      <h3 class="h5 mt-4 mb-0"><?= $datos->titsus ?></h3>
-                    </a>
-                    <p class="text-muted">Suscripción</p>
-                    <span class="h1 mb-0">$<?= $datos->preSus ?></span>
-                    <p class="text-muted">Mes</p>
-                    <ul class="list-unstyled">
-                      <li><?= $datos->desSus ?></li>
-                    </ul>
-                    <button type="button" class="btn mb-2 btn-primary btn-lg">Cambia tu plan</button>
-                  </div>
-                  <!-- .card-body -->
-                </div> <!-- .card -->
-              <?php }
-              ?>
-              <div class="card mb-4">
 
-                <div class="card-body text-center my-4">
-                <?php
-                  $idsus = $_SESSION['id'];
-                  $sql = $conexion->query("SELECT * FROM tarjeta WHERE id_usuf = '$idsus'");
-                  if ($datos = $sql->fetch_object()) {
-                      ?>
 
-                  <div class="wrapper" id="app">
-                    <div class="card-form">
-                      <div class="card-list">
-                        <div class="card-item" v-bind:class="{ '-active' : isCardFlipped }">
-                          <div class="card-item__side -front">
-                            <div class="card-item__focus" v-bind:class="{'-active' : focusElementStyle }" v-bind:style="focusElementStyle" ref="focusElement"></div>
-                            <div class="card-item__cover">
-                              <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + currentCardBackground + '.jpeg'" class="card-item__bg">
-                            </div>
-                            <div class="card-item__wrapper">
-                              <div class="card-item__top">
-                                <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" class="card-item__chip">
-                                <div class="card-item__type">
-                                  <transition name="slide-fade-up">
-                                    <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'" v-if="getCardType" v-bind:key="getCardType" alt="" class="card-item__typeImg">
-                                  </transition>
-                                </div>
-                              </div>
 
-                              <label for="cardNumber" class="card-item__number" ref="cardNumber">
-                                <template v-if="getCardType === 'amex'">
-                                  <span v-for="(n, $index) in amexCardMask" :key="$index">
-                                    <transition name="slide-fade-up">
-                                      <div class="card-item__numberItem" v-if="$index > 4 && $index < 14 && cardNumber.length > $index && n.trim() !== ''">
-                                        *</div>
-                                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" :key="$index" v-else-if="cardNumber.length > $index">
-                                        {{cardNumber[$index]}}
-                                      </div>
-                                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" v-else :key="$index + 1">{{n}}</div>
-                                    </transition>
-                                  </span>
-                                </template>
+                    <?php
+                    echo '<div class="row">';
+                    $idUs = $variable;
+                    $sql = $conexion->query("SELECT idSeg, email, clave, Rol_idRol, nom1, nom2, ape1, ape2, eda, foto, desRol
+							                                     FROM Seguridad
+                                                                 INNER JOIN Usuario
+                                                                 ON Seguridad.idSeg=Usuario.Seguridad_idSeg
+                                                                 INNER JOIN Rol
+                                                                 ON Seguridad.Rol_idRol=Rol.idRol
+                                                                 WHERE idSeg='$idUs';");
+                    if ($datos = $sql->fetch_array()) {
+                      $idSeg = $datos['idSeg'];
+                      $email = $datos['email'];
+                      $clave = $datos['clave'];
+                      $Rol_idRol = $datos['Rol_idRol'];
+                      $desRol = $datos['desRol'];
+                      $nom1 = $datos['nom1'];
+                      $nom2 = $datos['nom2'];
+                      $ape1 = $datos['ape1'];
+                      $ape2 = $datos['ape2'];
+                      $eda = $datos['eda'];
+                      $foto = $datos['foto'];
+                    }
 
-                                <template v-else>
-                                  <span v-for="(n, $index) in otherCardMask" :key="$index">
-                                    <transition name="slide-fade-up">
-                                      <div class="card-item__numberItem" v-if="$index > 4 && $index < 15 && cardNumber.length > $index && n.trim() !== ''">
-                                        *</div>
-                                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" :key="$index" v-else-if="cardNumber.length > $index">
-                                        {{cardNumber[$index]}}
-                                      </div>
-                                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" v-else :key="$index + 1">{{n}}</div>
-                                    </transition>
-                                  </span>
-                                </template>
-                              </label>
-                              <div class="card-item__content">
-                                <label for="cardName" class="card-item__info" ref="cardName">
-                                  <div class="card-item__holder">Nombre de la tarjeta</div>
-                                  <transition name="slide-fade-up">
-                                    <div class="card-item__name" v-if="cardName.length" key="1">
-                                      <transition-group name="slide-fade-right">
-                                        <span class="card-item__nameItem" v-for="(n, $index) in cardName.replace(/\s\s+/g, ' ')" v-if="$index === $index" v-bind:key="$index + 1">{{n}}</span>
-                                      </transition-group>
-                                    </div>
-                                    <div class="card-item__name" v-else key="2"><?= $datos->notitular ?></div>
-                                  </transition>
-                                </label>
-                                <div class="card-item__date" ref="cardDate">
-                                  <label for="cardMonth" class="card-item__dateTitle">Exp</label>
-                                  <label for="cardMonth" class="card-item__dateItem">
-                                    <transition name="slide-fade-up">
-                                      <span v-if="cardMonth" v-bind:key="cardMonth">{{cardMonth}}</span>
-                                      <span v-else key="2"><?= $datos->mm ?></span>
-                                    </transition>
-                                  </label>
-                                  /
-                                  <label for="cardYear" class="card-item__dateItem">
-                                    <transition name="slide-fade-up">
-                                      <span v-if="cardYear" v-bind:key="cardYear">{{String(cardYear).slice(2,4)}}</span>
-                                      <span v-else key="2"><?= $datos->yy ?></span>
-                                    </transition>
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
+
+
+
+                    echo '</div>';
+
+                    ?>
+                    <form action="procesos/uptadeseguridad.php" method="POST" enctype="multipart/form-data">
+                      <section>
+
+                        <div class="form-row">
+                          <input type="text" name="idSeg" class="form-control" value="<?php echo $idSeg; ?>" hidden>
+                          <div class="form-group col-md-12"></div>
+                          <div class="form-group col-md-4">
+                            <label for="catego">Correo</label>
+                            <input type="email" name="correo" class="form-control" value="<?php echo $email; ?>" required>
                           </div>
-                          <div class="card-item__side -back">
-                            <div class="card-item__cover">
-                              <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + currentCardBackground + '.jpeg'" class="card-item__bg">
-                            </div>
-                            <div class="card-item__band"></div>
-                            <div class="card-item__cvv">
-                              <div class="card-item__cvvTitle"><?= $datos->idPag ?></div>
-                              <div class="card-item__cvvBand">
-                                <span v-for="(n, $index) in cardCvv" :key="$index">
-                                  *
-                                </span>
-
-                              </div>
-                              <div class="card-item__type">
-                                <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'" v-if="getCardType" class="card-item__typeImg">
-                              </div>
-                            </div>
+                          <div class="form-group col-md-2">
+                            <label for="catego">Contraseña Actual</label>
+                            <input type="password" name="claveact" class="form-control" required>
                           </div>
+                          <div class="form-group col-md-2">
+                            <label for="catego">Nueva Contraseña</label>
+                            <input type="password" name="clavenew" class="form-control">
+                          </div>
+                          <div class="form-group col-md-2">
+                            <label for="catego">Confirmar Contraseña</label>
+                            <input type="password" name="clavecon" class="form-control">
+                          </div>
+                          <div class="form-group col-md-2">
+                          <label for="lastname">Rol</label>
+                          <select name="rol" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" style="width: 200px;">
+                          <option style="background-color:#212529; color:#6c757d">Seleccione un...</option>
+                          <?php
+                          $result = mysqli_query($conexion, 'SELECT * FROM Rol WHERE idRol>=3');
+                          while ($row = mysqli_fetch_assoc($result)) {
+                            if ($Rol_idRol==$row["idRol"]){
+                                echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idRol]'>$row[desRol] </option>";
+                            }else{
+                                echo "<option style='background-color:#212529; color:#6c757d' value='$row[idRol]'>$row[desRol] </option>";
+                            }
+                          }
+                          ?>
+                        </select>
                         </div>
-                      </div>
-                    </div>
+
+
+
+
+
+                        </div>
                   </div>
-                </div> 
-                <?php }
-                  ?><!-- .card-body -->
-              </div> <!-- .card -->
-            </div> <!-- .card-group -->
-            <h6 class="mb-3">últimos Pagos</h6>
-            <table class="table table-borderless table-striped">
-              <thead>
-                <tr role="row">
-                  <th>ID</th>
-                  <th>Fecha de pago</th>
-                  <th>Total</th>
-                  <th>Metodo</th>
-                  <th>Estado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <?php
-                  $idsus = $_SESSION['id'];
-                  $sql = $conexion->query("SELECT * FROM Pago WHERE Usuario_idUsu = '$idsus'");
-                  while ($datos = $sql->fetch_object()) {
-                  ?>
-                    <th scope="col"><?= $datos->idPag ?></th>
-                    <td><?= $datos->fecPag ?></td>
-                    <td><?= $datos->valPag ?></td>
-                    <td><?= $datos->metodo ?></td>
-                    <td><span class="dot dot-lg bg-success mr-2"></span>Pago</td>
-                    <td>
-                    </td>
-                  <?php }
-                  ?>
-                </tr>
-              </tbody>
-            </table>
-          </div> <!-- /.col-12 -->
-        </div> <!-- .row -->
-      </div> <!-- .container-fluid -->
-      <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+
+                  <input class="btn btn-lg btn-primary btn-block" type="submit">
+                  </section>
+
+                  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+              </div>
+            </div> <!-- simple table -->
+          </div> <!-- end section -->
+        </div> <!-- .col-12 -->
+      </div> <!-- .row -->
+  </div> <!-- .container-fluid -->
+  <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group list-group-flush my-n3">
+            <div class="list-group-item bg-transparent">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <span class="fe fe-box fe-24"></span>
+                </div>
+                <div class="col">
+                  <small><strong>Package has uploaded successfull</strong></small>
+                  <div class="my-0 text-muted small">Package is zipped and uploaded</div>
+                  <small class="badge badge-pill badge-light text-muted">1m ago</small>
+                </div>
+              </div>
             </div>
-            <div class="modal-body">
-              <div class="list-group list-group-flush my-n3">
-                <div class="list-group-item bg-transparent">
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                      <span class="fe fe-box fe-24"></span>
-                    </div>
-                    <div class="col">
-                      <small><strong>Package has uploaded successfull</strong></small>
-                      <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                      <small class="badge badge-pill badge-light text-muted">1m ago</small>
-                    </div>
-                  </div>
+            <div class="list-group-item bg-transparent">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <span class="fe fe-download fe-24"></span>
                 </div>
-                <div class="list-group-item bg-transparent">
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                      <span class="fe fe-download fe-24"></span>
-                    </div>
-                    <div class="col">
-                      <small><strong>Widgets are updated successfull</strong></small>
-                      <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
-                      <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                    </div>
-                  </div>
+                <div class="col">
+                  <small><strong>Widgets are updated successfull</strong></small>
+                  <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
+                  <small class="badge badge-pill badge-light text-muted">2m ago</small>
                 </div>
-                <div class="list-group-item bg-transparent">
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                      <span class="fe fe-inbox fe-24"></span>
-                    </div>
-                    <div class="col">
-                      <small><strong>Notifications have been sent</strong></small>
-                      <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                      <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                    </div>
-                  </div> <!-- / .row -->
-                </div>
-                <div class="list-group-item bg-transparent">
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                      <span class="fe fe-link fe-24"></span>
-                    </div>
-                    <div class="col">
-                      <small><strong>Link was attached to menu</strong></small>
-                      <div class="my-0 text-muted small">New layout has been attached to the menu</div>
-                      <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                    </div>
-                  </div>
-                </div> <!-- / .row -->
-              </div> <!-- / .list-group -->
+              </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
+            <div class="list-group-item bg-transparent">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <span class="fe fe-inbox fe-24"></span>
+                </div>
+                <div class="col">
+                  <small><strong>Notifications have been sent</strong></small>
+                  <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
+                  <small class="badge badge-pill badge-light text-muted">30m ago</small>
+                </div>
+              </div> <!-- / .row -->
+            </div>
+            <div class="list-group-item bg-transparent">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <span class="fe fe-link fe-24"></span>
+                </div>
+                <div class="col">
+                  <small><strong>Link was attached to menu</strong></small>
+                  <div class="my-0 text-muted small">New layout has been attached to the menu</div>
+                  <small class="badge badge-pill badge-light text-muted">1h ago</small>
+                </div>
+              </div>
+            </div> <!-- / .row -->
+          </div> <!-- / .list-group -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body px-5">
+          <div class="row align-items-center">
+            <div class="col-6 text-center">
+              <div class="squircle bg-success justify-content-center">
+                <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+              </div>
+              <p>Control area</p>
+            </div>
+            <div class="col-6 text-center">
+              <div class="squircle bg-primary justify-content-center">
+                <i class="fe fe-activity fe-32 align-self-center text-white"></i>
+              </div>
+              <p>Activity</p>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-6 text-center">
+              <div class="squircle bg-primary justify-content-center">
+                <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+              </div>
+              <p>Droplet</p>
+            </div>
+            <div class="col-6 text-center">
+              <div class="squircle bg-primary justify-content-center">
+                <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+              </div>
+              <p>Upload</p>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-6 text-center">
+              <div class="squircle bg-primary justify-content-center">
+                <i class="fe fe-users fe-32 align-self-center text-white"></i>
+              </div>
+              <p>Users</p>
+            </div>
+            <div class="col-6 text-center">
+              <div class="squircle bg-primary justify-content-center">
+                <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+              </div>
+              <p>Settings</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body px-5">
-              <div class="row align-items-center">
-                <div class="col-6 text-center">
-                  <div class="squircle bg-success justify-content-center">
-                    <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                  </div>
-                  <p>Control area</p>
-                </div>
-                <div class="col-6 text-center">
-                  <div class="squircle bg-primary justify-content-center">
-                    <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                  </div>
-                  <p>Activity</p>
-                </div>
-              </div>
-              <div class="row align-items-center">
-                <div class="col-6 text-center">
-                  <div class="squircle bg-primary justify-content-center">
-                    <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                  </div>
-                  <p>Droplet</p>
-                </div>
-                <div class="col-6 text-center">
-                  <div class="squircle bg-primary justify-content-center">
-                    <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                  </div>
-                  <p>Upload</p>
-                </div>
-              </div>
-              <div class="row align-items-center">
-                <div class="col-6 text-center">
-                  <div class="squircle bg-primary justify-content-center">
-                    <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                  </div>
-                  <p>Users</p>
-                </div>
-                <div class="col-6 text-center">
-                  <div class="squircle bg-primary justify-content-center">
-                    <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                  </div>
-                  <p>Settings</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main> <!-- main -->
+    </div>
+  </div>
+  </main> <!-- main -->
   </div> <!-- .wrapper -->
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -552,8 +426,19 @@ if ($_SESSION['rol'] == 1) {
   <script src='js/jquery.stickOnScroll.js'></script>
   <script src="js/tinycolor-min.js"></script>
   <script src="js/config.js"></script>
-  <script src="js/apps.js"></script>
+  <script src='js/jquery.dataTables.min.js'></script>
+  <script src='js/dataTables.bootstrap4.min.js'></script>
   <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
+  <script>
+    $('#dataTable-1').DataTable({
+      autoWidth: true,
+      "lengthMenu": [
+        [16, 32, 64, -1],
+        [16, 32, 64, "All"]
+      ]
+    });
+  </script>
+  <script src="js/apps.js"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
   <script>
@@ -566,9 +451,5 @@ if ($_SESSION['rol'] == 1) {
     gtag('config', 'UA-56159088-1');
   </script>
 </body>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
-<script src='https://unpkg.com/vue-the-mask@0.11.1/dist/vue-the-mask.js'></script>
-<script src="js/script.js"></script>
 
 </html>
