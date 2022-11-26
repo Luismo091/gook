@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
   </head>
   <body class="dark" style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(assets/images/FONDOPAGE.gif); background-size: cover;">
-    <div class="row" style="margin-top:50vh;">
+    <div class="row" style="margin-top:250px;">
   <div class="col-1 "></div>
     <div class="col-4" style="height: 100vh;">
         <form action="procesos/validarsesion.php" method="POST">
@@ -100,6 +100,8 @@
             <br>
             <a href="registrogook.php" class="btn btn-lg btn-primary btn-block" type="submit">Registrate</a>
             </div>
+
+            
             </div>
 
 
