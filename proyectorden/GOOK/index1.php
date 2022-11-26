@@ -20,12 +20,13 @@
     <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
   </head>
   <body class="dark">
-  <div class="row" style="height:973px ;">
-  <div class="col-md-6" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/images//mi.png);"></div>
- 
-  <div class="col-5" style="margin-top:100px">
-            <form action="procesos/validarsesion.php"  class="mx-auto text-center" method="POST">
-              <a >
+    <div style="height: 100vh;">
+    
+      <div class="row align-items-center h-100"  style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(assets/images/FONDO_PAGE.png); background-size: cover;">
+         <!-- ./col -->
+        <div class="col-6">
+        <form action="procesos/validarsesion.php" method="POST">
+              <a>
                 <svg
    width="auto"
    height="200"
@@ -87,14 +88,14 @@
          sodipodi:nodetypes="sscsssssscccssssssssssssssssssssssscsccssssscsssssssscssscscsssscccssscsssssscscsccccsssscccsssccsscsssssssscsssssssscsssssssssssssssscscssssscsssssssssscscssssssssssssscsssccscccssssssssccccccccssccssssssssssssssssscsscsssssssscsssssssssssssssssscsssssssssssssssscsssccccccccsccssscscsssscsscssssscsscsssccsscccssssssssscss" /></g></g></svg>
               </a>
               
-              <h1>Inicia Sesión</h1>
+              <h1 class="h6 mb-3">Inicia Sesión</h1>
               <div class="form-group">
                 <label for="inputEmail" class="sr-only">Correo</label>
-                <input type="email" name="inputEmail" class="form-control form-control-lg" placeholder="Correo" required>
+                <input type="email" name="inputEmail" class="form-control form-control-lg" placeholder="Correo" required="" autofocus="">
               </div>
               <div class="form-group">
                 <label for="inputPassword" class="sr-only">Contraseña</label>
-                <input type="password" name="inputPassword" class="form-control form-control-lg" placeholder="Contraseña" required>
+                <input type="password" name="inputPassword" class="form-control form-control-lg" placeholder="Contraseña" required="">
               </div>
               <div class="checkbox mb-3">
                 <!--<label><input type="checkbox" value="remember-me"> Mantener logeado </label>-->
@@ -102,14 +103,34 @@
               <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
             </form>
             <br>
-            <a href="registrogook.php" class="btn btn-lg btn-primary btn-block" type="submit">Registrate</a>
+            <a href="registrogook.php" class="btn btn-lg btn-primary btn-block" type="submit">Registrate</a>s
+        </div>
+      </div>
+    </div>
 
-</div>
 
-</div>
 
-      <!-- .row -->
-    
+<script>function square(number) {
+   <?php
+include 'procesos/conexion.php';
+$email=$_GET["inputEmail"];
+$clave=$_GET["inputPassword"];
+$query ="SELECT * FROM Seguridad WHERE email=$email";
+$resul = $conexion->query($query);
+$contlibro;
+if ($row = $resul->fetch_array()) { 
+ $vemail = $row['email'];
+ $vclave = $row['clave'];
+}
+
+?>
+}</script>
+           
+
+
+
+        
+          
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/moment.min.js"></script>

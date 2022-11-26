@@ -20,15 +20,13 @@
     <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
   </head>
   <body class="dark">
-    <div class="wrapper vh-100">
-      <div class="row align-items-center h-100"  style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(assets/images//1191544.jpg);">
-        <div class="col-lg-6" >
-        
-        </div> <!-- ./col -->
+    <div class="wrapper" style="height: 100vh;">
+      <div class="row align-items-center h-100"  style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(assets/images//1191544.jpg); background-size: cover;">
+         <!-- ./col -->
         <div class="col-lg-6">
           <div class="w-50 mx-auto">
             <form action="procesos/validarsesion.php"  class="mx-auto text-center" method="POST">
-              <a class="navbar-brand mx-auto mt-2 text-center">
+              <a>
                 <svg
    width="auto"
    height="200"
@@ -106,6 +104,8 @@
             </form>
             <br>
             <a href="registrogook.php" class="btn btn-lg btn-primary btn-block" type="submit">Registrate</a>
+
+          </div>
 
 <script>function square(number) {
    <?php
