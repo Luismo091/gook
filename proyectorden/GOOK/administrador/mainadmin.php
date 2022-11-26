@@ -139,8 +139,6 @@ include "../procesos/conexion.php";
               <span class="ml-3 item-text">Categorias</span>
             </a>
           </li>
-
-
           <li class="nav-item w-100">
             <a class="nav-link" href="#">
             <i class="fa-solid fa-circle-plus"></i>
@@ -159,13 +157,13 @@ include "../procesos/conexion.php";
               <span class="ml-3 item-text">Salir</span>
             </a>
           </li>
-
         </ul>
       </nav>
     </aside>
     <main role="main" class="main-content">
     
-
+    <iframe width="100%" height="890px" 
+    src="https://www.youtube.com/embed/Daw7yhkViU8" title="Secuencia 01 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
