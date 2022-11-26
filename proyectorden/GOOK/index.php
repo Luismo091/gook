@@ -21,9 +21,9 @@
   </head>
   <body class="dark">
     <div class="wrapper vh-100">
-      <div class="row align-items-center h-100">
-        <div class="col-lg-6 d-none d-lg-flex">
-          <img src="assets/images//mi.png">
+      <div class="row align-items-center h-100"  style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(assets/images//1191544.jpg);">
+        <div class="col-lg-6" >
+        
         </div> <!-- ./col -->
         <div class="col-lg-6">
           <div class="w-50 mx-auto">
