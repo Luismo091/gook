@@ -19,13 +19,11 @@
     <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
     <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
   </head>
-  <body class="dark">
-    <div class="wrapper" style="height: 100vh;">
-      <div class="row align-items-center h-100"  style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(assets/images//1191544.jpg); background-size: cover;">
-         <!-- ./col -->
-        <div class="col-lg-6">
-          <div class="w-50 mx-auto">
-            <form action="procesos/validarsesion.php"  class="mx-auto text-center" method="POST">
+  <body class="dark" style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(assets/images/FONDOPAGE.gif); background-size: cover;">
+    <div class="row" style="margin-top:50vh;">
+  <div class="col-1 "></div>
+    <div class="col-4" style="height: 100vh;">
+        <form action="procesos/validarsesion.php" method="POST">
               <a>
                 <svg
    width="auto"
@@ -88,24 +86,23 @@
          sodipodi:nodetypes="sscsssssscccssssssssssssssssssssssscsccssssscsssssssscssscscsssscccssscsssssscscsccccsssscccsssccsscsssssssscsssssssscsssssssssssssssscscssssscsssssssssscscssssssssssssscsssccscccssssssssccccccccssccssssssssssssssssscsscsssssssscsssssssssssssssssscsssssssssssssssscsssccccccccsccssscscsssscsscssssscsscsssccsscccssssssssscss" /></g></g></svg>
               </a>
               
-              <h1 class="h6 mb-3">Inicia Sesión</h1>
+              <h1 class="h6">Inicia Sesión</h1>
               <div class="form-group">
-                <label for="inputEmail" class="sr-only">Correo</label>
-                <input type="email" name="inputEmail" class="form-control form-control-lg" placeholder="Correo" required="" autofocus="">
+                <label for="inputEmail" >Correo</label>
+                <input type="email" name="inputEmail" class="form-control form-control" placeholder="Correo" required>
               </div>
               <div class="form-group">
-                <label for="inputPassword" class="sr-only">Contraseña</label>
-                <input type="password" name="inputPassword" class="form-control form-control-lg" placeholder="Contraseña" required="">
-              </div>
-              <div class="checkbox mb-3">
-                <!--<label><input type="checkbox" value="remember-me"> Mantener logeado </label>-->
+                <label for="inputPassword">Contraseña</label>
+                <input type="password" name="inputPassword" class="form-control form-control" placeholder="Contraseña" required="">
               </div>
               <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
             </form>
             <br>
             <a href="registrogook.php" class="btn btn-lg btn-primary btn-block" type="submit">Registrate</a>
+            </div>
+            </div>
 
-          </div>
+
 
 <script>function square(number) {
    <?php
@@ -127,10 +124,7 @@ if ($row = $resul->fetch_array()) {
 
 
         
-          </div> <!-- .card -->
-        </div> <!-- ./col -->
-      </div> <!-- .row -->
-    </div>
+          
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/moment.min.js"></script>
