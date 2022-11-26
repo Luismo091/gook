@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
     <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
   </head>
-  <body class="dark" style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(assets/images/FONDOPAGE.gif); background-size: cover;">
+  <body class="dark" style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(assets/images/1.gif); background-size: cover;">
     <div class="row" style="margin-top:250px;">
   <div class="col-1 "></div>
     <div class="col-4" style="height: 100vh;">
