@@ -253,6 +253,22 @@ if ($_SESSION['rol'] == 1) {
           </div>
         </div>
 
+        <?php
+      if ($_SESSION['sus'] == 1) { ?>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <img src="./assets/images/anuncio.gif">
+            </div>
+            <div class="col-6">
+            <img src="./assets/images/anuncio.gif">
+            </div>
+          </div>
+        </div>
+
+
+      <?php }  ?>
+
 
       
 
