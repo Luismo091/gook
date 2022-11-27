@@ -40,6 +40,16 @@ include "procesos/conexion.php";
 
 <body class="vertical  dark  ">
 
+  <?php
+  if ($_SESSION['sus'] == 1) { ?>
+
+    <div style="text-align: center ">
+      <img src="./assets/images/anuncio.png">
+    </div>
+
+
+  <?php }  ?>
+
   <div class="wrapper">
 
     <nav class="topnav navbar navbar-light">
@@ -165,7 +175,7 @@ include "procesos/conexion.php";
 
           <li class="nav-item w-100">
             <a class="nav-link" href="procesos/sesion.php">
-            <i class="fa-solid fa-right-from-bracket"></i>
+              <i class="fa-solid fa-right-from-bracket"></i>
               <span class="ml-3 item-text">Salir</span>
             </a>
           </li>

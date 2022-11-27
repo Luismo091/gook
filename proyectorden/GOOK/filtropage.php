@@ -43,7 +43,7 @@ $haylibrosxd = 0;
 
   <div class="wrapper">
 
-  <nav class="topnav navbar navbar-light">
+    <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
@@ -56,15 +56,14 @@ $haylibrosxd = 0;
           <?php
           $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
           while ($row = mysqli_fetch_assoc($result)) {
-              if ($_GET['filcat']==$row["idCat"]){
-                  echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
-              }else{
-                  echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
-              }        
-
+            if ($_GET['filcat'] == $row["idCat"]) {
+              echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+            } else {
+              echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+            }
           }
           ?>
-      </select>
+        </select>
         <a href="javascript:enviar_formulario()">
           <i class="fa-solid fa-filter"></i>
         </a>
@@ -135,7 +134,7 @@ $haylibrosxd = 0;
           </li>
           <li class="nav-item w-100">
             <a class="nav-link" href="favoritos.php">
-            <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-heart"></i>
               <span class="ml-3 item-text">Favoritos</span>
             </a>
           </li>
@@ -156,17 +155,17 @@ $haylibrosxd = 0;
     </a>
   </li>';
           }
-         
 
-if ($_SESSION['rol'] == 1) {
-  echo '<li class="nav-item w-100">
+
+          if ($_SESSION['rol'] == 1) {
+            echo '<li class="nav-item w-100">
 <a class="nav-link" href="administrador/mainadmin.php">
 <i class="fa-solid fa-house-lock"></i>
 <span class="ml-3 item-text">Admin Home</span>
 </a>
 </li>';
-}
-?>
+          }
+          ?>
 
 
           <li class="nav-item w-100">
@@ -296,7 +295,7 @@ if ($_SESSION['rol'] == 1) {
                     } else {
 
 
-                      echo '<h1> Resultados para : ' . $filtro . '  </h1>
+                      echo '<h1> Resultados para : "' . $filtro . '"  </h1>
             <div class="row">';
 
                       $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
