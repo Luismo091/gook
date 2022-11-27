@@ -40,14 +40,7 @@ include "procesos/conexion.php";
 
 <body class="vertical  dark  ">
 
-  <?php
-  if ($_SESSION['sus'] == 1) { ?>
-    <div style="text-align: center ">
-      <img src="./assets/images/anuncio.png">
-    </div>
-
-
-  <?php }  ?>
+  
 
   <div class="wrapper">
 
@@ -185,7 +178,21 @@ include "procesos/conexion.php";
 
 
     <main role="main" class="main-content">
+    <?php
+  if ($_SESSION['sus'] == 1) { ?>
+  <div class="col-12">
+    <div class="row">
+  <div class="col-6">
+  <img src="./assets/images/anuncio.png">
+  </div>
+    <div class="col-6">
+      <img src="./assets/images/anuncio.png">
+    </div>
+    </div>
+    </div>
 
+
+  <?php }  ?>
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
