@@ -42,7 +42,6 @@ include "procesos/conexion.php";
 
   <?php
   if ($_SESSION['sus'] == 1) { ?>
-
     <div style="text-align: center ">
       <img src="./assets/images/anuncio.png">
     </div>
