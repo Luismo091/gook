@@ -206,7 +206,7 @@ if ($_SESSION['rol'] == 1) {
                             ON Editorial.idEdi=LibEdi.Editorial_idEdi
                             INNER JOIN Categoria
                             ON Libro.Categoria_idCat=Categoria.idCat
-                            WHERE titLib LIKE '%$filtro%' ");
+                            WHERE estado=1 AND titLib LIKE '%$filtro%' ");
             $contadorcol = 1;
             $contenido = "";
             while ($datos = $sql->fetch_array()) {
@@ -311,7 +311,7 @@ if ($_SESSION['rol'] == 1) {
                             ON Editorial.idEdi=LibEdi.Editorial_idEdi
                             INNER JOIN Categoria
                             ON Libro.Categoria_idCat=Categoria.idCat
-                            WHERE Categoria_idCat=$categoria AND titLib LIKE '%$filtro%' ");
+                            WHERE estado=1 AND Categoria_idCat=$categoria AND titLib LIKE '%$filtro%' ");
 
                       $contadorcol = 1;
                       $contenido = "";

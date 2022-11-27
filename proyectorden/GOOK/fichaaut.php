@@ -267,7 +267,7 @@ if ($_SESSION['rol'] == 1) {
                 ON Editorial.idEdi=LibEdi.Editorial_idEdi
                 INNER JOIN Categoria
                 ON Libro.Categoria_idCat=Categoria.idCat
-                WHERE idAut = '$variable'");
+                WHERE estado=1 AND idAut = '$variable'");
                     while ($datos = $sql->fetch_object()) {
                     ?>
                       <div class="video anim" style="--delay: .4s">
