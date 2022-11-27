@@ -7,7 +7,7 @@ if (isset($_GET["variable"])) {
 
 <script>let eliminar= confirm("Estas seguro de eliminar");
 if(eliminar){
-    window.location= 'listbookes.php';
+    window.location= '../procesos/deletebookes.php?variable=<?php echo $variable?>';
 }else {
     alert( "No Elimino El Libro" );
 }
