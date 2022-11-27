@@ -160,6 +160,7 @@ include "../procesos/conexion.php";
                             <th>Categoria</th>
                             <th>Autor</th>
                             <th>Editorial</th>
+                            <th>Estado</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -168,7 +169,7 @@ include "../procesos/conexion.php";
 <?php
                   
               
-                      $sql = $conexion->query("SELECT idLib, titLib, fecPub,fecLib, sinopsis, imagen,nomAut1,nomAut2, apeAut1,apeAut2, nomCat, nomEdi
+                      $sql = $conexion->query("SELECT idLib, titLib, fecPub,fecLib, sinopsis, imagen,nomAut1,nomAut2, apeAut1,apeAut2, nomCat, nomEdi,estado
                       FROM Libro
                             INNER JOIN LibAut
                             ON Libro.idLib=LibAut.Libro_idLib
@@ -194,6 +195,7 @@ include "../procesos/conexion.php";
                            $nomAut = $datos['nomAut1']." ".$datos['nomAut2']." ".$datos['apeAut1']." ".$datos['apeAut2'];
                            $nomCat = $datos['nomCat'];
                            $nomEdi = $datos['nomEdi'];
+                           $estado = $datos['estado'];
                        echo "<tr> 
                           <td>$idLib</td>
                        <td>$titLib</td>  
@@ -209,9 +211,14 @@ include "../procesos/conexion.php";
                        echo "</td>
                        <td>$nomCat</td> 
                        <td>$nomAut</td> 
-                       <td>$nomEdi</td>  
-                       ";
-                           
+                       <td>$nomEdi</td>";
+                      if ($estado==1){
+                       echo "<td style='color:green;'>Aprobado</td> ";
+                      } else if ($estado==2) {
+                        echo "<td style='color:red;'>Rechazado</td> ";
+                      }else {
+                        echo "<td style='color:yellow;'>Espera</td> ";
+                      }
 
 
                        
@@ -219,8 +226,7 @@ include "../procesos/conexion.php";
                         <span class="text-muted sr-only">Action</span>
                       </button>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="editbook.php?variable='.$idLib.'">Editar</a>
-                        <a class="dropdown-item" href="deletebook.php?variable='.$idLib.'">Eliminar</a>
+                        <a class="dropdown-item" href="seebooked.php?variable='.$idLib.'">Ver</a>                        
                       </div>
                     </td>
                   </tr>';
