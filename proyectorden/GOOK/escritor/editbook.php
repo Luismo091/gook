@@ -1,6 +1,10 @@
 <?php
 session_start();
 include "../procesos/conexion.php";
+if (isset($_GET["variable"])) {
+    $consulta = ($_GET['variable']);
+    $variable = $consulta;
+  }
 ?>
 
 <!doctype html>
@@ -172,249 +176,272 @@ if ($_SESSION['rol'] == 1) {
         </ul>
       </nav>
     </aside>
-      <main role="main" class="main-content">
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <h2 class="mb-2 page-title">Data table</h2>
-              <p class="card-text">DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, built upon the foundations of progressive enhancement, that adds all of these advanced features to any HTML table. </p>
-              <div class="row my-4">
-                <!-- Small table -->
-                <div class="col-md-12">
-                  <div class="card shadow">
-                    <div class="card-body">
-                      <!-- table -->
-                      
-                        
-                      
-
-<?php
-                        echo '<div class="row">';
-                       
-                       $sql = $conexion->query("SELECT idLib, titLib, fecPub, fecLib, sinopsis, imagen, estado, Categoria_idCat, lecturas,idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut, idLA, Autor_idAut,idEdi, nomEdi,nomCat, foto_edi ,idLE, Editorial_idEdi 
-                       FROM Libro
-                       INNER JOIN LibAut
-                       ON Libro.idLib=LibAut.Libro_idLib
-                       INNER JOIN Autor
-                       ON Autor.idAut=LibAut.Autor_idAut
-                       INNER JOIN LibEdi
-                       ON Libro.idLib=LibEdi.Libro_idLib
-                       INNER JOIN Editorial
-                       ON Editorial.idEdi=LibEdi.Editorial_idEdi
-                       INNER JOIN Categoria
-                       ON Libro.Categoria_idCat=Categoria.idCat
-                       WHERE idLib =2;
-                       ");
-  
-                       if ($datos = $sql->fetch_array()) {
-                           $idLib = $datos['idLib'];
-                           $titulo = $datos['titLib'];
-                           $autor = $datos['nomAut1'];
-                           $autor = $autor . " " . $datos['apeAut1'];
-                           $editorial = $datos['nomEdi'];
-                           $imagenlibro = $datos['imagen'];
-                           $imli = base64_encode($imagenlibro); 
-                           $sinopsis = $datos['sinopsis'];  
-                           $categoria = $datos['nomCat'];  
-                           $idcat = $datos['Categoria_idCat'];                    
-                       }
-                       
-                    
-
-
-                   echo '</div>';
-
-?>
-<form action="#" method="POST" enctype="multipart/form-data">
-<section>
-                
-                <div class="form-row">
-                    <div class="form-group col-md-1">
-                        <label for="id">ID</label>
-                        <input type="text" name="idlibro" class="form-control" value="<?php echo $idLib; ?>" readonly>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="lastname">Titulo</label>
-                        <input type="text" name="inputname2" class="form-control" value="<?php echo $titulo; ?>">
-                    </div>
-
-
-                    <div class="form-group col-md-2">
-                        <label for="lastname">Categoria</label>
-                        <select name="filcat"class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" style="width: 200px;">
-          <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
-          <?php
-          $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
-          while ($row = mysqli_fetch_assoc($result)) {
-            
-            if ($idcat==$row["idCat"]){
-                echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
-            }else{
-                echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
-            }
-            
-          }
-          ?>
-        </select>
-                    </div>
-
-
-                   
-                    <div class="form-group col-md-3">
-                        <label for="lastname">Foto de Perfil</label> 
-                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file" required>
-                    </div>
-                    <div class="form-group col-md-3">
-                    <td width="12%"><img  src="data:image/png;base64,<?= $imli ?>"></td>
-                    </div>
-                </div>
-                
-                <input class="btn btn-lg btn-primary btn-block" type="submit">
-            </section>
-</form>
+    <main role="main" class="main-content">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <h2 class="mb-2 page-title">Editar Libro</h2>
+                        <p class="card-text"> </p>
+                        <div class="row my-4">
+                            <!-- Small table -->
+                            <div class="col-md-12">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <!-- table -->
 
 
 
 
+                                        <?php
+                                        echo '<div class="row">';
+                                        $idLib;
+                                        $sql = $conexion->query("SELECT idLib, titLib, fecPub,fecLib,
+                                         sinopsis, imagen, idAut, nomAut1, nomAut2, apeAut1,apeAut2,
+                                         idCat, nomCat,idEdi, nomEdi, idLA,idLE
+                                        FROM Libro
+                                              INNER JOIN LibAut
+                                              ON Libro.idLib=LibAut.Libro_idLib
+                                              INNER JOIN Autor
+                                              ON Autor.idAut=LibAut.Autor_idAut
+                                              INNER JOIN LibEdi
+                                              ON Libro.idLib=LibEdi.Libro_idLib
+                                              INNER JOIN Editorial
+                                              ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                                              INNER JOIN Categoria
+                                              ON Libro.Categoria_idCat=Categoria.idCat
+                                              WHERE idLib=$variable;");
 
-                     
+                                        if ($datos = $sql->fetch_array()) {
+                                            $idLib = $datos['idLib'];
+                                            $titLib = $datos['titLib'];
+                                            $fecPub = $datos['fecPub'];
+                                            $fecLib = $datos['fecLib'];
+                                            $sinopsis = $datos['sinopsis'];
+                                            $imagen = $datos['imagen'];
+                                            $nomAut1 = $datos['nomAut1'];
+                                            $nomAut2 = $datos['nomAut2'];
+                                            $apeAut1 = $datos['apeAut1'];
+                                            $apeAut2 = $datos['apeAut2'];
+                                            $nomCat = $datos['nomCat'];
+                                            $idCat = $datos['idCat'];
+                                            $idAut = $datos['idAut'];
+                                            $idEdi = $datos['idEdi'];
+                                            $idLA = $datos['idLA'];
+                                            $idLE = $datos['idLE'];
+                                        }
+
+
+
+
+                                        echo '</div>';
+
+                                        ?>
+                                        <form action="../procesos/updatebookes.php" method="POST" enctype="multipart/form-data">
+                                            <section>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-1">
+                                                    <input type="number" name="idLA" class="form-control" value="<?php echo $idLA; ?>" hidden>
+                                                    <input type="number" name="idLE" class="form-control" value="<?php echo $idLE; ?>" hidden>
+                                                        <label for="id">ID</label>
+                                                        <input type="text" name="idLib" class="form-control" value="<?php echo $idLib; ?>" readonly>
+                                                    </div>
+                                                  
+                                                    <div class="form-group col-md-5">
+                                                        <label for="catego">Titulo</label>
+                                                        <input type="text" name="titLib" class="form-control" value="<?php echo $titLib; ?>">
+                                                    </div>                                                         
+                                                    <div class="form-group col-md-3">
+                                                        <label for="catego">Fecha Publicación</label>
+                                                        <input type="date" name="fecPub" class="form-control" value="<?php echo $fecPub; ?>">
+                                                    </div>              
+                                                
+                                                    <div class="form-group col-md-3">
+                                                        <label for="lastname">Categoria</label>
+                                                        <select name="filcat" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" >
+                                                            <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
+                                                            <?php
+                                                            $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                if ($idCat==$row["idCat"]){
+                                                                    echo "<option selected='true' style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+                                                                }else{
+                                                                    echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat] </option>";
+                                                                }        
+
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                  
+                                                    <div class="form-group col-md-6">
+                                                    <label for="lastname">Imagen del Libro</label>                                                       
+                                                        <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="imagen" class="form-control-file">
+                                                        <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+                                                        </div>                           
+                                                    </div>  
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lastname">Libro</label>                                                       
+                                                        <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="fileTest" class="form-control-file">
+                                                        <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+                                                        </div>                                          
+                                                    </div>    
+                                                    <div class="form-group col-md-12">
+                                                        <label for="lastname">Sinopsis</label>
+                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="sinopsis" class="form-control-file"><?php echo $sinopsis; ?></textarea>
+                                                    </div>                                                              
+                                                </div>                                                
+                                    </div>
+
+                                    <input class="btn btn-lg btn-primary btn-block" type="submit">
+                                    </section>
+
+                                    </form>
 
 
 
 
 
 
-                    </div>
-                  </div>
-                </div> <!-- simple table -->
-              </div> <!-- end section -->
-            </div> <!-- .col-12 -->
-          </div> <!-- .row -->
-        </div> <!-- .container-fluid -->
-        <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-sm" role="document">
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div> <!-- simple table -->
+                    </div> <!-- end section -->
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
+    </div> <!-- .container-fluid -->
+    <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="list-group list-group-flush my-n3">
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-box fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Package has uploaded successfull</strong></small>
-                        <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                        <small class="badge badge-pill badge-light text-muted">1m ago</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-download fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Widgets are updated successfull</strong></small>
-                        <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
-                        <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-inbox fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Notifications have been sent</strong></small>
-                        <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                        <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                      </div>
-                    </div> <!-- / .row -->
-                  </div>
-                  <div class="list-group-item bg-transparent">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-                        <span class="fe fe-link fe-24"></span>
-                      </div>
-                      <div class="col">
-                        <small><strong>Link was attached to menu</strong></small>
-                        <div class="my-0 text-muted small">New layout has been attached to the menu</div>
-                        <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                      </div>
-                    </div>
-                  </div> <!-- / .row -->
-                </div> <!-- / .list-group -->
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
-              </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group list-group-flush my-n3">
+                        <div class="list-group-item bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <span class="fe fe-box fe-24"></span>
+                                </div>
+                                <div class="col">
+                                    <small><strong>Package has uploaded successfull</strong></small>
+                                    <div class="my-0 text-muted small">Package is zipped and uploaded</div>
+                                    <small class="badge badge-pill badge-light text-muted">1m ago</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <span class="fe fe-download fe-24"></span>
+                                </div>
+                                <div class="col">
+                                    <small><strong>Widgets are updated successfull</strong></small>
+                                    <div class="my-0 text-muted small">Just create new layout Index, form, table</div>
+                                    <small class="badge badge-pill badge-light text-muted">2m ago</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <span class="fe fe-inbox fe-24"></span>
+                                </div>
+                                <div class="col">
+                                    <small><strong>Notifications have been sent</strong></small>
+                                    <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
+                                    <small class="badge badge-pill badge-light text-muted">30m ago</small>
+                                </div>
+                            </div> <!-- / .row -->
+                        </div>
+                        <div class="list-group-item bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <span class="fe fe-link fe-24"></span>
+                                </div>
+                                <div class="col">
+                                    <small><strong>Link was attached to menu</strong></small>
+                                    <div class="my-0 text-muted small">New layout has been attached to the menu</div>
+                                    <small class="badge badge-pill badge-light text-muted">1h ago</small>
+                                </div>
+                            </div>
+                        </div> <!-- / .row -->
+                    </div> <!-- / .list-group -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
+    </div>
+    <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body px-5">
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-success justify-content-center">
-                      <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Control area</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Activity</p>
-                  </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+                <div class="modal-body px-5">
+                    <div class="row align-items-center">
+                        <div class="col-6 text-center">
+                            <div class="squircle bg-success justify-content-center">
+                                <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+                            </div>
+                            <p>Control area</p>
+                        </div>
+                        <div class="col-6 text-center">
+                            <div class="squircle bg-primary justify-content-center">
+                                <i class="fe fe-activity fe-32 align-self-center text-white"></i>
+                            </div>
+                            <p>Activity</p>
+                        </div>
                     </div>
-                    <p>Droplet</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+                    <div class="row align-items-center">
+                        <div class="col-6 text-center">
+                            <div class="squircle bg-primary justify-content-center">
+                                <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+                            </div>
+                            <p>Droplet</p>
+                        </div>
+                        <div class="col-6 text-center">
+                            <div class="squircle bg-primary justify-content-center">
+                                <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+                            </div>
+                            <p>Upload</p>
+                        </div>
                     </div>
-                    <p>Upload</p>
-                  </div>
+                    <div class="row align-items-center">
+                        <div class="col-6 text-center">
+                            <div class="squircle bg-primary justify-content-center">
+                                <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                            </div>
+                            <p>Users</p>
+                        </div>
+                        <div class="col-6 text-center">
+                            <div class="squircle bg-primary justify-content-center">
+                                <i class="fe fe-settings fe-32 align-self-center text-white"></i>
+                            </div>
+                            <p>Settings</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="row align-items-center">
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Users</p>
-                  </div>
-                  <div class="col-6 text-center">
-                    <div class="squircle bg-primary justify-content-center">
-                      <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                    </div>
-                    <p>Settings</p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </main> <!-- main -->
+    </div>
+    </main><!-- main -->
     </div> <!-- .wrapper -->
     <script src="../js/jquery.min.js"></script>
     <script src="../js/popper.min.js"></script>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../procesos/conexion.php";
+$idUSU=$_SESSION['id']
 ?>
 
 <!doctype html>
@@ -173,20 +174,22 @@ if ($_SESSION['rol'] == 1) {
       </nav>
     </aside>
       <main role="main" class="main-content">
-        <div class="container-fluid">
+      <div class="container-fluid">
           <div class="row justify-content-center">
             
               
              
               <div class="col-10">
-                <h2 class="mb-2 page-title">Libros Subidos</h2>
+                <h2 class="mb-2 page-title">Libros</h2>
                 </div>
+                
                 <div  class="col-2">
                 <a href="insertbook.php">
-              <span class="fe fe-plus fe-16 mr-3"></span>Subir Libro
+              <span class="fe fe-plus fe-16 mr-3"></span>Nuevo Libro
             
               </a>
             </div>
+          
 
 
               <div class="col-12">
@@ -203,10 +206,13 @@ if ($_SESSION['rol'] == 1) {
                           
                             <th>#</th>
                             <th>Titulo</th>
+                            <th>Publicación</th>
+                            <th>Fecha Libro</th>
                             <th>Sinopsis</th>
                             <th>Imagen</th>
-                            <th>Estado</th>
                             <th>Categoria</th>
+                            <th>Autor</th>
+                            <th>Editorial</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -214,58 +220,65 @@ if ($_SESSION['rol'] == 1) {
 
 <?php
                   
-                  $idEscri=$_SESSION['rol'];
-                      $sql = $conexion->query("SELECT idLibEsc, titLib, sinopsis,imagen,estado,Categoria_idCat2,nomCat
-                       FROM LibroEscritor
-                       INNER JOIN Categoria
-                       ON LibroEscritor.Categoria_idCat2=Categoria.idCat
-                       WHERE Usuario_escri ='$idEscri';");
+              
+                      $sql = $conexion->query("SELECT idLib, titLib, fecPub,fecLib, sinopsis, imagen,nomAut1,nomAut2, apeAut1,apeAut2, nomCat, nomEdi
+                      FROM Libro
+                            INNER JOIN LibAut
+                            ON Libro.idLib=LibAut.Libro_idLib
+                            INNER JOIN Autor
+                            ON Autor.idAut=LibAut.Autor_idAut
+                            INNER JOIN LibEdi
+                            ON Libro.idLib=LibEdi.Libro_idLib
+                            INNER JOIN Editorial
+                            ON Editorial.idEdi=LibEdi.Editorial_idEdi
+                            INNER JOIN Categoria
+                            ON Libro.Categoria_idCat=Categoria.idCat
+                            WHERE estado!=1 AND idLib in (Select libid from escrilib where usuid=$idUSU);
+                            
+                            ");
   
                        while ($datos = $sql->fetch_array()) {
-                           $idLib = $datos['idLibEsc'];
-                           $titulo = $datos['titLib'];
-                           $imagenlibro = $datos['imagen'];
-                           $imli = base64_encode($imagenlibro); 
-                           $sinopsis = $datos['sinopsis']; 
-                           $estado = $datos['estado']; 
-                           $categoria = $datos['nomCat'];                        
+                           $idLib = $datos['idLib'];
+                           $titLib = $datos['titLib'];
+                           $fecPub = $datos['fecPub'];
+                           $fecLib = $datos['fecLib'];
+                           $sinopsis = $datos['sinopsis'];
+                           $imagen = $datos['imagen'];
+                           $nomAut = $datos['nomAut1']." ".$datos['nomAut2']." ".$datos['apeAut1']." ".$datos['apeAut2'];
+                           $nomCat = $datos['nomCat'];
+                           $nomEdi = $datos['nomEdi'];
+                       echo "<tr> 
+                          <td>$idLib</td>
+                       <td>$titLib</td>  
+                       <td>$fecPub</td> 
+                       <td>$fecLib</td> 
+                       <td>$sinopsis</td>  
+                       <td>";
+                       ?>
+                       <span class="avatar avatar-sm mt-2">
+              <img src="data:image/png;base64,<?= base64_encode($imagen) ?>">
+            </span>
+            <?php
+                       echo "</td>
+                       <td>$nomCat</td> 
+                       <td>$nomAut</td> 
+                       <td>$nomEdi</td>  
+                       ";
+                           
+
+
                        
-                       
-                
-
-?>
-
-
-
-
-                          <tr>
-                          
-                            <td><?php echo $idLib; ?></td>
-                            <td><?php echo $titulo; ?></td>
-                            <td><?php echo $sinopsis; ?></td>                          
-                            <td width="12%"><img  src="data:image/png;base64,<?= $imli ?>"></td>
-                            <td><?php
-                            if ($estado==3){
-                              echo "<span class='badge badge-pill badge-warning'>Por confirmar</span>";
-                            }else{if($estado==2){
-                              echo "<span class='badge badge-pill badge-danger'>Denegado</span>";
-                            }else{if($estado==1){
-                              echo "<span class='badge badge-pill badge-success'>Aprobado</span>";
-                            }
-                            }}
-                             
-                             ?></td>
-                            <td><?php echo $categoria; ?></td>
-                            <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="text-muted sr-only">Action</span>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="listbookes.php?variable=<?php echo $idLib; ?>">Edit</a>
-                                <a class="dropdown-item" href="listbookes.php?variable=<?php echo $idLib; ?>">Remove</a>
-                              </div>
-                            </td>
-                          </tr> 
-                        <?php }; ?>
+                        echo'<td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="text-muted sr-only">Action</span>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="editbook.php?variable='.$idLib.'">Editar</a>
+                        <a class="dropdown-item" href="deletebook.php?variable='.$idLib.'">Eliminar</a>
+                      </div>
+                    </td>
+                  </tr>';
+                       }                                       
+?>                                                                                                                                            
                         </tbody>
                       </table>
                     </div>

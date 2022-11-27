@@ -416,6 +416,7 @@ include "procesos/conexion.php";
                 ON Editorial.idEdi=LibEdi.Editorial_idEdi
                 INNER JOIN Categoria
                 ON Libro.Categoria_idCat=Categoria.idCat
+                WHERE estado=1
                  ORDER BY fecPub ASC limit 4");
                 while ($datos = $sql->fetch_object()) {
                 ?>
@@ -493,7 +494,7 @@ include "procesos/conexion.php";
                 ON Editorial.idEdi=LibEdi.Editorial_idEdi
                 INNER JOIN Categoria
                 ON Libro.Categoria_idCat=Categoria.idCat
-                WHERE Categoria_idCat = 2 ORDER BY titLib");
+                WHERE Categoria_idCat = 1 AND estado=1 ORDER BY titLib");
                 while ($datos = $sql->fetch_object()) {
                 ?>
                   <div class="video anim" style="--delay: .4s">
@@ -546,7 +547,7 @@ include "procesos/conexion.php";
                 ON Editorial.idEdi=LibEdi.Editorial_idEdi
                 INNER JOIN Categoria
                 ON Libro.Categoria_idCat=Categoria.idCat
-                WHERE Categoria_idCat = 3");
+                WHERE Categoria_idCat = 3 AND estado=1");
                 while ($datos = $sql->fetch_object()) {
                 ?>
                   <div class="video anim" style="--delay: .4s">
@@ -627,7 +628,7 @@ include "procesos/conexion.php";
               <div class="options">
                 <?php
 
-                $sql = $conexion->query("SELECT * from Libro order by lecturas DESC limit 5");
+                $sql = $conexion->query("SELECT * from Libro WHERE estado=1 order by lecturas  DESC limit 5 ");
                 while ($datos = $sql->fetch_object()) {
                 ?>
                   <div class="option active" style="--optionBackground:url(data:image/jpg;base64,<?php echo base64_encode($datos->imagen) ?>);">
