@@ -7,6 +7,64 @@ if (empty($_POST['idLib'])) {
     history.back();
     </script>';
 } else {
+    $idusu = $_POST["idUsu"];
+
+    $sql = $conexion->query("SELECT * FROM Usuario WHERE idUsu=$idusu");
+    if ($datos = $sql->fetch_array()) {
+        $nom1 = $datos['nom1'];
+        $nom2 = $datos['nom2'];
+        $ape1 = $datos['ape1'];
+        $ape2 = $datos['ape2'];
+       
+        $foto= addslashes($datos['foto']);
+      echo $nom1.$nom2.$ape1.$ape2;
+      $sql = $conexion->query("SELECT MAX(idAut) FROM Autor");
+      if ($datos = $sql->fetch_array()) {
+          $idLA = $datos['MAX(idAut)'];
+          $idLA++;
+      } else {
+          $idLA = 1;
+      }
+      $sql = $conexion->query("INSERT INTO
+      Autor (idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut)
+      VALUES ('$idLA','$nom1','$nom2','$ape1','$ape2','$foto');");
+       if ($sql) {
+         echo'<script type="text/javascript">
+         alert("Autor Registrada");
+         </script>';
+         header("location:../escritor/listbookes.php");
+        
+       } else {
+       
+       }
+    } else {
+        echo "XD";
+    }
+
+    /*
+    
+    $idAut = $_POST["idAut"];
+    $nomaut1 = $_POST["nomaut1"];
+    $nomaut2 = $_POST["nomaut2"];
+    $apeaut1 = $_POST["apeaut1"];
+    $apeaut2 = $_POST["apeaut2"];
+    $bio = $_POST["bio"];
+    
+    $_FILES["imagenban"];
+
+    if(isset($_FILES['imagenaut']['name'])&&isset($_FILES['imagenban']['name'])){
+        $foto= addslashes(file_get_contents($_FILES['imagenaut']['tmp_name']));
+        $banner= addslashes(file_get_contents($_FILES['imagenban']['tmp_name']));
+
+   
+}
+
+
+
+
+
+
+
 
     $file = $_FILES["fileTest"]["name"]; //Nombre de nuestro archivo
     $validator = 1; //Variable validadora
@@ -123,4 +181,5 @@ if (empty($_POST['idLib'])) {
         } else {
         }
     }
+    */
 }

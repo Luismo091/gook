@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../procesos/conexion.php";
+$usuario=$_SESSION['id'];
 ?>
 
 <!doctype html>
@@ -43,54 +44,30 @@ include "../procesos/conexion.php";
 <body class="vertical  dark  ">
     <div class="wrapper">
     <script src="https://kit.fontawesome.com/4006f4ca68.js" crossorigin="anonymous"></script>
-    <nav class="topnav navbar navbar-light">
+  <nav class="topnav navbar navbar-light">
       <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
         <i class="fe fe-menu navbar-toggler-icon"></i>
       </button>
 
-      <form name="filform" class="form-inline mr-auto searchform text-muted" action="../filtropage.php" method="GET">
-
-        <input name="filtxt" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search" placeholder="Busca algo..." aria-label="Search">
-        <select name="filcat" class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" style="width: 200px;">
-          <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
-          <?php
-          $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "<option style='background-color:#212529; color:#6c757d' value='$row[idCat]'>$row[nomCat]</option>";
-          }
-          ?>
-        </select>
-        <a href="javascript:enviar_formulario()">
-          <i class="fa-solid fa-filter"></i>
-        </a>
-
-
-      </form>
-
-      <script>
-        function enviar_formulario() {
-          document.filform.submit()
-        }
-      </script>
+      
 
 
 
 
       <ul class="nav">
 
-
+        
         <li class="nav-item dropdown">
-          <a href="perfil.php">
-
+          <a href="perfiladmin.php">
             <span class="avatar avatar-sm mt-2">
               <img src="data:image/png;base64,<?= base64_encode($_SESSION["foto"]) ?>">
             </span>
           </a>
         </li>
-
       </ul>
     </nav>
 
+    
 
     <!--Menu Lateral-->
     <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
@@ -123,50 +100,64 @@ include "../procesos/conexion.php";
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
-            <a class="nav-link" href="../main.php">
-              <i class="fa-solid fa-newspaper"></i>
+            <a class="nav-link" href="mainadmin.php">
+            <i class="fa-solid fa-house-lock"></i>
               <span class="ml-3 item-text">Home</span>
             </a>
           </li>
           <li class="nav-item w-100">
-            <a class="nav-link" href="../favoritos.php">
-            <i class="fa-solid fa-heart"></i>
-              <span class="ml-3 item-text">Favoritos</span>
-            </a>
-          </li>
-          <li class="nav-item w-100">
-            <a class="nav-link" href="../perfil.php">
-              <i class="fa-solid fa-user"></i>
+            <a class="nav-link" href="perfiladmin.php">
+            <i class="fa-solid fa-user"></i>
               <span class="ml-3 item-text">Perfil</span>
             </a>
           </li>
-
-          <?php
-
-          if ($_SESSION['rol'] == 3) {
-            echo '<li class="nav-item w-100">
-    <a class="nav-link" href="listbookes.php">
-    <i class="fa-solid fa-upload fa-bounce"></i>
-      <span class="ml-3 item-text">Subir Produccion</span>
-    </a>
-  </li>';
-          }
-         
-
-if ($_SESSION['rol'] == 1) {
-  echo '<li class="nav-item w-100">
-<a class="nav-link" href="../administrador/mainadmin.php">
-<i class="fa-solid fa-house-lock"></i>
-<span class="ml-3 item-text">Admin Home</span>
-</a>
-</li>';
-}
-?>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listcuentas.php">
+            <i class="fa-solid fa-users"></i>
+              <span class="ml-3 item-text">Cuentas</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listbook.php">
+            <i class="fa-solid fa-book-tanakh"></i>
+              <span class="ml-3 item-text">Libros</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listautor.php">
+            <i class="fa-solid fa-user-pen"></i>
+              <span class="ml-3 item-text">Autores</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listeditoriales.php	">
+            <i class="fa-solid fa-pen-nib"></i>
+              <span class="ml-3 item-text">Editoriales</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="listcategorias.php">
+            <i class="fa-solid fa-tags"></i>
+              <span class="ml-3 item-text">Categorias</span>
+            </a>
+          </li>
 
 
           <li class="nav-item w-100">
+            <a class="nav-link" href="#">
+            <i class="fa-solid fa-circle-plus"></i>
+              <span class="ml-3 item-text">Suscripciones</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
+            <a class="nav-link" href="../main.php">
+              <i class="fa-solid fa-newspaper"></i>
+              <span class="ml-3 item-text">Pagina Principal</span>
+            </a>
+          </li>
+          <li class="nav-item w-100">
             <a class="nav-link" href="../procesos/sesion.php">
-              <i class="fa-solid fa-right-from-bracket"></i>
+            <i class="fa-solid fa-right-from-bracket"></i>
               <span class="ml-3 item-text">Salir</span>
             </a>
           </li>
@@ -178,7 +169,7 @@ if ($_SESSION['rol'] == 1) {
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <h2 class="mb-2 page-title">Subir Libro</h2>
+                        <h2 class="mb-2 page-title">Nuevo Libro</h2>
                         <p class="card-text"> </p>
                         <div class="row my-4">
                             <!-- Small table -->
@@ -193,10 +184,10 @@ if ($_SESSION['rol'] == 1) {
                                         <?php
                                         echo '<div class="row">';
                                         $idLib;
-                                        $sql = $conexion->query("SELECT MAX(idLibEsc) FROM LibroEscritor");
+                                        $sql = $conexion->query("SELECT MAX(idLib) FROM Libro");
 
                                         if ($datos = $sql->fetch_array()) {
-                                            $idLib = $datos['MAX(idLibEsc)'];
+                                            $idLib = $datos['MAX(idLib)'];
                                             $idLib++;
                                         } else {
                                             $idLib = 1;
@@ -208,23 +199,35 @@ if ($_SESSION['rol'] == 1) {
                                         echo '</div>';
 
                                         ?>
-                                        <form action="../procesos/savebook.php" method="POST" enctype="multipart/form-data">
+                                        <form action="../procesos/insertnewbookescritor.php" method="POST" enctype="multipart/form-data">
                                             <section>
-
+                                            <input type="number" name="idUsu" class="form-control" value="<?php echo $usuario; ?>" hidden>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-1">
                                                         <label for="id">ID</label>
-                                                        <input type="text" name="idlibro" class="form-control" value="<?php echo $idLib; ?>" readonly>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="lastname">Titulo</label>
-                                                        <input type="text" name="inputname2" class="form-control">
+                                                        <input type="text" name="idLib" class="form-control" value="<?php echo $idLib; ?>" readonly>
                                                     </div>
 
+                                                    <div class="form-group col-md-5">
+                                                        <label for="catego">Titulo</label>
+                                                        <input type="text" name="titLib" class="form-control">
+                                                    </div>
+                                                    <?php $gethoy = getdate();
+                                                    $hoy = $gethoy['year'] . "-" . $gethoy['mon'] . "-" . $gethoy['mday'];
+                                                    ?>
+                                                    <div class="form-group col-md-3" hidden>
+                                                        <label for="catego">Fecha Libro</label>
+                                                        <input type="date" name="fecLib" class="form-control" value="<?php echo $hoy; ?>">
+                                                    </div>
+                                                   
+                                                    <div class="form-group col-md-3">
+                                                        <label for="catego">Fecha Publicación</label>
+                                                        <input type="date" name="fecPub" class="form-control" value="<?php echo $hoy; ?>" readonly>
+                                                    </div>
 
-                                                    <div class="form-group col-md-2">
+                                                    <div class="form-group col-md-3">
                                                         <label for="lastname">Categoria</label>
-                                                        <select name="filcat" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted" style="width: 200px;">
+                                                        <select name="filcat" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted">
                                                             <option style="background-color:#212529; color:#6c757d">Seleccione una...</option>
                                                             <?php
                                                             $result = mysqli_query($conexion, 'SELECT * FROM Categoria');
@@ -236,23 +239,32 @@ if ($_SESSION['rol'] == 1) {
                                                             ?>
                                                         </select>
                                                     </div>
+                           
 
-
-
-                                                    <div class="form-group col-md-3">
-                                                        <label for="lastname">Imagen del Libro</label>
-                                                        <input type="file" id="example-fileinput" name="imagen" class="form-control-file" required>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="lastname">Idioma Originario</label>
+                                                        <select name="lang" class="form-control mr-sm-3 bg-transparent border-1 pl-4 text-muted">
+                                                            <option style="background-color:#212529; color:#6c757d">Es</option>
+                                                            <option style="background-color:#212529; color:#6c757d">En</option>
+                                                        </select>
                                                     </div>
-
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-9">
+                                                    <div class="form-group col-md-5">
+                                                    <label for="lastname">Imagen del Libro</label>                                                       
+                                                        <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="imagen" class="form-control-file">
+                                                        <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+                                                        </div>                           
+                                                    </div>  
+                                                    <div class="form-group col-md-5">
+                                                        <label for="lastname">Libro</label>                                                       
+                                                        <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="example-fileinput" name="fileTest" class="form-control-file">
+                                                        <label class="custom-file-label" for="customFile">Selecciona un archivo</label>
+                                                        </div>                                          
+                                                    </div>  
+                                                    <div class="form-group col-md-12">
                                                         <label for="lastname">Sinopsis</label>
-                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="imagen" class="form-control-file" required></textarea>
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <label for="lastname">Documento Libro</label>
-                                                        <input type="file" id="example-fileinput" name="fileTest" class="form-control-file" required>
+                                                        <textarea class="form-control" id="validationTextarea1" style=" font-size: x-large;height:80px;" id="example-fileinput" name="sinopsis" class="form-control-file" required></textarea>
                                                     </div>
                                                 </div>
                                     </div>
