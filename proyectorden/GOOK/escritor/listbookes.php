@@ -273,7 +273,7 @@ if ($_SESSION['rol'] == 1) {
                       </button>
                       <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="editbook.php?variable='.$idLib.'">Editar</a>
-                        <a class="dropdown-item" href="deletbook.php?variable='.$idLib.'">Eliminar</a>
+                        <a class="dropdown-item" href="deletebook.php?variable='.$idLib.'">Eliminar</a>
                       </div>
                     </td>
                   </tr>';
