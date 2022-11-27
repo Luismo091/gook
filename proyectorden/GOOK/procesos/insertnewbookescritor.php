@@ -8,49 +8,84 @@ if (empty($_POST['idLib'])) {
     </script>';
 } else {
     $idusu = $_POST["idUsu"];
-
-    $sql = $conexion->query("SELECT * FROM Usuario WHERE idUsu=$idusu");
-    if ($datos = $sql->fetch_array()) {
-        $nom1 = $datos['nom1'];
-        $nom2 = $datos['nom2'];
-        $ape1 = $datos['ape1'];
-        $ape2 = $datos['ape2'];
-        $foto= addslashes($datos['foto']);
-        $sql1 = $conexion->query("SELECT * FROM bannerdefault WHERE idbannerdefault=1");
-        if ($datos1 = $sql1->fetch_array()) {
-            $banner= addslashes($datos1['imagen']);
-        }else{
-
+    $idLib = $_POST["idLib"];
+    $sql2 = $conexion->query("SELECT * FROM escrilib  WHERE usuid=$idusu");
+    if ($datos2 = $sql2->fetch_array()) {
+        echo '<script type="text/javascript">
+        alert("XD");
+        history.back();
+        </script>';
+    }else{
+        $sql = $conexion->query("SELECT * FROM Usuario WHERE idUsu=$idusu");
+        if ($datos = $sql->fetch_array()) {
+            $nom1 = $datos['nom1'];
+            $nom2 = $datos['nom2'];
+            $ape1 = $datos['ape1'];
+            $ape2 = $datos['ape2'];
+            $foto= addslashes($datos['foto']);
+            $sql1 = $conexion->query("SELECT * FROM bannerdefault WHERE idbannerdefault=1");
+            if ($datos1 = $sql1->fetch_array()) {
+                $banner= addslashes($datos1['imagen']);
+            }else{
+    
+            }
+          $sql = $conexion->query("SELECT MAX(idAut) FROM Autor");
+          if ($datos = $sql->fetch_array()) {
+              $idLA = $datos['MAX(idAut)'];
+              $idLA++;
+          } else {
+              $idLA = 1;
+          }
+          $sql = $conexion->query("INSERT INTO
+          Autor (idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut,banner)
+          VALUES ('$idLA','$nom1','$nom2','$ape1','$ape2','$foto','$banner');");
+           if ($sql) {
+             echo'<script type="text/javascript">
+             alert("Autor Registrada");
+             </script>';
+             header("location:../escritor/listbookes.php");
+            
+           } else {
+           
+           }
+        } else {
+            echo "XD";
         }
+
+
+
+
+
+
+
+
+
         
-      echo $nom1.$nom2.$ape1.$ape2;
-      $sql = $conexion->query("SELECT MAX(idAut) FROM Autor");
-      if ($datos = $sql->fetch_array()) {
-          $idLA = $datos['MAX(idAut)'];
-          $idLA++;
+    $sql3 = $conexion->query("SELECT MAX(idesli) FROM escrilib");
+      if ($datos3 = $sql3->fetch_array()) {
+          $idesli = $datos3['MAX(idesli)'];
+          $idesli++;
       } else {
-          $idLA = 1;
+          $idesli = 1;
       }
-      $sql = $conexion->query("INSERT INTO
-      Autor (idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut,banner)
-      VALUES ('$idLA','$nom1','$nom2','$ape1','$ape2','$foto','$banner');");
-       if ($sql) {
-         echo'<script type="text/javascript">
-         alert("Autor Registrada");
-         </script>';
-         header("location:../escritor/listbookes.php");
+      $sql4 = $conexion->query("INSERT INTO
+      escrilib (idesli, libid, usuid, autid)
+      VALUES ('$idesli','$idLib','$idusu','$idLA');");
+       if ($sql4) {
+         
         
        } else {
        
        }
-    } else {
-        echo "XD";
     }
+
+
+    
 
     /*
     
     $idAut = $_POST["idAut"];
-    $nomaut1 = $_POST["nomaut1"];
+    $nomaut1 = $_POST["idLib"];
     $nomaut2 = $_POST["nomaut2"];
     $apeaut1 = $_POST["apeaut1"];
     $apeaut2 = $_POST["apeaut2"];
