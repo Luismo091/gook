@@ -12,13 +12,13 @@ if (isset($_GET["variable"])) {
   if ($sql) {
     echo'<script type="text/javascript">
     alert("Libro Eliminado");
-    window.location= "../administrador/listbook.php";
+    window.location= "../escritor/listbookes.php";
     </script>
     ';
   } else {
     echo'<script type="text/javascript">
     alert("Error");
-    window.location= "../administrador/listbook.php";
+    window.location= "../escritor/listbookes.php";
     </script>
     ';
   }
