@@ -233,7 +233,7 @@ if ($_SESSION['rol'] == 1) {
                             ON Editorial.idEdi=LibEdi.Editorial_idEdi
                             INNER JOIN Categoria
                             ON Libro.Categoria_idCat=Categoria.idCat
-                            WHERE idLib in (Select libid from escrilib where usuid=$idUSU);
+                            WHERE estado!=1 AND idLib in (Select libid from escrilib where usuid=$idUSU);
                             
                             ");
   
