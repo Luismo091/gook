@@ -5,6 +5,6 @@ if (empty($_POST['rating']) and empty($_POST['comment'])) {
     $comen= $_POST["comment"];
     $cal= $_POST["rating"];
 
-    $sql = $conexion->query("INSERT INTO Favorito (Libro_idLib, Usu_idusu) VALUES ('$variable','$idusu')");
+    $sql = $conexion->query("INSERT INTO Favorito (Libro_idLib, Usu_idusu) VALUES ('variable','idusu')");
 }
 ?>
