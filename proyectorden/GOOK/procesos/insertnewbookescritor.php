@@ -15,8 +15,14 @@ if (empty($_POST['idLib'])) {
         $nom2 = $datos['nom2'];
         $ape1 = $datos['ape1'];
         $ape2 = $datos['ape2'];
-       
         $foto= addslashes($datos['foto']);
+        $sql1 = $conexion->query("SELECT * FROM bannerdefault WHERE idbannerdefault=1");
+        if ($datos1 = $sql1->fetch_array()) {
+            $banner= addslashes($datos1['imagen']);
+        }else{
+
+        }
+        
       echo $nom1.$nom2.$ape1.$ape2;
       $sql = $conexion->query("SELECT MAX(idAut) FROM Autor");
       if ($datos = $sql->fetch_array()) {
@@ -26,8 +32,8 @@ if (empty($_POST['idLib'])) {
           $idLA = 1;
       }
       $sql = $conexion->query("INSERT INTO
-      Autor (idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut)
-      VALUES ('$idLA','$nom1','$nom2','$ape1','$ape2','$foto');");
+      Autor (idAut, nomAut1, nomAut2, apeAut1, apeAut2, foto_aut,banner)
+      VALUES ('$idLA','$nom1','$nom2','$ape1','$ape2','$foto','$banner');");
        if ($sql) {
          echo'<script type="text/javascript">
          alert("Autor Registrada");

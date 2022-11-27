@@ -201,6 +201,7 @@ $usuario=$_SESSION['id'];
                                         ?>
                                         <form action="../procesos/insertnewbookescritor.php" method="POST" enctype="multipart/form-data">
                                             <section>
+                                            
                                             <input type="number" name="idUsu" class="form-control" value="<?php echo $usuario; ?>" hidden>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-1">
