@@ -213,6 +213,7 @@ if ($_SESSION['rol'] == 1) {
                             <th>Categoria</th>
                             <th>Autor</th>
                             <th>Editorial</th>
+                            <th>Estado</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -221,7 +222,7 @@ if ($_SESSION['rol'] == 1) {
 <?php
                   
               
-                      $sql = $conexion->query("SELECT idLib, titLib, fecPub,fecLib, sinopsis, imagen,nomAut1,nomAut2, apeAut1,apeAut2, nomCat, nomEdi
+                      $sql = $conexion->query("SELECT idLib, titLib, fecPub,fecLib, sinopsis, imagen,nomAut1,nomAut2, apeAut1,apeAut2, nomCat, nomEdi, estado
                       FROM Libro
                             INNER JOIN LibAut
                             ON Libro.idLib=LibAut.Libro_idLib
@@ -247,6 +248,7 @@ if ($_SESSION['rol'] == 1) {
                            $nomAut = $datos['nomAut1']." ".$datos['nomAut2']." ".$datos['apeAut1']." ".$datos['apeAut2'];
                            $nomCat = $datos['nomCat'];
                            $nomEdi = $datos['nomEdi'];
+                           $estado = $datos['estado'];
                        echo "<tr> 
                           <td>$idLib</td>
                        <td>$titLib</td>  
@@ -264,7 +266,14 @@ if ($_SESSION['rol'] == 1) {
                        <td>$nomAut</td> 
                        <td>$nomEdi</td>  
                        ";
-                           
+                       if ($estado==1){
+                        echo "<td style='color:green;'>Aprobado</td> ";
+                       } else if ($estado==2) {
+                         echo "<td style='color:red;'>Rechazado</td> ";
+                       }else {
+                         echo "<td style='color:yellow;'>Espera</td> ";
+                       }
+ 
 
 
                        

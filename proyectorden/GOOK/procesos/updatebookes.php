@@ -59,7 +59,7 @@
 
 
     $sql = $conexion->query("UPDATE Libro SET titLib='$titLib', fecPub='$fecPub',
-                             sinopsis='$sinopsis', imagen='$foto',
+                             sinopsis='$sinopsis', imagen='$foto',estado=3,
                              Categoria_idCat='$filcat'
                              WHERE idLib=$idLib");
           if ($sql) {
@@ -132,7 +132,7 @@
             $newnamebook=$prueba.$idLib.".pdf";
             rename($url_target,$newnamebook);
             $sql = $conexion->query("UPDATE Libro SET titLib='$titLib', fecPub='$fecPub',
-                                     sinopsis='$sinopsis',
+                                     sinopsis='$sinopsis',estado=3,
                                      Categoria_idCat='$filcat'
                                      WHERE idLib=$idLib");
                   if ($sql) {
@@ -173,7 +173,7 @@
                 $foto= addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
   
             $sql = $conexion->query("UPDATE Libro SET titLib='$titLib', fecPub='$fecPub',
-                                     sinopsis='$sinopsis', imagen='$foto',
+                                     sinopsis='$sinopsis', imagen='$foto',estado=3,
                                      Categoria_idCat='$filcat'
                                      WHERE idLib=$idLib");
                   if ($sql) {
@@ -203,7 +203,7 @@
         
         
             $sql = $conexion->query("UPDATE Libro SET titLib='$titLib', fecPub='$fecPub',
-                                     sinopsis='$sinopsis',
+                                     sinopsis='$sinopsis',estado=3,
                                      Categoria_idCat='$filcat'
                                      WHERE idLib=$idLib");
                   if ($sql) {
